@@ -1,0 +1,1775 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Al-Noman Foundation | Be Giving, Be Living</title>
+    <meta name="description" content="Al-Noman Foundation is a registered 501(c)(3) non-profit empowering communities through clean water, education, food, and places of worship. 100% tax-deductible donations.">
+    <meta property="og:title" content="Al-Noman Foundation | Be Giving, Be Living">
+    <meta property="og:description" content="Empowering underprivileged communities worldwide through clean water, education, food, and places of worship.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.alnoman.org">
+
+    <link rel="icon" type="image/x-icon" href="images/favicon.ico">
+
+    <!-- Google tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-250622242-1"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'UA-250622242-1');
+    </script>
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        /* ===== RESET & BASE ===== */
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --primary: #0d7c5f;
+            --primary-dark: #095e48;
+            --primary-light: #e8f5f0;
+            --accent: #d4a843;
+            --accent-light: #fdf6e3;
+            --dark: #1a1a2e;
+            --dark-light: #2d2d44;
+            --text: #333;
+            --text-light: #666;
+            --text-muted: #999;
+            --white: #fff;
+            --bg: #fafafa;
+            --border: #e8e8e8;
+            --shadow: 0 4px 20px rgba(0,0,0,0.08);
+            --shadow-lg: 0 10px 40px rgba(0,0,0,0.12);
+            --radius: 12px;
+            --radius-lg: 20px;
+            --transition: all 0.3s ease;
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: var(--text);
+            background: var(--white);
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        h1, h2, h3, h4 { font-family: 'Playfair Display', Georgia, serif; line-height: 1.3; }
+
+        a { text-decoration: none; color: inherit; }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* ===== BUTTONS ===== */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 14px 32px;
+            border-radius: 50px;
+            font-family: 'Inter', sans-serif;
+            font-weight: 600;
+            font-size: 0.95rem;
+            letter-spacing: 0.02em;
+            cursor: pointer;
+            transition: var(--transition);
+            border: none;
+            text-transform: uppercase;
+        }
+
+        .btn-primary {
+            background: var(--accent);
+            color: var(--dark);
+        }
+
+        .btn-primary:hover {
+            background: #c49a38;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(212,168,67,0.4);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--white);
+            border: 2px solid var(--white);
+        }
+
+        .btn-outline:hover {
+            background: var(--white);
+            color: var(--dark);
+            transform: translateY(-2px);
+        }
+
+        .btn-green {
+            background: var(--primary);
+            color: var(--white);
+        }
+
+        .btn-green:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(13,124,95,0.3);
+        }
+
+        /* ===== HEADER ===== */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(255,255,255,0.97);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+            transition: var(--transition);
+        }
+
+        .header .container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 72px;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--primary);
+        }
+
+        .logo span { color: var(--accent); }
+
+        .navbar { display: flex; align-items: center; gap: 8px; }
+
+        .navbar a {
+            padding: 8px 16px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--text-light);
+            border-radius: 8px;
+            transition: var(--transition);
+            text-transform: capitalize;
+        }
+
+        .navbar a:hover {
+            color: var(--primary);
+            background: var(--primary-light);
+        }
+
+        .nav-donate {
+            background: var(--primary) !important;
+            color: var(--white) !important;
+            border-radius: 50px !important;
+            padding: 10px 24px !important;
+            margin-left: 8px;
+        }
+
+        .nav-donate:hover {
+            background: var(--primary-dark) !important;
+        }
+
+        #menu-btn {
+            display: none;
+            font-size: 1.5rem;
+            color: var(--text);
+            cursor: pointer;
+        }
+
+        /* ===== HERO ===== */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(135deg, var(--dark) 0%, #16213e 50%, var(--primary-dark) 100%);
+            position: relative;
+            overflow: hidden;
+            padding-top: 72px;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(212,168,67,0.15) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -30%;
+            left: -10%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(13,124,95,0.2) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .hero .container {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            padding: 80px 24px;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.2);
+            padding: 8px 20px;
+            border-radius: 50px;
+            color: var(--accent);
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            margin-bottom: 32px;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 5vw, 4.5rem);
+            color: var(--white);
+            margin-bottom: 24px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero h1 span { color: var(--accent); }
+
+        .hero p {
+            font-size: 1.15rem;
+            color: rgba(255,255,255,0.7);
+            max-width: 600px;
+            margin: 0 auto 40px;
+            line-height: 1.8;
+        }
+
+        .hero-buttons { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+
+        .hero-501c3 {
+            margin-top: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            color: rgba(255,255,255,0.4);
+            font-size: 0.85rem;
+        }
+
+        /* ===== IMPACT NUMBERS ===== */
+        .impact {
+            background: var(--primary);
+            padding: 60px 0;
+        }
+
+        .impact .container {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 32px;
+            text-align: center;
+        }
+
+        .impact-item i {
+            font-size: 2rem;
+            color: var(--accent);
+            margin-bottom: 12px;
+        }
+
+        .impact-number {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--white);
+        }
+
+        .impact-label {
+            color: rgba(255,255,255,0.7);
+            font-size: 0.9rem;
+            margin-top: 4px;
+        }
+
+        /* ===== SECTION STYLES ===== */
+        .section { padding: 100px 0; }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 64px;
+        }
+
+        .section-badge {
+            display: inline-block;
+            background: var(--primary-light);
+            color: var(--primary);
+            padding: 6px 16px;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 16px;
+        }
+
+        .section-header h2 {
+            font-size: clamp(1.8rem, 3vw, 2.8rem);
+            color: var(--dark);
+            margin-bottom: 16px;
+        }
+
+        .section-header p {
+            color: var(--text-light);
+            max-width: 600px;
+            margin: 0 auto;
+            font-size: 1.05rem;
+        }
+
+        /* ===== ABOUT ===== */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 64px;
+            align-items: center;
+        }
+
+        .about-icon-box {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            border-radius: var(--radius-lg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 24px;
+        }
+
+        .about-icon-box i {
+            font-size: 2rem;
+            color: var(--white);
+        }
+
+        .about-text h2 {
+            font-size: 2.2rem;
+            color: var(--dark);
+            margin-bottom: 20px;
+        }
+
+        .about-text > p {
+            color: var(--text-light);
+            font-size: 1.05rem;
+            margin-bottom: 32px;
+        }
+
+        .about-pillars {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+
+        .pillar {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 16px;
+            background: var(--bg);
+            border-radius: var(--radius);
+            transition: var(--transition);
+        }
+
+        .pillar:hover {
+            background: var(--primary-light);
+        }
+
+        .pillar i {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--primary);
+            color: var(--white);
+            border-radius: 10px;
+            font-size: 1rem;
+            flex-shrink: 0;
+        }
+
+        .pillar-text h4 {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--dark);
+        }
+
+        .pillar-text p {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            margin-top: 2px;
+        }
+
+        .about-story {
+            background: linear-gradient(135deg, var(--dark) 0%, #16213e 100%);
+            border-radius: var(--radius-lg);
+            padding: 48px;
+            color: var(--white);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .about-story::before {
+            content: '\201C';
+            position: absolute;
+            top: 20px;
+            right: 40px;
+            font-size: 8rem;
+            font-family: 'Playfair Display', serif;
+            color: rgba(255,255,255,0.05);
+            line-height: 1;
+        }
+
+        .about-story .memorial-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(212,168,67,0.2);
+            border: 1px solid rgba(212,168,67,0.3);
+            padding: 6px 16px;
+            border-radius: 50px;
+            color: var(--accent);
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 24px;
+        }
+
+        .about-story h3 {
+            font-size: 1.6rem;
+            margin-bottom: 16px;
+        }
+
+        .about-story p {
+            color: rgba(255,255,255,0.7);
+            font-size: 1rem;
+            line-height: 1.8;
+        }
+
+        .about-story .founder {
+            margin-top: 24px;
+            padding-top: 24px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .founder-icon {
+            width: 48px;
+            height: 48px;
+            background: var(--primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+        }
+
+        .founder-info span {
+            display: block;
+            font-size: 0.85rem;
+            color: rgba(255,255,255,0.5);
+        }
+
+        .founder-info strong {
+            color: var(--white);
+            font-size: 0.95rem;
+        }
+
+        /* ===== VALUES ===== */
+        .values-section { background: var(--bg); }
+
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
+        }
+
+        .value-card {
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            padding: 40px 32px;
+            text-align: center;
+            border: 1px solid var(--border);
+            transition: var(--transition);
+        }
+
+        .value-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--primary);
+        }
+
+        .value-icon {
+            width: 72px;
+            height: 72px;
+            margin: 0 auto 24px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+        }
+
+        .value-card:nth-child(1) .value-icon { background: #e8f5f0; color: var(--primary); }
+        .value-card:nth-child(2) .value-icon { background: #fdf6e3; color: var(--accent); }
+        .value-card:nth-child(3) .value-icon { background: #ede8f5; color: #6c5ce7; }
+
+        .value-card h3 {
+            font-size: 1.3rem;
+            color: var(--dark);
+            margin-bottom: 12px;
+            text-transform: capitalize;
+        }
+
+        .value-card p {
+            color: var(--text-light);
+            font-size: 0.95rem;
+        }
+
+        /* ===== DONATION PLANS ===== */
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
+            align-items: start;
+        }
+
+        .pricing-info {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            border-radius: var(--radius-lg);
+            padding: 48px 36px;
+            color: var(--white);
+        }
+
+        .pricing-info h3 {
+            font-size: 1.8rem;
+            margin-bottom: 16px;
+        }
+
+        .pricing-info > p {
+            color: rgba(255,255,255,0.8);
+            margin-bottom: 24px;
+        }
+
+        .pricing-info .checklist {
+            list-style: none;
+            margin-bottom: 32px;
+        }
+
+        .pricing-info .checklist li {
+            padding: 8px 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: rgba(255,255,255,0.9);
+        }
+
+        .pricing-info .checklist li i {
+            color: var(--accent);
+        }
+
+        .plan-card {
+            background: var(--white);
+            border: 2px solid var(--border);
+            border-radius: var(--radius-lg);
+            padding: 40px 32px;
+            text-align: center;
+            transition: var(--transition);
+        }
+
+        .plan-card:hover {
+            border-color: var(--primary);
+            box-shadow: var(--shadow-lg);
+            transform: translateY(-4px);
+        }
+
+        .plan-card.featured {
+            border-color: var(--accent);
+            position: relative;
+        }
+
+        .plan-card.featured::before {
+            content: 'Most Popular';
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--accent);
+            color: var(--dark);
+            font-size: 0.75rem;
+            font-weight: 700;
+            padding: 4px 16px;
+            border-radius: 50px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .plan-card h3 {
+            font-size: 1.2rem;
+            color: var(--dark);
+            margin-bottom: 8px;
+            text-transform: capitalize;
+        }
+
+        .plan-price {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            font-weight: 800;
+            color: var(--primary);
+            margin-bottom: 24px;
+        }
+
+        .plan-price span {
+            font-size: 1rem;
+            font-weight: 400;
+            color: var(--text-muted);
+        }
+
+        .plan-features {
+            list-style: none;
+            margin-bottom: 32px;
+            text-align: left;
+        }
+
+        .plan-features li {
+            padding: 10px 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--text);
+            font-size: 0.95rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .plan-features li:last-child { border-bottom: none; }
+
+        .plan-features li i {
+            color: var(--primary);
+            font-size: 0.85rem;
+        }
+
+        /* ===== CAMPAIGNS ===== */
+        .campaigns-section { background: var(--bg); }
+
+        .campaigns-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 24px;
+        }
+
+        .campaign-card {
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            padding: 32px;
+            border: 1px solid var(--border);
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .campaign-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .campaign-icon {
+            width: 56px;
+            height: 56px;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem;
+            margin-bottom: 20px;
+        }
+
+        .campaign-card:nth-child(1) .campaign-icon { background: #fde8e8; color: #e74c3c; }
+        .campaign-card:nth-child(2) .campaign-icon { background: #fdf6e3; color: #e67e22; }
+        .campaign-card:nth-child(3) .campaign-icon { background: #e8f5f0; color: var(--primary); }
+        .campaign-card:nth-child(4) .campaign-icon { background: #e8f0fd; color: #3498db; }
+        .campaign-card:nth-child(5) .campaign-icon { background: #ede8f5; color: #6c5ce7; }
+
+        .campaign-card .location {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 8px;
+        }
+
+        .campaign-card h3 {
+            font-size: 1.2rem;
+            color: var(--dark);
+            margin-bottom: 8px;
+        }
+
+        .campaign-card p {
+            color: var(--text-light);
+            font-size: 0.95rem;
+            margin-bottom: 24px;
+            flex-grow: 1;
+        }
+
+        /* ===== TRANSPARENCY ===== */
+        .transparency {
+            background: var(--white);
+            padding: 80px 0;
+        }
+
+        .transparency-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 48px;
+            align-items: center;
+        }
+
+        .transparency-visual {
+            text-align: center;
+        }
+
+        .donut-container {
+            position: relative;
+            width: 220px;
+            height: 220px;
+            margin: 0 auto 24px;
+        }
+
+        .donut-ring {
+            width: 220px;
+            height: 220px;
+            border-radius: 50%;
+            background: conic-gradient(
+                var(--primary) 0deg 324deg,
+                var(--border) 324deg 360deg
+            );
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .donut-hole {
+            width: 160px;
+            height: 160px;
+            border-radius: 50%;
+            background: var(--white);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .donut-percent {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            font-weight: 800;
+            color: var(--primary);
+            line-height: 1;
+        }
+
+        .donut-label {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            margin-top: 4px;
+        }
+
+        .donut-legend {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.85rem;
+            color: var(--text-light);
+        }
+
+        .legend-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+
+        .legend-dot.programs { background: var(--primary); }
+        .legend-dot.operations { background: var(--border); }
+
+        .transparency-content h2 {
+            font-size: 2rem;
+            color: var(--dark);
+            margin-bottom: 16px;
+        }
+
+        .transparency-content > p {
+            color: var(--text-light);
+            font-size: 1.05rem;
+            margin-bottom: 28px;
+            line-height: 1.8;
+        }
+
+        .trust-points {
+            list-style: none;
+        }
+
+        .trust-points li {
+            display: flex;
+            align-items: flex-start;
+            gap: 14px;
+            padding: 14px 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .trust-points li:last-child { border-bottom: none; }
+
+        .trust-points li i {
+            width: 36px;
+            height: 36px;
+            background: var(--primary-light);
+            color: var(--primary);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.9rem;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        .trust-points li strong {
+            display: block;
+            color: var(--dark);
+            font-size: 0.95rem;
+            margin-bottom: 2px;
+        }
+
+        .trust-points li span {
+            font-size: 0.88rem;
+            color: var(--text-light);
+        }
+
+        @media (max-width: 768px) {
+            .transparency-grid { grid-template-columns: 1fr; }
+        }
+
+        /* ===== CTA BANNER ===== */
+        .cta-banner {
+            background: linear-gradient(135deg, var(--dark) 0%, #16213e 50%, var(--primary-dark) 100%);
+            padding: 80px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-banner::before {
+            content: '';
+            position: absolute;
+            top: -100px;
+            left: -100px;
+            width: 300px;
+            height: 300px;
+            border: 1px solid rgba(255,255,255,0.05);
+            border-radius: 50%;
+        }
+
+        .cta-banner .container { position: relative; z-index: 1; }
+
+        .cta-banner h2 {
+            font-size: clamp(1.8rem, 3vw, 2.8rem);
+            color: var(--white);
+            margin-bottom: 16px;
+        }
+
+        .cta-banner p {
+            color: rgba(255,255,255,0.7);
+            font-size: 1.1rem;
+            max-width: 500px;
+            margin: 0 auto 32px;
+        }
+
+        .cta-buttons { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+
+        /* ===== PROJECTS ===== */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+
+        .project-card {
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--border);
+            overflow: hidden;
+            transition: var(--transition);
+        }
+
+        .project-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .project-header {
+            padding: 24px 24px 0;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .project-date {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        .project-card .project-body {
+            padding: 16px 24px 24px;
+        }
+
+        .project-card h3 {
+            font-size: 1.1rem;
+            color: var(--dark);
+            margin-bottom: 8px;
+            text-transform: capitalize;
+        }
+
+        .project-card p {
+            color: var(--text-light);
+            font-size: 0.9rem;
+            margin-bottom: 20px;
+        }
+
+        /* ===== TEAM ===== */
+        .team-section { background: var(--bg); }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+
+        .team-card {
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            padding: 32px;
+            text-align: center;
+            border: 1px solid var(--border);
+            transition: var(--transition);
+        }
+
+        .team-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .team-avatar {
+            width: 72px;
+            height: 72px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 16px;
+            font-size: 1.5rem;
+            color: var(--white);
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+        }
+
+        .team-card h3 {
+            font-size: 1.1rem;
+            color: var(--dark);
+            margin-bottom: 4px;
+            text-transform: capitalize;
+        }
+
+        .team-card .role {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-bottom: 16px;
+        }
+
+        .team-social { display: flex; justify-content: center; gap: 8px; }
+
+        .team-social a {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: var(--bg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            transition: var(--transition);
+        }
+
+        .team-social a:hover {
+            background: var(--primary);
+            color: var(--white);
+        }
+
+        /* ===== FOOTER ===== */
+        .footer {
+            background: var(--dark);
+            color: rgba(255,255,255,0.7);
+            padding: 80px 0 0;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1.5fr;
+            gap: 48px;
+            padding-bottom: 48px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .footer h3 {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--white);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 20px;
+        }
+
+        .footer-about .logo {
+            font-size: 1.3rem;
+            margin-bottom: 16px;
+        }
+
+        .footer-about p {
+            font-size: 0.9rem;
+            line-height: 1.7;
+            margin-bottom: 20px;
+        }
+
+        .footer-social { display: flex; gap: 10px; }
+
+        .footer-social a {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            transition: var(--transition);
+        }
+
+        .footer-social a:hover {
+            background: var(--primary);
+            transform: translateY(-2px);
+        }
+
+        .footer-links a {
+            display: block;
+            padding: 6px 0;
+            font-size: 0.9rem;
+            color: rgba(255,255,255,0.6);
+            transition: var(--transition);
+            text-transform: capitalize;
+        }
+
+        .footer-links a:hover {
+            color: var(--white);
+            padding-left: 4px;
+        }
+
+        .footer-contact p {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 8px 0;
+            font-size: 0.9rem;
+        }
+
+        .footer-contact i {
+            color: var(--primary);
+            width: 18px;
+        }
+
+        .footer-bottom {
+            padding: 24px 0;
+            text-align: center;
+            font-size: 0.85rem;
+            color: rgba(255,255,255,0.4);
+        }
+
+        .footer-bottom span { color: var(--accent); }
+
+        .tax-notice {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(13,124,95,0.15);
+            border: 1px solid rgba(13,124,95,0.2);
+            padding: 4px 14px;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            color: rgba(255,255,255,0.6);
+            margin-top: 8px;
+        }
+
+        .tax-notice i { color: var(--primary); }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 1024px) {
+            .about-grid { grid-template-columns: 1fr; gap: 48px; }
+            .pricing-grid { grid-template-columns: 1fr; max-width: 500px; margin: 0 auto; }
+            .projects-grid { grid-template-columns: repeat(2, 1fr); }
+            .footer-grid { grid-template-columns: 1fr 1fr; }
+        }
+
+        @media (max-width: 768px) {
+            .navbar {
+                display: none;
+                position: fixed;
+                top: 72px;
+                left: 0;
+                right: 0;
+                background: var(--white);
+                flex-direction: column;
+                padding: 24px;
+                border-bottom: 1px solid var(--border);
+                box-shadow: var(--shadow);
+            }
+
+            .navbar.active { display: flex; }
+
+            #menu-btn { display: block; }
+
+            .impact .container { grid-template-columns: repeat(3, 1fr); }
+
+            .values-grid { grid-template-columns: 1fr; max-width: 400px; margin: 0 auto; }
+
+            .about-pillars { grid-template-columns: 1fr; }
+
+            .campaigns-grid { grid-template-columns: 1fr; }
+
+            .projects-grid { grid-template-columns: 1fr; }
+
+            .team-grid { grid-template-columns: 1fr 1fr; }
+
+            .footer-grid { grid-template-columns: 1fr; }
+
+            .section { padding: 64px 0; }
+        }
+
+        @media (max-width: 480px) {
+            .impact .container { grid-template-columns: 1fr 1fr; gap: 24px; }
+            .team-grid { grid-template-columns: 1fr; max-width: 360px; margin: 0 auto; }
+            .hero-buttons { flex-direction: column; align-items: center; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- ===== HEADER ===== -->
+<header class="header">
+    <div class="container">
+        <a href="#home" class="logo">Al-Noman<span>.</span></a>
+        <div id="menu-btn" class="fas fa-bars"></div>
+        <nav class="navbar">
+            <a href="#home">Home</a>
+            <a href="#about">About</a>
+            <a href="#values">Values</a>
+            <a href="#donations">Donations</a>
+            <a href="#campaigns">Campaigns</a>
+            <a href="#team">Team</a>
+            <a href="https://donate.stripe.com/dR6bLq1gf7xF7y8aEG" class="nav-donate">Donate</a>
+        </nav>
+    </div>
+</header>
+
+<!-- ===== HERO ===== -->
+<section class="hero" id="home">
+    <div class="container">
+        <div class="hero-badge">
+            <i class="fas fa-heart"></i>
+            Registered 501(c)(3) Non-Profit
+        </div>
+        <h1>Be Giving, <span>Be Living</span></h1>
+        <p>Founded in loving memory of Noman Abushanab, we empower underprivileged communities through clean water, education, food, and places of worship.</p>
+        <div class="hero-buttons">
+            <a href="https://donate.stripe.com/dR6bLq1gf7xF7y8aEG" class="btn btn-primary"><i class="fas fa-hand-holding-heart"></i> Donate Now</a>
+            <a href="#about" class="btn btn-outline"><i class="fas fa-arrow-down"></i> Learn More</a>
+        </div>
+        <div class="hero-501c3">
+            <i class="fas fa-shield-alt"></i>
+            100% of your donation is tax-deductible
+        </div>
+    </div>
+</section>
+
+<!-- ===== IMPACT NUMBERS ===== -->
+<section class="impact">
+    <div class="container">
+        <div class="impact-item">
+            <i class="fas fa-tint"></i>
+            <div class="impact-number">20+</div>
+            <div class="impact-label">Water Wells Built</div>
+        </div>
+        <div class="impact-item">
+            <i class="fas fa-utensils"></i>
+            <div class="impact-number">5,000+</div>
+            <div class="impact-label">Meals Provided</div>
+        </div>
+        <div class="impact-item">
+            <i class="fas fa-graduation-cap"></i>
+            <div class="impact-number">200+</div>
+            <div class="impact-label">Students Sponsored</div>
+        </div>
+        <div class="impact-item">
+            <i class="fas fa-globe-africa"></i>
+            <div class="impact-number">5</div>
+            <div class="impact-label">Countries Reached</div>
+        </div>
+        <div class="impact-item">
+            <i class="fas fa-hand-holding-usd"></i>
+            <div class="impact-number">90%+</div>
+            <div class="impact-label">Goes Directly to People</div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== ABOUT ===== -->
+<section class="section" id="about">
+    <div class="container">
+        <div class="about-grid">
+            <div class="about-text">
+                <div class="about-icon-box">
+                    <i class="fas fa-hands-helping"></i>
+                </div>
+                <h2>We're Setting Out to Make a Better World</h2>
+                <p>Al-Noman Foundation strives to give the less fortunate an opportunity to reach their potential. We believe that every person deserves access to the basics of life, and the best way to assist them is through four core pillars:</p>
+                <div class="about-pillars">
+                    <div class="pillar">
+                        <i class="fas fa-tint"></i>
+                        <div class="pillar-text">
+                            <h4>Water Wells</h4>
+                            <p>Clean water sources for communities</p>
+                        </div>
+                    </div>
+                    <div class="pillar">
+                        <i class="fas fa-mosque"></i>
+                        <div class="pillar-text">
+                            <h4>Places of Worship</h4>
+                            <p>Building and restoring sacred spaces</p>
+                        </div>
+                    </div>
+                    <div class="pillar">
+                        <i class="fas fa-utensils"></i>
+                        <div class="pillar-text">
+                            <h4>Food</h4>
+                            <p>Nutritional meals for families in need</p>
+                        </div>
+                    </div>
+                    <div class="pillar">
+                        <i class="fas fa-book-open"></i>
+                        <div class="pillar-text">
+                            <h4>Education</h4>
+                            <p>Access to learning for every person</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="about-story">
+                <div class="memorial-badge">
+                    <i class="fas fa-star"></i> In Loving Memory
+                </div>
+                <h3>The Story Behind Our Mission</h3>
+                <p>Al-Noman Foundation was founded in remembrance of Noman Abushanab, whom we lost to COVID-19. His spirit of generosity and compassion for others lives on through every well we build, every child we educate, and every family we feed. Our name carries his legacy, and our work honors his memory every single day.</p>
+                <div class="founder">
+                    <div class="founder-icon">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <div class="founder-info">
+                        <strong>Noman Abushanab</strong>
+                        <span>Forever in our hearts</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== VALUES ===== -->
+<section class="section values-section" id="values">
+    <div class="container">
+        <div class="section-header">
+            <div class="section-badge">Our Values</div>
+            <h2>What Guides Everything We Do</h2>
+            <p>Our values are the foundation of every decision, every project, and every life we touch.</p>
+        </div>
+        <div class="values-grid">
+            <div class="value-card">
+                <div class="value-icon">
+                    <i class="fas fa-balance-scale"></i>
+                </div>
+                <h3>Integrity</h3>
+                <p>We uphold honesty in all of our interactions and hold ourselves to the highest standard of transparency with every dollar donated.</p>
+            </div>
+            <div class="value-card">
+                <div class="value-icon">
+                    <i class="fas fa-dove"></i>
+                </div>
+                <h3>Compassion</h3>
+                <p>We put ourselves in the shoes of our beneficiaries and feel the urgency of their needs, responding with empathy and care.</p>
+            </div>
+            <div class="value-card">
+                <div class="value-icon">
+                    <i class="fas fa-people-carry"></i>
+                </div>
+                <h3>Togetherness</h3>
+                <p>Our sense of belonging to communities around the world brings us closer to the people in need and strengthens our impact.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== DONATION PLANS ===== -->
+<section class="section" id="donations">
+    <div class="container">
+        <div class="section-header">
+            <div class="section-badge">Donation Plans</div>
+            <h2>Be a Monthly Donor</h2>
+            <p>Every dollar you give brings hope to someone in need. Choose a plan that fits you and make a lasting impact.</p>
+        </div>
+        <div class="pricing-grid">
+            <div class="pricing-info">
+                <h3>Your Generosity Creates Change</h3>
+                <p>A monthly donation provides consistent, reliable support to the communities we serve. Here's what your contributions fund:</p>
+                <ul class="checklist">
+                    <li><i class="fas fa-check"></i> Water wells</li>
+                    <li><i class="fas fa-check"></i> Places of worship</li>
+                    <li><i class="fas fa-check"></i> Food for families</li>
+                    <li><i class="fas fa-check"></i> Education for children</li>
+                </ul>
+                <a href="https://donate.stripe.com/3cscPu8IH2dlg4E4gk" class="btn btn-primary">Give Any Amount</a>
+            </div>
+            <div class="plan-card">
+                <h3>Student Plan</h3>
+                <div class="plan-price"><span>$</span>30<span>/mo</span></div>
+                <ul class="plan-features">
+                    <li><i class="fas fa-check"></i> School bag</li>
+                    <li><i class="fas fa-check"></i> Food</li>
+                    <li><i class="fas fa-check"></i> Stationery</li>
+                    <li><i class="fas fa-check"></i> Shoes</li>
+                    <li><i class="fas fa-check"></i> Books</li>
+                </ul>
+                <a href="https://donate.stripe.com/dR6bLq1gf7xF7y8aEG" class="btn btn-green">Sponsor a Student</a>
+            </div>
+            <div class="plan-card featured">
+                <h3>Family Plan</h3>
+                <div class="plan-price"><span>$</span>99<span>/mo</span></div>
+                <ul class="plan-features">
+                    <li><i class="fas fa-check"></i> Food</li>
+                    <li><i class="fas fa-check"></i> Rent assistance</li>
+                    <li><i class="fas fa-check"></i> 2 students sponsored</li>
+                    <li><i class="fas fa-check"></i> Parents' utilities</li>
+                    <li><i class="fas fa-check"></i> Shoes</li>
+                </ul>
+                <a href="https://donate.stripe.com/6oE4iY6AzdW3f0AaEH" class="btn btn-green">Sponsor a Family</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== TRANSPARENCY ===== -->
+<section class="transparency" id="transparency">
+    <div class="container">
+        <div class="transparency-grid">
+            <div class="transparency-visual">
+                <div class="donut-container">
+                    <div class="donut-ring">
+                        <div class="donut-hole">
+                            <div class="donut-percent">90%+</div>
+                            <div class="donut-label">to programs</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="donut-legend">
+                    <div class="legend-item"><div class="legend-dot programs"></div> Direct Aid</div>
+                    <div class="legend-item"><div class="legend-dot operations"></div> Operations</div>
+                </div>
+            </div>
+            <div class="transparency-content">
+                <div class="section-badge">Our Promise</div>
+                <h2>More Than 90 Cents of Every Dollar Reaches Those in Need</h2>
+                <p>We operate with radical efficiency. While many organizations spend 30-40% on overhead, we've built Al-Noman to ensure that more than 90% of every dollar you donate goes directly to the communities we serve.</p>
+                <ul class="trust-points">
+                    <li>
+                        <i class="fas fa-check-circle"></i>
+                        <div>
+                            <strong>Direct Impact</strong>
+                            <span>More than 90% of every donation funds programs — water wells, food, education, and places of worship.</span>
+                        </div>
+                    </li>
+                    <li>
+                        <i class="fas fa-check-circle"></i>
+                        <div>
+                            <strong>Volunteer-Driven</strong>
+                            <span>Our team members volunteer their time, keeping administrative costs to an absolute minimum.</span>
+                        </div>
+                    </li>
+                    <li>
+                        <i class="fas fa-check-circle"></i>
+                        <div>
+                            <strong>Registered 501(c)(3)</strong>
+                            <span>100% of your donation is tax-deductible. We operate with full legal compliance and accountability.</span>
+                        </div>
+                    </li>
+                    <li>
+                        <i class="fas fa-check-circle"></i>
+                        <div>
+                            <strong>On-the-Ground Presence</strong>
+                            <span>We work directly with local communities — no middlemen, no wasted resources.</span>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== CTA BANNER ===== -->
+<section class="cta-banner">
+    <div class="container">
+        <h2>Your Dollar Goes Further With Us</h2>
+        <p>More than 90% of every donation goes directly to people in need. Make your impact today.</p>
+        <div class="cta-buttons">
+            <a href="https://donate.stripe.com/dR6bLq1gf7xF7y8aEG" class="btn btn-primary"><i class="fas fa-credit-card"></i> Donate via Stripe</a>
+            <a href="https://www.paypal.com/donate/?hosted_button_id=XE8JQ8QJKH4FQ" class="btn btn-outline"><i class="fab fa-paypal"></i> Donate via PayPal</a>
+        </div>
+    </div>
+</section>
+
+<!-- ===== CAMPAIGNS ===== -->
+<section class="section campaigns-section" id="campaigns">
+    <div class="container">
+        <div class="section-header">
+            <div class="section-badge">Active Campaigns</div>
+            <h2>Support the Causes You Care About</h2>
+            <p>Each campaign targets a specific need. Choose the one closest to your heart.</p>
+        </div>
+        <div class="campaigns-grid">
+            <div class="campaign-card">
+                <div class="campaign-icon"><i class="fas fa-hand-holding-heart"></i></div>
+                <div class="location"><i class="fas fa-map-marker-alt"></i> Palestine</div>
+                <h3>Save Gaza</h3>
+                <p>A campaign to provide any means of life to the people in Gaza during these difficult times.</p>
+                <a href="https://buy.stripe.com/28o9DiaQPf07dWw9AM" class="btn btn-green">Contribute</a>
+            </div>
+            <div class="campaign-card">
+                <div class="campaign-icon"><i class="fas fa-bread-slice"></i></div>
+                <div class="location"><i class="fas fa-map-marker-alt"></i> Benin</div>
+                <h3>Bread a Day</h3>
+                <p>Feed a person a piece of bread for as little as 20 cents. A small act with enormous impact.</p>
+                <a href="https://buy.stripe.com/9AQg1G8IH8BJf0A4gm" class="btn btn-green">Contribute</a>
+            </div>
+            <div class="campaign-card">
+                <div class="campaign-icon"><i class="fas fa-drumstick-bite"></i></div>
+                <div class="location"><i class="fas fa-map-marker-alt"></i> Benin</div>
+                <h3>Dabiha</h3>
+                <p>Sacrifice a cow or goat to give families in need a chance to eat meat.</p>
+                <a href="https://buy.stripe.com/bIYg1G1gf2dlf0A14f" class="btn btn-green">Contribute</a>
+            </div>
+            <div class="campaign-card">
+                <div class="campaign-icon"><i class="fas fa-tint"></i></div>
+                <div class="location"><i class="fas fa-map-marker-alt"></i> Benin</div>
+                <h3>Water Wells</h3>
+                <p>Provide communities with access to clean water. Every drop creates a means of life.</p>
+                <a href="https://buy.stripe.com/dR6aHm3on5px6u43cj" class="btn btn-green">Contribute</a>
+            </div>
+            <div class="campaign-card">
+                <div class="campaign-icon"><i class="fas fa-wheelchair"></i></div>
+                <div class="location"><i class="fas fa-map-marker-alt"></i> Benin</div>
+                <h3>Be Mobile</h3>
+                <p>Help people regain their mobility and independence by providing wheelchairs.</p>
+                <a href="https://buy.stripe.com/5kA9Di0cb9FN3hSdR0" class="btn btn-green">Contribute</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== PROJECTS ===== -->
+<section class="section" id="projects">
+    <div class="container">
+        <div class="section-header">
+            <div class="section-badge">Our Projects</div>
+            <h2>Where Your Donations Go</h2>
+            <p>Transparent reporting on every initiative we run.</p>
+        </div>
+        <div class="projects-grid">
+            <div class="project-card">
+                <div class="project-header">
+                    <div class="section-badge" style="margin-bottom:0;">Humanitarian</div>
+                    <span class="project-date">October 2023</span>
+                </div>
+                <div class="project-body">
+                    <h3>Save Gaza Today</h3>
+                    <p>A campaign to provide means of life to the people in Gaza.</p>
+                    <a href="https://buy.stripe.com/28o9DiaQPf07dWw9AM" class="btn btn-green">Be Giving</a>
+                </div>
+            </div>
+            <div class="project-card">
+                <div class="project-header">
+                    <div class="section-badge" style="margin-bottom:0;">Feeding</div>
+                    <span class="project-date">September 2022</span>
+                </div>
+                <div class="project-body">
+                    <h3>A Bread a Day</h3>
+                    <p>Feed a person a piece of bread with as little as 20 cents.</p>
+                    <a href="https://buy.stripe.com/9AQg1G8IH8BJf0A4gm" class="btn btn-green">Be Giving</a>
+                </div>
+            </div>
+            <div class="project-card">
+                <div class="project-header">
+                    <div class="section-badge" style="margin-bottom:0;">Sacrifice</div>
+                    <span class="project-date">May 2023</span>
+                </div>
+                <div class="project-body">
+                    <h3>Dabiha</h3>
+                    <p>Give those in need a chance to eat meat through livestock sacrifice.</p>
+                    <a href="https://buy.stripe.com/bIYg1G1gf2dlf0A14f" class="btn btn-green">Be Giving</a>
+                </div>
+            </div>
+            <div class="project-card">
+                <div class="project-header">
+                    <div class="section-badge" style="margin-bottom:0;">Clean Water</div>
+                    <span class="project-date">May 2021</span>
+                </div>
+                <div class="project-body">
+                    <h3>Water Wells Provide for Life</h3>
+                    <p>Every drop of water creates a means of life for communities.</p>
+                    <a href="https://buy.stripe.com/dR6aHm3on5px6u43cj" class="btn btn-green">Be Giving</a>
+                </div>
+            </div>
+            <div class="project-card">
+                <div class="project-header">
+                    <div class="section-badge" style="margin-bottom:0;">Zakat</div>
+                    <span class="project-date">March 2023</span>
+                </div>
+                <div class="project-body">
+                    <h3>Zakat Al-Fitr</h3>
+                    <p>Putting a smile on people's faces during the blessed season.</p>
+                    <a href="https://buy.stripe.com/6oE6r6e314lt3hS28g" class="btn btn-green">Be Giving</a>
+                </div>
+            </div>
+            <div class="project-card">
+                <div class="project-header">
+                    <div class="section-badge" style="margin-bottom:0;">Feeding</div>
+                    <span class="project-date">October 2022</span>
+                </div>
+                <div class="project-body">
+                    <h3>Meat Once a Week</h3>
+                    <p>Making meat available to those in need at least once a week.</p>
+                    <a href="https://buy.stripe.com/cN2bLq4srg4b5q014d" class="btn btn-green">Be Giving</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== TEAM ===== -->
+<section class="section team-section" id="team">
+    <div class="container">
+        <div class="section-header">
+            <div class="section-badge">Our Team</div>
+            <h2>The People Behind the Mission</h2>
+            <p>A dedicated team working tirelessly to bring hope and opportunity to communities worldwide.</p>
+        </div>
+        <div class="team-grid">
+            <div class="team-card">
+                <div class="team-avatar">AG</div>
+                <h3>Alain Gnimavo</h3>
+                <div class="role">Team Member</div>
+                <div class="team-social">
+                    <a href="https://www.facebook.com/alain.gnimavo.9"><i class="fab fa-facebook-f"></i></a>
+                </div>
+            </div>
+            <div class="team-card">
+                <div class="team-avatar">HA</div>
+                <h3>Hatem Alkurd</h3>
+                <div class="role">Team Member</div>
+                <div class="team-social">
+                    <a href="https://www.facebook.com/hatem.elkurd"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://www.instagram.com/hatemelkurd/"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.linkedin.com/in/hatem-alkurd-b2398350"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+            <div class="team-card">
+                <div class="team-avatar">KD</div>
+                <h3>Kamel Djerarda</h3>
+                <div class="role">Team Member</div>
+                <div class="team-social">
+                    <a href="https://www.facebook.com/kamel.djerarda.9"><i class="fab fa-facebook-f"></i></a>
+                </div>
+            </div>
+            <div class="team-card">
+                <div class="team-avatar">MA</div>
+                <h3>Marwan Abushanab</h3>
+                <div class="role">Team Member</div>
+                <div class="team-social">
+                    <a href="https://www.facebook.com/marwan.abushanab.1"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://www.instagram.com/prince_of_pump/"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.linkedin.com/in/marwan-abushanab-7193b8aa/"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+            <div class="team-card">
+                <div class="team-avatar">RH</div>
+                <h3>Rehina Holovatar</h3>
+                <div class="role">Team Member</div>
+                <div class="team-social">
+                    <a href="https://m.facebook.com/people/Regina-Golovata/100001516969911/"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://www.instagram.com/regina_golovata/"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.linkedin.com/in/regina-golovata-2109b3147/"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+            <div class="team-card">
+                <div class="team-avatar">MA</div>
+                <h3>Mwafaq Abushanab</h3>
+                <div class="role">Team Member</div>
+                <div class="team-social">
+                    <a href="https://www.facebook.com/ZagZuki/"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://www.linkedin.com/in/abushanm/"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer class="footer">
+    <div class="container">
+        <div class="footer-grid">
+            <div class="footer-about">
+                <div class="logo">Al-Noman<span>.</span></div>
+                <p>Founded in loving memory of Noman Abushanab, Al-Noman Foundation empowers underprivileged communities through clean water, education, food, and places of worship.</p>
+                <div class="footer-social">
+                    <a href="https://www.facebook.com/ALNOMANFoundation"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://www.instagram.com/al_noman_foundation/"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.linkedin.com/company/81360274/"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+            <div class="footer-links">
+                <h3>Quick Links</h3>
+                <a href="#home">Home</a>
+                <a href="#about">About</a>
+                <a href="#values">Values</a>
+                <a href="#donations">Donations</a>
+                <a href="#campaigns">Campaigns</a>
+                <a href="#team">Team</a>
+            </div>
+            <div class="footer-links">
+                <h3>Campaigns</h3>
+                <a href="https://buy.stripe.com/28o9DiaQPf07dWw9AM">Save Gaza</a>
+                <a href="https://buy.stripe.com/9AQg1G8IH8BJf0A4gm">Bread a Day</a>
+                <a href="https://buy.stripe.com/bIYg1G1gf2dlf0A14f">Dabiha</a>
+                <a href="https://buy.stripe.com/dR6aHm3on5px6u43cj">Water Wells</a>
+                <a href="https://buy.stripe.com/5kA9Di0cb9FN3hSdR0">Be Mobile</a>
+            </div>
+            <div class="footer-contact">
+                <h3>Contact Us</h3>
+                <p><i class="fas fa-phone"></i> +1 (813) 358-4681</p>
+                <p><i class="fas fa-phone"></i> +22 (997) 83 83 82</p>
+                <p><i class="fas fa-envelope"></i> info@alnoman.org</p>
+                <p><i class="fas fa-map-marker-alt"></i> Orlando, FL USA</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 <span>Al-Noman Foundation</span>. All rights reserved.</p>
+            <div class="tax-notice">
+                <i class="fas fa-check-circle"></i>
+                Registered 501(c)(3) Non-Profit &mdash; 100% of your donation is tax-deductible
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- ===== SCRIPTS ===== -->
+<script>
+    // Mobile menu toggle
+    const menuBtn = document.getElementById('menu-btn');
+    const navbar = document.querySelector('.navbar');
+    menuBtn.addEventListener('click', () => {
+        navbar.classList.toggle('active');
+        menuBtn.classList.toggle('fa-bars');
+        menuBtn.classList.toggle('fa-times');
+    });
+
+    // Close menu on link click
+    document.querySelectorAll('.navbar a').forEach(link => {
+        link.addEventListener('click', () => {
+            navbar.classList.remove('active');
+            menuBtn.classList.add('fa-bars');
+            menuBtn.classList.remove('fa-times');
+        });
+    });
+
+    // Header shadow on scroll
+    window.addEventListener('scroll', () => {
+        const header = document.querySelector('.header');
+        if (window.scrollY > 50) {
+            header.style.boxShadow = '0 2px 20px rgba(0,0,0,0.1)';
+        } else {
+            header.style.boxShadow = 'none';
+        }
+    });
+
+    // Animate elements on scroll
+    const observerOptions = { threshold: 0.1, rootMargin: '0px 0px -50px 0px' };
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.opacity = '1';
+                entry.target.style.transform = 'translateY(0)';
+            }
+        });
+    }, observerOptions);
+
+    document.querySelectorAll('.value-card, .plan-card, .campaign-card, .project-card, .team-card, .impact-item').forEach(el => {
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(20px)';
+        el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+        observer.observe(el);
+    });
+</script>
+
+</body>
+</html>
