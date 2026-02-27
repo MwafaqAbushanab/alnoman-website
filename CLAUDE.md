@@ -39,6 +39,11 @@ Requires GitHub Secrets: `FTP_SERVER`, `FTP_USERNAME`, `FTP_PASSWORD`.
 | Dabiha | Benin | `buy.stripe.com/bIYg1G1gf2dlf0A14f` |
 | Water Wells | Benin | `buy.stripe.com/dR6aHm3on5px6u43cj` |
 | Be Mobile | Benin | `buy.stripe.com/5kA9Di0cb9FN3hSdR0` |
+| Joy for Kids — Toy Distribution | Benin | General donate link |
+| Weekly Treats for Kids | Benin | General donate link |
+| Hospital Freedom — Medical Relief | Benin | General donate link |
+| Ramadan Iftar Meals ($2/meal) | Benin | General donate link |
+| Quran Memorization Sponsorship (Zakat) | Benin | General donate link |
 
 ## Donation Plans
 - **Student Plan**: $30/month — school bag, food, stationery, shoes, books
@@ -173,7 +178,7 @@ status: "pending" | "approved" | "rejected" | "completed",
 is_foundation: true/false,
 created_at, approved_at, admin_notes
 ```
-- Foundation campaigns: `foundation-gaza`, `foundation-bread`, `foundation-dabiha`, `foundation-water`, `foundation-mobile`
+- Foundation campaigns: `foundation-gaza`, `foundation-bread`, `foundation-dabiha`, `foundation-water`, `foundation-mobile`, `foundation-toys`, `foundation-treats`, `foundation-hospital`, `foundation-iftar`, `foundation-quran`
 - User campaigns: Firebase push IDs
 
 ### Cause Schema (`/causes/{id}`)
@@ -267,8 +272,8 @@ const defaultGoals = {
 - [x] Admin cause management (approve/reject/convert causes to campaigns)
 - [x] Admin approved campaign editor (update raised amounts, goals, Stripe links)
 - [x] Firebase security rules (public read, restricted write, validation)
-- [x] 5 foundation campaigns seeded into Firebase
-- [x] Campaign browse page with category filters (All, Foundation, Community, Water, Education, Food, Emergency)
+- [x] 10 foundation campaigns seeded into Firebase (5 original + 5 new: Toys, Treats, Hospital, Iftar, Quran)
+- [x] Campaign browse page with category filters (All, Foundation, Community, Water, Education, Food, Emergency, Health, Children)
 - [x] Spam protection (honeypot fields + localStorage rate limiting)
 - [x] Navigation updated on all pages (includes Campaigns link)
 - [x] Sitemap updated with all 9 public pages
@@ -281,6 +286,11 @@ const defaultGoals = {
 - [x] Newsletter signup on homepages (Firebase-powered, honeypot + rate limiting spam protection)
 - [x] Newsletter subscriber management in admin.html (view, delete, CSV export)
 - [x] GA4 dual-tagging prepared across all 30 pages (uncomment `G-XXXXXXXXXX` after creating GA4 property)
+- [x] 5 new foundation campaigns: Joy for Kids, Weekly Treats, Hospital Freedom, Ramadan Iftar ($2/meal), Quran Memorization (Zakat)
+- [x] Health and Children category filters on campaigns browse page (all 3 languages)
+- [x] Homepage expanded to 10 campaign cards (all 3 languages)
+- [x] Ramadan Iftar calculator updated to $2/meal (rice, salad, drink, fish)
+- [x] Admin seed function for adding new foundation campaigns to Firebase
 
 ## Roadmap — Website
 - [ ] Add real campaign videos (YouTube/Vimeo embeds) to stories page

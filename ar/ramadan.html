@@ -522,8 +522,8 @@
         </div>
         <div class="impact-grid">
             <div class="impact-card">
-                <div class="impact-number" dir="ltr">$0.20</div>
-                <p>تطعم شخصاً ليوم كامل برغيف خبز طازج من خلال برنامج رغيف يومياً في بنين</p>
+                <div class="impact-number" dir="ltr">$2</div>
+                <p>وجبة إفطار كاملة لشخص واحد تشمل أرز، سلطة، مشروب، وسمك</p>
             </div>
             <div class="impact-card">
                 <div class="impact-number" dir="ltr">$30</div>
@@ -546,9 +546,9 @@
     <div class="container">
         <div class="iftar-grid">
             <div class="iftar-text">
-                <div class="section-badge" style="background:rgba(212,168,67,0.2);color:var(--ramadan-gold);border:1px solid rgba(212,168,67,0.3);"><i class="fas fa-bread-slice" aria-hidden="true"></i> كفالة الإفطار</div>
+                <div class="section-badge" style="background:rgba(212,168,67,0.2);color:var(--ramadan-gold);border:1px solid rgba(212,168,67,0.3);"><i class="fas fa-utensils" aria-hidden="true"></i> وجبة إفطار كاملة</div>
                 <h2 id="iftar-heading">أطعم الصائمين في رمضان</h2>
-                <p>أطعم العائلات خلال رمضان من خلال برنامج رغيف يومياً. بمبلغ $0.20 فقط للشخص الواحد، يمكنك توفير وجبات إفطار للصائمين في بنين. قال رسول الله صلى الله عليه وسلم: "من فطّر صائماً كان له مثل أجره." هذه فرصتك لمضاعفة أجرك طوال شهر رمضان المبارك بإطعام الصائمين الذين لا يجدون ما يفطرون عليه.</p>
+                <p>أطعم العائلات خلال رمضان بوجبة إفطار كاملة بـ <strong>٢ دولار فقط للشخص الواحد في اليوم</strong>. تشمل كل وجبة: أرز، سلطة، مشروب، وسمك — كل ما يحتاجه الصائم لكسر صيامه بكرامة. قال رسول الله صلى الله عليه وسلم: "من فطّر صائماً كان له مثل أجره." هذه فرصتك لمضاعفة أجرك طوال شهر رمضان المبارك بإطعام الصائمين الذين لا يجدون ما يفطرون عليه.</p>
             </div>
             <div class="iftar-calculator">
                 <h3><i class="fas fa-calculator" aria-hidden="true"></i> احسب كفالة الإفطار</h3>
@@ -557,11 +557,11 @@
                     <input type="number" class="calc-input" id="calc-people" value="10" min="1" max="10000" aria-label="عدد الأشخاص">
                 </div>
                 <div class="calc-formula">
-                    <span id="calc-people-display">10</span> شخص &times; <span dir="ltr">$0.20</span> &times; 30 يوم
+                    <span id="calc-people-display">10</span> شخص &times; <span dir="ltr">$2</span>/وجبة &times; 30 يوم
                 </div>
                 <div class="calc-total">
                     <div class="calc-total-label">المجموع لشهر رمضان كامل</div>
-                    <div class="calc-total-amount" dir="ltr">$<span id="calc-total">60</span></div>
+                    <div class="calc-total-amount" dir="ltr">$<span id="calc-total">600</span></div>
                 </div>
                 <a href="https://donate.stripe.com/dR6bLq1gf7xF7y8aEG" class="btn btn-primary"><i class="fas fa-heart" aria-hidden="true"></i> اكفل إفطاراً</a>
             </div>
@@ -675,7 +675,7 @@
             var people = parseInt(input.value) || 1;
             if (people < 1) people = 1;
             display.textContent = people;
-            var amount = (people * 0.20 * 30).toFixed(2);
+            var amount = (people * 2 * 30).toFixed(2);
             // Remove trailing zeros
             amount = parseFloat(amount);
             total.textContent = amount % 1 === 0 ? amount.toFixed(0) : amount.toFixed(2);

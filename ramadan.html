@@ -523,10 +523,10 @@
         </div>
         <div class="impact-grid">
             <div class="impact-card">
-                <div class="impact-card-icon"><i class="fas fa-bread-slice" aria-hidden="true"></i></div>
-                <div class="impact-amount">$0.20</div>
-                <h4>Feeds a Person for a Day</h4>
-                <p>A single loaf of fresh bread through our Bread a Day program</p>
+                <div class="impact-card-icon"><i class="fas fa-utensils" aria-hidden="true"></i></div>
+                <div class="impact-amount">$2</div>
+                <h4>Complete Iftar Meal</h4>
+                <p>Rice, salad, a drink, and fish — a full meal for one person</p>
             </div>
             <div class="impact-card">
                 <div class="impact-card-icon"><i class="fas fa-graduation-cap" aria-hidden="true"></i></div>
@@ -555,10 +555,10 @@
     <div class="container">
         <div class="iftar-grid">
             <div class="iftar-text">
-                <div class="section-badge"><i class="fas fa-bread-slice" aria-hidden="true"></i> Bread a Day Program</div>
+                <div class="section-badge"><i class="fas fa-utensils" aria-hidden="true"></i> Iftar Meal Program</div>
                 <h2 id="iftar-heading">Sponsor Iftar Meals This Ramadan</h2>
-                <p>Feed families during Ramadan with our Bread a Day program. For just $0.20 per person per day, you can provide Iftar meals to those who are fasting in Benin. Many of these families break their fast with little more than water, and your contribution ensures they have real nourishment at the end of each long day of fasting.</p>
-                <p>Imagine the reward of feeding an entire community for the full 30 days of Ramadan. With our Iftar calculator, you can see exactly how many people you can feed and what it will cost. Every cent goes directly to purchasing and distributing fresh bread and meals to families who need it most.</p>
+                <p>Feed families during Ramadan with a complete Iftar meal for just <strong>$2 per person per day</strong>. Each meal includes rice, salad, a drink, and fish — everything a fasting person needs to break their fast with dignity. Many families in Benin break their fast with little more than water, and your contribution ensures they receive real, nutritious nourishment at the end of each long day of fasting.</p>
+                <p>Imagine the reward of feeding an entire community for the full 30 days of Ramadan. With our Iftar calculator, you can see exactly how many people you can feed and what it will cost. Every cent goes directly to purchasing and preparing complete Iftar meals — rice, salad, a drink, and fish — for families who need it most.</p>
             </div>
             <div class="iftar-calc">
                 <h3>Iftar Sponsorship Calculator</h3>
@@ -567,10 +567,10 @@
                     <input type="number" id="iftar-people" min="1" value="10" aria-label="Number of people to sponsor">
                 </div>
                 <div class="calc-formula">
-                    <span id="calc-people-display">10</span> people &times; $0.20/day &times; 30 days
+                    <span id="calc-people-display">10</span> people &times; $2/meal &times; 30 days
                 </div>
-                <div class="calc-total" id="calc-total">$60.00</div>
-                <a href="https://donate.stripe.com/dR6bLq1gf7xF7y8aEG" class="btn btn-gold" style="width:100%;justify-content:center;"><i class="fas fa-bread-slice" aria-hidden="true"></i> Sponsor Iftars</a>
+                <div class="calc-total" id="calc-total">$600.00</div>
+                <a href="https://donate.stripe.com/dR6bLq1gf7xF7y8aEG" class="btn btn-gold" style="width:100%;justify-content:center;"><i class="fas fa-utensils" aria-hidden="true"></i> Sponsor Iftars</a>
             </div>
         </div>
     </div>
@@ -691,7 +691,7 @@
         function calculate() {
             var people = parseInt(input.value) || 0;
             if (people < 0) people = 0;
-            var amount = people * 0.20 * 30;
+            var amount = people * 2 * 30;
             display.textContent = people;
             total.textContent = '$' + amount.toFixed(2);
         }

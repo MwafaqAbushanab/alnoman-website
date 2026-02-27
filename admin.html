@@ -365,6 +365,18 @@
             <div id="newsletter-list" style="max-height:400px;overflow-y:auto;border:1px solid var(--border);border-radius:var(--radius);"><p style="color:var(--text-light);font-size:0.9rem;padding:16px;">Loading...</p></div>
         </div>
 
+        <!-- Seed New Campaigns -->
+        <div class="dash-section">
+            <h2><i class="fas fa-seedling" style="color:var(--primary);margin-right:8px;"></i> Seed Foundation Campaigns</h2>
+            <p class="section-desc">Add new foundation campaigns to Firebase. Only campaigns that don't already exist will be created.</p>
+            <div class="save-bar" style="border-top:none;padding-top:0;margin-top:0;">
+                <div>
+                    <button class="save-btn" onclick="seedNewCampaigns()"><i class="fas fa-plus-circle"></i> Seed 5 New Campaigns</button>
+                    <span id="seed-status" class="save-status"></span>
+                </div>
+            </div>
+        </div>
+
         <!-- Manage Approved Campaigns -->
         <div class="dash-section">
             <h2><i class="fas fa-tasks" style="color:var(--primary);margin-right:8px;"></i> Manage Approved Campaigns</h2>
@@ -808,6 +820,110 @@
         a.href = URL.createObjectURL(blob);
         a.download = 'alnoman-newsletter-subscribers.csv';
         a.click();
+    }
+
+    // ============================================
+    // SEED NEW FOUNDATION CAMPAIGNS
+    // ============================================
+    async function seedNewCampaigns() {
+        var statusEl = document.getElementById('seed-status');
+        statusEl.textContent = 'Checking existing campaigns...';
+        statusEl.className = 'save-status';
+        statusEl.style.display = 'inline';
+
+        var newCampaigns = {
+            'foundation-toys': {
+                title: 'Joy for Kids — Toy Distribution',
+                description: 'Bring smiles to children\'s faces by distributing toys in underprivileged communities. Every child deserves the simple joy of having a toy to play with. Your donation provides toys, games, and educational items to children who have never had one.',
+                category: 'children',
+                location: 'Benin',
+                goal_amount: 5000,
+                raised_amount: 0,
+                stripe_link: 'https://donate.stripe.com/dR6bLq1gf7xF7y8aEG',
+                is_foundation: true,
+                status: 'approved',
+                created_at: new Date().toISOString()
+            },
+            'foundation-treats': {
+                title: 'Weekly Treats for Kids',
+                description: 'Every week, we distribute candy, ice cream, and chips to children in need. These small treats bring enormous joy and remind children that someone cares about them. A simple gesture that creates lasting smiles and happy memories.',
+                category: 'children',
+                location: 'Benin',
+                goal_amount: 3000,
+                raised_amount: 0,
+                stripe_link: 'https://donate.stripe.com/dR6bLq1gf7xF7y8aEG',
+                is_foundation: true,
+                status: 'approved',
+                created_at: new Date().toISOString()
+            },
+            'foundation-hospital': {
+                title: 'Hospital Freedom — Medical Relief',
+                description: 'Help patients who are stuck in hospitals because they cannot afford to pay their medical bills. Your donation directly pays hospital dues so families can reunite. Many patients remain hospitalized long after recovery simply because they cannot settle their bills.',
+                category: 'health',
+                location: 'Benin',
+                goal_amount: 10000,
+                raised_amount: 0,
+                stripe_link: 'https://donate.stripe.com/dR6bLq1gf7xF7y8aEG',
+                is_foundation: true,
+                status: 'approved',
+                created_at: new Date().toISOString()
+            },
+            'foundation-iftar': {
+                title: 'Ramadan Iftar Meals',
+                description: 'Sponsor iftar meals during Ramadan for just $2 per meal. Each meal includes rice, salad, a drink, and fish — a complete nutritious meal to break the fast. Feed an entire family for the cost of a cup of coffee.',
+                category: 'food',
+                location: 'Benin',
+                goal_amount: 15000,
+                raised_amount: 0,
+                stripe_link: 'https://donate.stripe.com/dR6bLq1gf7xF7y8aEG',
+                is_foundation: true,
+                status: 'approved',
+                created_at: new Date().toISOString()
+            },
+            'foundation-quran': {
+                title: 'Quran Memorization Sponsorship',
+                description: 'Support a student on their journey to memorize the Holy Quran. Your Zakat-eligible donation covers tuition, books, meals, and living expenses for students dedicated to Hifz (Quran memorization). An investment in knowledge that lasts for eternity.',
+                category: 'education',
+                location: 'Benin',
+                goal_amount: 8000,
+                raised_amount: 0,
+                stripe_link: 'https://donate.stripe.com/dR6bLq1gf7xF7y8aEG',
+                is_foundation: true,
+                status: 'approved',
+                created_at: new Date().toISOString()
+            }
+        };
+
+        var ids = Object.keys(newCampaigns);
+        var seededCount = 0;
+        var skippedCount = 0;
+
+        try {
+            for (var i = 0; i < ids.length; i++) {
+                var id = ids[i];
+                statusEl.textContent = 'Checking ' + (i + 1) + ' of ' + ids.length + '...';
+                var snapshot = await db.ref('campaigns/' + id).once('value');
+                if (snapshot.exists()) {
+                    skippedCount++;
+                } else {
+                    await db.ref('campaigns/' + id).set(newCampaigns[id]);
+                    seededCount++;
+                }
+            }
+
+            if (seededCount > 0) {
+                statusEl.textContent = seededCount + ' campaign' + (seededCount !== 1 ? 's' : '') + ' seeded!' + (skippedCount > 0 ? ' (' + skippedCount + ' already existed)' : '');
+            } else {
+                statusEl.textContent = 'All campaigns already exist.';
+            }
+            statusEl.className = 'save-status';
+            statusEl.style.display = 'inline';
+            setTimeout(function() { statusEl.style.display = 'none'; }, 5000);
+        } catch (err) {
+            statusEl.textContent = 'Error: ' + err.message;
+            statusEl.className = 'save-status error';
+            statusEl.style.display = 'inline';
+        }
     }
 </script>
 
