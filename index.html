@@ -79,7 +79,8 @@
     }
     </script>
 
-    <link rel="icon" type="image/x-icon" href="images/favicon.ico">
+    <!-- SVG Favicon -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><circle cx='16' cy='16' r='16' fill='%237352a2'/><text x='16' y='21' font-size='14' font-weight='bold' text-anchor='middle' fill='white' font-family='serif'>AN</text></svg>">
 
     <!-- Google tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-250622242-1"></script>
@@ -102,10 +103,10 @@
         *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
         :root {
-            --primary: #0d7c5f;
-            --primary-dark: #095e48;
-            --primary-light: #e8f5f0;
-            --accent: #d4a843;
+            --primary: #7352a2;
+            --primary-dark: #5a3d8a;
+            --primary-light: #f0ebf7;
+            --accent: #ffffff;
             --accent-light: #fdf6e3;
             --dark: #1a1a2e;
             --dark-light: #2d2d44;
@@ -142,6 +143,24 @@
             padding: 0 24px;
         }
 
+        /* ===== SKIP TO CONTENT ===== */
+        .skip-to-content {
+            position: absolute;
+            top: -100px;
+            left: 16px;
+            background: var(--primary);
+            color: var(--white);
+            padding: 12px 24px;
+            border-radius: 0 0 8px 8px;
+            z-index: 10000;
+            font-weight: 600;
+            transition: top 0.3s;
+        }
+
+        .skip-to-content:focus {
+            top: 0;
+        }
+
         /* ===== BUTTONS ===== */
         .btn {
             display: inline-flex;
@@ -165,9 +184,9 @@
         }
 
         .btn-primary:hover {
-            background: #c49a38;
+            background: #5a3d8a;
             transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(212,168,67,0.4);
+            box-shadow: 0 8px 25px rgba(255,255,255,0.4);
         }
 
         .btn-outline {
@@ -190,7 +209,7 @@
         .btn-green:hover {
             background: var(--primary-dark);
             transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(13,124,95,0.3);
+            box-shadow: 0 8px 25px rgba(115,82,162,0.3);
         }
 
         /* ===== HEADER ===== */
@@ -214,13 +233,11 @@
         }
 
         .logo {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.5rem;
-            font-weight: 800;
-            color: var(--primary);
+            display: flex;
+            align-items: center;
         }
 
-        .logo span { color: var(--accent); }
+        .logo img { height: 48px; width: auto; }
 
         .navbar { display: flex; align-items: center; gap: 8px; }
 
@@ -239,12 +256,19 @@
             background: var(--primary-light);
         }
 
+        .nav-volunteer {
+            background: transparent !important; color: var(--primary) !important;
+            border: 2px solid var(--primary) !important; border-radius: 50px !important;
+            padding: 8px 20px !important; margin-left: 4px; font-weight: 600 !important;
+        }
+        .nav-volunteer:hover { background: var(--primary-light) !important; }
+
         .nav-donate {
             background: var(--primary) !important;
             color: var(--white) !important;
             border-radius: 50px !important;
             padding: 10px 24px !important;
-            margin-left: 8px;
+            margin-left: 4px;
         }
 
         .nav-donate:hover {
@@ -276,7 +300,7 @@
             right: -20%;
             width: 600px;
             height: 600px;
-            background: radial-gradient(circle, rgba(212,168,67,0.15) 0%, transparent 70%);
+            background: radial-gradient(circle, rgba(255,255,255,0.15) 0%, transparent 70%);
             border-radius: 50%;
         }
 
@@ -287,7 +311,7 @@
             left: -10%;
             width: 500px;
             height: 500px;
-            background: radial-gradient(circle, rgba(13,124,95,0.2) 0%, transparent 70%);
+            background: radial-gradient(circle, rgba(115,82,162,0.2) 0%, transparent 70%);
             border-radius: 50%;
         }
 
@@ -517,8 +541,8 @@
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            background: rgba(212,168,67,0.2);
-            border: 1px solid rgba(212,168,67,0.3);
+            background: rgba(255,255,255,0.2);
+            border: 1px solid rgba(255,255,255,0.3);
             padding: 6px 16px;
             border-radius: 50px;
             color: var(--accent);
@@ -571,6 +595,11 @@
             font-size: 0.95rem;
         }
 
+        .about-cta {
+            text-align: center;
+            margin-top: 48px;
+        }
+
         /* ===== VALUES ===== */
         .values-section { background: var(--bg); }
 
@@ -606,7 +635,7 @@
             font-size: 1.8rem;
         }
 
-        .value-card:nth-child(1) .value-icon { background: #e8f5f0; color: var(--primary); }
+        .value-card:nth-child(1) .value-icon { background: #f0ebf7; color: var(--primary); }
         .value-card:nth-child(2) .value-icon { background: #fdf6e3; color: var(--accent); }
         .value-card:nth-child(3) .value-icon { background: #ede8f5; color: #6c5ce7; }
 
@@ -744,6 +773,29 @@
             font-size: 0.85rem;
         }
 
+        .employer-match {
+            text-align: center;
+            margin-top: 32px;
+            padding: 20px;
+            background: var(--accent-light);
+            border-radius: var(--radius);
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .employer-match i {
+            color: var(--accent);
+            margin-right: 8px;
+        }
+
+        .employer-match p {
+            color: var(--text);
+            font-size: 0.95rem;
+        }
+
+        .employer-match strong {
+            color: var(--dark);
+        }
+
         /* ===== CAMPAIGNS ===== */
         .campaigns-section { background: var(--bg); }
 
@@ -756,16 +808,30 @@
         .campaign-card {
             background: var(--white);
             border-radius: var(--radius-lg);
-            padding: 32px;
+            padding: 0;
             border: 1px solid var(--border);
             transition: var(--transition);
             display: flex;
             flex-direction: column;
+            overflow: hidden;
         }
 
         .campaign-card:hover {
             transform: translateY(-4px);
             box-shadow: var(--shadow-lg);
+        }
+
+        .campaign-img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .campaign-card-body {
+            padding: 24px 28px 28px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
         }
 
         .campaign-icon {
@@ -776,12 +842,12 @@
             align-items: center;
             justify-content: center;
             font-size: 1.4rem;
-            margin-bottom: 20px;
+            margin-bottom: 16px;
         }
 
         .campaign-card:nth-child(1) .campaign-icon { background: #fde8e8; color: #e74c3c; }
         .campaign-card:nth-child(2) .campaign-icon { background: #fdf6e3; color: #e67e22; }
-        .campaign-card:nth-child(3) .campaign-icon { background: #e8f5f0; color: var(--primary); }
+        .campaign-card:nth-child(3) .campaign-icon { background: #f0ebf7; color: var(--primary); }
         .campaign-card:nth-child(4) .campaign-icon { background: #e8f0fd; color: #3498db; }
         .campaign-card:nth-child(5) .campaign-icon { background: #ede8f5; color: #6c5ce7; }
 
@@ -805,8 +871,34 @@
         .campaign-card p {
             color: var(--text-light);
             font-size: 0.95rem;
-            margin-bottom: 24px;
-            flex-grow: 1;
+            margin-bottom: 16px;
+        }
+
+        .campaign-progress {
+            margin-bottom: 20px;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 10px;
+            background: #f0f0f0;
+            border-radius: 50px;
+            overflow: hidden;
+            margin-bottom: 6px;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary), #9b7fd4);
+            border-radius: 50px;
+            width: 0%;
+            transition: width 1s ease;
+        }
+
+        .progress-text {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            font-weight: 500;
         }
 
         /* ===== TRANSPARENCY ===== */
@@ -947,10 +1039,6 @@
             color: var(--text-light);
         }
 
-        @media (max-width: 768px) {
-            .transparency-grid { grid-template-columns: 1fr; }
-        }
-
         /* ===== CTA BANNER ===== */
         .cta-banner {
             background: linear-gradient(135deg, var(--dark) 0%, #16213e 50%, var(--primary-dark) 100%);
@@ -988,126 +1076,6 @@
 
         .cta-buttons { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
 
-        /* ===== PROJECTS ===== */
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 24px;
-        }
-
-        .project-card {
-            background: var(--white);
-            border-radius: var(--radius-lg);
-            border: 1px solid var(--border);
-            overflow: hidden;
-            transition: var(--transition);
-        }
-
-        .project-card:hover {
-            transform: translateY(-4px);
-            box-shadow: var(--shadow-lg);
-        }
-
-        .project-header {
-            padding: 24px 24px 0;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-
-        .project-date {
-            font-size: 0.8rem;
-            color: var(--text-muted);
-        }
-
-        .project-card .project-body {
-            padding: 16px 24px 24px;
-        }
-
-        .project-card h3 {
-            font-size: 1.1rem;
-            color: var(--dark);
-            margin-bottom: 8px;
-            text-transform: capitalize;
-        }
-
-        .project-card p {
-            color: var(--text-light);
-            font-size: 0.9rem;
-            margin-bottom: 20px;
-        }
-
-        /* ===== TEAM ===== */
-        .team-section { background: var(--bg); }
-
-        .team-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 24px;
-        }
-
-        .team-card {
-            background: var(--white);
-            border-radius: var(--radius-lg);
-            padding: 32px;
-            text-align: center;
-            border: 1px solid var(--border);
-            transition: var(--transition);
-        }
-
-        .team-card:hover {
-            transform: translateY(-4px);
-            box-shadow: var(--shadow-lg);
-        }
-
-        .team-avatar {
-            width: 72px;
-            height: 72px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 16px;
-            font-size: 1.5rem;
-            color: var(--white);
-            font-family: 'Playfair Display', serif;
-            font-weight: 700;
-        }
-
-        .team-card h3 {
-            font-size: 1.1rem;
-            color: var(--dark);
-            margin-bottom: 4px;
-            text-transform: capitalize;
-        }
-
-        .team-card .role {
-            font-size: 0.85rem;
-            color: var(--text-muted);
-            margin-bottom: 16px;
-        }
-
-        .team-social { display: flex; justify-content: center; gap: 8px; }
-
-        .team-social a {
-            width: 36px;
-            height: 36px;
-            border-radius: 50%;
-            background: var(--bg);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--text-muted);
-            font-size: 0.85rem;
-            transition: var(--transition);
-        }
-
-        .team-social a:hover {
-            background: var(--primary);
-            color: var(--white);
-        }
-
         /* ===== FOOTER ===== */
         .footer {
             background: var(--dark);
@@ -1134,9 +1102,10 @@
         }
 
         .footer-about .logo {
-            font-size: 1.3rem;
             margin-bottom: 16px;
         }
+
+        .footer-about .logo img { height: 40px; width: auto; }
 
         .footer-about p {
             font-size: 0.9rem;
@@ -1203,8 +1172,8 @@
             display: inline-flex;
             align-items: center;
             gap: 6px;
-            background: rgba(13,124,95,0.15);
-            border: 1px solid rgba(13,124,95,0.2);
+            background: rgba(115,82,162,0.15);
+            border: 1px solid rgba(115,82,162,0.2);
             padding: 4px 14px;
             border-radius: 50px;
             font-size: 0.8rem;
@@ -1214,11 +1183,99 @@
 
         .tax-notice i { color: var(--primary); }
 
+        /* ===== WHATSAPP FLOAT ===== */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 80px;
+            right: 24px;
+            width: 56px;
+            height: 56px;
+            background: #25d366;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-size: 1.6rem;
+            box-shadow: 0 4px 12px rgba(37,211,102,0.4);
+            z-index: 999;
+            transition: var(--transition);
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 20px rgba(37,211,102,0.5);
+        }
+
+        /* ===== BACK TO TOP ===== */
+        #back-to-top {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            width: 44px;
+            height: 44px;
+            background: var(--primary);
+            color: var(--white);
+            border: none;
+            border-radius: 50%;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 1rem;
+            box-shadow: var(--shadow);
+            z-index: 998;
+            transition: var(--transition);
+        }
+
+        #back-to-top:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+        }
+
+        /* ===== COOKIE CONSENT ===== */
+        .cookie-consent {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: var(--dark);
+            color: rgba(255,255,255,0.9);
+            padding: 16px 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 16px;
+            z-index: 9999;
+            font-size: 0.9rem;
+            flex-wrap: wrap;
+            box-shadow: 0 -4px 20px rgba(0,0,0,0.2);
+        }
+
+        .cookie-consent p { margin: 0; text-align: center; }
+
+        .cookie-consent button {
+            background: var(--primary);
+            color: var(--white);
+            border: none;
+            padding: 8px 24px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-family: 'Inter', sans-serif;
+            font-weight: 600;
+            font-size: 0.85rem;
+            transition: var(--transition);
+            white-space: nowrap;
+        }
+
+        .cookie-consent button:hover {
+            background: var(--primary-dark);
+        }
+
         /* ===== RESPONSIVE ===== */
         @media (max-width: 1024px) {
             .about-grid { grid-template-columns: 1fr; gap: 48px; }
             .pricing-grid { grid-template-columns: 1fr; max-width: 500px; margin: 0 auto; }
-            .projects-grid { grid-template-columns: repeat(2, 1fr); }
             .footer-grid { grid-template-columns: 1fr 1fr; }
         }
 
@@ -1248,9 +1305,7 @@
 
             .campaigns-grid { grid-template-columns: 1fr; }
 
-            .projects-grid { grid-template-columns: 1fr; }
-
-            .team-grid { grid-template-columns: 1fr 1fr; }
+            .transparency-grid { grid-template-columns: 1fr; }
 
             .footer-grid { grid-template-columns: 1fr; }
 
@@ -1259,26 +1314,28 @@
 
         @media (max-width: 480px) {
             .impact .container { grid-template-columns: 1fr 1fr; gap: 24px; }
-            .team-grid { grid-template-columns: 1fr; max-width: 360px; margin: 0 auto; }
             .hero-buttons { flex-direction: column; align-items: center; }
         }
     </style>
 </head>
 <body>
 
+<!-- Skip to Content -->
+<a href="#main-content" class="skip-to-content">Skip to main content</a>
+
 <!-- ===== HEADER ===== -->
-<header class="header">
+<header class="header" role="banner">
     <div class="container">
-        <a href="#home" class="logo">Al-Noman<span>.</span></a>
-        <div id="menu-btn" class="fas fa-bars"></div>
-        <nav class="navbar">
-            <a href="#home">Home</a>
-            <a href="#about">About</a>
-            <a href="#values">Values</a>
-            <a href="#donations">Donations</a>
+        <a href="index.html" class="logo" aria-label="Al-Noman Foundation Home"><img src="images/logo.png" alt="Al-Noman Foundation" loading="eager"></a>
+        <div id="menu-btn" class="fas fa-bars" role="button" aria-label="Toggle navigation menu" tabindex="0"></div>
+        <nav class="navbar" role="navigation" aria-label="Main navigation">
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="programs.html">Programs</a>
             <a href="#campaigns">Campaigns</a>
-            <a href="#team">Team</a>
             <a href="stories.html">Stories</a>
+            <a href="contact.html">Contact</a>
+            <a href="volunteer.html" class="nav-volunteer">Volunteer</a>
             <a href="https://donate.stripe.com/dR6bLq1gf7xF7y8aEG" class="nav-donate">Donate</a>
         </nav>
     </div>
@@ -1286,49 +1343,49 @@
 
 <!-- ===== HERO ===== -->
 <section class="hero" id="home">
-    <div class="container">
+    <div class="container" id="main-content">
         <div class="hero-badge">
-            <i class="fas fa-heart"></i>
+            <i class="fas fa-heart" aria-hidden="true"></i>
             Registered 501(c)(3) Non-Profit
         </div>
         <h1>Be Giving, <span>Be Living</span></h1>
         <p>Founded in loving memory of Noman Abushanab, we empower underprivileged communities through clean water, education, food, and places of worship.</p>
         <div class="hero-buttons">
-            <a href="https://donate.stripe.com/dR6bLq1gf7xF7y8aEG" class="btn btn-primary"><i class="fas fa-hand-holding-heart"></i> Donate Now</a>
-            <a href="#about" class="btn btn-outline"><i class="fas fa-arrow-down"></i> Learn More</a>
+            <a href="https://donate.stripe.com/dR6bLq1gf7xF7y8aEG" class="btn btn-primary"><i class="fas fa-hand-holding-heart" aria-hidden="true"></i> Donate Now</a>
+            <a href="#about" class="btn btn-outline"><i class="fas fa-arrow-down" aria-hidden="true"></i> Learn More</a>
         </div>
         <div class="hero-501c3">
-            <i class="fas fa-shield-alt"></i>
+            <i class="fas fa-shield-alt" aria-hidden="true"></i>
             100% of your donation is tax-deductible
         </div>
     </div>
 </section>
 
-<!-- ===== IMPACT NUMBERS ===== -->
-<section class="impact">
+<!-- ===== IMPACT NUMBERS (Firebase-powered) ===== -->
+<section class="impact" aria-label="Impact statistics">
     <div class="container">
         <div class="impact-item">
-            <i class="fas fa-tint"></i>
-            <div class="impact-number">20+</div>
+            <i class="fas fa-tint" aria-hidden="true"></i>
+            <div class="impact-number" id="live-wells">20+</div>
             <div class="impact-label">Water Wells Built</div>
         </div>
         <div class="impact-item">
-            <i class="fas fa-utensils"></i>
-            <div class="impact-number">5,000+</div>
+            <i class="fas fa-utensils" aria-hidden="true"></i>
+            <div class="impact-number" id="live-meals">5,000+</div>
             <div class="impact-label">Meals Provided</div>
         </div>
         <div class="impact-item">
-            <i class="fas fa-graduation-cap"></i>
-            <div class="impact-number">200+</div>
+            <i class="fas fa-graduation-cap" aria-hidden="true"></i>
+            <div class="impact-number" id="live-students">200+</div>
             <div class="impact-label">Students Sponsored</div>
         </div>
         <div class="impact-item">
-            <i class="fas fa-globe-africa"></i>
-            <div class="impact-number">5</div>
+            <i class="fas fa-globe-africa" aria-hidden="true"></i>
+            <div class="impact-number" id="live-countries">5</div>
             <div class="impact-label">Countries Reached</div>
         </div>
         <div class="impact-item">
-            <i class="fas fa-hand-holding-usd"></i>
+            <i class="fas fa-hand-holding-usd" aria-hidden="true"></i>
             <div class="impact-number">90%+</div>
             <div class="impact-label">Goes Directly to People</div>
         </div>
@@ -1341,50 +1398,53 @@
         <div class="about-grid">
             <div class="about-text">
                 <div class="about-icon-box">
-                    <i class="fas fa-hands-helping"></i>
+                    <i class="fas fa-hands-helping" aria-hidden="true"></i>
                 </div>
                 <h2>We're Setting Out to Make a Better World</h2>
                 <p>Al-Noman Foundation strives to give the less fortunate an opportunity to reach their potential. We believe that every person deserves access to the basics of life, and the best way to assist them is through four core pillars:</p>
                 <div class="about-pillars">
                     <div class="pillar">
-                        <i class="fas fa-tint"></i>
+                        <i class="fas fa-tint" aria-hidden="true"></i>
                         <div class="pillar-text">
                             <h4>Water Wells</h4>
                             <p>Clean water sources for communities</p>
                         </div>
                     </div>
                     <div class="pillar">
-                        <i class="fas fa-mosque"></i>
+                        <i class="fas fa-mosque" aria-hidden="true"></i>
                         <div class="pillar-text">
                             <h4>Places of Worship</h4>
                             <p>Building and restoring sacred spaces</p>
                         </div>
                     </div>
                     <div class="pillar">
-                        <i class="fas fa-utensils"></i>
+                        <i class="fas fa-utensils" aria-hidden="true"></i>
                         <div class="pillar-text">
                             <h4>Food</h4>
                             <p>Nutritional meals for families in need</p>
                         </div>
                     </div>
                     <div class="pillar">
-                        <i class="fas fa-book-open"></i>
+                        <i class="fas fa-book-open" aria-hidden="true"></i>
                         <div class="pillar-text">
                             <h4>Education</h4>
                             <p>Access to learning for every person</p>
                         </div>
                     </div>
                 </div>
+                <div class="about-cta">
+                    <a href="about.html" class="btn btn-green"><i class="fas fa-arrow-right" aria-hidden="true"></i> Read Our Full Story</a>
+                </div>
             </div>
             <div class="about-story">
                 <div class="memorial-badge">
-                    <i class="fas fa-star"></i> In Loving Memory
+                    <i class="fas fa-star" aria-hidden="true"></i> In Loving Memory
                 </div>
                 <h3>The Story Behind Our Mission</h3>
                 <p>Al-Noman Foundation was founded in remembrance of Noman Abushanab, whom we lost to COVID-19. His spirit of generosity and compassion for others lives on through every well we build, every child we educate, and every family we feed. Our name carries his legacy, and our work honors his memory every single day.</p>
                 <div class="founder">
                     <div class="founder-icon">
-                        <i class="fas fa-heart"></i>
+                        <i class="fas fa-heart" aria-hidden="true"></i>
                     </div>
                     <div class="founder-info">
                         <strong>Noman Abushanab</strong>
@@ -1407,21 +1467,21 @@
         <div class="values-grid">
             <div class="value-card">
                 <div class="value-icon">
-                    <i class="fas fa-balance-scale"></i>
+                    <i class="fas fa-balance-scale" aria-hidden="true"></i>
                 </div>
                 <h3>Integrity</h3>
                 <p>We uphold honesty in all of our interactions and hold ourselves to the highest standard of transparency with every dollar donated.</p>
             </div>
             <div class="value-card">
                 <div class="value-icon">
-                    <i class="fas fa-dove"></i>
+                    <i class="fas fa-dove" aria-hidden="true"></i>
                 </div>
                 <h3>Compassion</h3>
                 <p>We put ourselves in the shoes of our beneficiaries and feel the urgency of their needs, responding with empathy and care.</p>
             </div>
             <div class="value-card">
                 <div class="value-icon">
-                    <i class="fas fa-people-carry"></i>
+                    <i class="fas fa-people-carry" aria-hidden="true"></i>
                 </div>
                 <h3>Togetherness</h3>
                 <p>Our sense of belonging to communities around the world brings us closer to the people in need and strengthens our impact.</p>
@@ -1443,10 +1503,10 @@
                 <h3>Your Generosity Creates Change</h3>
                 <p>A monthly donation provides consistent, reliable support to the communities we serve. Here's what your contributions fund:</p>
                 <ul class="checklist">
-                    <li><i class="fas fa-check"></i> Water wells</li>
-                    <li><i class="fas fa-check"></i> Places of worship</li>
-                    <li><i class="fas fa-check"></i> Food for families</li>
-                    <li><i class="fas fa-check"></i> Education for children</li>
+                    <li><i class="fas fa-check" aria-hidden="true"></i> Water wells</li>
+                    <li><i class="fas fa-check" aria-hidden="true"></i> Places of worship</li>
+                    <li><i class="fas fa-check" aria-hidden="true"></i> Food for families</li>
+                    <li><i class="fas fa-check" aria-hidden="true"></i> Education for children</li>
                 </ul>
                 <a href="https://donate.stripe.com/3cscPu8IH2dlg4E4gk" class="btn btn-primary">Give Any Amount</a>
             </div>
@@ -1454,11 +1514,11 @@
                 <h3>Student Plan</h3>
                 <div class="plan-price"><span>$</span>30<span>/mo</span></div>
                 <ul class="plan-features">
-                    <li><i class="fas fa-check"></i> School bag</li>
-                    <li><i class="fas fa-check"></i> Food</li>
-                    <li><i class="fas fa-check"></i> Stationery</li>
-                    <li><i class="fas fa-check"></i> Shoes</li>
-                    <li><i class="fas fa-check"></i> Books</li>
+                    <li><i class="fas fa-check" aria-hidden="true"></i> School bag</li>
+                    <li><i class="fas fa-check" aria-hidden="true"></i> Food</li>
+                    <li><i class="fas fa-check" aria-hidden="true"></i> Stationery</li>
+                    <li><i class="fas fa-check" aria-hidden="true"></i> Shoes</li>
+                    <li><i class="fas fa-check" aria-hidden="true"></i> Books</li>
                 </ul>
                 <a href="https://donate.stripe.com/dR6bLq1gf7xF7y8aEG" class="btn btn-green">Sponsor a Student</a>
             </div>
@@ -1466,14 +1526,20 @@
                 <h3>Family Plan</h3>
                 <div class="plan-price"><span>$</span>99<span>/mo</span></div>
                 <ul class="plan-features">
-                    <li><i class="fas fa-check"></i> Food</li>
-                    <li><i class="fas fa-check"></i> Rent assistance</li>
-                    <li><i class="fas fa-check"></i> 2 students sponsored</li>
-                    <li><i class="fas fa-check"></i> Parents' utilities</li>
-                    <li><i class="fas fa-check"></i> Shoes</li>
+                    <li><i class="fas fa-check" aria-hidden="true"></i> Food</li>
+                    <li><i class="fas fa-check" aria-hidden="true"></i> Rent assistance</li>
+                    <li><i class="fas fa-check" aria-hidden="true"></i> 2 students sponsored</li>
+                    <li><i class="fas fa-check" aria-hidden="true"></i> Parents' utilities</li>
+                    <li><i class="fas fa-check" aria-hidden="true"></i> Shoes</li>
                 </ul>
                 <a href="https://donate.stripe.com/6oE4iY6AzdW3f0AaEH" class="btn btn-green">Sponsor a Family</a>
             </div>
+        </div>
+        <div class="employer-match">
+            <p><i class="fas fa-building" aria-hidden="true"></i> <strong>Does your employer match donations?</strong> Many companies match charitable gifts, doubling your impact. Check with your HR department to see if your employer participates in a matching gift program.</p>
+        </div>
+        <div style="text-align:center;margin-top:24px;">
+            <a href="ways-to-give.html" class="btn btn-green"><i class="fas fa-hand-holding-heart" aria-hidden="true"></i> See All Ways to Give</a>
         </div>
     </div>
 </section>
@@ -1502,28 +1568,28 @@
                 <p>We operate with radical efficiency. While many organizations spend 30-40% on overhead, we've built Al-Noman to ensure that more than 90% of every dollar you donate goes directly to the communities we serve.</p>
                 <ul class="trust-points">
                     <li>
-                        <i class="fas fa-check-circle"></i>
+                        <i class="fas fa-check-circle" aria-hidden="true"></i>
                         <div>
                             <strong>Direct Impact</strong>
                             <span>More than 90% of every donation funds programs — water wells, food, education, and places of worship.</span>
                         </div>
                     </li>
                     <li>
-                        <i class="fas fa-check-circle"></i>
+                        <i class="fas fa-check-circle" aria-hidden="true"></i>
                         <div>
                             <strong>Volunteer-Driven</strong>
                             <span>Our team members volunteer their time, keeping administrative costs to an absolute minimum.</span>
                         </div>
                     </li>
                     <li>
-                        <i class="fas fa-check-circle"></i>
+                        <i class="fas fa-check-circle" aria-hidden="true"></i>
                         <div>
                             <strong>Registered 501(c)(3)</strong>
                             <span>100% of your donation is tax-deductible. We operate with full legal compliance and accountability.</span>
                         </div>
                     </li>
                     <li>
-                        <i class="fas fa-check-circle"></i>
+                        <i class="fas fa-check-circle" aria-hidden="true"></i>
                         <div>
                             <strong>On-the-Ground Presence</strong>
                             <span>We work directly with local communities — no middlemen, no wasted resources.</span>
@@ -1541,8 +1607,8 @@
         <h2>Your Dollar Goes Further With Us</h2>
         <p>More than 90% of every donation goes directly to people in need. Make your impact today.</p>
         <div class="cta-buttons">
-            <a href="https://donate.stripe.com/dR6bLq1gf7xF7y8aEG" class="btn btn-primary"><i class="fas fa-credit-card"></i> Donate via Stripe</a>
-            <a href="https://www.paypal.com/donate/?hosted_button_id=XE8JQ8QJKH4FQ" class="btn btn-outline"><i class="fab fa-paypal"></i> Donate via PayPal</a>
+            <a href="https://donate.stripe.com/dR6bLq1gf7xF7y8aEG" class="btn btn-primary"><i class="fas fa-credit-card" aria-hidden="true"></i> Donate via Stripe</a>
+            <a href="https://www.paypal.com/donate/?hosted_button_id=XE8JQ8QJKH4FQ" class="btn btn-outline"><i class="fab fa-paypal" aria-hidden="true"></i> Donate via PayPal</a>
         </div>
     </div>
 </section>
@@ -1557,185 +1623,73 @@
         </div>
         <div class="campaigns-grid">
             <div class="campaign-card">
-                <div class="campaign-icon"><i class="fas fa-hand-holding-heart"></i></div>
-                <div class="location"><i class="fas fa-map-marker-alt"></i> Palestine</div>
-                <h3>Save Gaza</h3>
-                <p>A campaign to provide any means of life to the people in Gaza during these difficult times.</p>
-                <a href="https://buy.stripe.com/28o9DiaQPf07dWw9AM" class="btn btn-green">Contribute</a>
+                <img src="images/boy.jpg" alt="Child in Gaza smiling" class="campaign-img" loading="lazy">
+                <div class="campaign-card-body">
+                    <div class="campaign-icon"><i class="fas fa-hand-holding-heart" aria-hidden="true"></i></div>
+                    <div class="location"><i class="fas fa-map-marker-alt" aria-hidden="true"></i> Palestine</div>
+                    <h3>Save Gaza</h3>
+                    <p>A campaign to provide any means of life to the people in Gaza during these difficult times.</p>
+                    <div class="campaign-progress" data-campaign="gaza">
+                        <div class="progress-bar"><div class="progress-fill"></div></div>
+                        <div class="progress-text">Loading...</div>
+                    </div>
+                    <a href="https://buy.stripe.com/28o9DiaQPf07dWw9AM" class="btn btn-green">Contribute</a>
+                </div>
             </div>
             <div class="campaign-card">
-                <div class="campaign-icon"><i class="fas fa-bread-slice"></i></div>
-                <div class="location"><i class="fas fa-map-marker-alt"></i> Benin</div>
-                <h3>Bread a Day</h3>
-                <p>Feed a person a piece of bread for as little as 20 cents. A small act with enormous impact.</p>
-                <a href="https://buy.stripe.com/9AQg1G8IH8BJf0A4gm" class="btn btn-green">Contribute</a>
+                <img src="images/bread.jpeg" alt="Fresh bread for Bread a Day campaign" class="campaign-img" loading="lazy">
+                <div class="campaign-card-body">
+                    <div class="campaign-icon"><i class="fas fa-bread-slice" aria-hidden="true"></i></div>
+                    <div class="location"><i class="fas fa-map-marker-alt" aria-hidden="true"></i> Benin</div>
+                    <h3>Bread a Day</h3>
+                    <p>Feed a person a piece of bread for as little as 20 cents. A small act with enormous impact.</p>
+                    <div class="campaign-progress" data-campaign="bread">
+                        <div class="progress-bar"><div class="progress-fill"></div></div>
+                        <div class="progress-text">Loading...</div>
+                    </div>
+                    <a href="https://buy.stripe.com/9AQg1G8IH8BJf0A4gm" class="btn btn-green">Contribute</a>
+                </div>
             </div>
             <div class="campaign-card">
-                <div class="campaign-icon"><i class="fas fa-drumstick-bite"></i></div>
-                <div class="location"><i class="fas fa-map-marker-alt"></i> Benin</div>
-                <h3>Dabiha</h3>
-                <p>Sacrifice a cow or goat to give families in need a chance to eat meat.</p>
-                <a href="https://buy.stripe.com/bIYg1G1gf2dlf0A14f" class="btn btn-green">Contribute</a>
-            </div>
-            <div class="campaign-card">
-                <div class="campaign-icon"><i class="fas fa-tint"></i></div>
-                <div class="location"><i class="fas fa-map-marker-alt"></i> Benin</div>
-                <h3>Water Wells</h3>
-                <p>Provide communities with access to clean water. Every drop creates a means of life.</p>
-                <a href="https://buy.stripe.com/dR6aHm3on5px6u43cj" class="btn btn-green">Contribute</a>
-            </div>
-            <div class="campaign-card">
-                <div class="campaign-icon"><i class="fas fa-wheelchair"></i></div>
-                <div class="location"><i class="fas fa-map-marker-alt"></i> Benin</div>
-                <h3>Be Mobile</h3>
-                <p>Help people regain their mobility and independence by providing wheelchairs.</p>
-                <a href="https://buy.stripe.com/5kA9Di0cb9FN3hSdR0" class="btn btn-green">Contribute</a>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- ===== PROJECTS ===== -->
-<section class="section" id="projects">
-    <div class="container">
-        <div class="section-header">
-            <div class="section-badge">Our Projects</div>
-            <h2>Where Your Donations Go</h2>
-            <p>Transparent reporting on every initiative we run.</p>
-        </div>
-        <div class="projects-grid">
-            <div class="project-card">
-                <div class="project-header">
-                    <div class="section-badge" style="margin-bottom:0;">Humanitarian</div>
-                    <span class="project-date">October 2023</span>
-                </div>
-                <div class="project-body">
-                    <h3>Save Gaza Today</h3>
-                    <p>A campaign to provide means of life to the people in Gaza.</p>
-                    <a href="https://buy.stripe.com/28o9DiaQPf07dWw9AM" class="btn btn-green">Be Giving</a>
-                </div>
-            </div>
-            <div class="project-card">
-                <div class="project-header">
-                    <div class="section-badge" style="margin-bottom:0;">Feeding</div>
-                    <span class="project-date">September 2022</span>
-                </div>
-                <div class="project-body">
-                    <h3>A Bread a Day</h3>
-                    <p>Feed a person a piece of bread with as little as 20 cents.</p>
-                    <a href="https://buy.stripe.com/9AQg1G8IH8BJf0A4gm" class="btn btn-green">Be Giving</a>
-                </div>
-            </div>
-            <div class="project-card">
-                <div class="project-header">
-                    <div class="section-badge" style="margin-bottom:0;">Sacrifice</div>
-                    <span class="project-date">May 2023</span>
-                </div>
-                <div class="project-body">
+                <img src="images/food.jpg" alt="Community meal from Dabiha campaign" class="campaign-img" loading="lazy">
+                <div class="campaign-card-body">
+                    <div class="campaign-icon"><i class="fas fa-drumstick-bite" aria-hidden="true"></i></div>
+                    <div class="location"><i class="fas fa-map-marker-alt" aria-hidden="true"></i> Benin</div>
                     <h3>Dabiha</h3>
-                    <p>Give those in need a chance to eat meat through livestock sacrifice.</p>
-                    <a href="https://buy.stripe.com/bIYg1G1gf2dlf0A14f" class="btn btn-green">Be Giving</a>
+                    <p>Sacrifice a cow or goat to give families in need a chance to eat meat.</p>
+                    <div class="campaign-progress" data-campaign="dabiha">
+                        <div class="progress-bar"><div class="progress-fill"></div></div>
+                        <div class="progress-text">Loading...</div>
+                    </div>
+                    <a href="https://buy.stripe.com/bIYg1G1gf2dlf0A14f" class="btn btn-green">Contribute</a>
                 </div>
             </div>
-            <div class="project-card">
-                <div class="project-header">
-                    <div class="section-badge" style="margin-bottom:0;">Clean Water</div>
-                    <span class="project-date">May 2021</span>
-                </div>
-                <div class="project-body">
-                    <h3>Water Wells Provide for Life</h3>
-                    <p>Every drop of water creates a means of life for communities.</p>
-                    <a href="https://buy.stripe.com/dR6aHm3on5px6u43cj" class="btn btn-green">Be Giving</a>
-                </div>
-            </div>
-            <div class="project-card">
-                <div class="project-header">
-                    <div class="section-badge" style="margin-bottom:0;">Zakat</div>
-                    <span class="project-date">March 2023</span>
-                </div>
-                <div class="project-body">
-                    <h3>Zakat Al-Fitr</h3>
-                    <p>Putting a smile on people's faces during the blessed season.</p>
-                    <a href="https://buy.stripe.com/6oE6r6e314lt3hS28g" class="btn btn-green">Be Giving</a>
+            <div class="campaign-card">
+                <img src="images/waterwell1.jpeg" alt="Child drinking clean water from well" class="campaign-img" loading="lazy">
+                <div class="campaign-card-body">
+                    <div class="campaign-icon"><i class="fas fa-tint" aria-hidden="true"></i></div>
+                    <div class="location"><i class="fas fa-map-marker-alt" aria-hidden="true"></i> Benin</div>
+                    <h3>Water Wells</h3>
+                    <p>Provide communities with access to clean water. Every drop creates a means of life.</p>
+                    <div class="campaign-progress" data-campaign="water">
+                        <div class="progress-bar"><div class="progress-fill"></div></div>
+                        <div class="progress-text">Loading...</div>
+                    </div>
+                    <a href="https://buy.stripe.com/dR6aHm3on5px6u43cj" class="btn btn-green">Contribute</a>
                 </div>
             </div>
-            <div class="project-card">
-                <div class="project-header">
-                    <div class="section-badge" style="margin-bottom:0;">Feeding</div>
-                    <span class="project-date">October 2022</span>
-                </div>
-                <div class="project-body">
-                    <h3>Meat Once a Week</h3>
-                    <p>Making meat available to those in need at least once a week.</p>
-                    <a href="https://buy.stripe.com/cN2bLq4srg4b5q014d" class="btn btn-green">Be Giving</a>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- ===== TEAM ===== -->
-<section class="section team-section" id="team">
-    <div class="container">
-        <div class="section-header">
-            <div class="section-badge">Our Team</div>
-            <h2>The People Behind the Mission</h2>
-            <p>A dedicated team working tirelessly to bring hope and opportunity to communities worldwide.</p>
-        </div>
-        <div class="team-grid">
-            <div class="team-card">
-                <div class="team-avatar">AG</div>
-                <h3>Alain Gnimavo</h3>
-                <div class="role">Team Member</div>
-                <div class="team-social">
-                    <a href="https://www.facebook.com/alain.gnimavo.9"><i class="fab fa-facebook-f"></i></a>
-                </div>
-            </div>
-            <div class="team-card">
-                <div class="team-avatar">HA</div>
-                <h3>Hatem Alkurd</h3>
-                <div class="role">Team Member</div>
-                <div class="team-social">
-                    <a href="https://www.facebook.com/hatem.elkurd"><i class="fab fa-facebook-f"></i></a>
-                    <a href="https://www.instagram.com/hatemelkurd/"><i class="fab fa-instagram"></i></a>
-                    <a href="https://www.linkedin.com/in/hatem-alkurd-b2398350"><i class="fab fa-linkedin-in"></i></a>
-                </div>
-            </div>
-            <div class="team-card">
-                <div class="team-avatar">KD</div>
-                <h3>Kamel Djerarda</h3>
-                <div class="role">Team Member</div>
-                <div class="team-social">
-                    <a href="https://www.facebook.com/kamel.djerarda.9"><i class="fab fa-facebook-f"></i></a>
-                </div>
-            </div>
-            <div class="team-card">
-                <div class="team-avatar">MA</div>
-                <h3>Marwan Abushanab</h3>
-                <div class="role">Team Member</div>
-                <div class="team-social">
-                    <a href="https://www.facebook.com/marwan.abushanab.1"><i class="fab fa-facebook-f"></i></a>
-                    <a href="https://www.instagram.com/prince_of_pump/"><i class="fab fa-instagram"></i></a>
-                    <a href="https://www.linkedin.com/in/marwan-abushanab-7193b8aa/"><i class="fab fa-linkedin-in"></i></a>
-                </div>
-            </div>
-            <div class="team-card">
-                <div class="team-avatar">RH</div>
-                <h3>Rehina Holovatar</h3>
-                <div class="role">Team Member</div>
-                <div class="team-social">
-                    <a href="https://m.facebook.com/people/Regina-Golovata/100001516969911/"><i class="fab fa-facebook-f"></i></a>
-                    <a href="https://www.instagram.com/regina_golovata/"><i class="fab fa-instagram"></i></a>
-                    <a href="https://www.linkedin.com/in/regina-golovata-2109b3147/"><i class="fab fa-linkedin-in"></i></a>
-                </div>
-            </div>
-            <div class="team-card">
-                <div class="team-avatar">MA</div>
-                <h3>Mwafaq Abushanab</h3>
-                <div class="role">Team Member</div>
-                <div class="team-social">
-                    <a href="https://www.facebook.com/ZagZuki/"><i class="fab fa-facebook-f"></i></a>
-                    <a href="https://www.linkedin.com/in/abushanm/"><i class="fab fa-linkedin-in"></i></a>
+            <div class="campaign-card">
+                <img src="images/pexels-git-stephen-gitau-1686467.jpg" alt="Child playing in community" class="campaign-img" loading="lazy">
+                <div class="campaign-card-body">
+                    <div class="campaign-icon"><i class="fas fa-wheelchair" aria-hidden="true"></i></div>
+                    <div class="location"><i class="fas fa-map-marker-alt" aria-hidden="true"></i> Benin</div>
+                    <h3>Be Mobile</h3>
+                    <p>Help people regain their mobility and independence by providing wheelchairs.</p>
+                    <div class="campaign-progress" data-campaign="mobile">
+                        <div class="progress-bar"><div class="progress-fill"></div></div>
+                        <div class="progress-text">Loading...</div>
+                    </div>
+                    <a href="https://buy.stripe.com/5kA9Di0cb9FN3hSdR0" class="btn btn-green">Contribute</a>
                 </div>
             </div>
         </div>
@@ -1743,27 +1697,26 @@
 </section>
 
 <!-- ===== FOOTER ===== -->
-<footer class="footer">
+<footer class="footer" role="contentinfo">
     <div class="container">
         <div class="footer-grid">
             <div class="footer-about">
-                <div class="logo">Al-Noman<span>.</span></div>
+                <div class="logo"><img src="images/logo.png" alt="Al-Noman Foundation"></div>
                 <p>Founded in loving memory of Noman Abushanab, Al-Noman Foundation empowers underprivileged communities through clean water, education, food, and places of worship.</p>
                 <div class="footer-social">
-                    <a href="https://www.facebook.com/ALNOMANFoundation"><i class="fab fa-facebook-f"></i></a>
-                    <a href="https://www.instagram.com/al_noman_foundation/"><i class="fab fa-instagram"></i></a>
-                    <a href="https://www.linkedin.com/company/81360274/"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="https://www.facebook.com/ALNOMANFoundation" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://www.instagram.com/al_noman_foundation/" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.linkedin.com/company/81360274/" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
                 </div>
             </div>
             <div class="footer-links">
                 <h3>Quick Links</h3>
-                <a href="#home">Home</a>
-                <a href="#about">About</a>
-                <a href="#values">Values</a>
-                <a href="#donations">Donations</a>
-                <a href="#campaigns">Campaigns</a>
-                <a href="#team">Team</a>
+                <a href="index.html">Home</a>
+                <a href="about.html">About</a>
+                <a href="programs.html">Programs</a>
                 <a href="stories.html">Impact Stories</a>
+                <a href="ways-to-give.html">Ways to Give</a>
+                <a href="contact.html">Contact</a>
             </div>
             <div class="footer-links">
                 <h3>Campaigns</h3>
@@ -1775,24 +1728,49 @@
             </div>
             <div class="footer-contact">
                 <h3>Contact Us</h3>
-                <p><i class="fas fa-phone"></i> +1 (813) 358-4681</p>
-                <p><i class="fas fa-phone"></i> +22 (997) 83 83 82</p>
-                <p><i class="fas fa-envelope"></i> info@alnoman.org</p>
-                <p><i class="fas fa-map-marker-alt"></i> Orlando, FL USA</p>
+                <p><i class="fas fa-phone" aria-hidden="true"></i> +1 (813) 358-4681</p>
+                <p><i class="fas fa-phone" aria-hidden="true"></i> +22 (997) 83 83 82</p>
+                <p><i class="fas fa-envelope" aria-hidden="true"></i> info@alnoman.org</p>
+                <p><i class="fas fa-map-marker-alt" aria-hidden="true"></i> Orlando, FL USA</p>
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2024 <span>Al-Noman Foundation</span>. All rights reserved.</p>
+            <p>&copy; 2025 <span>Al-Noman Foundation</span>. All rights reserved.</p>
             <div class="tax-notice">
-                <i class="fas fa-check-circle"></i>
+                <i class="fas fa-check-circle" aria-hidden="true"></i>
                 Registered 501(c)(3) Non-Profit &mdash; 100% of your donation is tax-deductible
             </div>
         </div>
     </div>
 </footer>
 
+<!-- WhatsApp Float -->
+<a href="https://wa.me/18133584681" class="whatsapp-float" target="_blank" rel="noopener noreferrer" aria-label="Chat with us on WhatsApp">
+    <i class="fab fa-whatsapp"></i>
+</a>
+
+<!-- Back to Top -->
+<button id="back-to-top" aria-label="Back to top">
+    <i class="fas fa-arrow-up"></i>
+</button>
+
+<!-- Cookie Consent -->
+<div class="cookie-consent" id="cookie-consent">
+    <p>We use cookies to improve your experience on our site. By continuing to browse, you agree to our use of cookies.</p>
+    <button onclick="acceptCookies()">Accept</button>
+</div>
+
 <!-- ===== SCRIPTS ===== -->
 <script>
+    // Cookie consent
+    if (localStorage.getItem('alnoman_cookies_accepted')) {
+        document.getElementById('cookie-consent').style.display = 'none';
+    }
+    function acceptCookies() {
+        localStorage.setItem('alnoman_cookies_accepted', 'true');
+        document.getElementById('cookie-consent').style.display = 'none';
+    }
+
     // Mobile menu toggle
     const menuBtn = document.getElementById('menu-btn');
     const navbar = document.querySelector('.navbar');
@@ -1819,6 +1797,19 @@
         } else {
             header.style.boxShadow = 'none';
         }
+
+        // Back to top button
+        const backToTop = document.getElementById('back-to-top');
+        if (window.scrollY > 300) {
+            backToTop.style.display = 'flex';
+        } else {
+            backToTop.style.display = 'none';
+        }
+    });
+
+    // Back to top click
+    document.getElementById('back-to-top').addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
     });
 
     // Animate elements on scroll
@@ -1832,12 +1823,97 @@
         });
     }, observerOptions);
 
-    document.querySelectorAll('.value-card, .plan-card, .campaign-card, .project-card, .team-card, .impact-item').forEach(el => {
+    document.querySelectorAll('.value-card, .plan-card, .campaign-card, .impact-item').forEach(el => {
         el.style.opacity = '0';
         el.style.transform = 'translateY(20px)';
         el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
         observer.observe(el);
     });
+</script>
+
+<!-- Firebase SDK (for live stats) -->
+<script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-database-compat.js"></script>
+<script>
+    // Firebase config - replace with your project values
+    const firebaseConfig = {
+        apiKey: "AIzaSyAp0xPPTcMk9C3ZsGBOyajBb-t_WKu3BFo",
+        authDomain: "alnoman-foundation.firebaseapp.com",
+        databaseURL: "https://alnoman-foundation-default-rtdb.firebaseio.com",
+        projectId: "alnoman-foundation",
+        storageBucket: "alnoman-foundation.firebasestorage.app",
+        messagingSenderId: "1022172941333",
+        appId: "1:1022172941333:web:6a1cc19cc27da4bbb4121c"
+    };
+
+    // Animate counting up
+    function animateCount(el, target) {
+        const duration = 2000;
+        const start = 0;
+        const startTime = performance.now();
+        function update(now) {
+            const elapsed = now - startTime;
+            const progress = Math.min(elapsed / duration, 1);
+            const eased = 1 - Math.pow(1 - progress, 3);
+            const current = Math.floor(start + (target - start) * eased);
+            el.textContent = current.toLocaleString() + '+';
+            if (progress < 1) requestAnimationFrame(update);
+        }
+        requestAnimationFrame(update);
+    }
+
+    // Default fallback values (used when Firebase isn't configured)
+    const defaultStats = { wells: 20, meals: 5000, students: 200, countries: 5 };
+    const defaultGoals = {
+        gaza_raised: 12450, gaza_target: 50000,
+        bread_raised: 3200, bread_target: 10000,
+        dabiha_raised: 5800, dabiha_target: 15000,
+        water_raised: 8700, water_target: 25000,
+        mobile_raised: 2100, mobile_target: 10000
+    };
+
+    function showStats(data) {
+        const wellsEl = document.getElementById('live-wells');
+        const mealsEl = document.getElementById('live-meals');
+        const studentsEl = document.getElementById('live-students');
+        const countriesEl = document.getElementById('live-countries');
+        if (wellsEl) animateCount(wellsEl, data.wells || 20);
+        if (mealsEl) animateCount(mealsEl, data.meals || 5000);
+        if (studentsEl) animateCount(studentsEl, data.students || 200);
+        if (countriesEl) { countriesEl.textContent = data.countries || 5; }
+    }
+
+    function showGoals(data) {
+        document.querySelectorAll('.campaign-progress').forEach(bar => {
+            const campaign = bar.dataset.campaign;
+            const raised = data[campaign + '_raised'] || 0;
+            const target = data[campaign + '_target'] || 1;
+            const pct = Math.min(Math.round((raised / target) * 100), 100);
+            bar.querySelector('.progress-fill').style.width = pct + '%';
+            bar.querySelector('.progress-text').textContent = '$' + raised.toLocaleString() + ' / $' + target.toLocaleString() + ' (' + pct + '%)';
+        });
+    }
+
+    // Try Firebase, fall back to defaults
+    try {
+        if (firebaseConfig.apiKey !== "YOUR_API_KEY") {
+            firebase.initializeApp(firebaseConfig);
+            firebase.database().ref('stats').on('value', snapshot => {
+                showStats(snapshot.val() || defaultStats);
+            });
+            firebase.database().ref('goals').on('value', snapshot => {
+                showGoals(snapshot.val() || defaultGoals);
+            });
+        } else {
+            // Firebase not configured yet — use defaults
+            showStats(defaultStats);
+            showGoals(defaultGoals);
+        }
+    } catch (e) {
+        console.warn('Firebase not available, using defaults:', e);
+        showStats(defaultStats);
+        showGoals(defaultGoals);
+    }
 </script>
 
 </body>

@@ -44,31 +44,34 @@
 - **Stripe**: Primary (multiple campaign-specific links)
 - **PayPal**: `paypal.com/donate/?hosted_button_id=XE8JQ8QJKH4FQ`
 
-## Team Members
-Alain Gnimavo, Hatem Alkurd, Kamel Djerarda, Marwan Abushanab, Rehina Holovatar, Mwafaq Abushanab
-
 ## Social Media
 - Facebook: https://www.facebook.com/ALNOMANFoundation
 - Instagram: https://www.instagram.com/al_noman_foundation/
 - LinkedIn: https://www.linkedin.com/company/81360274/
 
+## Navigation Structure
+Home | About | Programs | Campaigns | Stories | Contact | [Donate]
+
 ## File Structure
 ```
 alnoman-website/
-├── index.html          # Main site (single page, all CSS inline)
-├── stories.html        # Impact Stories / blog page
-├── sitemap.xml         # For Google crawling
+├── index.html          # Homepage (hero, campaigns, donation plans, impact stats)
+├── about.html          # About page (mission, Noman memorial, pillars, values, transparency)
+├── programs.html       # Programs page (water, education, food, worship, mobility, Gaza)
+├── stories.html        # Impact Stories page (5 campaign stories + founder story)
+├── ways-to-give.html   # Ways to Give page (plans, one-time, campaigns, PayPal, matching)
+├── contact.html        # Contact page (phone, email, WhatsApp, social, inquiry types)
+├── sitemap.xml         # For Google crawling (all 6 pages listed)
 ├── robots.txt          # Crawler directives
 ├── llms.txt            # AI discoverability (ChatGPT, Claude, Perplexity)
 ├── CLAUDE.md           # This file
-├── css/                # Legacy CSS (NOT used by redesign — inline styles now)
+├── css/                # Legacy CSS (NOT used — inline styles now)
 │   ├── style.css
 │   └── styles.css
 ├── js/
 │   └── script.js       # Legacy JS (NOT used — inline scripts now)
 └── images/             # On GoDaddy only, NOT in GitHub repo
-    ├── favicon.ico
-    └── (campaign/team photos on server)
+    └── (campaign photos on server)
 ```
 
 ## Design System
@@ -78,14 +81,25 @@ alnoman-website/
 - **Accent color**: `#d4a843` (gold — warmth/generosity)
 - **Dark color**: `#1a1a2e` (navy — trust/authority)
 - **All CSS is inline** in each HTML file (no external stylesheets dependency)
-- **No images used** — pure CSS gradients, icons, and initials for team avatars
+- **No images used** — pure CSS gradients and Font Awesome icons
+- **Favicon**: Inline SVG data URI (green circle with "AN" text — no external file needed)
 - **Responsive**: Mobile, tablet, desktop breakpoints at 480px, 768px, 1024px
+
+## Shared Elements (All Pages)
+- **Skip-to-content** accessibility link (hidden, keyboard-navigable)
+- **Cookie consent banner** — localStorage key `alnoman_cookies_accepted`
+- **WhatsApp floating button** — links to `https://wa.me/18133584681`
+- **Back-to-top button** — appears on scroll, smooth scroll to top
+- **Mobile hamburger menu** — CSS-only toggle for responsive nav
+- **IntersectionObserver animations** — fade-in on scroll for content sections
+- **ARIA attributes** — `aria-hidden="true"` on decorative icons, semantic `role` attributes
 
 ## SEO Setup
 - JSON-LD structured data: NGO schema + WebSite schema with DonateAction
-- Open Graph + Twitter Card meta tags on all pages
+- AboutPage schema on about.html, ContactPage schema on contact.html
 - Blog schema (BlogPosting) on stories.html
-- sitemap.xml submitted (needs Google Search Console verification)
+- Open Graph + Twitter Card meta tags on all pages
+- sitemap.xml with all 6 pages (needs Google Search Console verification)
 - robots.txt in place
 - Canonical URLs set
 - Keywords targeting: nonprofit, charity, clean water, education, Benin, Gaza, 501c3
@@ -113,6 +127,26 @@ alnoman-website/
 - [x] Founder memorial story (Noman Abushanab)
 - [x] Blog schema markup on stories page
 - [x] Stories link in main nav + footer
+- [x] Team section completely removed from site (per owner request)
+- [x] Duplicate Projects section removed from homepage (was duplicating Campaigns)
+- [x] All video "coming soon" placeholders removed from stories.html
+- [x] Navigation updated: Home | About | Programs | Campaigns | Stories | Contact | Donate
+- [x] SVG inline favicon (green circle with "AN" — no external file dependency)
+- [x] Cookie consent banner (GDPR compliance, localStorage-based)
+- [x] WhatsApp floating contact button
+- [x] Back-to-top scroll button
+- [x] Skip-to-content accessibility link
+- [x] ARIA attributes on decorative elements
+- [x] Copyright year updated to 2025
+- [x] Employer matching gift section added to homepage
+- [x] Created about.html (670 lines, 3767 words — mission, Noman memorial, pillars, values, transparency)
+- [x] Created programs.html (584 lines, 3575 words — all programs with campaign-specific Stripe links)
+- [x] Created ways-to-give.html (690 lines, 3706 words — plans, campaigns, PayPal, employer matching)
+- [x] Created contact.html (520 lines, 2625 words — phone, email, WhatsApp, social, inquiry types)
+- [x] 6 pages with 300+ words each (meets Google Ad Grants requirement of 5+ pages)
+- [x] Sitemap updated with all 6 pages
+- [x] llms.txt updated with full site structure
+- [x] Footer links updated across all pages to include new pages
 
 ## Roadmap — Website
 - [ ] Add real campaign videos (YouTube/Vimeo embeds) to stories page
@@ -127,15 +161,15 @@ alnoman-website/
 - [ ] Add annual report / financial transparency PDF
 - [ ] Multilingual support (Arabic, French for Benin audience)
 - [ ] Add newsletter signup integration (Zeffy — 100% free, unlimited)
-- [ ] Create a favicon that isn't image-dependent (SVG)
-- [ ] Add WhatsApp contact button (popular for international donors)
+- [x] ~~Create a favicon that isn't image-dependent (SVG)~~ — Done: inline SVG data URI
+- [x] ~~Add WhatsApp contact button~~ — Done: floating button on all pages
 - [ ] Set up GitHub Pages or Netlify for auto-deploy (replace manual GoDaddy uploads)
-- [ ] Add a "Ways to Give" page (Stripe, PayPal, Zelle, bank transfer, stock donations)
+- [x] ~~Add a "Ways to Give" page~~ — Done: ways-to-give.html
 - [ ] Add Ramadan/Eid seasonal campaign pages
 - [ ] Create social media share images (OG images) for each campaign
-- [ ] Add cookie consent banner (GDPR compliance for international donors)
-- [ ] Add 5+ pages with 300+ words each (required for Google Ad Grants eligibility)
-- [ ] Add employer matching gift prompt to donation confirmation messaging
+- [x] ~~Add cookie consent banner (GDPR compliance)~~ — Done: localStorage-based on all pages
+- [x] ~~Add 5+ pages with 300+ words each (Google Ad Grants)~~ — Done: 6 pages, all 300+ words
+- [x] ~~Add employer matching gift prompt~~ — Done: on homepage + ways-to-give page
 
 ---
 
@@ -278,6 +312,10 @@ alnoman-website/
 
 ## Notes
 - The `images/` folder exists on GoDaddy hosting but is NOT in the GitHub repo
-- When uploading to GoDaddy, upload all files to `public_html/`
+- When uploading to GoDaddy, upload all 6 HTML files + sitemap.xml + robots.txt + llms.txt to `public_html/`
 - The old CSS files (`css/style.css`, `css/styles.css`) and `js/script.js` are legacy — the redesigned site uses inline styles/scripts and does NOT depend on them
 - Impact numbers (20+ wells, 5000+ meals, 200+ students, 5 countries) are PLACEHOLDERS — update with real figures
+- Team members section was completely removed from the site (per owner request, Feb 2025)
+- All pages use inline SVG favicon — no favicon.ico file needed
+- Cookie consent uses localStorage key `alnoman_cookies_accepted`
+- WhatsApp number: +1 (813) 358-4681 — verify this is correct for WhatsApp Business

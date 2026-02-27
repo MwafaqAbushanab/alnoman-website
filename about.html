@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>About Us | Al-Noman Foundation</title>
+    <meta name="description" content="Learn about Al-Noman Foundation — a registered 501(c)(3) non-profit founded in 2021 in memory of Noman Abushanab. We empower communities through clean water, education, food, and places of worship.">
+    <meta property="og:title" content="About Us | Al-Noman Foundation">
+    <meta property="og:description" content="Founded in memory of Noman Abushanab, Al-Noman Foundation empowers underprivileged communities through clean water, education, food, and places of worship. 90%+ goes directly to people in need.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.alnoman.org/about.html">
+    <meta property="og:site_name" content="Al-Noman Foundation">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="About Us | Al-Noman Foundation">
+    <meta name="twitter:description" content="Founded in memory of Noman Abushanab, Al-Noman Foundation empowers communities through clean water, education, food, and places of worship.">
+
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://www.alnoman.org/about.html">
+
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><circle cx='16' cy='16' r='16' fill='%237352a2'/><text x='16' y='21' font-size='14' font-weight='bold' text-anchor='middle' fill='white' font-family='serif'>AN</text></svg>">
+
+    <!-- Google tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-250622242-1"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'UA-250622242-1');
+    </script>
+
+    <!-- JSON-LD for About Page -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "AboutPage",
+        "name": "About Al-Noman Foundation",
+        "description": "Al-Noman Foundation is a registered 501(c)(3) non-profit founded in 2021 in memory of Noman Abushanab. We empower underprivileged communities through clean water, education, food, and places of worship.",
+        "url": "https://www.alnoman.org/about.html",
+        "mainEntity": {
+            "@type": "NGO",
+            "name": "Al-Noman Foundation",
+            "alternateName": "Al-Noman",
+            "url": "https://www.alnoman.org",
+            "foundingDate": "2021",
+            "slogan": "Be Giving, Be Living",
+            "nonprofitStatus": "501c3",
+            "email": "info@alnoman.org",
+            "telephone": "+1-813-358-4681",
+            "address": {
+                "@type": "PostalAddress",
+                "addressLocality": "Orlando",
+                "addressRegion": "FL",
+                "addressCountry": "US"
+            },
+            "areaServed": [
+                { "@type": "Country", "name": "Benin" },
+                { "@type": "Country", "name": "Palestine" },
+                { "@type": "Country", "name": "United States" }
+            ]
+        }
+    }
+    </script>
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --primary: #7352a2;
+            --primary-dark: #5a3d8a;
+            --primary-light: #f0ebf7;
+            --accent: #ffffff;
+            --accent-light: #fdf6e3;
+            --dark: #1a1a2e;
+            --text: #333;
+            --text-light: #666;
+            --text-muted: #999;
+            --white: #fff;
+            --bg: #fafafa;
+            --border: #e8e8e8;
+            --shadow: 0 4px 20px rgba(0,0,0,0.08);
+            --shadow-lg: 0 10px 40px rgba(0,0,0,0.12);
+            --radius: 12px;
+            --radius-lg: 20px;
+            --transition: all 0.3s ease;
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: var(--text);
+            background: var(--white);
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        h1, h2, h3, h4 { font-family: 'Playfair Display', Georgia, serif; line-height: 1.3; }
+        a { text-decoration: none; color: inherit; }
+
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+
+        .skip-to-content { position: absolute; top: -100px; left: 16px; background: var(--primary); color: var(--white); padding: 12px 24px; border-radius: 0 0 8px 8px; z-index: 10000; font-weight: 600; transition: top 0.3s; }
+        .skip-to-content:focus { top: 0; }
+
+        /* Buttons */
+        .btn {
+            display: inline-flex; align-items: center; gap: 8px;
+            padding: 14px 32px; border-radius: 50px;
+            font-family: 'Inter', sans-serif; font-weight: 600; font-size: 0.95rem;
+            letter-spacing: 0.02em; cursor: pointer; transition: var(--transition);
+            border: none; text-transform: uppercase;
+        }
+        .btn-primary { background: var(--accent); color: var(--dark); }
+        .btn-primary:hover { background: #5a3d8a; transform: translateY(-2px); box-shadow: 0 8px 25px rgba(255,255,255,0.4); }
+        .btn-green { background: var(--primary); color: var(--white); }
+        .btn-green:hover { background: var(--primary-dark); transform: translateY(-2px); box-shadow: 0 8px 25px rgba(115,82,162,0.3); }
+        .btn-outline-dark { background: transparent; color: var(--primary); border: 2px solid var(--primary); }
+        .btn-outline-dark:hover { background: var(--primary); color: var(--white); transform: translateY(-2px); }
+
+        /* Header */
+        .header {
+            position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+            background: rgba(255,255,255,0.97); backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border); transition: var(--transition);
+        }
+        .header .container { display: flex; align-items: center; justify-content: space-between; height: 72px; }
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo img { height: 48px; width: auto; }
+        .navbar { display: flex; align-items: center; gap: 8px; }
+        .navbar a { padding: 8px 16px; font-size: 0.9rem; font-weight: 500; color: var(--text-light); border-radius: 8px; transition: var(--transition); }
+        .navbar a:hover { color: var(--primary); background: var(--primary-light); }
+        .nav-volunteer { background: transparent !important; color: var(--primary) !important; border: 2px solid var(--primary) !important; border-radius: 50px !important; padding: 8px 20px !important; margin-left: 4px; font-weight: 600 !important; }
+        .nav-volunteer:hover { background: var(--primary-light) !important; }
+        .nav-donate { background: var(--primary) !important; color: var(--white) !important; border-radius: 50px !important; padding: 10px 24px !important; margin-left: 4px; }
+        .nav-donate:hover { background: var(--primary-dark) !important; }
+        #menu-btn { display: none; font-size: 1.5rem; color: var(--text); cursor: pointer; }
+
+        .section-badge { display: inline-block; background: var(--primary-light); color: var(--primary); padding: 6px 16px; border-radius: 50px; font-size: 0.8rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 16px; }
+
+        /* Page Hero */
+        .page-hero {
+            padding: 140px 0 80px;
+            background: linear-gradient(135deg, var(--dark) 0%, #16213e 50%, var(--primary-dark) 100%);
+            text-align: center; position: relative; overflow: hidden;
+        }
+        .page-hero::before {
+            content: ''; position: absolute; top: -50%; right: -20%; width: 600px; height: 600px;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%); border-radius: 50%;
+        }
+        .page-hero .container { position: relative; z-index: 1; }
+        .page-hero .section-badge { background: rgba(255,255,255,0.1); color: var(--accent); border: 1px solid rgba(255,255,255,0.2); }
+        .page-hero h1 { font-size: clamp(2rem, 4vw, 3.5rem); color: var(--white); margin-bottom: 16px; }
+        .page-hero p { color: rgba(255,255,255,0.7); font-size: 1.1rem; max-width: 600px; margin: 0 auto; }
+
+        /* Mission Section */
+        .mission-section { padding: 80px 0; }
+        .mission-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
+        .mission-icon-box {
+            width: 80px; height: 80px;
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            border-radius: var(--radius-lg);
+            display: flex; align-items: center; justify-content: center; margin-bottom: 24px;
+        }
+        .mission-icon-box i { font-size: 2rem; color: var(--white); }
+        .mission-text h2 { font-size: 2.2rem; color: var(--dark); margin-bottom: 20px; }
+        .mission-text p { color: var(--text-light); font-size: 1.05rem; line-height: 1.9; margin-bottom: 16px; }
+        .mission-motto {
+            display: inline-flex; align-items: center; gap: 10px;
+            background: var(--accent-light); border: 1px solid rgba(255,255,255,0.3);
+            padding: 12px 24px; border-radius: 50px;
+            color: var(--dark); font-weight: 700; font-size: 1.1rem; margin-top: 8px;
+        }
+        .mission-motto i { color: var(--accent); }
+        .mission-highlights {
+            display: grid; grid-template-columns: 1fr 1fr; gap: 16px;
+        }
+        .mission-highlight {
+            background: var(--bg); border-radius: var(--radius); padding: 24px;
+            text-align: center; border: 1px solid var(--border); transition: var(--transition);
+        }
+        .mission-highlight:hover { border-color: var(--primary); box-shadow: var(--shadow); }
+        .mission-highlight i { font-size: 1.5rem; color: var(--primary); margin-bottom: 10px; display: block; }
+        .mission-highlight .number {
+            font-family: 'Playfair Display', serif; font-size: 2rem; font-weight: 800;
+            color: var(--primary); display: block; margin-bottom: 4px;
+        }
+        .mission-highlight .label { font-size: 0.85rem; color: var(--text-muted); }
+
+        /* Memorial Section */
+        .memorial-section { padding: 80px 0; background: var(--bg); }
+        .memorial-card {
+            background: linear-gradient(135deg, var(--dark) 0%, #16213e 100%);
+            border-radius: var(--radius-lg); padding: 64px; color: var(--white);
+            position: relative; overflow: hidden; max-width: 900px; margin: 0 auto;
+        }
+        .memorial-card::before {
+            content: '\201C'; position: absolute; top: 20px; right: 40px;
+            font-size: 10rem; font-family: 'Playfair Display', serif;
+            color: rgba(255,255,255,0.04); line-height: 1;
+        }
+        .memorial-badge {
+            display: inline-flex; align-items: center; gap: 8px;
+            background: rgba(255,255,255,0.2); border: 1px solid rgba(255,255,255,0.3);
+            padding: 6px 16px; border-radius: 50px; color: var(--accent);
+            font-size: 0.8rem; font-weight: 600; text-transform: uppercase;
+            letter-spacing: 0.05em; margin-bottom: 24px;
+        }
+        .memorial-card h2 { font-size: 2rem; margin-bottom: 20px; color: var(--white); }
+        .memorial-card p { color: rgba(255,255,255,0.75); font-size: 1.05rem; line-height: 1.9; margin-bottom: 16px; }
+        .memorial-card blockquote {
+            border-left: 4px solid var(--accent); padding: 20px 28px; margin: 28px 0;
+            background: rgba(255,255,255,0.05); border-radius: 0 var(--radius) var(--radius) 0;
+            font-style: italic; color: var(--white); font-size: 1.15rem; line-height: 1.8;
+        }
+        .memorial-founder {
+            margin-top: 28px; padding-top: 28px; border-top: 1px solid rgba(255,255,255,0.1);
+            display: flex; align-items: center; gap: 16px;
+        }
+        .memorial-founder-icon {
+            width: 56px; height: 56px; background: var(--primary); border-radius: 50%;
+            display: flex; align-items: center; justify-content: center; font-size: 1.4rem; color: var(--white);
+        }
+        .memorial-founder-info strong { color: var(--white); font-size: 1rem; display: block; }
+        .memorial-founder-info span { font-size: 0.85rem; color: rgba(255,255,255,0.5); }
+
+        /* Pillars Section */
+        .pillars-section { padding: 80px 0; }
+        .section-header { text-align: center; margin-bottom: 64px; }
+        .section-header h2 { font-size: clamp(1.8rem, 3vw, 2.8rem); color: var(--dark); margin-bottom: 16px; }
+        .section-header p { color: var(--text-light); max-width: 600px; margin: 0 auto; font-size: 1.05rem; }
+
+        .pillars-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+        .pillar-card {
+            background: var(--white); border: 1px solid var(--border); border-radius: var(--radius-lg);
+            padding: 40px 28px; text-align: center; transition: var(--transition);
+        }
+        .pillar-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); border-color: var(--primary); }
+        .pillar-icon {
+            width: 72px; height: 72px; border-radius: 50%; margin: 0 auto 20px;
+            display: flex; align-items: center; justify-content: center; font-size: 1.8rem;
+        }
+        .pillar-card:nth-child(1) .pillar-icon { background: #f0ebf7; color: var(--primary); }
+        .pillar-card:nth-child(2) .pillar-icon { background: #e8f0fd; color: #3498db; }
+        .pillar-card:nth-child(3) .pillar-icon { background: #fdf6e3; color: #e67e22; }
+        .pillar-card:nth-child(4) .pillar-icon { background: #ede8f5; color: #6c5ce7; }
+        .pillar-card h3 { font-size: 1.3rem; color: var(--dark); margin-bottom: 12px; }
+        .pillar-card p { color: var(--text-light); font-size: 0.95rem; line-height: 1.7; }
+
+        /* Values Section */
+        .values-section { padding: 80px 0; background: var(--bg); }
+        .values-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; }
+        .value-card {
+            background: var(--white); border-radius: var(--radius-lg); padding: 40px 32px;
+            text-align: center; border: 1px solid var(--border); transition: var(--transition);
+        }
+        .value-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); border-color: var(--primary); }
+        .value-icon {
+            width: 72px; height: 72px; margin: 0 auto 24px; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center; font-size: 1.8rem;
+        }
+        .value-card:nth-child(1) .value-icon { background: #f0ebf7; color: var(--primary); }
+        .value-card:nth-child(2) .value-icon { background: #fdf6e3; color: var(--accent); }
+        .value-card:nth-child(3) .value-icon { background: #ede8f5; color: #6c5ce7; }
+        .value-card h3 { font-size: 1.3rem; color: var(--dark); margin-bottom: 12px; }
+        .value-card p { color: var(--text-light); font-size: 0.95rem; }
+
+        /* Transparency Section */
+        .transparency-section { padding: 80px 0; }
+        .transparency-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; }
+        .transparency-visual { text-align: center; }
+        .donut-container { position: relative; width: 220px; height: 220px; margin: 0 auto 24px; }
+        .donut-ring {
+            width: 220px; height: 220px; border-radius: 50%;
+            background: conic-gradient(var(--primary) 0deg 324deg, var(--border) 324deg 360deg);
+            display: flex; align-items: center; justify-content: center;
+        }
+        .donut-hole {
+            width: 160px; height: 160px; border-radius: 50%; background: var(--white);
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
+        }
+        .donut-percent { font-family: 'Playfair Display', serif; font-size: 3rem; font-weight: 800; color: var(--primary); line-height: 1; }
+        .donut-label { font-size: 0.8rem; color: var(--text-muted); margin-top: 4px; }
+        .donut-legend { display: flex; justify-content: center; gap: 24px; }
+        .legend-item { display: flex; align-items: center; gap: 8px; font-size: 0.85rem; color: var(--text-light); }
+        .legend-dot { width: 12px; height: 12px; border-radius: 50%; }
+        .legend-dot.programs { background: var(--primary); }
+        .legend-dot.operations { background: var(--border); }
+        .transparency-content h2 { font-size: 2rem; color: var(--dark); margin-bottom: 16px; }
+        .transparency-content > p { color: var(--text-light); font-size: 1.05rem; margin-bottom: 28px; line-height: 1.8; }
+        .trust-points { list-style: none; }
+        .trust-points li {
+            display: flex; align-items: flex-start; gap: 14px;
+            padding: 14px 0; border-bottom: 1px solid var(--border);
+        }
+        .trust-points li:last-child { border-bottom: none; }
+        .trust-points li i {
+            width: 36px; height: 36px; background: var(--primary-light); color: var(--primary);
+            border-radius: 10px; display: flex; align-items: center; justify-content: center;
+            font-size: 0.9rem; flex-shrink: 0; margin-top: 2px;
+        }
+        .trust-points li strong { display: block; color: var(--dark); font-size: 0.95rem; margin-bottom: 2px; }
+        .trust-points li span { font-size: 0.88rem; color: var(--text-light); }
+
+        /* CTA */
+        .cta-section {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            padding: 80px 0; text-align: center;
+        }
+        .cta-section h2 { font-size: 2.2rem; color: var(--white); margin-bottom: 16px; }
+        .cta-section p { color: rgba(255,255,255,0.8); font-size: 1.1rem; max-width: 500px; margin: 0 auto 32px; }
+        .cta-buttons { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+
+        /* Footer */
+        .footer {
+            background: var(--dark); color: rgba(255,255,255,0.7); padding: 40px 0; text-align: center;
+        }
+        .footer p { font-size: 0.85rem; }
+        .footer span { color: var(--accent); }
+        .footer-links { display: flex; justify-content: center; gap: 24px; margin-bottom: 16px; flex-wrap: wrap; }
+        .footer-links a { color: rgba(255,255,255,0.6); font-size: 0.85rem; transition: var(--transition); }
+        .footer-links a:hover { color: var(--white); }
+
+        /* WhatsApp Float */
+        .whatsapp-float { position: fixed; bottom: 80px; right: 24px; width: 56px; height: 56px; background: #25d366; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--white); font-size: 1.6rem; box-shadow: 0 4px 12px rgba(37,211,102,0.4); z-index: 999; transition: var(--transition); }
+        .whatsapp-float:hover { transform: scale(1.1); box-shadow: 0 6px 20px rgba(37,211,102,0.5); }
+
+        #back-to-top { position: fixed; bottom: 24px; right: 24px; width: 44px; height: 44px; background: var(--primary); color: var(--white); border: none; border-radius: 50%; display: none; align-items: center; justify-content: center; cursor: pointer; font-size: 1rem; box-shadow: var(--shadow); z-index: 998; transition: var(--transition); }
+        #back-to-top:hover { background: var(--primary-dark); transform: translateY(-2px); }
+
+        .cookie-consent { position: fixed; bottom: 0; left: 0; right: 0; background: var(--dark); color: rgba(255,255,255,0.9); padding: 16px 24px; display: flex; align-items: center; justify-content: center; gap: 16px; z-index: 9999; font-size: 0.9rem; flex-wrap: wrap; box-shadow: 0 -4px 20px rgba(0,0,0,0.2); }
+        .cookie-consent p { margin: 0; text-align: center; }
+        .cookie-consent button { background: var(--primary); color: var(--white); border: none; padding: 8px 24px; border-radius: 50px; cursor: pointer; font-family: 'Inter', sans-serif; font-weight: 600; font-size: 0.85rem; transition: var(--transition); white-space: nowrap; }
+        .cookie-consent button:hover { background: var(--primary-dark); }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .pillars-grid { grid-template-columns: repeat(2, 1fr); }
+            .mission-grid { grid-template-columns: 1fr; gap: 48px; }
+            .transparency-grid { grid-template-columns: 1fr; }
+        }
+
+        @media (max-width: 768px) {
+            .navbar {
+                display: none; position: fixed; top: 72px; left: 0; right: 0;
+                background: var(--white); flex-direction: column; padding: 24px;
+                border-bottom: 1px solid var(--border); box-shadow: var(--shadow);
+            }
+            .navbar.active { display: flex; }
+            #menu-btn { display: block; }
+            .pillars-grid { grid-template-columns: 1fr; max-width: 400px; margin: 0 auto; }
+            .values-grid { grid-template-columns: 1fr; max-width: 400px; margin: 0 auto; }
+            .mission-highlights { grid-template-columns: 1fr 1fr; }
+            .memorial-card { padding: 40px 24px; }
+        }
+
+        @media (max-width: 480px) {
+            .mission-highlights { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+<a href="#main-content" class="skip-to-content">Skip to main content</a>
+
+<!-- Header -->
+<header class="header" role="banner">
+    <div class="container">
+        <a href="index.html" class="logo" aria-label="Al-Noman Foundation Home"><img src="images/logo.png" alt="Al-Noman Foundation" loading="eager"></a>
+        <div id="menu-btn" class="fas fa-bars" role="button" aria-label="Toggle navigation menu" tabindex="0"></div>
+        <nav class="navbar" role="navigation" aria-label="Main navigation">
+            <a href="index.html">Home</a>
+            <a href="about.html" style="color:var(--primary);font-weight:700;">About</a>
+            <a href="programs.html">Programs</a>
+            <a href="index.html#campaigns">Campaigns</a>
+            <a href="stories.html">Stories</a>
+            <a href="contact.html">Contact</a>
+            <a href="volunteer.html" class="nav-volunteer">Volunteer</a>
+            <a href="https://donate.stripe.com/dR6bLq1gf7xF7y8aEG" class="nav-donate">Donate</a>
+        </nav>
+    </div>
+</header>
+
+<!-- Page Hero -->
+<section class="page-hero">
+    <div class="container" id="main-content">
+        <div class="section-badge"><i class="fas fa-users" aria-hidden="true"></i> About Us</div>
+        <h1>Our Story, Our Mission</h1>
+        <p>Founded in loving memory of Noman Abushanab, we are a family-driven foundation committed to serving communities in need across the globe.</p>
+    </div>
+</section>
+
+<!-- Our Mission -->
+<section class="mission-section" aria-label="Our Mission">
+    <div class="container">
+        <div class="mission-grid">
+            <div class="mission-text">
+                <div class="mission-icon-box">
+                    <i class="fas fa-hands-helping" aria-hidden="true"></i>
+                </div>
+                <h2>Empowering Communities, Honoring a Legacy</h2>
+                <p>Al-Noman Foundation is a registered 501(c)(3) non-profit organization founded in 2021 in Orlando, Florida. We were established in loving memory of Noman Abushanab, who was tragically lost to COVID-19. His lifelong dedication to helping others inspired his family and friends to create an organization that would carry his spirit of generosity forward and make a lasting difference in the lives of those who need it most.</p>
+                <p>Our mission is to empower underprivileged communities by providing access to clean water, quality education, nutritious food, and sacred places of worship. We serve communities primarily in Benin, Palestine, and the United States, working directly on the ground to ensure that every dollar donated reaches the people it was meant to help. More than 90 cents of every dollar goes directly to programs and services for people in need.</p>
+                <p>We are driven by the belief that every person, regardless of their circumstances or where they were born, deserves the opportunity to live with dignity, hope, and possibility. Our volunteer-driven team works tirelessly to minimize overhead costs so that your generosity has the greatest possible impact on the communities we serve.</p>
+                <div class="mission-motto">
+                    <i class="fas fa-heart" aria-hidden="true"></i> Be Giving, Be Living
+                </div>
+            </div>
+            <div class="mission-highlights">
+                <div class="mission-highlight">
+                    <i class="fas fa-calendar-check" aria-hidden="true"></i>
+                    <span class="number">2021</span>
+                    <span class="label">Year Founded</span>
+                </div>
+                <div class="mission-highlight">
+                    <i class="fas fa-hand-holding-usd" aria-hidden="true"></i>
+                    <span class="number">90%+</span>
+                    <span class="label">Goes to Programs</span>
+                </div>
+                <div class="mission-highlight">
+                    <i class="fas fa-globe-africa" aria-hidden="true"></i>
+                    <span class="number">3</span>
+                    <span class="label">Countries Served</span>
+                </div>
+                <div class="mission-highlight">
+                    <i class="fas fa-shield-alt" aria-hidden="true"></i>
+                    <span class="number">501(c)(3)</span>
+                    <span class="label">Tax-Deductible</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Memorial Section -->
+<section class="memorial-section" aria-label="The Story of Noman Abushanab">
+    <div class="container">
+        <div class="memorial-card">
+            <div class="memorial-badge">
+                <i class="fas fa-star" aria-hidden="true"></i> In Loving Memory
+            </div>
+            <h2>The Story of Noman Abushanab</h2>
+            <p>In 2021, the world lost a remarkable soul when Noman Abushanab passed away due to complications from COVID-19. Noman was more than a father, a husband, and a friend. He was a man who embodied generosity in its purest form. Throughout his life, he gave freely to anyone in need without hesitation or expectation of anything in return. His warmth and compassion left an indelible mark on everyone fortunate enough to know him.</p>
+            <blockquote>
+                "Noman believed that every person, regardless of where they were born, deserved a chance at a dignified life."
+            </blockquote>
+            <p>When Noman passed, his family and loved ones refused to let his spirit of giving die with him. They came together with a shared vision: to create something that would honor his memory and continue the legacy of kindness he built throughout his life. That vision became Al-Noman Foundation, named in his honor to ensure that his name lives on through every well we build, every child we educate, every family we feed, and every community we uplift.</p>
+            <p>Noman's legacy is not measured in words. It is measured in the clean water that now flows in villages that had none, in the students who walk to school with new supplies and renewed hope, and in the families who no longer go to bed hungry. Every act of generosity through this foundation carries his name, his love, and his unwavering belief that the world can be a better place when we choose to give.</p>
+            <div class="memorial-founder">
+                <div class="memorial-founder-icon">
+                    <i class="fas fa-heart" aria-hidden="true"></i>
+                </div>
+                <div class="memorial-founder-info">
+                    <strong>Noman Abushanab</strong>
+                    <span>Forever in our hearts</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Our Four Pillars -->
+<section class="pillars-section" aria-label="Our Four Pillars">
+    <div class="container">
+        <div class="section-header">
+            <div class="section-badge">What We Do</div>
+            <h2>Our Four Pillars of Impact</h2>
+            <p>Everything we do is rooted in four essential pillars that address the most fundamental needs of the communities we serve.</p>
+        </div>
+        <div class="pillars-grid">
+            <div class="pillar-card">
+                <div class="pillar-icon">
+                    <i class="fas fa-tint" aria-hidden="true"></i>
+                </div>
+                <h3>Clean Water</h3>
+                <p>We build water wells in rural communities that lack access to safe drinking water. A single well can serve hundreds of families, eliminating the need for children to walk miles to collect contaminated water and dramatically reducing waterborne illness. Clean water is the foundation for health, education, and economic opportunity.</p>
+            </div>
+            <div class="pillar-card">
+                <div class="pillar-icon">
+                    <i class="fas fa-graduation-cap" aria-hidden="true"></i>
+                </div>
+                <h3>Education</h3>
+                <p>Through our student sponsorship programs, we provide children with school bags, books, stationery, shoes, and food so they can attend school with dignity. For as little as $30 a month, a child receives everything they need to focus on learning rather than worrying about basic necessities. Education breaks the cycle of poverty for generations.</p>
+            </div>
+            <div class="pillar-card">
+                <div class="pillar-icon">
+                    <i class="fas fa-utensils" aria-hidden="true"></i>
+                </div>
+                <h3>Food</h3>
+                <p>From our Bread a Day campaign that feeds a person for just 20 cents to our Dabiha program providing meat to families who rarely have it, we fight hunger at every level. We deliver fresh bread daily, distribute meals during holidays and crises, and work to ensure that no family in our communities goes to bed hungry.</p>
+            </div>
+            <div class="pillar-card">
+                <div class="pillar-icon">
+                    <i class="fas fa-mosque" aria-hidden="true"></i>
+                </div>
+                <h3>Places of Worship</h3>
+                <p>We build and restore sacred spaces that serve as the heart of their communities. These places of worship provide more than spiritual solace. They become gathering spaces for education, community organizing, and mutual support. Investing in sacred spaces strengthens the social fabric of the entire community.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Our Values -->
+<section class="values-section" aria-label="Our Values">
+    <div class="container">
+        <div class="section-header">
+            <div class="section-badge">Our Values</div>
+            <h2>What Guides Everything We Do</h2>
+            <p>Our values are the foundation of every decision, every project, and every life we touch.</p>
+        </div>
+        <div class="values-grid">
+            <div class="value-card">
+                <div class="value-icon">
+                    <i class="fas fa-balance-scale" aria-hidden="true"></i>
+                </div>
+                <h3>Integrity</h3>
+                <p>We uphold honesty in all of our interactions and hold ourselves to the highest standard of transparency with every dollar donated. We believe that trust is earned through accountability, and we are committed to showing donors exactly where their money goes and how it changes lives.</p>
+            </div>
+            <div class="value-card">
+                <div class="value-icon">
+                    <i class="fas fa-dove" aria-hidden="true"></i>
+                </div>
+                <h3>Compassion</h3>
+                <p>We put ourselves in the shoes of our beneficiaries and feel the urgency of their needs. Every decision we make is guided by empathy, understanding, and a deep commitment to treating every person we serve with the dignity and respect they deserve, just as Noman would have wanted.</p>
+            </div>
+            <div class="value-card">
+                <div class="value-icon">
+                    <i class="fas fa-people-carry" aria-hidden="true"></i>
+                </div>
+                <h3>Togetherness</h3>
+                <p>Our sense of belonging to communities around the world brings us closer to the people in need and strengthens our impact. We believe that meaningful change happens when people come together, and we invite donors, volunteers, and community members to join us in building a better world.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Transparency -->
+<section class="transparency-section" aria-label="Transparency">
+    <div class="container">
+        <div class="transparency-grid">
+            <div class="transparency-visual">
+                <div class="donut-container">
+                    <div class="donut-ring">
+                        <div class="donut-hole">
+                            <div class="donut-percent">90%+</div>
+                            <div class="donut-label">to programs</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="donut-legend">
+                    <div class="legend-item"><div class="legend-dot programs"></div> Direct Aid</div>
+                    <div class="legend-item"><div class="legend-dot operations"></div> Operations</div>
+                </div>
+            </div>
+            <div class="transparency-content">
+                <div class="section-badge">Our Promise</div>
+                <h2>Radical Transparency, Maximum Impact</h2>
+                <p>We believe you deserve to know exactly how your donation is used. While many organizations spend 30-40% on overhead, we have built Al-Noman Foundation to ensure that more than 90 cents of every dollar you donate goes directly to the people and communities we serve.</p>
+                <ul class="trust-points">
+                    <li>
+                        <i class="fas fa-check-circle" aria-hidden="true"></i>
+                        <div>
+                            <strong>90%+ Goes to Programs</strong>
+                            <span>The vast majority of every donation funds direct aid — water wells, food, education, and places of worship.</span>
+                        </div>
+                    </li>
+                    <li>
+                        <i class="fas fa-check-circle" aria-hidden="true"></i>
+                        <div>
+                            <strong>Volunteer-Driven Team</strong>
+                            <span>Our team members volunteer their time and expertise, keeping administrative costs to an absolute minimum.</span>
+                        </div>
+                    </li>
+                    <li>
+                        <i class="fas fa-check-circle" aria-hidden="true"></i>
+                        <div>
+                            <strong>On-the-Ground Presence</strong>
+                            <span>We work directly with local communities in Benin — no middlemen, no wasted resources, no bureaucracy.</span>
+                        </div>
+                    </li>
+                    <li>
+                        <i class="fas fa-check-circle" aria-hidden="true"></i>
+                        <div>
+                            <strong>Registered 501(c)(3)</strong>
+                            <span>100% of your donation is tax-deductible. We operate with full legal compliance and financial accountability.</span>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+    <div class="container">
+        <h2>Join Our Mission</h2>
+        <p>Every dollar you give writes the next chapter in someone's life. Be part of the change today.</p>
+        <div class="cta-buttons">
+            <a href="https://donate.stripe.com/dR6bLq1gf7xF7y8aEG" class="btn btn-primary"><i class="fas fa-credit-card" aria-hidden="true"></i> Donate via Stripe</a>
+            <a href="https://www.paypal.com/donate/?hosted_button_id=XE8JQ8QJKH4FQ" class="btn btn-outline-dark" style="border-color:var(--white);color:var(--white);"><i class="fab fa-paypal" aria-hidden="true"></i> Donate via PayPal</a>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer" role="contentinfo">
+    <div class="container">
+        <div class="footer-links">
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="programs.html">Programs</a>
+            <a href="index.html#campaigns">Campaigns</a>
+            <a href="stories.html">Stories</a>
+            <a href="ways-to-give.html">Ways to Give</a>
+            <a href="contact.html">Contact</a>
+        </div>
+        <p>&copy; 2025 <span>Al-Noman Foundation</span>. All rights reserved. Registered 501(c)(3) &mdash; 100% tax-deductible.</p>
+    </div>
+</footer>
+
+<!-- WhatsApp Float -->
+<a href="https://wa.me/18133584681" class="whatsapp-float" target="_blank" rel="noopener noreferrer" aria-label="Chat with us on WhatsApp"><i class="fab fa-whatsapp"></i></a>
+
+<!-- Back to Top -->
+<button id="back-to-top" aria-label="Back to top"><i class="fas fa-arrow-up"></i></button>
+
+<!-- Cookie Consent -->
+<div class="cookie-consent" id="cookie-consent">
+    <p>We use cookies to improve your experience on our site. By continuing to browse, you agree to our use of cookies.</p>
+    <button onclick="acceptCookies()">Accept</button>
+</div>
+
+<script>
+    // Cookie consent
+    if (localStorage.getItem('alnoman_cookies_accepted')) { document.getElementById('cookie-consent').style.display = 'none'; }
+    function acceptCookies() { localStorage.setItem('alnoman_cookies_accepted', 'true'); document.getElementById('cookie-consent').style.display = 'none'; }
+
+    // Mobile menu toggle
+    const menuBtn = document.getElementById('menu-btn');
+    const navbar = document.querySelector('.navbar');
+    menuBtn.addEventListener('click', () => { navbar.classList.toggle('active'); menuBtn.classList.toggle('fa-bars'); menuBtn.classList.toggle('fa-times'); });
+    document.querySelectorAll('.navbar a').forEach(link => {
+        link.addEventListener('click', () => { navbar.classList.remove('active'); menuBtn.classList.add('fa-bars'); menuBtn.classList.remove('fa-times'); });
+    });
+
+    // Header shadow + back to top on scroll
+    window.addEventListener('scroll', () => {
+        document.querySelector('.header').style.boxShadow = window.scrollY > 50 ? '0 2px 20px rgba(0,0,0,0.1)' : 'none';
+        document.getElementById('back-to-top').style.display = window.scrollY > 300 ? 'flex' : 'none';
+    });
+    document.getElementById('back-to-top').addEventListener('click', () => { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+
+    // Animate elements on scroll
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => { if (entry.isIntersecting) { entry.target.style.opacity = '1'; entry.target.style.transform = 'translateY(0)'; } });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.pillar-card, .value-card, .mission-highlight, .trust-points li').forEach(el => {
+        el.style.opacity = '0'; el.style.transform = 'translateY(20px)';
+        el.style.transition = 'opacity 0.6s ease, transform 0.6s ease'; observer.observe(el);
+    });
+</script>
+
+</body>
+</html>
