@@ -1,0 +1,854 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Start a Campaign | Al-Noman Foundation</title>
+    <meta name="description" content="Start a fundraising campaign or suggest a cause with Al-Noman Foundation. Help us provide clean water, education, food, and places of worship to communities in need.">
+    <meta property="og:title" content="Start a Campaign | Al-Noman Foundation">
+    <meta property="og:description" content="Submit a campaign proposal or suggest a cause. Together we can make a lasting difference in communities across Benin, Palestine, and the USA.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.alnoman.org/start-campaign.html">
+    <meta property="og:site_name" content="Al-Noman Foundation">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Start a Campaign | Al-Noman Foundation">
+    <meta name="twitter:description" content="Submit a campaign proposal or suggest a cause with Al-Noman Foundation.">
+
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://www.alnoman.org/start-campaign.html">
+
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><circle cx='16' cy='16' r='16' fill='%237352a2'/><text x='16' y='21' font-size='14' font-weight='bold' text-anchor='middle' fill='white' font-family='serif'>AN</text></svg>">
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-250622242-1"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'UA-250622242-1');
+    </script>
+
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        "name": "Start a Campaign or Suggest a Cause",
+        "description": "Submit a fundraising campaign proposal or suggest a cause for Al-Noman Foundation to support.",
+        "url": "https://www.alnoman.org/start-campaign.html",
+        "mainEntity": {
+            "@type": "NGO",
+            "name": "Al-Noman Foundation",
+            "url": "https://www.alnoman.org",
+            "email": "info@alnoman.org",
+            "telephone": "+1-813-358-4681",
+            "nonprofitStatus": "501c3"
+        }
+    }
+    </script>
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --primary: #7352a2;
+            --primary-dark: #5a3d8a;
+            --primary-light: #f0ebf7;
+            --accent: #ffffff;
+            --dark: #1a1a2e;
+            --text: #333;
+            --text-light: #666;
+            --text-muted: #999;
+            --white: #fff;
+            --bg: #fafafa;
+            --border: #e8e8e8;
+            --shadow: 0 4px 20px rgba(0,0,0,0.08);
+            --shadow-lg: 0 10px 40px rgba(0,0,0,0.12);
+            --radius: 12px;
+            --radius-lg: 20px;
+            --transition: all 0.3s ease;
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: var(--text);
+            background: var(--white);
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        h1, h2, h3, h4 { font-family: 'Playfair Display', Georgia, serif; line-height: 1.3; }
+        a { text-decoration: none; color: inherit; }
+
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+
+        .skip-to-content { position: absolute; top: -100px; left: 16px; background: var(--primary); color: var(--white); padding: 12px 24px; border-radius: 0 0 8px 8px; z-index: 10000; font-weight: 600; transition: top 0.3s; }
+        .skip-to-content:focus { top: 0; }
+
+        /* Buttons */
+        .btn {
+            display: inline-flex; align-items: center; gap: 8px;
+            padding: 14px 32px; border-radius: 50px;
+            font-family: 'Inter', sans-serif; font-weight: 600; font-size: 0.95rem;
+            letter-spacing: 0.02em; cursor: pointer; transition: var(--transition);
+            border: none; text-transform: uppercase;
+        }
+        .btn-primary { background: var(--primary); color: var(--white); }
+        .btn-primary:hover { background: var(--primary-dark); transform: translateY(-2px); box-shadow: 0 8px 25px rgba(115,82,162,0.3); }
+        .btn-outline { background: transparent; color: var(--white); border: 2px solid var(--white); }
+        .btn-outline:hover { background: var(--white); color: var(--dark); transform: translateY(-2px); }
+
+        /* Header */
+        .header {
+            position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+            background: rgba(255,255,255,0.97); backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border); transition: var(--transition);
+        }
+        .header .container { display: flex; align-items: center; justify-content: space-between; height: 72px; }
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo img { height: 48px; width: auto; }
+        .navbar { display: flex; align-items: center; gap: 8px; }
+        .navbar a { padding: 8px 16px; font-size: 0.9rem; font-weight: 500; color: var(--text-light); border-radius: 8px; transition: var(--transition); }
+        .navbar a:hover { color: var(--primary); background: var(--primary-light); }
+        .nav-volunteer { background: transparent !important; color: var(--primary) !important; border: 2px solid var(--primary) !important; border-radius: 50px !important; padding: 8px 20px !important; margin-left: 4px; font-weight: 600 !important; }
+        .nav-volunteer:hover { background: var(--primary-light) !important; }
+        .nav-donate { background: var(--primary) !important; color: var(--white) !important; border-radius: 50px !important; padding: 10px 24px !important; margin-left: 4px; }
+        .nav-donate:hover { background: var(--primary-dark) !important; }
+        #menu-btn { display: none; font-size: 1.5rem; color: var(--text); cursor: pointer; }
+
+        .section-badge { display: inline-block; background: var(--primary-light); color: var(--primary); padding: 6px 16px; border-radius: 50px; font-size: 0.8rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 16px; }
+
+        /* Page Hero */
+        .page-hero {
+            padding: 140px 0 80px;
+            background: linear-gradient(135deg, var(--dark) 0%, #16213e 50%, var(--primary-dark) 100%);
+            text-align: center; position: relative; overflow: hidden;
+        }
+        .page-hero::before {
+            content: ''; position: absolute; top: -50%; right: -20%; width: 600px; height: 600px;
+            background: radial-gradient(circle, rgba(115,82,162,0.15) 0%, transparent 70%); border-radius: 50%;
+        }
+        .page-hero .container { position: relative; z-index: 1; }
+        .page-hero .section-badge { background: rgba(255,255,255,0.1); color: var(--accent); border: 1px solid rgba(255,255,255,0.2); }
+        .page-hero h1 { font-size: clamp(2rem, 4vw, 3.5rem); color: var(--white); margin-bottom: 16px; }
+        .page-hero p { color: rgba(255,255,255,0.7); font-size: 1.1rem; max-width: 600px; margin: 0 auto; }
+
+        /* Campaign Form Section */
+        .campaign-section { padding: 80px 0; }
+        .campaign-section .section-header { text-align: center; margin-bottom: 48px; }
+        .campaign-section .section-header h2 { font-size: clamp(1.8rem, 3vw, 2.5rem); color: var(--dark); margin-bottom: 12px; }
+        .campaign-section .section-header p { color: var(--text-light); font-size: 1.05rem; max-width: 600px; margin: 0 auto; }
+
+        /* Tab Toggle */
+        .tab-toggle {
+            display: flex; justify-content: center; margin-bottom: 40px;
+        }
+        .tab-toggle-inner {
+            display: inline-flex; background: var(--bg); border: 1px solid var(--border);
+            border-radius: 50px; padding: 4px; gap: 4px;
+        }
+        .tab-toggle-inner button {
+            padding: 12px 28px; border-radius: 50px; border: none;
+            font-family: 'Inter', sans-serif; font-weight: 600; font-size: 0.9rem;
+            cursor: pointer; transition: var(--transition);
+            background: transparent; color: var(--text-light);
+        }
+        .tab-toggle-inner button.active {
+            background: var(--primary); color: var(--white);
+            box-shadow: 0 4px 12px rgba(115,82,162,0.3);
+        }
+        .tab-toggle-inner button:not(.active):hover {
+            color: var(--primary); background: var(--primary-light);
+        }
+
+        .tab-content { display: none; }
+        .tab-content.active { display: block; }
+
+        .campaign-form-card {
+            max-width: 720px; margin: 0 auto;
+            background: var(--white); border: 1px solid var(--border); border-radius: var(--radius-lg);
+            padding: 48px; box-shadow: var(--shadow);
+        }
+
+        .form-group { margin-bottom: 24px; }
+        .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+
+        .form-group label {
+            display: block; font-weight: 600; font-size: 0.9rem; color: var(--dark);
+            margin-bottom: 8px;
+        }
+        .form-group label .required { color: #e74c3c; margin-left: 2px; }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%; padding: 12px 16px;
+            border: 1px solid var(--border); border-radius: var(--radius);
+            font-family: 'Inter', sans-serif; font-size: 0.95rem; color: var(--text);
+            transition: var(--transition); background: var(--white);
+        }
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none; border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(115,82,162,0.15);
+        }
+        .form-group textarea { resize: vertical; min-height: 120px; }
+        .form-group select { cursor: pointer; }
+
+        /* Category Icon Grid */
+        .category-grid {
+            display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px;
+        }
+        .category-item {
+            display: flex; flex-direction: column; align-items: center; gap: 6px;
+            padding: 14px 8px; border: 2px solid var(--border); border-radius: var(--radius);
+            cursor: pointer; transition: var(--transition); text-align: center;
+        }
+        .category-item:hover { border-color: var(--primary); background: var(--primary-light); }
+        .category-item input[type="radio"] { display: none; }
+        .category-item input[type="radio"]:checked + .category-icon {
+            background: var(--primary); color: var(--white);
+        }
+        .category-item:has(input[type="radio"]:checked) {
+            border-color: var(--primary); background: var(--primary-light);
+        }
+        .category-icon {
+            width: 44px; height: 44px; border-radius: 50%;
+            background: var(--primary-light); color: var(--primary);
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.1rem; transition: var(--transition);
+        }
+        .category-label {
+            font-size: 0.78rem; font-weight: 600; color: var(--text-light);
+            line-height: 1.2;
+        }
+
+        /* Character Counter */
+        .textarea-wrapper { position: relative; }
+        .char-counter {
+            position: absolute; bottom: 10px; right: 12px;
+            font-size: 0.75rem; color: var(--text-muted);
+            pointer-events: none;
+        }
+        .char-counter.warning { color: #e67e22; }
+        .char-counter.limit { color: #e74c3c; font-weight: 600; }
+
+        .form-submit {
+            text-align: center; margin-top: 32px;
+        }
+        .form-submit button {
+            display: inline-flex; align-items: center; gap: 8px;
+            padding: 16px 48px; border-radius: 50px;
+            background: var(--primary); color: var(--white);
+            font-family: 'Inter', sans-serif; font-weight: 700; font-size: 1rem;
+            letter-spacing: 0.02em; cursor: pointer; transition: var(--transition);
+            border: none; text-transform: uppercase;
+        }
+        .form-submit button:hover {
+            background: var(--primary-dark); transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(115,82,162,0.3);
+        }
+        .form-submit button:disabled {
+            opacity: 0.6; cursor: not-allowed; transform: none;
+            box-shadow: none;
+        }
+
+        .form-note {
+            text-align: center; margin-top: 16px;
+            font-size: 0.85rem; color: var(--text-muted);
+        }
+
+        /* Honeypot */
+        .hnpt { position: absolute; left: -9999px; opacity: 0; height: 0; width: 0; overflow: hidden; }
+
+        /* Success message */
+        .form-success {
+            display: none; text-align: center; padding: 48px;
+        }
+        .form-success.show { display: block; }
+        .form-success i { font-size: 3rem; color: var(--primary); margin-bottom: 16px; }
+        .form-success h3 { font-size: 1.5rem; color: var(--dark); margin-bottom: 12px; }
+        .form-success p { color: var(--text-light); font-size: 1rem; }
+
+        /* How It Works Section */
+        .how-section { padding: 80px 0; background: var(--bg); }
+        .how-section .section-header { text-align: center; margin-bottom: 48px; }
+        .how-section .section-header h2 { font-size: clamp(1.8rem, 3vw, 2.5rem); color: var(--dark); margin-bottom: 12px; }
+
+        .how-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; max-width: 900px; margin: 0 auto; }
+
+        .how-card {
+            background: var(--white); border: 1px solid var(--border); border-radius: var(--radius);
+            padding: 28px 24px; text-align: center; transition: var(--transition);
+        }
+        .how-card:hover { transform: translateY(-3px); box-shadow: var(--shadow); border-color: var(--primary); }
+
+        .how-card-icon {
+            width: 52px; height: 52px; border-radius: 50%;
+            background: var(--primary-light); color: var(--primary);
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.2rem; margin: 0 auto 16px;
+        }
+
+        .how-card h3 { font-family: 'Inter', sans-serif; font-size: 0.95rem; font-weight: 600; color: var(--dark); margin-bottom: 8px; }
+        .how-card p { color: var(--text-muted); font-size: 0.85rem; line-height: 1.6; }
+
+        /* CTA */
+        .cta-section {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            padding: 80px 0; text-align: center;
+        }
+        .cta-section h2 { font-size: 2.2rem; color: var(--white); margin-bottom: 16px; }
+        .cta-section p { color: rgba(255,255,255,0.8); font-size: 1.1rem; max-width: 500px; margin: 0 auto 32px; }
+        .cta-buttons { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+
+        /* Footer */
+        .footer {
+            background: var(--dark); color: rgba(255,255,255,0.7); padding: 40px 0; text-align: center;
+        }
+        .footer p { font-size: 0.85rem; }
+        .footer span { color: var(--accent); }
+        .footer-links { display: flex; justify-content: center; gap: 24px; margin-bottom: 16px; flex-wrap: wrap; }
+        .footer-links a { color: rgba(255,255,255,0.6); font-size: 0.85rem; transition: var(--transition); }
+        .footer-links a:hover { color: var(--white); }
+
+        /* WhatsApp Float */
+        .whatsapp-float { position: fixed; bottom: 80px; right: 24px; width: 56px; height: 56px; background: #25d366; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--white); font-size: 1.6rem; box-shadow: 0 4px 12px rgba(37,211,102,0.4); z-index: 999; transition: var(--transition); }
+        .whatsapp-float:hover { transform: scale(1.1); box-shadow: 0 6px 20px rgba(37,211,102,0.5); }
+
+        #back-to-top { position: fixed; bottom: 24px; right: 24px; width: 44px; height: 44px; background: var(--primary); color: var(--white); border: none; border-radius: 50%; display: none; align-items: center; justify-content: center; cursor: pointer; font-size: 1rem; box-shadow: var(--shadow); z-index: 998; transition: var(--transition); }
+        #back-to-top:hover { background: var(--primary-dark); transform: translateY(-2px); }
+
+        .cookie-consent { position: fixed; bottom: 0; left: 0; right: 0; background: var(--dark); color: rgba(255,255,255,0.9); padding: 16px 24px; display: flex; align-items: center; justify-content: center; gap: 16px; z-index: 9999; font-size: 0.9rem; flex-wrap: wrap; box-shadow: 0 -4px 20px rgba(0,0,0,0.2); }
+        .cookie-consent p { margin: 0; text-align: center; }
+        .cookie-consent button { background: var(--primary); color: var(--white); border: none; padding: 8px 24px; border-radius: 50px; cursor: pointer; font-family: 'Inter', sans-serif; font-weight: 600; font-size: 0.85rem; transition: var(--transition); white-space: nowrap; }
+        .cookie-consent button:hover { background: var(--primary-dark); }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .navbar {
+                display: none; position: fixed; top: 72px; left: 0; right: 0;
+                background: var(--white); flex-direction: column; padding: 24px;
+                border-bottom: 1px solid var(--border); box-shadow: var(--shadow);
+            }
+            .navbar.active { display: flex; }
+            #menu-btn { display: block; }
+            .campaign-form-card { padding: 28px 20px; }
+            .form-row { grid-template-columns: 1fr; }
+            .category-grid { grid-template-columns: repeat(3, 1fr); }
+            .how-grid { grid-template-columns: 1fr; }
+            .cta-section h2 { font-size: 1.6rem; }
+        }
+
+        @media (max-width: 480px) {
+            .category-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+    </style>
+</head>
+<body>
+
+<a href="#main-content" class="skip-to-content">Skip to main content</a>
+
+<!-- Header -->
+<header class="header" role="banner">
+    <div class="container">
+        <a href="index.html" class="logo" aria-label="Al-Noman Foundation Home"><img src="images/logo.png" alt="Al-Noman Foundation" loading="eager"></a>
+        <div id="menu-btn" class="fas fa-bars" role="button" aria-label="Toggle navigation menu" tabindex="0"></div>
+        <nav class="navbar" role="navigation" aria-label="Main navigation">
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="programs.html">Programs</a>
+            <a href="campaigns.html">Campaigns</a>
+            <a href="stories.html">Stories</a>
+            <a href="ways-to-give.html">Ways to Give</a>
+            <a href="contact.html">Contact</a>
+            <a href="volunteer.html" class="nav-volunteer">Volunteer</a>
+            <a href="https://donate.stripe.com/dR6bLq1gf7xF7y8aEG" class="nav-donate">Donate</a>
+        </nav>
+    </div>
+</header>
+
+<!-- Page Hero -->
+<section class="page-hero">
+    <div class="container" id="main-content">
+        <div class="section-badge"><i class="fas fa-bullhorn" aria-hidden="true"></i> Make a Difference</div>
+        <h1>Start a Campaign or Suggest a Cause</h1>
+        <p>Have a cause close to your heart? Launch a fundraising campaign or suggest a cause for Al-Noman Foundation to support.</p>
+    </div>
+</section>
+
+<!-- Campaign / Cause Form Section -->
+<section class="campaign-section" aria-label="Campaign and cause submission forms">
+    <div class="container">
+        <div class="section-header">
+            <div class="section-badge"><i class="fas fa-rocket" aria-hidden="true"></i> Get Started</div>
+            <h2>Submit Your Proposal</h2>
+            <p>Choose whether you'd like to start a full fundraising campaign or simply suggest a cause for our team to consider.</p>
+        </div>
+
+        <!-- Tab Toggle -->
+        <div class="tab-toggle">
+            <div class="tab-toggle-inner">
+                <button class="active" onclick="switchTab('campaign')" id="tab-btn-campaign"><i class="fas fa-bullhorn" aria-hidden="true"></i> Start a Campaign</button>
+                <button onclick="switchTab('cause')" id="tab-btn-cause"><i class="fas fa-lightbulb" aria-hidden="true"></i> Suggest a Cause</button>
+            </div>
+        </div>
+
+        <!-- Tab 1: Start a Campaign -->
+        <div class="tab-content active" id="tab-campaign">
+            <div class="campaign-form-card">
+                <form id="campaign-form" novalidate>
+                    <!-- Honeypot -->
+                    <div class="hnpt" aria-hidden="true">
+                        <label for="website_url">Website</label>
+                        <input type="text" id="website_url" name="website_url" tabindex="-1" autocomplete="off">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="campaign-title">Campaign Title <span class="required">*</span></label>
+                        <input type="text" id="campaign-title" name="campaign_title" placeholder="e.g. Build a Well in Benin" required maxlength="100">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Category <span class="required">*</span></label>
+                        <div class="category-grid">
+                            <label class="category-item">
+                                <input type="radio" name="campaign_category" value="Water" required>
+                                <div class="category-icon"><i class="fas fa-tint" aria-hidden="true"></i></div>
+                                <span class="category-label">Water</span>
+                            </label>
+                            <label class="category-item">
+                                <input type="radio" name="campaign_category" value="Education">
+                                <div class="category-icon"><i class="fas fa-graduation-cap" aria-hidden="true"></i></div>
+                                <span class="category-label">Education</span>
+                            </label>
+                            <label class="category-item">
+                                <input type="radio" name="campaign_category" value="Food">
+                                <div class="category-icon"><i class="fas fa-utensils" aria-hidden="true"></i></div>
+                                <span class="category-label">Food</span>
+                            </label>
+                            <label class="category-item">
+                                <input type="radio" name="campaign_category" value="Worship">
+                                <div class="category-icon"><i class="fas fa-mosque" aria-hidden="true"></i></div>
+                                <span class="category-label">Worship</span>
+                            </label>
+                            <label class="category-item">
+                                <input type="radio" name="campaign_category" value="Health">
+                                <div class="category-icon"><i class="fas fa-heartbeat" aria-hidden="true"></i></div>
+                                <span class="category-label">Health</span>
+                            </label>
+                            <label class="category-item">
+                                <input type="radio" name="campaign_category" value="Emergency">
+                                <div class="category-icon"><i class="fas fa-hand-holding-heart" aria-hidden="true"></i></div>
+                                <span class="category-label">Emergency</span>
+                            </label>
+                            <label class="category-item">
+                                <input type="radio" name="campaign_category" value="Other">
+                                <div class="category-icon"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></div>
+                                <span class="category-label">Other</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="campaign-description">Description <span class="required">*</span></label>
+                        <div class="textarea-wrapper">
+                            <textarea id="campaign-description" name="campaign_description" placeholder="Describe your campaign goal, who it will help, and how the funds will be used..." required maxlength="2000" oninput="updateCharCount(this, 'campaign-char-count', 2000)"></textarea>
+                            <span class="char-counter" id="campaign-char-count">0 / 2000</span>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="campaign-location">Location <span class="required">*</span></label>
+                            <input type="text" id="campaign-location" name="campaign_location" placeholder="e.g. Cotonou, Benin" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="campaign-goal">Fundraising Goal ($) <span class="required">*</span></label>
+                            <input type="number" id="campaign-goal" name="campaign_goal" placeholder="e.g. 5000" required min="100" step="1">
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="campaign-name">Your Name <span class="required">*</span></label>
+                            <input type="text" id="campaign-name" name="campaign_submitter_name" placeholder="Your full name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="campaign-email">Your Email <span class="required">*</span></label>
+                            <input type="email" id="campaign-email" name="campaign_submitter_email" placeholder="your@email.com" required>
+                        </div>
+                    </div>
+
+                    <div class="form-submit">
+                        <button type="submit" id="campaign-submit-btn"><i class="fas fa-paper-plane" aria-hidden="true"></i> Submit Campaign</button>
+                    </div>
+                    <p class="form-note">Your campaign will be reviewed by our team. We'll contact you within 3-5 business days.</p>
+                </form>
+
+                <div class="form-success" id="campaign-success">
+                    <i class="fas fa-check-circle"></i>
+                    <h3>Campaign Submitted!</h3>
+                    <p>Our team will review it and get back to you within 3-5 business days. Thank you for your initiative to help those in need.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tab 2: Suggest a Cause -->
+        <div class="tab-content" id="tab-cause">
+            <div class="campaign-form-card">
+                <form id="cause-form" novalidate>
+                    <!-- Honeypot -->
+                    <div class="hnpt" aria-hidden="true">
+                        <label for="company_site">Company</label>
+                        <input type="text" id="company_site" name="company_site" tabindex="-1" autocomplete="off">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="cause-title">Cause Title <span class="required">*</span></label>
+                        <input type="text" id="cause-title" name="cause_title" placeholder="e.g. School Supplies for Orphans" required maxlength="100">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="cause-category">Category <span class="required">*</span></label>
+                        <select id="cause-category" name="cause_category" required>
+                            <option value="" disabled selected>Select a category</option>
+                            <option value="Water">Water</option>
+                            <option value="Education">Education</option>
+                            <option value="Food">Food</option>
+                            <option value="Worship">Worship</option>
+                            <option value="Health">Health</option>
+                            <option value="Emergency">Emergency</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="cause-description">Description <span class="required">*</span></label>
+                        <div class="textarea-wrapper">
+                            <textarea id="cause-description" name="cause_description" placeholder="Tell us about the cause you'd like us to support, why it matters, and who it would help..." required maxlength="2000" oninput="updateCharCount(this, 'cause-char-count', 2000)"></textarea>
+                            <span class="char-counter" id="cause-char-count">0 / 2000</span>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="cause-name">Your Name <span class="required">*</span></label>
+                            <input type="text" id="cause-name" name="cause_submitter_name" placeholder="Your full name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="cause-email">Your Email <span class="required">*</span></label>
+                            <input type="email" id="cause-email" name="cause_submitter_email" placeholder="your@email.com" required>
+                        </div>
+                    </div>
+
+                    <div class="form-submit">
+                        <button type="submit" id="cause-submit-btn"><i class="fas fa-paper-plane" aria-hidden="true"></i> Submit Suggestion</button>
+                    </div>
+                    <p class="form-note">We review every suggestion. If your cause aligns with our mission, we'll reach out to discuss next steps.</p>
+                </form>
+
+                <div class="form-success" id="cause-success">
+                    <i class="fas fa-check-circle"></i>
+                    <h3>Suggestion Received!</h3>
+                    <p>We'll review your suggestion and consider it for a future campaign. Thank you for caring about those in need.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- How It Works Section -->
+<section class="how-section" aria-label="How the process works">
+    <div class="container">
+        <div class="section-header">
+            <div class="section-badge"><i class="fas fa-info-circle" aria-hidden="true"></i> How It Works</div>
+            <h2>From Idea to Impact</h2>
+        </div>
+
+        <div class="how-grid">
+            <div class="how-card">
+                <div class="how-card-icon"><i class="fas fa-pen-fancy" aria-hidden="true"></i></div>
+                <h3>1. Submit Your Proposal</h3>
+                <p>Fill out the form with your campaign idea or cause suggestion. Provide as much detail as possible to help us understand your vision.</p>
+            </div>
+            <div class="how-card">
+                <div class="how-card-icon"><i class="fas fa-search" aria-hidden="true"></i></div>
+                <h3>2. Team Review</h3>
+                <p>Our team reviews every submission to ensure it aligns with our mission and can create meaningful, measurable impact.</p>
+            </div>
+            <div class="how-card">
+                <div class="how-card-icon"><i class="fas fa-rocket" aria-hidden="true"></i></div>
+                <h3>3. Launch &amp; Fundraise</h3>
+                <p>Approved campaigns go live on our platform. We help with setup, promotion, and collecting donations securely via Stripe.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CTA Section -->
+<section class="cta-section" aria-label="Donate call to action">
+    <div class="container">
+        <h2>Want to Support an Existing Campaign?</h2>
+        <p>Browse our active campaigns and make a direct impact today. Every dollar counts.</p>
+        <div class="cta-buttons">
+            <a href="campaigns.html" class="btn btn-primary" style="background:var(--white);color:var(--primary);"><i class="fas fa-hand-holding-heart" aria-hidden="true"></i> View Campaigns</a>
+            <a href="https://donate.stripe.com/dR6bLq1gf7xF7y8aEG" class="btn btn-outline" target="_blank" rel="noopener noreferrer"><i class="fas fa-credit-card" aria-hidden="true"></i> Donate Now</a>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer" role="contentinfo">
+    <div class="container">
+        <div class="footer-links">
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="programs.html">Programs</a>
+            <a href="campaigns.html">Campaigns</a>
+            <a href="stories.html">Stories</a>
+            <a href="ways-to-give.html">Ways to Give</a>
+            <a href="volunteer.html">Volunteer</a>
+            <a href="contact.html">Contact</a>
+        </div>
+        <p>&copy; 2025 <span>Al-Noman Foundation</span>. All rights reserved. Registered 501(c)(3) &mdash; 100% tax-deductible.</p>
+    </div>
+</footer>
+
+<!-- WhatsApp Float -->
+<a href="https://wa.me/18133584681" target="_blank" rel="noopener noreferrer" class="whatsapp-float" aria-label="Chat with us on WhatsApp">
+    <i class="fab fa-whatsapp" aria-hidden="true"></i>
+</a>
+
+<!-- Back to Top -->
+<button id="back-to-top" aria-label="Back to top"><i class="fas fa-arrow-up"></i></button>
+
+<!-- Cookie Consent -->
+<div class="cookie-consent" id="cookie-consent">
+    <p>We use cookies to improve your experience on our site. By continuing to browse, you agree to our use of cookies.</p>
+    <button onclick="acceptCookies()">Accept</button>
+</div>
+
+<!-- Firebase SDK -->
+<script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-database-compat.js"></script>
+
+<script>
+    /* ── Cookie Consent ── */
+    if (localStorage.getItem('alnoman_cookies_accepted')) { document.getElementById('cookie-consent').style.display = 'none'; }
+    function acceptCookies() { localStorage.setItem('alnoman_cookies_accepted', 'true'); document.getElementById('cookie-consent').style.display = 'none'; }
+
+    /* ── Mobile Menu ── */
+    const menuBtn = document.getElementById('menu-btn');
+    const navbar = document.querySelector('.navbar');
+    menuBtn.addEventListener('click', () => { navbar.classList.toggle('active'); menuBtn.classList.toggle('fa-bars'); menuBtn.classList.toggle('fa-times'); });
+    document.querySelectorAll('.navbar a').forEach(link => {
+        link.addEventListener('click', () => { navbar.classList.remove('active'); menuBtn.classList.add('fa-bars'); menuBtn.classList.remove('fa-times'); });
+    });
+
+    /* ── Scroll Effects ── */
+    window.addEventListener('scroll', () => {
+        document.querySelector('.header').style.boxShadow = window.scrollY > 50 ? '0 2px 20px rgba(0,0,0,0.1)' : 'none';
+        document.getElementById('back-to-top').style.display = window.scrollY > 300 ? 'flex' : 'none';
+    });
+    document.getElementById('back-to-top').addEventListener('click', () => { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+
+    /* ── Scroll Animations ── */
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => { if (entry.isIntersecting) { entry.target.style.opacity = '1'; entry.target.style.transform = 'translateY(0)'; } });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.campaign-form-card, .how-card').forEach(el => {
+        el.style.opacity = '0'; el.style.transform = 'translateY(20px)';
+        el.style.transition = 'opacity 0.6s ease, transform 0.6s ease'; observer.observe(el);
+    });
+
+    /* ── Tab Switching ── */
+    function switchTab(tab) {
+        document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+        document.querySelectorAll('.tab-toggle-inner button').forEach(b => b.classList.remove('active'));
+        document.getElementById('tab-' + tab).classList.add('active');
+        document.getElementById('tab-btn-' + tab).classList.add('active');
+    }
+
+    /* ── Character Counter ── */
+    function updateCharCount(textarea, counterId, maxLen) {
+        const counter = document.getElementById(counterId);
+        const len = textarea.value.length;
+        counter.textContent = len + ' / ' + maxLen;
+        counter.classList.remove('warning', 'limit');
+        if (len >= maxLen) { counter.classList.add('limit'); }
+        else if (len >= maxLen * 0.9) { counter.classList.add('warning'); }
+    }
+
+    /* ── Firebase Init ── */
+    const firebaseConfig = {
+        apiKey: "AIzaSyAp0xPPTcMk9C3ZsGBOyajBb-t_WKu3BFo",
+        authDomain: "alnoman-foundation.firebaseapp.com",
+        databaseURL: "https://alnoman-foundation-default-rtdb.firebaseio.com",
+        projectId: "alnoman-foundation",
+        storageBucket: "alnoman-foundation.firebasestorage.app",
+        messagingSenderId: "1022172941333",
+        appId: "1:1022172941333:web:6a1cc19cc27da4bbb4121c"
+    };
+    firebase.initializeApp(firebaseConfig);
+    const db = firebase.database();
+
+    /* ── Rate Limiting (localStorage, 5 min cooldown) ── */
+    function checkRateLimit(formType) {
+        const key = 'alnoman_' + formType + '_last_submit';
+        const last = localStorage.getItem(key);
+        if (last) {
+            const elapsed = Date.now() - parseInt(last, 10);
+            const cooldown = 5 * 60 * 1000; // 5 minutes
+            if (elapsed < cooldown) {
+                const remaining = Math.ceil((cooldown - elapsed) / 60000);
+                return remaining;
+            }
+        }
+        return 0;
+    }
+
+    function setRateLimit(formType) {
+        const key = 'alnoman_' + formType + '_last_submit';
+        localStorage.setItem(key, Date.now().toString());
+    }
+
+    /* ── Campaign Form Submit ── */
+    document.getElementById('campaign-form').addEventListener('submit', function(e) {
+        e.preventDefault();
+
+        // Honeypot check
+        if (document.getElementById('website_url').value) return;
+
+        // Rate limit check
+        const cooldownLeft = checkRateLimit('campaign');
+        if (cooldownLeft > 0) {
+            alert('Please wait ' + cooldownLeft + ' more minute(s) before submitting another campaign.');
+            return;
+        }
+
+        // Validate category selection
+        const category = document.querySelector('input[name="campaign_category"]:checked');
+        if (!category) {
+            alert('Please select a category for your campaign.');
+            return;
+        }
+
+        // Validate goal minimum
+        const goal = parseFloat(document.getElementById('campaign-goal').value);
+        if (isNaN(goal) || goal < 100) {
+            alert('Fundraising goal must be at least $100.');
+            return;
+        }
+
+        // Basic form validation
+        if (!this.checkValidity()) {
+            this.reportValidity();
+            return;
+        }
+
+        const btn = document.getElementById('campaign-submit-btn');
+        btn.disabled = true;
+        btn.innerHTML = '<i class="fas fa-spinner fa-spin" aria-hidden="true"></i> Submitting...';
+
+        const data = {
+            title: document.getElementById('campaign-title').value.trim(),
+            category: category.value,
+            description: document.getElementById('campaign-description').value.trim(),
+            location: document.getElementById('campaign-location').value.trim(),
+            goal_amount: goal,
+            raised_amount: 0,
+            submitter_name: document.getElementById('campaign-name').value.trim(),
+            submitter_email: document.getElementById('campaign-email').value.trim(),
+            status: "pending",
+            stripe_link: "",
+            image_url: "",
+            is_foundation: false,
+            approved_at: null,
+            admin_notes: "",
+            created_at: new Date().toISOString()
+        };
+
+        db.ref('campaigns').push(data)
+            .then(function() {
+                setRateLimit('campaign');
+                document.getElementById('campaign-form').style.display = 'none';
+                document.getElementById('campaign-success').classList.add('show');
+            })
+            .catch(function(error) {
+                console.error('Error submitting campaign:', error);
+                alert('Something went wrong. Please try again later.');
+                btn.disabled = false;
+                btn.innerHTML = '<i class="fas fa-paper-plane" aria-hidden="true"></i> Submit Campaign';
+            });
+    });
+
+    /* ── Cause Form Submit ── */
+    document.getElementById('cause-form').addEventListener('submit', function(e) {
+        e.preventDefault();
+
+        // Honeypot check
+        if (document.getElementById('company_site').value) return;
+
+        // Rate limit check
+        const cooldownLeft = checkRateLimit('cause');
+        if (cooldownLeft > 0) {
+            alert('Please wait ' + cooldownLeft + ' more minute(s) before submitting another suggestion.');
+            return;
+        }
+
+        // Basic form validation
+        if (!this.checkValidity()) {
+            this.reportValidity();
+            return;
+        }
+
+        const btn = document.getElementById('cause-submit-btn');
+        btn.disabled = true;
+        btn.innerHTML = '<i class="fas fa-spinner fa-spin" aria-hidden="true"></i> Submitting...';
+
+        const data = {
+            title: document.getElementById('cause-title').value.trim(),
+            category: document.getElementById('cause-category').value,
+            description: document.getElementById('cause-description').value.trim(),
+            submitter_name: document.getElementById('cause-name').value.trim(),
+            submitter_email: document.getElementById('cause-email').value.trim(),
+            status: "pending",
+            admin_notes: "",
+            created_at: new Date().toISOString()
+        };
+
+        db.ref('causes').push(data)
+            .then(function() {
+                setRateLimit('cause');
+                document.getElementById('cause-form').style.display = 'none';
+                document.getElementById('cause-success').classList.add('show');
+            })
+            .catch(function(error) {
+                console.error('Error submitting cause:', error);
+                alert('Something went wrong. Please try again later.');
+                btn.disabled = false;
+                btn.innerHTML = '<i class="fas fa-paper-plane" aria-hidden="true"></i> Submit Suggestion';
+            });
+    });
+</script>
+
+</body>
+</html>

@@ -134,6 +134,33 @@
         .quick-link { display: inline-flex; align-items: center; gap: 6px; padding: 8px 16px; background: var(--primary-light); color: var(--primary); border-radius: 50px; font-size: 0.85rem; font-weight: 600; text-decoration: none; transition: var(--transition); margin-right: 8px; margin-bottom: 8px; }
         .quick-link:hover { background: var(--primary); color: var(--white); }
 
+        .pending-card {
+            border: 1px solid var(--border); border-radius: var(--radius);
+            padding: 24px; margin-bottom: 16px; transition: var(--transition);
+        }
+        .pending-card:hover { border-color: var(--primary); }
+        .pending-header h3 { font-size: 1rem; color: var(--dark); margin-bottom: 4px; }
+        .pending-meta { display: block; font-size: 0.8rem; color: var(--text-light); }
+        .pending-desc { font-size: 0.9rem; color: var(--text); margin: 12px 0; line-height: 1.6; max-height: 100px; overflow-y: auto; }
+        .pending-actions { padding-top: 16px; border-top: 1px solid var(--border); }
+        .pending-count {
+            display: inline-flex; align-items: center; justify-content: center;
+            background: #e74c3c; color: #fff; font-size: 0.7rem;
+            font-weight: 700; min-width: 20px; height: 20px; border-radius: 50%;
+            margin-left: 6px; padding: 0 6px;
+        }
+        .approved-card {
+            border: 1px solid var(--border); border-radius: var(--radius);
+            padding: 20px; margin-bottom: 12px;
+        }
+        .approved-card h3 { font-size: 0.95rem; color: var(--dark); margin-bottom: 12px; }
+        .approved-inline {
+            display: flex; gap: 12px; align-items: center; flex-wrap: wrap;
+        }
+        .approved-inline label { font-size: 0.8rem; font-weight: 600; white-space: nowrap; }
+        .approved-inline input { padding: 8px 12px; border: 1px solid var(--border); border-radius: 8px; font-family: inherit; }
+        .section-desc { color: var(--text-light); font-size: 0.9rem; margin-bottom: 20px; }
+
         @media (max-width: 768px) {
             .stat-grid { grid-template-columns: 1fr; }
             .dash-header { padding: 12px 16px; }
@@ -186,6 +213,8 @@
             <a href="stories.html" class="quick-link" target="_blank"><i class="fas fa-book-open"></i> Stories</a>
             <a href="volunteer.html" class="quick-link" target="_blank"><i class="fas fa-hands-helping"></i> Volunteer</a>
             <a href="contact.html" class="quick-link" target="_blank"><i class="fas fa-envelope"></i> Contact</a>
+            <a href="campaigns.html" class="quick-link" target="_blank"><i class="fas fa-bullhorn"></i> Campaigns</a>
+            <a href="start-campaign.html" class="quick-link" target="_blank"><i class="fas fa-plus-circle"></i> Start Campaign</a>
         </div>
 
         <!-- Impact Statistics -->
@@ -310,6 +339,33 @@
                 </div>
             </div>
         </div>
+
+        <!-- Pending Campaigns -->
+        <div class="dash-section">
+            <h2><i class="fas fa-clock" style="color:var(--primary);margin-right:8px;"></i> Pending Campaigns <span class="pending-count" id="pending-campaigns-count" style="display:none;">0</span></h2>
+            <p class="section-desc">Review user-submitted campaigns. Add a Stripe link and approve to make them live.</p>
+            <div id="pending-campaigns"><p style="color:var(--text-light);font-size:0.9rem;">Loading...</p></div>
+        </div>
+
+        <!-- Pending Causes -->
+        <div class="dash-section">
+            <h2><i class="fas fa-lightbulb" style="color:var(--primary);margin-right:8px;"></i> Pending Cause Suggestions <span class="pending-count" id="pending-causes-count" style="display:none;">0</span></h2>
+            <p class="section-desc">Review cause suggestions from visitors.</p>
+            <div id="pending-causes"><p style="color:var(--text-light);font-size:0.9rem;">Loading...</p></div>
+        </div>
+
+        <!-- Manage Approved Campaigns -->
+        <div class="dash-section">
+            <h2><i class="fas fa-tasks" style="color:var(--primary);margin-right:8px;"></i> Manage Approved Campaigns</h2>
+            <p class="section-desc">Update raised amounts and manage active campaigns.</p>
+            <div id="approved-campaigns"><p style="color:var(--text-light);font-size:0.9rem;">Loading...</p></div>
+            <div class="save-bar">
+                <div>
+                    <button class="save-btn" id="save-campaigns-btn" onclick="saveAllCampaigns()"><i class="fas fa-save"></i> Save All Changes</button>
+                    <span class="save-status" id="save-campaigns-status"></span>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 
@@ -344,6 +400,9 @@
             document.getElementById('user-email').textContent = user.email;
             loadStats();
             loadGoals();
+            loadPendingCampaigns();
+            loadPendingCauses();
+            loadApprovedCampaigns();
         } else {
             document.getElementById('login-screen').style.display = 'flex';
             document.getElementById('dashboard').style.display = 'none';
@@ -477,6 +536,185 @@
                 btn.disabled = false;
                 btn.innerHTML = '<i class="fas fa-save"></i> Save Goals';
                 status.textContent = 'Error saving. Try again.';
+                status.className = 'save-status error';
+                status.style.display = 'inline';
+            });
+    }
+
+    // ============================================
+    // HTML ESCAPING UTILITY
+    // ============================================
+    function escapeHtml(str) {
+        const div = document.createElement('div');
+        div.appendChild(document.createTextNode(str || ''));
+        return div.innerHTML;
+    }
+
+    // ============================================
+    // PENDING CAMPAIGNS
+    // ============================================
+    function loadPendingCampaigns() {
+        db.ref('campaigns').orderByChild('status').equalTo('pending').on('value', snapshot => {
+            const container = document.getElementById('pending-campaigns');
+            const countEl = document.getElementById('pending-campaigns-count');
+            const data = snapshot.val();
+            if (!data || Object.keys(data).length === 0) {
+                container.innerHTML = '<p style="color:var(--text-muted);font-size:0.9rem;"><i class="fas fa-check-circle" style="color:#27ae60;margin-right:6px;"></i> No pending campaigns.</p>';
+                countEl.style.display = 'none';
+                return;
+            }
+            const entries = Object.entries(data).sort((a, b) => (a[1].created_at || 0) - (b[1].created_at || 0));
+            countEl.textContent = entries.length;
+            countEl.style.display = 'inline-flex';
+            container.innerHTML = entries.map(([id, c]) => {
+                const date = c.created_at ? new Date(c.created_at).toLocaleDateString() : 'Unknown';
+                return '<div class="pending-card" id="pending-' + id + '">' +
+                    '<div class="pending-header">' +
+                    '<h3>' + escapeHtml(c.title) + '</h3>' +
+                    '<span class="pending-meta">' + escapeHtml(c.category) + ' | ' + escapeHtml(c.location) + ' | Goal: $' + (c.goal_amount || 0).toLocaleString() + '</span>' +
+                    '<span class="pending-meta">By ' + escapeHtml(c.submitter_name) + ' (' + escapeHtml(c.submitter_email) + ') | ' + date + '</span>' +
+                    '</div>' +
+                    '<p class="pending-desc">' + escapeHtml(c.description) + '</p>' +
+                    '<div class="pending-actions">' +
+                    '<div style="margin-bottom:12px;"><label style="font-size:0.8rem;font-weight:600;display:block;margin-bottom:4px;">Stripe Payment Link (required)</label>' +
+                    '<input type="url" id="stripe-' + id + '" placeholder="https://buy.stripe.com/..." style="width:100%;padding:10px 14px;border:1px solid var(--border);border-radius:8px;font-family:inherit;"></div>' +
+                    '<div style="margin-bottom:12px;"><label style="font-size:0.8rem;font-weight:600;display:block;margin-bottom:4px;">Custom Image URL (optional)</label>' +
+                    '<input type="url" id="image-' + id + '" placeholder="https://..." style="width:100%;padding:10px 14px;border:1px solid var(--border);border-radius:8px;font-family:inherit;"></div>' +
+                    '<button class="save-btn" style="background:#27ae60;margin-right:8px;" onclick="approveCampaign(\'' + id + '\')"><i class="fas fa-check"></i> Approve</button>' +
+                    '<button class="save-btn" style="background:#e74c3c;" onclick="rejectCampaign(\'' + id + '\')"><i class="fas fa-times"></i> Reject</button>' +
+                    '</div></div>';
+            }).join('');
+        });
+    }
+
+    function approveCampaign(id) {
+        var stripeLink = document.getElementById('stripe-' + id).value.trim();
+        if (!stripeLink) { alert('Please provide a Stripe payment link before approving.'); return; }
+        var imageUrl = document.getElementById('image-' + id) ? document.getElementById('image-' + id).value.trim() : '';
+        var updates = { status: 'approved', stripe_link: stripeLink, approved_at: firebase.database.ServerValue.TIMESTAMP };
+        if (imageUrl) updates.image_url = imageUrl;
+        db.ref('campaigns/' + id).update(updates)
+            .then(function() { alert('Campaign approved and now live!'); })
+            .catch(function(err) { alert('Error: ' + err.message); });
+    }
+
+    function rejectCampaign(id) {
+        var reason = prompt('Rejection reason (optional):');
+        db.ref('campaigns/' + id).update({ status: 'rejected', admin_notes: reason || 'Rejected by admin' })
+            .then(function() { alert('Campaign rejected.'); })
+            .catch(function(err) { alert('Error: ' + err.message); });
+    }
+
+    // ============================================
+    // PENDING CAUSES
+    // ============================================
+    function loadPendingCauses() {
+        db.ref('causes').orderByChild('status').equalTo('pending').on('value', snapshot => {
+            const container = document.getElementById('pending-causes');
+            const countEl = document.getElementById('pending-causes-count');
+            const data = snapshot.val();
+            if (!data || Object.keys(data).length === 0) {
+                container.innerHTML = '<p style="color:var(--text-muted);font-size:0.9rem;"><i class="fas fa-check-circle" style="color:#27ae60;margin-right:6px;"></i> No pending suggestions.</p>';
+                countEl.style.display = 'none';
+                return;
+            }
+            const entries = Object.entries(data).sort((a, b) => (a[1].created_at || 0) - (b[1].created_at || 0));
+            countEl.textContent = entries.length;
+            countEl.style.display = 'inline-flex';
+            container.innerHTML = entries.map(([id, c]) => {
+                const date = c.created_at ? new Date(c.created_at).toLocaleDateString() : 'Unknown';
+                return '<div class="pending-card" id="cause-' + id + '">' +
+                    '<div class="pending-header">' +
+                    '<h3>' + escapeHtml(c.title) + '</h3>' +
+                    '<span class="pending-meta">' + escapeHtml(c.category) + ' | By ' + escapeHtml(c.submitter_name) + ' (' + escapeHtml(c.submitter_email) + ') | ' + date + '</span>' +
+                    '</div>' +
+                    '<p class="pending-desc">' + escapeHtml(c.description) + '</p>' +
+                    '<div class="pending-actions">' +
+                    '<button class="save-btn" style="background:#27ae60;margin-right:8px;" onclick="approveCause(\'' + id + '\')"><i class="fas fa-check"></i> Acknowledge</button>' +
+                    '<button class="save-btn" style="background:var(--primary);margin-right:8px;" onclick="convertCause(\'' + id + '\')"><i class="fas fa-exchange-alt"></i> Convert to Campaign</button>' +
+                    '<button class="save-btn" style="background:#e74c3c;" onclick="rejectCause(\'' + id + '\')"><i class="fas fa-times"></i> Reject</button>' +
+                    '</div></div>';
+            }).join('');
+        });
+    }
+
+    function approveCause(id) {
+        db.ref('causes/' + id).update({ status: 'approved' })
+            .then(function() { alert('Cause acknowledged.'); })
+            .catch(function(err) { alert('Error: ' + err.message); });
+    }
+
+    function rejectCause(id) {
+        var reason = prompt('Rejection reason (optional):');
+        db.ref('causes/' + id).update({ status: 'rejected', admin_notes: reason || 'Not aligned with current priorities' })
+            .then(function() { alert('Cause rejected.'); })
+            .catch(function(err) { alert('Error: ' + err.message); });
+    }
+
+    function convertCause(id) {
+        db.ref('causes/' + id).once('value', function(snapshot) {
+            var cause = snapshot.val();
+            if (!cause) return;
+            var campaignData = {
+                title: cause.title, description: cause.description, category: cause.category,
+                location: '', submitter_name: cause.submitter_name, submitter_email: cause.submitter_email,
+                goal_amount: 0, raised_amount: 0, stripe_link: '', status: 'pending',
+                image_category: cause.category, image_url: '',
+                created_at: firebase.database.ServerValue.TIMESTAMP,
+                approved_at: null, admin_notes: 'Converted from cause suggestion', is_foundation: false
+            };
+            db.ref('campaigns').push(campaignData)
+                .then(function() { return db.ref('causes/' + id).update({ status: 'converted', admin_notes: 'Converted to campaign' }); })
+                .then(function() { alert('Cause converted to a pending campaign!'); })
+                .catch(function(err) { alert('Error: ' + err.message); });
+        });
+    }
+
+    // ============================================
+    // APPROVED CAMPAIGNS MANAGEMENT
+    // ============================================
+    function loadApprovedCampaigns() {
+        db.ref('campaigns').orderByChild('status').equalTo('approved').on('value', snapshot => {
+            const container = document.getElementById('approved-campaigns');
+            const data = snapshot.val();
+            if (!data) { container.innerHTML = '<p style="color:var(--text-muted);">No approved campaigns yet.</p>'; return; }
+            container.innerHTML = Object.entries(data).map(([id, c]) =>
+                '<div class="approved-card" id="approved-' + id + '">' +
+                '<h3>' + escapeHtml(c.title) + ' <span style="font-size:0.75rem;color:var(--text-muted);">' + (c.is_foundation ? 'Foundation' : 'Community') + '</span></h3>' +
+                '<div class="approved-inline">' +
+                '<label>Raised ($)</label><input type="number" id="raised-' + id + '" value="' + (c.raised_amount || 0) + '" min="0" style="width:120px;">' +
+                '<label>Goal ($)</label><input type="number" id="target-' + id + '" value="' + (c.goal_amount || 0) + '" min="0" style="width:120px;">' +
+                '<label>Stripe</label><input type="url" id="link-' + id + '" value="' + escapeHtml(c.stripe_link || '') + '" style="flex:2;min-width:200px;">' +
+                '</div></div>'
+            ).join('');
+        });
+    }
+
+    function saveAllCampaigns() {
+        var btn = document.getElementById('save-campaigns-btn');
+        var status = document.getElementById('save-campaigns-status');
+        btn.disabled = true;
+        btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Saving...';
+        var updates = {};
+        document.querySelectorAll('.approved-card').forEach(function(card) {
+            var id = card.id.replace('approved-', '');
+            updates[id + '/raised_amount'] = parseInt(document.getElementById('raised-' + id).value) || 0;
+            updates[id + '/goal_amount'] = parseInt(document.getElementById('target-' + id).value) || 0;
+            updates[id + '/stripe_link'] = document.getElementById('link-' + id).value.trim();
+        });
+        db.ref('campaigns').update(updates)
+            .then(function() {
+                btn.disabled = false;
+                btn.innerHTML = '<i class="fas fa-save"></i> Save All Changes';
+                status.textContent = 'All campaigns updated!';
+                status.className = 'save-status';
+                status.style.display = 'inline';
+                setTimeout(function() { status.style.display = 'none'; }, 3000);
+            })
+            .catch(function(err) {
+                btn.disabled = false;
+                btn.innerHTML = '<i class="fas fa-save"></i> Save All Changes';
+                status.textContent = 'Error: ' + err.message;
                 status.className = 'save-status error';
                 status.style.display = 'inline';
             });
