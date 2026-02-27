@@ -4,14 +4,14 @@
 - **Live site**: https://www.alnoman.org
 - **GitHub repo**: https://github.com/MwafaqAbushanab/alnoman-website
 - **Hosting**: GoDaddy shared hosting (Apache)
-- **Deploy process**: GitHub Actions auto-deploy via FTP on push to `main` (see `.github/workflows/deploy.yml`)
+- **Deploy process**: GitHub Actions auto-deploy via FTP on push to `master` (see `.github/workflows/deploy.yml`)
 - **Domain registrar**: GoDaddy (expires August 8, 2027)
 - **Type**: Static HTML/CSS/JS — no build step, no framework
 - **Backend**: Firebase Realtime Database (stats, goals, campaigns, causes)
-- **Analytics**: Google Analytics UA-250622242-1 (legacy Universal Analytics — needs GA4 migration)
+- **Analytics**: Google Analytics UA-250622242-1 (dual-tagged with GA4 placeholder `G-XXXXXXXXXX` — uncomment after creating GA4 property)
 
 ### Deploy
-Auto-deployed via GitHub Actions on push to `main`. Uses `SamKirkland/FTP-Deploy-Action@v4.3.5`.
+Auto-deployed via GitHub Actions on push to `master`. Uses `SamKirkland/FTP-Deploy-Action@v4.3.5`.
 Requires GitHub Secrets: `FTP_SERVER`, `FTP_USERNAME`, `FTP_PASSWORD`.
 
 ## Organization Info
@@ -58,13 +58,13 @@ Requires GitHub Secrets: `FTP_SERVER`, `FTP_USERNAME`, `FTP_PASSWORD`.
 - **Languages**: English (default), Arabic (RTL), French
 - **Model**: Subdirectory — `/` (English), `/ar/` (Arabic), `/fr/` (French)
 - **Language switcher**: Globe icon dropdown on all pages via `js/lang-switcher.js`
-- **SEO**: hreflang `<link>` tags on all pages, sitemap.xml with 27 URLs + xhtml:link annotations
+- **SEO**: hreflang `<link>` tags on all pages, sitemap.xml with 30 URLs + xhtml:link annotations
 - **Arabic**: `<html lang="ar" dir="rtl">`, Noto Sans Arabic font, full RTL CSS overrides
 - **French**: `<html lang="fr">`, same LTR layout as English, Inter + Playfair Display fonts
 - **Firebase**: Same config preserved across all languages (campaigns, stats, forms)
 
 ## Navigation Structure
-Home | About | Programs | Campaigns | Stories | Ways to Give | Contact | [Volunteer] | [Donate]
+Home | About | Programs | Campaigns | Ramadan | Stories | Ways to Give | Contact | [Volunteer] | [Donate]
 
 ## File Structure
 ```
@@ -78,8 +78,9 @@ alnoman-website/
 ├── ways-to-give.html   # Ways to Give page (plans, one-time, campaigns, PayPal, matching)
 ├── volunteer.html      # Volunteer signup form (Formspree-powered)
 ├── contact.html        # Contact page (phone, email, WhatsApp, social, inquiry types)
-├── admin.html          # Admin dashboard (Firebase Auth — stats, goals, campaign/cause management)
-├── ar/                 # Arabic RTL translations (9 pages mirroring English)
+├── ramadan.html        # Ramadan 2026 seasonal campaign (Zakat, Fidya, Sadaqah, Iftar, countdown timer)
+├── admin.html          # Admin dashboard (Firebase Auth — stats, goals, campaign/cause/newsletter management)
+├── ar/                 # Arabic RTL translations (10 pages mirroring English)
 │   ├── index.html
 │   ├── about.html
 │   ├── programs.html
@@ -88,8 +89,9 @@ alnoman-website/
 │   ├── stories.html
 │   ├── ways-to-give.html
 │   ├── volunteer.html
+│   ├── ramadan.html
 │   └── contact.html
-├── fr/                 # French translations (9 pages mirroring English)
+├── fr/                 # French translations (10 pages mirroring English)
 │   ├── index.html
 │   ├── about.html
 │   ├── programs.html
@@ -98,11 +100,12 @@ alnoman-website/
 │   ├── stories.html
 │   ├── ways-to-give.html
 │   ├── volunteer.html
+│   ├── ramadan.html
 │   └── contact.html
 ├── .github/workflows/
-│   └── deploy.yml      # GitHub Actions auto-deploy via FTP on push to main
+│   └── deploy.yml      # GitHub Actions auto-deploy via FTP on push to master
 ├── .gitignore
-├── sitemap.xml         # 27 URLs with hreflang annotations (9 per language)
+├── sitemap.xml         # 30 URLs with hreflang annotations (10 per language)
 ├── robots.txt          # Crawler directives
 ├── llms.txt            # AI discoverability (ChatGPT, Claude, Perplexity)
 ├── CLAUDE.md           # This file
@@ -149,7 +152,7 @@ alnoman-website/
 - **Database**: https://alnoman-foundation-default-rtdb.firebaseio.com
 - **SDK**: Firebase v9.22.0 compat (loaded via CDN)
 - **Auth**: Email/Password — admin login: info@alnoman.org
-- **Pages using Firebase**: index.html, admin.html, campaigns.html, start-campaign.html (+ ar/ and fr/ equivalents)
+- **Pages using Firebase**: index.html, admin.html, campaigns.html, start-campaign.html, ramadan.html (+ ar/ and fr/ equivalents)
 
 ### Database Nodes
 | Node | Purpose | Public Read | Public Write |
@@ -158,6 +161,7 @@ alnoman-website/
 | `/goals` | Campaign progress (raised/target per campaign) | Yes | Admin only |
 | `/campaigns` | Crowdfunding campaigns (foundation + community) | Yes | Create pending only |
 | `/causes` | Cause suggestions from visitors | Yes | Create pending only |
+| `/newsletter` | Newsletter email subscribers | Admin only | Yes (push) |
 
 ### Campaign Schema (`/campaigns/{id}`)
 ```
@@ -212,7 +216,7 @@ const defaultGoals = {
 - AboutPage schema on about.html, ContactPage schema on contact.html
 - Blog schema (BlogPosting) on stories.html
 - Open Graph + Twitter Card meta tags on all pages
-- sitemap.xml with 27 URLs (9 per language) + hreflang annotations
+- sitemap.xml with 30 URLs (10 per language) + hreflang annotations
 - robots.txt in place
 - Canonical URLs set
 - Keywords targeting: nonprofit, charity, clean water, education, Benin, Gaza, 501c3
@@ -272,21 +276,25 @@ const defaultGoals = {
 - [x] Multilingual support — Arabic (RTL) + French (18 translated pages)
 - [x] GitHub Actions auto-deploy via FTP on push to main
 - [x] Language switcher (globe dropdown) on all pages
-- [x] hreflang tags + sitemap.xml expanded to 27 URLs
+- [x] hreflang tags + sitemap.xml expanded to 30 URLs
+- [x] Ramadan 2026 campaign page (EN/AR/FR) with countdown timer, Zakat/Fidya/Sadaqah options, Iftar sponsorship
+- [x] Newsletter signup on homepages (Firebase-powered, honeypot + rate limiting spam protection)
+- [x] Newsletter subscriber management in admin.html (view, delete, CSV export)
+- [x] GA4 dual-tagging prepared across all 30 pages (uncomment `G-XXXXXXXXXX` after creating GA4 property)
 
 ## Roadmap — Website
 - [ ] Add real campaign videos (YouTube/Vimeo embeds) to stories page
 - [ ] Replace placeholder impact numbers with real stats (wells, meals, students, countries)
-- [ ] Migrate Google Analytics from UA (deprecated) to GA4
+- [x] Migrate Google Analytics from UA (deprecated) to GA4 (dual-tagged, GA4 ID placeholder ready)
 - [ ] Submit sitemap to Google Search Console
 - [ ] Add Google Search Console verification meta tag
 - [ ] Create individual campaign landing pages (better SEO + shareable)
 - [ ] Add testimonials from beneficiaries
 - [ ] Add annual report / financial transparency PDF
 - [x] Multilingual support (Arabic, French for Benin audience)
-- [ ] Add newsletter signup integration (Zeffy — 100% free, unlimited)
+- [x] Add newsletter signup integration (Firebase-powered on homepages + admin CSV export)
 - [x] Set up GitHub Pages or Netlify for auto-deploy (replace manual GoDaddy uploads)
-- [ ] Add Ramadan/Eid seasonal campaign pages
+- [x] Add Ramadan 2026 seasonal campaign page (EN/AR/FR with countdown, Zakat calculator, giving options)
 - [ ] Create social media share images (OG images) for each campaign
 
 ---
@@ -430,7 +438,7 @@ const defaultGoals = {
 
 ## Notes
 - The `images/` folder exists on GoDaddy hosting AND in the GitHub repo
-- Deploy is automated via GitHub Actions on push to main (FTP to GoDaddy public_html/)
+- Deploy is automated via GitHub Actions on push to master (FTP to GoDaddy public_html/)
 - GitHub Secrets required: `FTP_SERVER`, `FTP_USERNAME`, `FTP_PASSWORD`
 - The old CSS files (`css/style.css`, `css/styles.css`) and `js/script.js` are legacy — the redesigned site uses inline styles/scripts and does NOT depend on them
 - Impact numbers (20+ wells, 5000+ meals, 200+ students, 5 countries) are PLACEHOLDERS — update with real figures
@@ -439,6 +447,12 @@ const defaultGoals = {
 - Cookie consent uses localStorage key `alnoman_cookies_accepted`
 - Language preference uses localStorage key `alnoman_lang`
 - WhatsApp number: +1 (813) 358-4681 — verify this is correct for WhatsApp Business
+- Newsletter signup on EN/AR/FR homepages stores to Firebase `/newsletter` node with `source` tag (homepage-en/ar/fr)
+- Newsletter uses same spam protection as other forms: honeypot field + localStorage 5-min cooldown (`alnoman_nl_sent`)
+- Admin newsletter section shows all subscribers in a table with delete + CSV export
+- GA4 dual-tagging: all 30 HTML pages have `// gtag('config', 'G-XXXXXXXXXX');` commented out — uncomment and replace with real GA4 Measurement ID when ready
+- To create GA4 property: Go to analytics.google.com → Admin → Create Property → Set up data stream → Copy Measurement ID (starts with G-)
+- Ramadan page has gold accent theming (`--ramadan-gold: #d4a843`) alongside purple brand colors
 - Admin dashboard is not linked from public navigation (access directly at /admin.html)
 - Arabic pages use Noto Sans Arabic font; French pages use same fonts as English (Inter + Playfair Display)
 - All ar/ and fr/ pages reference assets via `../images/` and `../js/` relative paths

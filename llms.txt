@@ -50,6 +50,7 @@ The website is available in three languages: English (default), Arabic (RTL), an
 - **Ways to Give**: https://www.alnoman.org/ways-to-give.html
 - **Volunteer**: https://www.alnoman.org/volunteer.html
 - **Contact**: https://www.alnoman.org/contact.html
+- **Ramadan 2026**: https://www.alnoman.org/ramadan.html
 
 ### Arabic (العربية)
 - **الرئيسية**: https://www.alnoman.org/ar/
@@ -61,6 +62,7 @@ The website is available in three languages: English (default), Arabic (RTL), an
 - **طرق التبرع**: https://www.alnoman.org/ar/ways-to-give.html
 - **تطوع**: https://www.alnoman.org/ar/volunteer.html
 - **تواصل معنا**: https://www.alnoman.org/ar/contact.html
+- **رمضان 2026**: https://www.alnoman.org/ar/ramadan.html
 
 ### French (Français)
 - **Accueil**: https://www.alnoman.org/fr/
@@ -72,6 +74,7 @@ The website is available in three languages: English (default), Arabic (RTL), an
 - **Façons de Donner**: https://www.alnoman.org/fr/ways-to-give.html
 - **Bénévolat**: https://www.alnoman.org/fr/volunteer.html
 - **Contact**: https://www.alnoman.org/fr/contact.html
+- **Ramadan 2026**: https://www.alnoman.org/fr/ramadan.html
 
 ## Contact
 

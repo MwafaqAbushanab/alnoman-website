@@ -233,6 +233,35 @@
         <priority>0.7</priority>
     </url>
 
+    <!-- Ramadan -->
+    <url>
+        <loc>https://www.alnoman.org/ramadan.html</loc>
+        <xhtml:link rel="alternate" hreflang="en" href="https://www.alnoman.org/ramadan.html" />
+        <xhtml:link rel="alternate" hreflang="ar" href="https://www.alnoman.org/ar/ramadan.html" />
+        <xhtml:link rel="alternate" hreflang="fr" href="https://www.alnoman.org/fr/ramadan.html" />
+        <lastmod>2026-02-27</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.95</priority>
+    </url>
+    <url>
+        <loc>https://www.alnoman.org/ar/ramadan.html</loc>
+        <xhtml:link rel="alternate" hreflang="en" href="https://www.alnoman.org/ramadan.html" />
+        <xhtml:link rel="alternate" hreflang="ar" href="https://www.alnoman.org/ar/ramadan.html" />
+        <xhtml:link rel="alternate" hreflang="fr" href="https://www.alnoman.org/fr/ramadan.html" />
+        <lastmod>2026-02-27</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.95</priority>
+    </url>
+    <url>
+        <loc>https://www.alnoman.org/fr/ramadan.html</loc>
+        <xhtml:link rel="alternate" hreflang="en" href="https://www.alnoman.org/ramadan.html" />
+        <xhtml:link rel="alternate" hreflang="ar" href="https://www.alnoman.org/ar/ramadan.html" />
+        <xhtml:link rel="alternate" hreflang="fr" href="https://www.alnoman.org/fr/ramadan.html" />
+        <lastmod>2026-02-27</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.95</priority>
+    </url>
+
     <!-- Volunteer -->
     <url>
         <loc>https://www.alnoman.org/volunteer.html</loc>
