@@ -4,10 +4,16 @@
 - **Live site**: https://www.alnoman.org
 - **GitHub repo**: https://github.com/MwafaqAbushanab/alnoman-website
 - **Hosting**: GoDaddy shared hosting (Apache), NOT auto-deployed from GitHub
-- **Deploy process**: Manually upload files to GoDaddy cPanel > File Manager > `public_html/`
+- **Deploy process**: FTP via lftp to `public_html/` (see deploy command below)
 - **Domain registrar**: GoDaddy (expires August 8, 2027)
 - **Type**: Static HTML/CSS/JS — no build step, no framework
-- **Analytics**: Google Analytics UA-250622242-1 (legacy Universal Analytics)
+- **Backend**: Firebase Realtime Database (stats, goals, campaigns, causes)
+- **Analytics**: Google Analytics UA-250622242-1 (legacy Universal Analytics — needs GA4 migration)
+
+### Deploy Command
+```bash
+lftp -e 'set ssl:verify-certificate no; open -u s4dtsevjcmmu,AllahGodz1! p3plzcpnl489505.prod.phx3.secureserver.net; cd public_html; mput <files>; bye'
+```
 
 ## Organization Info
 - **Name**: Al-Noman Foundation
@@ -50,18 +56,22 @@
 - LinkedIn: https://www.linkedin.com/company/81360274/
 
 ## Navigation Structure
-Home | About | Programs | Campaigns | Stories | Contact | [Donate]
+Home | About | Programs | Campaigns | Stories | Ways to Give | Contact | [Volunteer] | [Donate]
 
 ## File Structure
 ```
 alnoman-website/
-├── index.html          # Homepage (hero, campaigns, donation plans, impact stats)
+├── index.html          # Homepage (hero, stats, 5 campaign cards with Firebase progress bars, impact stories, donation plans)
 ├── about.html          # About page (mission, Noman memorial, pillars, values, transparency)
 ├── programs.html       # Programs page (water, education, food, worship, mobility, Gaza)
+├── campaigns.html      # Crowdfunding browse page (Firebase-powered, filters, progress bars, donate buttons)
+├── start-campaign.html # Submit campaign proposal or suggest a cause (dual-tab form, writes to Firebase)
 ├── stories.html        # Impact Stories page (5 campaign stories + founder story)
 ├── ways-to-give.html   # Ways to Give page (plans, one-time, campaigns, PayPal, matching)
+├── volunteer.html      # Volunteer signup form (Formspree-powered)
 ├── contact.html        # Contact page (phone, email, WhatsApp, social, inquiry types)
-├── sitemap.xml         # For Google crawling (all 6 pages listed)
+├── admin.html          # Admin dashboard (Firebase Auth — stats, goals, campaign/cause management)
+├── sitemap.xml         # For Google crawling (9 public pages listed)
 ├── robots.txt          # Crawler directives
 ├── llms.txt            # AI discoverability (ChatGPT, Claude, Perplexity)
 ├── CLAUDE.md           # This file
@@ -70,19 +80,27 @@ alnoman-website/
 │   └── styles.css
 ├── js/
 │   └── script.js       # Legacy JS (NOT used — inline scripts now)
-└── images/             # On GoDaddy only, NOT in GitHub repo
-    └── (campaign photos on server)
+└── images/             # Campaign photos (also on GoDaddy)
+    ├── logo.png        # Header + footer logo on all pages
+    ├── gaza.jpg        # Save Gaza campaign (Pexels)
+    ├── bread.jpeg      # Bread a Day campaign
+    ├── food.jpg        # Dabiha campaign
+    ├── waterwell1.jpeg # Water Wells campaign
+    ├── bemobile.jpg    # Be Mobile campaign (Pexels)
+    └── Education.png   # Education program
 ```
 
 ## Design System
 - **Fonts**: Inter (body) + Playfair Display (headings) via Google Fonts
-- **Icons**: Font Awesome 6.5.1 (no images needed)
-- **Primary color**: `#0d7c5f` (deep green — hope/growth)
-- **Accent color**: `#d4a843` (gold — warmth/generosity)
-- **Dark color**: `#1a1a2e` (navy — trust/authority)
+- **Icons**: Font Awesome 6.5.1
+- **Logo**: `images/logo.png` in header and footer on all pages
+- **Primary color**: `#7352a2` (purple)
+- **Primary dark**: `#5a3d8a`
+- **Primary light**: `#f0ebf7`
+- **Accent**: `#e0d5f0` (light purple)
+- **Text on primary**: white
 - **All CSS is inline** in each HTML file (no external stylesheets dependency)
-- **No images used** — pure CSS gradients and Font Awesome icons
-- **Favicon**: Inline SVG data URI (green circle with "AN" text — no external file needed)
+- **Favicon**: Inline SVG data URI (no external file needed)
 - **Responsive**: Mobile, tablet, desktop breakpoints at 480px, 768px, 1024px
 
 ## Shared Elements (All Pages)
@@ -90,32 +108,97 @@ alnoman-website/
 - **Cookie consent banner** — localStorage key `alnoman_cookies_accepted`
 - **WhatsApp floating button** — links to `https://wa.me/18133584681`
 - **Back-to-top button** — appears on scroll, smooth scroll to top
-- **Mobile hamburger menu** — CSS-only toggle for responsive nav
+- **Mobile hamburger menu** — JS toggle for responsive nav
 - **IntersectionObserver animations** — fade-in on scroll for content sections
 - **ARIA attributes** — `aria-hidden="true"` on decorative icons, semantic `role` attributes
+
+## Firebase Integration
+- **Project**: alnoman-foundation
+- **Database**: https://alnoman-foundation-default-rtdb.firebaseio.com
+- **SDK**: Firebase v9.22.0 compat (loaded via CDN)
+- **Auth**: Email/Password — admin login: info@alnoman.org
+- **Pages using Firebase**: index.html, admin.html, campaigns.html, start-campaign.html
+
+### Database Nodes
+| Node | Purpose | Public Read | Public Write |
+|------|---------|-------------|--------------|
+| `/stats` | Impact counters (wells, meals, students, countries) | Yes | Admin only |
+| `/goals` | Campaign progress (raised/target per campaign) | Yes | Admin only |
+| `/campaigns` | Crowdfunding campaigns (foundation + community) | Yes | Create pending only |
+| `/causes` | Cause suggestions from visitors | Yes | Create pending only |
+
+### Campaign Schema (`/campaigns/{id}`)
+```
+title, description, category, location,
+submitter_name, submitter_email,
+goal_amount, raised_amount,
+stripe_link, image_url,
+status: "pending" | "approved" | "rejected" | "completed",
+is_foundation: true/false,
+created_at, approved_at, admin_notes
+```
+- Foundation campaigns: `foundation-gaza`, `foundation-bread`, `foundation-dabiha`, `foundation-water`, `foundation-mobile`
+- User campaigns: Firebase push IDs
+
+### Cause Schema (`/causes/{id}`)
+```
+title, description, category,
+submitter_name, submitter_email,
+status: "pending" | "approved" | "rejected" | "converted",
+created_at, admin_notes
+```
+
+### Security Rules
+- Anyone can read all nodes
+- Only authenticated admin can write to `stats` and `goals`
+- Anyone can create new campaigns/causes with `status: "pending"` (validation enforced)
+- Only admin can update existing campaigns/causes (approve, reject, edit amounts)
+- Spam protection: honeypot fields + localStorage 5-min cooldown on forms
+
+### Fallback Defaults (index.html)
+```javascript
+const defaultStats = { wells: 20, meals: 5000, students: 200, countries: 5 };
+const defaultGoals = {
+    gaza_raised: 12450, gaza_target: 50000,
+    bread_raised: 3200, bread_target: 10000,
+    dabiha_raised: 5800, dabiha_target: 15000,
+    water_raised: 8700, water_target: 25000,
+    mobile_raised: 2100, mobile_target: 10000
+};
+```
+
+## Crowdfunding System
+1. **Visitor submits** campaign proposal or cause suggestion via `start-campaign.html`
+2. **Admin reviews** in `admin.html` → Pending Campaigns / Pending Causes sections
+3. **Admin creates Stripe link** in Stripe Dashboard, pastes into approval form
+4. **Admin approves** → campaign goes live on `campaigns.html` with donate button
+5. **Causes** can be acknowledged, rejected, or converted into campaigns
+6. **Campaign images**: Admin can set custom image URL, or category-based gradient placeholder is used
 
 ## SEO Setup
 - JSON-LD structured data: NGO schema + WebSite schema with DonateAction
 - AboutPage schema on about.html, ContactPage schema on contact.html
 - Blog schema (BlogPosting) on stories.html
 - Open Graph + Twitter Card meta tags on all pages
-- sitemap.xml with all 6 pages (needs Google Search Console verification)
+- sitemap.xml with 9 public pages
 - robots.txt in place
 - Canonical URLs set
 - Keywords targeting: nonprofit, charity, clean water, education, Benin, Gaza, 501c3
 
 ## AI Discoverability
 - `llms.txt` at root — structured summary for AI crawlers
-- Contains: mission, campaigns, donation links, contact info, efficiency stats
+- Contains: mission, campaigns, crowdfunding info, donation links, contact info, efficiency stats
 
 ## What's Been Done
-- [x] Full site redesign (no images, modern CSS, responsive)
+- [x] Full site redesign (modern CSS, responsive, purple brand)
+- [x] Brand recolor from green/gold to purple (#7352a2)
+- [x] Logo added (images/logo.png) replacing text-only header
 - [x] Phone number updated to +1 (813) 358-4681
 - [x] All team member photos removed (replaced with initial avatars)
 - [x] Page title fixed (was "webpage with payment gateway")
 - [x] Opening hours section removed
-- [x] All typos fixed (benefitors, stationary, parents utlities, acess, etc.)
-- [x] Broken social links cleaned up (only real links shown)
+- [x] All typos fixed
+- [x] Broken social links cleaned up
 - [x] LinkedIn admin URL fixed
 - [x] 90%+ efficiency messaging added (impact bar, transparency section, CTA)
 - [x] Transparency section with donut chart
@@ -126,50 +209,49 @@ alnoman-website/
 - [x] Impact Stories page (stories.html) with 5 campaign stories
 - [x] Founder memorial story (Noman Abushanab)
 - [x] Blog schema markup on stories page
-- [x] Stories link in main nav + footer
 - [x] Team section completely removed from site (per owner request)
-- [x] Duplicate Projects section removed from homepage (was duplicating Campaigns)
-- [x] All video "coming soon" placeholders removed from stories.html
-- [x] Navigation updated: Home | About | Programs | Campaigns | Stories | Contact | Donate
-- [x] SVG inline favicon (green circle with "AN" — no external file dependency)
+- [x] SVG inline favicon (no external file dependency)
 - [x] Cookie consent banner (GDPR compliance, localStorage-based)
 - [x] WhatsApp floating contact button
 - [x] Back-to-top scroll button
 - [x] Skip-to-content accessibility link
 - [x] ARIA attributes on decorative elements
-- [x] Copyright year updated to 2025
-- [x] Employer matching gift section added to homepage
-- [x] Created about.html (670 lines, 3767 words — mission, Noman memorial, pillars, values, transparency)
-- [x] Created programs.html (584 lines, 3575 words — all programs with campaign-specific Stripe links)
-- [x] Created ways-to-give.html (690 lines, 3706 words — plans, campaigns, PayPal, employer matching)
-- [x] Created contact.html (520 lines, 2625 words — phone, email, WhatsApp, social, inquiry types)
-- [x] 6 pages with 300+ words each (meets Google Ad Grants requirement of 5+ pages)
-- [x] Sitemap updated with all 6 pages
-- [x] llms.txt updated with full site structure
-- [x] Footer links updated across all pages to include new pages
+- [x] Employer matching gift section on homepage + ways-to-give
+- [x] Created about.html, programs.html, ways-to-give.html, contact.html
+- [x] Created volunteer.html with Formspree integration
+- [x] 9 public pages with 300+ words each (meets Google Ad Grants requirement)
+- [x] Firebase Realtime Database integration (stats + campaign progress bars)
+- [x] Admin dashboard (admin.html) with Firebase Auth
+- [x] Donation progress bars on homepage campaigns (Firebase-powered with fallback defaults)
+- [x] Campaign images replaced with authentic photos (gaza.jpg, bemobile.jpg from Pexels)
+- [x] Crowdfunding system: campaigns.html + start-campaign.html
+- [x] Campaign submission form (title, category, description, location, goal, contact info)
+- [x] Cause suggestion form (title, category, description, contact info)
+- [x] Admin campaign management (approve/reject pending campaigns with Stripe link)
+- [x] Admin cause management (approve/reject/convert causes to campaigns)
+- [x] Admin approved campaign editor (update raised amounts, goals, Stripe links)
+- [x] Firebase security rules (public read, restricted write, validation)
+- [x] 5 foundation campaigns seeded into Firebase
+- [x] Campaign browse page with category filters (All, Foundation, Community, Water, Education, Food, Emergency)
+- [x] Spam protection (honeypot fields + localStorage rate limiting)
+- [x] Navigation updated on all pages (includes Campaigns link)
+- [x] Sitemap updated with all 9 public pages
+- [x] Footer links updated across all pages
 
 ## Roadmap — Website
 - [ ] Add real campaign videos (YouTube/Vimeo embeds) to stories page
-- [ ] Add real campaign photos to story cards and campaign sections
 - [ ] Replace placeholder impact numbers with real stats (wells, meals, students, countries)
 - [ ] Migrate Google Analytics from UA (deprecated) to GA4
 - [ ] Submit sitemap to Google Search Console
 - [ ] Add Google Search Console verification meta tag
 - [ ] Create individual campaign landing pages (better SEO + shareable)
-- [ ] Add donation progress bars to campaigns (social proof)
 - [ ] Add testimonials from beneficiaries
 - [ ] Add annual report / financial transparency PDF
 - [ ] Multilingual support (Arabic, French for Benin audience)
 - [ ] Add newsletter signup integration (Zeffy — 100% free, unlimited)
-- [x] ~~Create a favicon that isn't image-dependent (SVG)~~ — Done: inline SVG data URI
-- [x] ~~Add WhatsApp contact button~~ — Done: floating button on all pages
 - [ ] Set up GitHub Pages or Netlify for auto-deploy (replace manual GoDaddy uploads)
-- [x] ~~Add a "Ways to Give" page~~ — Done: ways-to-give.html
 - [ ] Add Ramadan/Eid seasonal campaign pages
 - [ ] Create social media share images (OG images) for each campaign
-- [x] ~~Add cookie consent banner (GDPR compliance)~~ — Done: localStorage-based on all pages
-- [x] ~~Add 5+ pages with 300+ words each (Google Ad Grants)~~ — Done: 6 pages, all 300+ words
-- [x] ~~Add employer matching gift prompt~~ — Done: on homepage + ways-to-give page
 
 ---
 
@@ -311,11 +393,12 @@ alnoman-website/
 | **Total estimated value** | | **$130K+/year** |
 
 ## Notes
-- The `images/` folder exists on GoDaddy hosting but is NOT in the GitHub repo
-- When uploading to GoDaddy, upload all 6 HTML files + sitemap.xml + robots.txt + llms.txt to `public_html/`
+- The `images/` folder exists on GoDaddy hosting AND in the GitHub repo
+- When uploading to GoDaddy, upload HTML files + sitemap.xml + robots.txt + llms.txt to `public_html/`
 - The old CSS files (`css/style.css`, `css/styles.css`) and `js/script.js` are legacy — the redesigned site uses inline styles/scripts and does NOT depend on them
 - Impact numbers (20+ wells, 5000+ meals, 200+ students, 5 countries) are PLACEHOLDERS — update with real figures
 - Team members section was completely removed from the site (per owner request, Feb 2025)
 - All pages use inline SVG favicon — no favicon.ico file needed
 - Cookie consent uses localStorage key `alnoman_cookies_accepted`
 - WhatsApp number: +1 (813) 358-4681 — verify this is correct for WhatsApp Business
+- Admin dashboard is not linked from public navigation (access directly at /admin.html)
