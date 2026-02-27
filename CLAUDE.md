@@ -58,6 +58,8 @@ Requires GitHub Secrets: `FTP_SERVER`, `FTP_USERNAME`, `FTP_PASSWORD`.
 - Facebook: https://www.facebook.com/ALNOMANFoundation
 - Instagram: https://www.instagram.com/al_noman_foundation/
 - LinkedIn: https://www.linkedin.com/company/81360274/
+- TikTok: https://www.tiktok.com/@alnomanonprofit
+- X (Twitter): https://x.com/FoundationNoman
 
 ## Multilingual Support
 - **Languages**: English (default), Arabic (RTL), French
@@ -296,8 +298,8 @@ const defaultGoals = {
 - [ ] Add real campaign videos (YouTube/Vimeo embeds) to stories page
 - [ ] Replace placeholder impact numbers with real stats (wells, meals, students, countries)
 - [x] Migrate Google Analytics from UA (deprecated) to GA4 (dual-tagged, GA4 ID placeholder ready)
-- [ ] Submit sitemap to Google Search Console
-- [ ] Add Google Search Console verification meta tag
+- [x] Submit sitemap to Google Search Console (30 URLs submitted Feb 27 2026)
+- [x] Add Google Search Console verification meta tag
 - [ ] Create individual campaign landing pages (better SEO + shareable)
 - [ ] Add testimonials from beneficiaries
 - [ ] Add annual report / financial transparency PDF
