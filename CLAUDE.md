@@ -3,17 +3,16 @@
 ## Overview
 - **Live site**: https://www.alnoman.org
 - **GitHub repo**: https://github.com/MwafaqAbushanab/alnoman-website
-- **Hosting**: GoDaddy shared hosting (Apache), NOT auto-deployed from GitHub
-- **Deploy process**: FTP via lftp to `public_html/` (see deploy command below)
+- **Hosting**: GoDaddy shared hosting (Apache)
+- **Deploy process**: GitHub Actions auto-deploy via FTP on push to `main` (see `.github/workflows/deploy.yml`)
 - **Domain registrar**: GoDaddy (expires August 8, 2027)
 - **Type**: Static HTML/CSS/JS — no build step, no framework
 - **Backend**: Firebase Realtime Database (stats, goals, campaigns, causes)
 - **Analytics**: Google Analytics UA-250622242-1 (legacy Universal Analytics — needs GA4 migration)
 
-### Deploy Command
-```bash
-lftp -e 'set ssl:verify-certificate no; open -u s4dtsevjcmmu,AllahGodz1! p3plzcpnl489505.prod.phx3.secureserver.net; cd public_html; mput <files>; bye'
-```
+### Deploy
+Auto-deployed via GitHub Actions on push to `main`. Uses `SamKirkland/FTP-Deploy-Action@v4.3.5`.
+Requires GitHub Secrets: `FTP_SERVER`, `FTP_USERNAME`, `FTP_PASSWORD`.
 
 ## Organization Info
 - **Name**: Al-Noman Foundation
@@ -55,6 +54,15 @@ lftp -e 'set ssl:verify-certificate no; open -u s4dtsevjcmmu,AllahGodz1! p3plzcp
 - Instagram: https://www.instagram.com/al_noman_foundation/
 - LinkedIn: https://www.linkedin.com/company/81360274/
 
+## Multilingual Support
+- **Languages**: English (default), Arabic (RTL), French
+- **Model**: Subdirectory — `/` (English), `/ar/` (Arabic), `/fr/` (French)
+- **Language switcher**: Globe icon dropdown on all pages via `js/lang-switcher.js`
+- **SEO**: hreflang `<link>` tags on all pages, sitemap.xml with 27 URLs + xhtml:link annotations
+- **Arabic**: `<html lang="ar" dir="rtl">`, Noto Sans Arabic font, full RTL CSS overrides
+- **French**: `<html lang="fr">`, same LTR layout as English, Inter + Playfair Display fonts
+- **Firebase**: Same config preserved across all languages (campaigns, stats, forms)
+
 ## Navigation Structure
 Home | About | Programs | Campaigns | Stories | Ways to Give | Contact | [Volunteer] | [Donate]
 
@@ -71,7 +79,30 @@ alnoman-website/
 ├── volunteer.html      # Volunteer signup form (Formspree-powered)
 ├── contact.html        # Contact page (phone, email, WhatsApp, social, inquiry types)
 ├── admin.html          # Admin dashboard (Firebase Auth — stats, goals, campaign/cause management)
-├── sitemap.xml         # For Google crawling (9 public pages listed)
+├── ar/                 # Arabic RTL translations (9 pages mirroring English)
+│   ├── index.html
+│   ├── about.html
+│   ├── programs.html
+│   ├── campaigns.html
+│   ├── start-campaign.html
+│   ├── stories.html
+│   ├── ways-to-give.html
+│   ├── volunteer.html
+│   └── contact.html
+├── fr/                 # French translations (9 pages mirroring English)
+│   ├── index.html
+│   ├── about.html
+│   ├── programs.html
+│   ├── campaigns.html
+│   ├── start-campaign.html
+│   ├── stories.html
+│   ├── ways-to-give.html
+│   ├── volunteer.html
+│   └── contact.html
+├── .github/workflows/
+│   └── deploy.yml      # GitHub Actions auto-deploy via FTP on push to main
+├── .gitignore
+├── sitemap.xml         # 27 URLs with hreflang annotations (9 per language)
 ├── robots.txt          # Crawler directives
 ├── llms.txt            # AI discoverability (ChatGPT, Claude, Perplexity)
 ├── CLAUDE.md           # This file
@@ -79,7 +110,8 @@ alnoman-website/
 │   ├── style.css
 │   └── styles.css
 ├── js/
-│   └── script.js       # Legacy JS (NOT used — inline scripts now)
+│   ├── script.js       # Legacy JS (NOT used — inline scripts now)
+│   └── lang-switcher.js # Language switcher dropdown (shared across all pages)
 └── images/             # Campaign photos (also on GoDaddy)
     ├── logo.png        # Header + footer logo on all pages
     ├── gaza.jpg        # Save Gaza campaign (Pexels)
@@ -117,7 +149,7 @@ alnoman-website/
 - **Database**: https://alnoman-foundation-default-rtdb.firebaseio.com
 - **SDK**: Firebase v9.22.0 compat (loaded via CDN)
 - **Auth**: Email/Password — admin login: info@alnoman.org
-- **Pages using Firebase**: index.html, admin.html, campaigns.html, start-campaign.html
+- **Pages using Firebase**: index.html, admin.html, campaigns.html, start-campaign.html (+ ar/ and fr/ equivalents)
 
 ### Database Nodes
 | Node | Purpose | Public Read | Public Write |
@@ -180,7 +212,7 @@ const defaultGoals = {
 - AboutPage schema on about.html, ContactPage schema on contact.html
 - Blog schema (BlogPosting) on stories.html
 - Open Graph + Twitter Card meta tags on all pages
-- sitemap.xml with 9 public pages
+- sitemap.xml with 27 URLs (9 per language) + hreflang annotations
 - robots.txt in place
 - Canonical URLs set
 - Keywords targeting: nonprofit, charity, clean water, education, Benin, Gaza, 501c3
@@ -237,6 +269,10 @@ const defaultGoals = {
 - [x] Navigation updated on all pages (includes Campaigns link)
 - [x] Sitemap updated with all 9 public pages
 - [x] Footer links updated across all pages
+- [x] Multilingual support — Arabic (RTL) + French (18 translated pages)
+- [x] GitHub Actions auto-deploy via FTP on push to main
+- [x] Language switcher (globe dropdown) on all pages
+- [x] hreflang tags + sitemap.xml expanded to 27 URLs
 
 ## Roadmap — Website
 - [ ] Add real campaign videos (YouTube/Vimeo embeds) to stories page
@@ -247,9 +283,9 @@ const defaultGoals = {
 - [ ] Create individual campaign landing pages (better SEO + shareable)
 - [ ] Add testimonials from beneficiaries
 - [ ] Add annual report / financial transparency PDF
-- [ ] Multilingual support (Arabic, French for Benin audience)
+- [x] Multilingual support (Arabic, French for Benin audience)
 - [ ] Add newsletter signup integration (Zeffy — 100% free, unlimited)
-- [ ] Set up GitHub Pages or Netlify for auto-deploy (replace manual GoDaddy uploads)
+- [x] Set up GitHub Pages or Netlify for auto-deploy (replace manual GoDaddy uploads)
 - [ ] Add Ramadan/Eid seasonal campaign pages
 - [ ] Create social media share images (OG images) for each campaign
 
@@ -394,11 +430,15 @@ const defaultGoals = {
 
 ## Notes
 - The `images/` folder exists on GoDaddy hosting AND in the GitHub repo
-- When uploading to GoDaddy, upload HTML files + sitemap.xml + robots.txt + llms.txt to `public_html/`
+- Deploy is automated via GitHub Actions on push to main (FTP to GoDaddy public_html/)
+- GitHub Secrets required: `FTP_SERVER`, `FTP_USERNAME`, `FTP_PASSWORD`
 - The old CSS files (`css/style.css`, `css/styles.css`) and `js/script.js` are legacy — the redesigned site uses inline styles/scripts and does NOT depend on them
 - Impact numbers (20+ wells, 5000+ meals, 200+ students, 5 countries) are PLACEHOLDERS — update with real figures
 - Team members section was completely removed from the site (per owner request, Feb 2025)
 - All pages use inline SVG favicon — no favicon.ico file needed
 - Cookie consent uses localStorage key `alnoman_cookies_accepted`
+- Language preference uses localStorage key `alnoman_lang`
 - WhatsApp number: +1 (813) 358-4681 — verify this is correct for WhatsApp Business
 - Admin dashboard is not linked from public navigation (access directly at /admin.html)
+- Arabic pages use Noto Sans Arabic font; French pages use same fonts as English (Inter + Playfair Display)
+- All ar/ and fr/ pages reference assets via `../images/` and `../js/` relative paths

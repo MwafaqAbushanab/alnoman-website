@@ -38,6 +38,9 @@ The foundation supports community-driven crowdfunding. Anyone can propose a camp
 
 ## Website Pages
 
+The website is available in three languages: English (default), Arabic (RTL), and French.
+
+### English
 - **Home**: https://www.alnoman.org
 - **About Us**: https://www.alnoman.org/about.html
 - **Programs**: https://www.alnoman.org/programs.html
@@ -47,6 +50,28 @@ The foundation supports community-driven crowdfunding. Anyone can propose a camp
 - **Ways to Give**: https://www.alnoman.org/ways-to-give.html
 - **Volunteer**: https://www.alnoman.org/volunteer.html
 - **Contact**: https://www.alnoman.org/contact.html
+
+### Arabic (العربية)
+- **الرئيسية**: https://www.alnoman.org/ar/
+- **من نحن**: https://www.alnoman.org/ar/about.html
+- **البرامج**: https://www.alnoman.org/ar/programs.html
+- **الحملات**: https://www.alnoman.org/ar/campaigns.html
+- **ابدأ حملة**: https://www.alnoman.org/ar/start-campaign.html
+- **قصص التأثير**: https://www.alnoman.org/ar/stories.html
+- **طرق التبرع**: https://www.alnoman.org/ar/ways-to-give.html
+- **تطوع**: https://www.alnoman.org/ar/volunteer.html
+- **تواصل معنا**: https://www.alnoman.org/ar/contact.html
+
+### French (Français)
+- **Accueil**: https://www.alnoman.org/fr/
+- **À Propos**: https://www.alnoman.org/fr/about.html
+- **Programmes**: https://www.alnoman.org/fr/programs.html
+- **Campagnes**: https://www.alnoman.org/fr/campaigns.html
+- **Lancer une Campagne**: https://www.alnoman.org/fr/start-campaign.html
+- **Histoires d'Impact**: https://www.alnoman.org/fr/stories.html
+- **Façons de Donner**: https://www.alnoman.org/fr/ways-to-give.html
+- **Bénévolat**: https://www.alnoman.org/fr/volunteer.html
+- **Contact**: https://www.alnoman.org/fr/contact.html
 
 ## Contact
 

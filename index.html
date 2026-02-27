@@ -25,6 +25,9 @@
     <meta name="robots" content="index, follow">
     <meta name="google-site-verification" content="gSM0jord-6fGOMj3iRUeR_YtA0o-2WivSuPn2pW7myI" />
     <link rel="canonical" href="https://www.alnoman.org/">
+    <link rel="alternate" hreflang="en" href="https://www.alnoman.org/index.html" />
+    <link rel="alternate" hreflang="ar" href="https://www.alnoman.org/ar/index.html" />
+    <link rel="alternate" hreflang="fr" href="https://www.alnoman.org/fr/index.html" />
     <link rel="alternate" href="https://www.alnoman.org/stories.html" title="Impact Stories">
 
     <!-- JSON-LD Structured Data -->
@@ -1317,6 +1320,16 @@
             .impact .container { grid-template-columns: 1fr 1fr; gap: 24px; }
             .hero-buttons { flex-direction: column; align-items: center; }
         }
+/* Language Switcher */
+.lang-switcher{position:relative;margin-left:12px}
+.lang-btn{background:none;border:1px solid var(--accent,#e0d5f0);color:var(--primary,#7352a2);padding:6px 14px;border-radius:20px;cursor:pointer;font-size:.85rem;font-family:inherit;display:flex;align-items:center;gap:6px;transition:background .2s}
+.lang-btn:hover{background:var(--primary-light,#f0ebf7)}
+.lang-dropdown{display:none;position:absolute;top:110%;right:0;background:#fff;border-radius:8px;box-shadow:0 4px 20px rgba(0,0,0,.12);min-width:140px;z-index:1000;overflow:hidden}
+.lang-dropdown.open{display:block}
+.lang-option{display:block;padding:10px 16px;text-decoration:none;color:#333;font-size:.9rem;transition:background .2s}
+.lang-option:hover{background:var(--primary-light,#f0ebf7)}
+.lang-option.active{color:var(--primary,#7352a2);font-weight:600;background:var(--primary-light,#f0ebf7)}
+@media(max-width:768px){.lang-switcher{margin-left:0;margin-top:10px}}
     </style>
 </head>
 <body>
@@ -1921,5 +1934,6 @@
     }
 </script>
 
+<script src="js/lang-switcher.js"></script>
 </body>
 </html>
