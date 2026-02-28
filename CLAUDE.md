@@ -65,7 +65,7 @@ Requires GitHub Secrets: `FTP_SERVER`, `FTP_USERNAME`, `FTP_PASSWORD`.
 - **Languages**: English (default), Arabic (RTL), French
 - **Model**: Subdirectory — `/` (English), `/ar/` (Arabic), `/fr/` (French)
 - **Language switcher**: Globe icon dropdown on all pages via `js/lang-switcher.js`
-- **SEO**: hreflang `<link>` tags on all pages, sitemap.xml with 30 URLs + xhtml:link annotations
+- **SEO**: hreflang `<link>` tags on all pages, sitemap.xml with 30+ URLs + xhtml:link annotations
 - **Arabic**: `<html lang="ar" dir="rtl">`, Noto Sans Arabic font, full RTL CSS overrides
 - **French**: `<html lang="fr">`, same LTR layout as English, Inter + Playfair Display fonts
 - **Firebase**: Same config preserved across all languages (campaigns, stats, forms)
@@ -76,7 +76,7 @@ Home | About | Programs | Campaigns | Ramadan | Stories | Ways to Give | Contact
 ## File Structure
 ```
 alnoman-website/
-├── index.html          # Homepage (hero, stats, 5 campaign cards with Firebase progress bars, impact stories, donation plans)
+├── index.html          # Homepage (hero, stats, 10 campaign cards with Firebase progress bars, impact stories, donation plans)
 ├── about.html          # About page (mission, Noman memorial, pillars, values, transparency)
 ├── programs.html       # Programs page (water, education, food, worship, mobility, Gaza)
 ├── campaigns.html      # Crowdfunding browse page (Firebase-powered, filters, progress bars, donate buttons)
@@ -87,7 +87,18 @@ alnoman-website/
 ├── contact.html        # Contact page (phone, email, WhatsApp, social, inquiry types)
 ├── ramadan.html        # Ramadan 2026 seasonal campaign (Zakat, Fidya, Sadaqah, Iftar, countdown timer)
 ├── admin.html          # Admin dashboard (Firebase Auth — stats, goals, campaign/cause/newsletter management)
-├── ar/                 # Arabic RTL translations (10 pages mirroring English)
+├── campaigns/          # EN campaign landing pages (10 pages)
+│   ├── save-gaza.html
+│   ├── bread-a-day.html
+│   ├── dabiha.html
+│   ├── water-wells.html
+│   ├── be-mobile.html
+│   ├── joy-for-kids.html
+│   ├── weekly-treats.html
+│   ├── quran-memorization.html
+│   ├── ramadan-iftar.html
+│   └── hospital-freedom.html
+├── ar/                 # Arabic RTL translations (10 pages + 10 campaign pages)
 │   ├── index.html
 │   ├── about.html
 │   ├── programs.html
@@ -97,8 +108,10 @@ alnoman-website/
 │   ├── ways-to-give.html
 │   ├── volunteer.html
 │   ├── ramadan.html
-│   └── contact.html
-├── fr/                 # French translations (10 pages mirroring English)
+│   ├── contact.html
+│   └── campaigns/     # AR campaign landing pages (10 pages, RTL)
+│       ├── save-gaza.html ... hospital-freedom.html
+├── fr/                 # French translations (10 pages + 10 campaign pages)
 │   ├── index.html
 │   ├── about.html
 │   ├── programs.html
@@ -108,7 +121,9 @@ alnoman-website/
 │   ├── ways-to-give.html
 │   ├── volunteer.html
 │   ├── ramadan.html
-│   └── contact.html
+│   ├── contact.html
+│   └── campaigns/     # FR campaign landing pages (10 pages)
+│       ├── save-gaza.html ... hospital-freedom.html
 ├── .github/workflows/
 │   └── deploy.yml      # GitHub Actions auto-deploy via FTP on push to master
 ├── .gitignore
@@ -129,6 +144,11 @@ alnoman-website/
     ├── food.jpg        # Dabiha campaign
     ├── waterwell1.jpeg # Water Wells campaign
     ├── bemobile.jpg    # Be Mobile campaign (Pexels)
+    ├── toys.jpg        # Joy for Kids campaign
+    ├── treats.jpg      # Weekly Treats campaign
+    ├── hospital.jpg    # Hospital Freedom campaign
+    ├── iftar.jpg       # Ramadan Iftar campaign
+    ├── quran.jpg       # Quran Memorization campaign
     └── Education.png   # Education program
 ```
 
@@ -159,7 +179,7 @@ alnoman-website/
 - **Database**: https://alnoman-foundation-default-rtdb.firebaseio.com
 - **SDK**: Firebase v9.22.0 compat (loaded via CDN)
 - **Auth**: Email/Password — admin login: info@alnoman.org
-- **Pages using Firebase**: index.html, admin.html, campaigns.html, start-campaign.html, ramadan.html (+ ar/ and fr/ equivalents)
+- **Pages using Firebase**: index.html, admin.html, campaigns.html, start-campaign.html, ramadan.html, all 10 campaign landing pages (+ ar/ and fr/ equivalents)
 
 ### Database Nodes
 | Node | Purpose | Public Read | Public Write |
@@ -287,12 +307,25 @@ const defaultGoals = {
 - [x] Ramadan 2026 campaign page (EN/AR/FR) with countdown timer, Zakat/Fidya/Sadaqah options, Iftar sponsorship
 - [x] Newsletter signup on homepages (Firebase-powered, honeypot + rate limiting spam protection)
 - [x] Newsletter subscriber management in admin.html (view, delete, CSV export)
-- [x] GA4 dual-tagging prepared across all 30 pages (uncomment `G-XXXXXXXXXX` after creating GA4 property)
+- [x] GA4 dual-tagging prepared across all pages (uncomment `G-XXXXXXXXXX` after creating GA4 property)
 - [x] 5 new foundation campaigns: Joy for Kids, Weekly Treats, Hospital Freedom, Ramadan Iftar ($2/meal), Quran Memorization (Zakat)
 - [x] Health and Children category filters on campaigns browse page (all 3 languages)
 - [x] Homepage expanded to 10 campaign cards (all 3 languages)
 - [x] Ramadan Iftar calculator updated to $2/meal (rice, salad, drink, fish)
 - [x] Admin seed function for adding new foundation campaigns to Firebase
+- [x] Fixed MX DNS records — changed from GoDaddy generic servers (smtp.secureserver.net) to mail.alnoman.org via GoDaddy DNS Manager
+- [x] cPanel password updated (Feb 28, 2026)
+- [x] GitHub Secret FTP_PASSWORD updated to match new cPanel password
+- [x] Social media footer links added to all 30 pages (Facebook, Instagram, LinkedIn, TikTok, X)
+- [x] OG image meta tags added to all pages (images/og-image.jpg)
+- [x] Individual campaign landing pages (10 campaigns × 3 languages = 30 pages in campaigns/, ar/campaigns/, fr/campaigns/)
+- [x] Campaign pages: hero, description, donate sidebar with Firebase progress bar, impact cards, related campaigns
+- [x] Footer campaign links updated to landing pages on all 33 files (replacing Stripe direct links in AR/FR)
+
+## Pending Security Tasks
+- [ ] Log out all Instagram devices & change password for @al_noman_foundation (blocked by 2FA on Hatem's WhatsApp)
+- [ ] Remove al_noman_foundation from Hatem El Kurd's Meta Accounts Center
+- [ ] Secure the Facebook page (ALNOMANFoundation) — verify admin access and roles
 
 ## Roadmap — Website
 - [ ] Add real campaign videos (YouTube/Vimeo embeds) to stories page
@@ -300,7 +333,7 @@ const defaultGoals = {
 - [x] Migrate Google Analytics from UA (deprecated) to GA4 (dual-tagged, GA4 ID placeholder ready)
 - [x] Submit sitemap to Google Search Console (30 URLs submitted Feb 27 2026)
 - [x] Add Google Search Console verification meta tag
-- [ ] Create individual campaign landing pages (better SEO + shareable)
+- [x] Create individual campaign landing pages (better SEO + shareable) — 10 pages × 3 languages = 30 pages
 - [ ] Add testimonials from beneficiaries
 - [ ] Add annual report / financial transparency PDF
 - [x] Multilingual support (Arabic, French for Benin audience)

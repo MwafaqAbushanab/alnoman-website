@@ -262,6 +262,287 @@
         <priority>0.95</priority>
     </url>
 
+    <!-- Campaign Landing Pages -->
+    <url>
+        <loc>https://www.alnoman.org/campaigns/save-gaza.html</loc>
+        <xhtml:link rel="alternate" hreflang="en" href="https://www.alnoman.org/campaigns/save-gaza.html" />
+        <xhtml:link rel="alternate" hreflang="ar" href="https://www.alnoman.org/ar/campaigns/save-gaza.html" />
+        <xhtml:link rel="alternate" hreflang="fr" href="https://www.alnoman.org/fr/campaigns/save-gaza.html" />
+        <lastmod>2026-02-28</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.85</priority>
+    </url>
+    <url>
+        <loc>https://www.alnoman.org/ar/campaigns/save-gaza.html</loc>
+        <xhtml:link rel="alternate" hreflang="en" href="https://www.alnoman.org/campaigns/save-gaza.html" />
+        <xhtml:link rel="alternate" hreflang="ar" href="https://www.alnoman.org/ar/campaigns/save-gaza.html" />
+        <xhtml:link rel="alternate" hreflang="fr" href="https://www.alnoman.org/fr/campaigns/save-gaza.html" />
+        <lastmod>2026-02-28</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.85</priority>
+    </url>
+    <url>
+        <loc>https://www.alnoman.org/fr/campaigns/save-gaza.html</loc>
+        <xhtml:link rel="alternate" hreflang="en" href="https://www.alnoman.org/campaigns/save-gaza.html" />
+        <xhtml:link rel="alternate" hreflang="ar" href="https://www.alnoman.org/ar/campaigns/save-gaza.html" />
+        <xhtml:link rel="alternate" hreflang="fr" href="https://www.alnoman.org/fr/campaigns/save-gaza.html" />
+        <lastmod>2026-02-28</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.85</priority>
+    </url>
+
+    <url>
+        <loc>https://www.alnoman.org/campaigns/bread-a-day.html</loc>
+        <xhtml:link rel="alternate" hreflang="en" href="https://www.alnoman.org/campaigns/bread-a-day.html" />
+        <xhtml:link rel="alternate" hreflang="ar" href="https://www.alnoman.org/ar/campaigns/bread-a-day.html" />
+        <xhtml:link rel="alternate" hreflang="fr" href="https://www.alnoman.org/fr/campaigns/bread-a-day.html" />
+        <lastmod>2026-02-28</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.85</priority>
+    </url>
+    <url>
+        <loc>https://www.alnoman.org/ar/campaigns/bread-a-day.html</loc>
+        <xhtml:link rel="alternate" hreflang="en" href="https://www.alnoman.org/campaigns/bread-a-day.html" />
+        <xhtml:link rel="alternate" hreflang="ar" href="https://www.alnoman.org/ar/campaigns/bread-a-day.html" />
+        <xhtml:link rel="alternate" hreflang="fr" href="https://www.alnoman.org/fr/campaigns/bread-a-day.html" />
+        <lastmod>2026-02-28</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.85</priority>
+    </url>
+    <url>
+        <loc>https://www.alnoman.org/fr/campaigns/bread-a-day.html</loc>
+        <xhtml:link rel="alternate" hreflang="en" href="https://www.alnoman.org/campaigns/bread-a-day.html" />
+        <xhtml:link rel="alternate" hreflang="ar" href="https://www.alnoman.org/ar/campaigns/bread-a-day.html" />
+        <xhtml:link rel="alternate" hreflang="fr" href="https://www.alnoman.org/fr/campaigns/bread-a-day.html" />
+        <lastmod>2026-02-28</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.85</priority>
+    </url>
+
+    <url>
+        <loc>https://www.alnoman.org/campaigns/dabiha.html</loc>
+        <xhtml:link rel="alternate" hreflang="en" href="https://www.alnoman.org/campaigns/dabiha.html" />
+        <xhtml:link rel="alternate" hreflang="ar" href="https://www.alnoman.org/ar/campaigns/dabiha.html" />
+        <xhtml:link rel="alternate" hreflang="fr" href="https://www.alnoman.org/fr/campaigns/dabiha.html" />
+        <lastmod>2026-02-28</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.85</priority>
+    </url>
+    <url>
+        <loc>https://www.alnoman.org/ar/campaigns/dabiha.html</loc>
+        <xhtml:link rel="alternate" hreflang="en" href="https://www.alnoman.org/campaigns/dabiha.html" />
+        <xhtml:link rel="alternate" hreflang="ar" href="https://www.alnoman.org/ar/campaigns/dabiha.html" />
+        <xhtml:link rel="alternate" hreflang="fr" href="https://www.alnoman.org/fr/campaigns/dabiha.html" />
+        <lastmod>2026-02-28</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.85</priority>
+    </url>
+    <url>
+        <loc>https://www.alnoman.org/fr/campaigns/dabiha.html</loc>
+        <xhtml:link rel="alternate" hreflang="en" href="https://www.alnoman.org/campaigns/dabiha.html" />
+        <xhtml:link rel="alternate" hreflang="ar" href="https://www.alnoman.org/ar/campaigns/dabiha.html" />
+        <xhtml:link rel="alternate" hreflang="fr" href="https://www.alnoman.org/fr/campaigns/dabiha.html" />
+        <lastmod>2026-02-28</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.85</priority>
+    </url>
+
+    <url>
+        <loc>https://www.alnoman.org/campaigns/water-wells.html</loc>
+        <xhtml:link rel="alternate" hreflang="en" href="https://www.alnoman.org/campaigns/water-wells.html" />
+        <xhtml:link rel="alternate" hreflang="ar" href="https://www.alnoman.org/ar/campaigns/water-wells.html" />
+        <xhtml:link rel="alternate" hreflang="fr" href="https://www.alnoman.org/fr/campaigns/water-wells.html" />
+        <lastmod>2026-02-28</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.85</priority>
+    </url>
+    <url>
+        <loc>https://www.alnoman.org/ar/campaigns/water-wells.html</loc>
+        <xhtml:link rel="alternate" hreflang="en" href="https://www.alnoman.org/campaigns/water-wells.html" />
+        <xhtml:link rel="alternate" hreflang="ar" href="https://www.alnoman.org/ar/campaigns/water-wells.html" />
+        <xhtml:link rel="alternate" hreflang="fr" href="https://www.alnoman.org/fr/campaigns/water-wells.html" />
+        <lastmod>2026-02-28</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.85</priority>
+    </url>
+    <url>
+        <loc>https://www.alnoman.org/fr/campaigns/water-wells.html</loc>
+        <xhtml:link rel="alternate" hreflang="en" href="https://www.alnoman.org/campaigns/water-wells.html" />
+        <xhtml:link rel="alternate" hreflang="ar" href="https://www.alnoman.org/ar/campaigns/water-wells.html" />
+        <xhtml:link rel="alternate" hreflang="fr" href="https://www.alnoman.org/fr/campaigns/water-wells.html" />
+        <lastmod>2026-02-28</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.85</priority>
+    </url>
+
+    <url>
+        <loc>https://www.alnoman.org/campaigns/be-mobile.html</loc>
+        <xhtml:link rel="alternate" hreflang="en" href="https://www.alnoman.org/campaigns/be-mobile.html" />
+        <xhtml:link rel="alternate" hreflang="ar" href="https://www.alnoman.org/ar/campaigns/be-mobile.html" />
+        <xhtml:link rel="alternate" hreflang="fr" href="https://www.alnoman.org/fr/campaigns/be-mobile.html" />
+        <lastmod>2026-02-28</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.85</priority>
+    </url>
+    <url>
+        <loc>https://www.alnoman.org/ar/campaigns/be-mobile.html</loc>
+        <xhtml:link rel="alternate" hreflang="en" href="https://www.alnoman.org/campaigns/be-mobile.html" />
+        <xhtml:link rel="alternate" hreflang="ar" href="https://www.alnoman.org/ar/campaigns/be-mobile.html" />
+        <xhtml:link rel="alternate" hreflang="fr" href="https://www.alnoman.org/fr/campaigns/be-mobile.html" />
+        <lastmod>2026-02-28</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.85</priority>
+    </url>
+    <url>
+        <loc>https://www.alnoman.org/fr/campaigns/be-mobile.html</loc>
+        <xhtml:link rel="alternate" hreflang="en" href="https://www.alnoman.org/campaigns/be-mobile.html" />
+        <xhtml:link rel="alternate" hreflang="ar" href="https://www.alnoman.org/ar/campaigns/be-mobile.html" />
+        <xhtml:link rel="alternate" hreflang="fr" href="https://www.alnoman.org/fr/campaigns/be-mobile.html" />
+        <lastmod>2026-02-28</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.85</priority>
+    </url>
+
+    <url>
+        <loc>https://www.alnoman.org/campaigns/joy-for-kids.html</loc>
+        <xhtml:link rel="alternate" hreflang="en" href="https://www.alnoman.org/campaigns/joy-for-kids.html" />
+        <xhtml:link rel="alternate" hreflang="ar" href="https://www.alnoman.org/ar/campaigns/joy-for-kids.html" />
+        <xhtml:link rel="alternate" hreflang="fr" href="https://www.alnoman.org/fr/campaigns/joy-for-kids.html" />
+        <lastmod>2026-02-28</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.85</priority>
+    </url>
+    <url>
+        <loc>https://www.alnoman.org/ar/campaigns/joy-for-kids.html</loc>
+        <xhtml:link rel="alternate" hreflang="en" href="https://www.alnoman.org/campaigns/joy-for-kids.html" />
+        <xhtml:link rel="alternate" hreflang="ar" href="https://www.alnoman.org/ar/campaigns/joy-for-kids.html" />
+        <xhtml:link rel="alternate" hreflang="fr" href="https://www.alnoman.org/fr/campaigns/joy-for-kids.html" />
+        <lastmod>2026-02-28</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.85</priority>
+    </url>
+    <url>
+        <loc>https://www.alnoman.org/fr/campaigns/joy-for-kids.html</loc>
+        <xhtml:link rel="alternate" hreflang="en" href="https://www.alnoman.org/campaigns/joy-for-kids.html" />
+        <xhtml:link rel="alternate" hreflang="ar" href="https://www.alnoman.org/ar/campaigns/joy-for-kids.html" />
+        <xhtml:link rel="alternate" hreflang="fr" href="https://www.alnoman.org/fr/campaigns/joy-for-kids.html" />
+        <lastmod>2026-02-28</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.85</priority>
+    </url>
+
+    <url>
+        <loc>https://www.alnoman.org/campaigns/weekly-treats.html</loc>
+        <xhtml:link rel="alternate" hreflang="en" href="https://www.alnoman.org/campaigns/weekly-treats.html" />
+        <xhtml:link rel="alternate" hreflang="ar" href="https://www.alnoman.org/ar/campaigns/weekly-treats.html" />
+        <xhtml:link rel="alternate" hreflang="fr" href="https://www.alnoman.org/fr/campaigns/weekly-treats.html" />
+        <lastmod>2026-02-28</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.85</priority>
+    </url>
+    <url>
+        <loc>https://www.alnoman.org/ar/campaigns/weekly-treats.html</loc>
+        <xhtml:link rel="alternate" hreflang="en" href="https://www.alnoman.org/campaigns/weekly-treats.html" />
+        <xhtml:link rel="alternate" hreflang="ar" href="https://www.alnoman.org/ar/campaigns/weekly-treats.html" />
+        <xhtml:link rel="alternate" hreflang="fr" href="https://www.alnoman.org/fr/campaigns/weekly-treats.html" />
+        <lastmod>2026-02-28</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.85</priority>
+    </url>
+    <url>
+        <loc>https://www.alnoman.org/fr/campaigns/weekly-treats.html</loc>
+        <xhtml:link rel="alternate" hreflang="en" href="https://www.alnoman.org/campaigns/weekly-treats.html" />
+        <xhtml:link rel="alternate" hreflang="ar" href="https://www.alnoman.org/ar/campaigns/weekly-treats.html" />
+        <xhtml:link rel="alternate" hreflang="fr" href="https://www.alnoman.org/fr/campaigns/weekly-treats.html" />
+        <lastmod>2026-02-28</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.85</priority>
+    </url>
+
+    <url>
+        <loc>https://www.alnoman.org/campaigns/hospital-freedom.html</loc>
+        <xhtml:link rel="alternate" hreflang="en" href="https://www.alnoman.org/campaigns/hospital-freedom.html" />
+        <xhtml:link rel="alternate" hreflang="ar" href="https://www.alnoman.org/ar/campaigns/hospital-freedom.html" />
+        <xhtml:link rel="alternate" hreflang="fr" href="https://www.alnoman.org/fr/campaigns/hospital-freedom.html" />
+        <lastmod>2026-02-28</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.85</priority>
+    </url>
+    <url>
+        <loc>https://www.alnoman.org/ar/campaigns/hospital-freedom.html</loc>
+        <xhtml:link rel="alternate" hreflang="en" href="https://www.alnoman.org/campaigns/hospital-freedom.html" />
+        <xhtml:link rel="alternate" hreflang="ar" href="https://www.alnoman.org/ar/campaigns/hospital-freedom.html" />
+        <xhtml:link rel="alternate" hreflang="fr" href="https://www.alnoman.org/fr/campaigns/hospital-freedom.html" />
+        <lastmod>2026-02-28</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.85</priority>
+    </url>
+    <url>
+        <loc>https://www.alnoman.org/fr/campaigns/hospital-freedom.html</loc>
+        <xhtml:link rel="alternate" hreflang="en" href="https://www.alnoman.org/campaigns/hospital-freedom.html" />
+        <xhtml:link rel="alternate" hreflang="ar" href="https://www.alnoman.org/ar/campaigns/hospital-freedom.html" />
+        <xhtml:link rel="alternate" hreflang="fr" href="https://www.alnoman.org/fr/campaigns/hospital-freedom.html" />
+        <lastmod>2026-02-28</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.85</priority>
+    </url>
+
+    <url>
+        <loc>https://www.alnoman.org/campaigns/ramadan-iftar.html</loc>
+        <xhtml:link rel="alternate" hreflang="en" href="https://www.alnoman.org/campaigns/ramadan-iftar.html" />
+        <xhtml:link rel="alternate" hreflang="ar" href="https://www.alnoman.org/ar/campaigns/ramadan-iftar.html" />
+        <xhtml:link rel="alternate" hreflang="fr" href="https://www.alnoman.org/fr/campaigns/ramadan-iftar.html" />
+        <lastmod>2026-02-28</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.85</priority>
+    </url>
+    <url>
+        <loc>https://www.alnoman.org/ar/campaigns/ramadan-iftar.html</loc>
+        <xhtml:link rel="alternate" hreflang="en" href="https://www.alnoman.org/campaigns/ramadan-iftar.html" />
+        <xhtml:link rel="alternate" hreflang="ar" href="https://www.alnoman.org/ar/campaigns/ramadan-iftar.html" />
+        <xhtml:link rel="alternate" hreflang="fr" href="https://www.alnoman.org/fr/campaigns/ramadan-iftar.html" />
+        <lastmod>2026-02-28</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.85</priority>
+    </url>
+    <url>
+        <loc>https://www.alnoman.org/fr/campaigns/ramadan-iftar.html</loc>
+        <xhtml:link rel="alternate" hreflang="en" href="https://www.alnoman.org/campaigns/ramadan-iftar.html" />
+        <xhtml:link rel="alternate" hreflang="ar" href="https://www.alnoman.org/ar/campaigns/ramadan-iftar.html" />
+        <xhtml:link rel="alternate" hreflang="fr" href="https://www.alnoman.org/fr/campaigns/ramadan-iftar.html" />
+        <lastmod>2026-02-28</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.85</priority>
+    </url>
+
+    <url>
+        <loc>https://www.alnoman.org/campaigns/quran-memorization.html</loc>
+        <xhtml:link rel="alternate" hreflang="en" href="https://www.alnoman.org/campaigns/quran-memorization.html" />
+        <xhtml:link rel="alternate" hreflang="ar" href="https://www.alnoman.org/ar/campaigns/quran-memorization.html" />
+        <xhtml:link rel="alternate" hreflang="fr" href="https://www.alnoman.org/fr/campaigns/quran-memorization.html" />
+        <lastmod>2026-02-28</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.85</priority>
+    </url>
+    <url>
+        <loc>https://www.alnoman.org/ar/campaigns/quran-memorization.html</loc>
+        <xhtml:link rel="alternate" hreflang="en" href="https://www.alnoman.org/campaigns/quran-memorization.html" />
+        <xhtml:link rel="alternate" hreflang="ar" href="https://www.alnoman.org/ar/campaigns/quran-memorization.html" />
+        <xhtml:link rel="alternate" hreflang="fr" href="https://www.alnoman.org/fr/campaigns/quran-memorization.html" />
+        <lastmod>2026-02-28</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.85</priority>
+    </url>
+    <url>
+        <loc>https://www.alnoman.org/fr/campaigns/quran-memorization.html</loc>
+        <xhtml:link rel="alternate" hreflang="en" href="https://www.alnoman.org/campaigns/quran-memorization.html" />
+        <xhtml:link rel="alternate" hreflang="ar" href="https://www.alnoman.org/ar/campaigns/quran-memorization.html" />
+        <xhtml:link rel="alternate" hreflang="fr" href="https://www.alnoman.org/fr/campaigns/quran-memorization.html" />
+        <lastmod>2026-02-28</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.85</priority>
+    </url>
+
     <!-- Volunteer -->
     <url>
         <loc>https://www.alnoman.org/volunteer.html</loc>
