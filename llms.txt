@@ -1,5 +1,7 @@
 # Al-Noman Foundation
 
+> For detailed information including FAQs, campaign costs, and donation plans, see [llms-full.txt](https://www.alnoman.org/llms-full.txt)
+
 > Al-Noman Foundation is a registered 501(c)(3) non-profit organization based in Orlando, Florida, USA. Founded in 2021 in loving memory of Noman Abushanab, who was lost to COVID-19. The foundation's motto is "Be Giving, Be Living."
 
 ## Mission
@@ -55,6 +57,7 @@ The website is available in three languages: English (default), Arabic (RTL), an
 - **Ways to Give**: https://www.alnoman.org/ways-to-give.html
 - **Volunteer**: https://www.alnoman.org/volunteer.html
 - **Contact**: https://www.alnoman.org/contact.html
+- **FAQ**: https://www.alnoman.org/faq.html
 - **Ramadan 2026**: https://www.alnoman.org/ramadan.html
 
 ### Arabic (العربية)
@@ -67,6 +70,7 @@ The website is available in three languages: English (default), Arabic (RTL), an
 - **طرق التبرع**: https://www.alnoman.org/ar/ways-to-give.html
 - **تطوع**: https://www.alnoman.org/ar/volunteer.html
 - **تواصل معنا**: https://www.alnoman.org/ar/contact.html
+- **الأسئلة الشائعة**: https://www.alnoman.org/ar/faq.html
 - **رمضان 2026**: https://www.alnoman.org/ar/ramadan.html
 
 ### French (Français)
@@ -79,6 +83,7 @@ The website is available in three languages: English (default), Arabic (RTL), an
 - **Façons de Donner**: https://www.alnoman.org/fr/ways-to-give.html
 - **Bénévolat**: https://www.alnoman.org/fr/volunteer.html
 - **Contact**: https://www.alnoman.org/fr/contact.html
+- **FAQ**: https://www.alnoman.org/fr/faq.html
 - **Ramadan 2026**: https://www.alnoman.org/fr/ramadan.html
 
 ## Contact

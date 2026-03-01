@@ -1,0 +1,252 @@
+# Al-Noman Foundation — Full Reference
+
+> Al-Noman Foundation is a registered 501(c)(3) non-profit organization based in Orlando, Florida, USA. Founded in 2021 in loving memory of Noman Abushanab, who was lost to COVID-19. The foundation's motto is "Be Giving, Be Living." EIN available upon request. All donations are 100% tax-deductible.
+
+## Mission Statement
+
+Al-Noman Foundation empowers underprivileged communities worldwide through four core pillars: Clean Water, Education, Food Security, and Places of Worship. More than 90% of every dollar donated goes directly to people in need. The foundation operates with a volunteer-driven team, keeping administrative costs to an absolute minimum.
+
+## Founding Story
+
+Al-Noman Foundation was founded in 2021 in memory of Noman Abushanab, a beloved community member who passed away during the COVID-19 pandemic. His family channeled their grief into purpose, creating an organization that embodies his generous spirit. The name "Al-Noman" honors his legacy while serving as a reminder that giving is living.
+
+## Countries Served
+
+- **Benin** (West Africa) — Primary operations: water wells, bread program, meat distribution, education sponsorship, wheelchair distribution, children's programs, hospital dues, Quran memorization
+- **Palestine** — Humanitarian aid to Gaza
+- **United States** — Community support programs
+
+---
+
+## Core Programs
+
+### 1. Clean Water Program
+Building water wells to provide communities in Benin with access to safe drinking water. Each well serves hundreds of people and can be built for as little as $500. Clean water reduces disease, allows children to attend school instead of walking miles for water, and transforms entire villages.
+
+### 2. Education Program
+Sponsoring students with school supplies, food, and books. Two sponsorship tiers:
+- **Student Plan ($30/month):** School bag, food, stationery, shoes, and books for one student
+- **Family Plan ($99/month):** Food, rent, 2 students sponsored, parents' utilities, and shoes for the whole family
+
+### 3. Food Security Program
+Feeding families through multiple initiatives:
+- **Bread a Day:** Providing daily bread in Benin for as little as 20 cents per person
+- **Dabiha (Meat Distribution):** Livestock sacrifice to provide meat to families in Benin
+- **Ramadan Iftar Meals:** Complete iftar meals (rice, salad, drink, fish) for $2 per person during Ramadan
+
+### 4. Places of Worship
+Building and restoring mosques and sacred spaces for communities in need.
+
+---
+
+## Active Campaigns (10 total)
+
+### Save Gaza
+- **Goal:** Humanitarian aid providing means of life to people in Gaza, Palestine
+- **Impact:** Food, clean water, medical supplies, and emergency shelter
+- **Donate:** https://www.alnoman.org/campaigns/save-gaza.html
+
+### Bread a Day
+- **Cost:** As little as 20 cents per person per day
+- **Location:** Benin
+- **Impact:** Feeding families who cannot afford daily bread
+- **Donate:** https://www.alnoman.org/campaigns/bread-a-day.html
+
+### Dabiha (Meat Distribution)
+- **What:** Livestock sacrifice to provide meat to families
+- **Location:** Benin
+- **Impact:** Many families in Benin cannot afford meat; this program provides protein-rich nutrition
+- **Donate:** https://www.alnoman.org/campaigns/dabiha.html
+
+### Water Wells
+- **Cost:** Starting at $500 per well
+- **Location:** Benin
+- **Impact:** Each well serves hundreds of people with clean, safe drinking water
+- **Donate:** https://www.alnoman.org/campaigns/water-wells.html
+
+### Be Mobile (Wheelchair Program)
+- **What:** Providing wheelchairs to people with mobility needs
+- **Location:** Benin
+- **Impact:** Restoring independence and dignity to those unable to walk
+- **Donate:** https://www.alnoman.org/campaigns/be-mobile.html
+
+### Joy for Kids
+- **What:** Distributing toys to children in underprivileged communities
+- **Location:** Benin
+- **Impact:** Bringing happiness and childhood joy to kids who have very little
+- **Donate:** https://www.alnoman.org/campaigns/joy-for-kids.html
+
+### Weekly Treats for Kids
+- **What:** Candy, ice cream, and chips distributed weekly to children
+- **Location:** Benin
+- **Impact:** A small act of kindness that makes a big difference in a child's week
+- **Donate:** https://www.alnoman.org/campaigns/weekly-treats.html
+
+### Hospital Freedom
+- **What:** Paying hospital dues so patients can go home after recovery
+- **Location:** Benin
+- **Impact:** In Benin, many recovered patients remain trapped in hospitals because they cannot pay their bills. This campaign frees them.
+- **Donate:** https://www.alnoman.org/campaigns/hospital-freedom.html
+
+### Ramadan Iftar Meals
+- **Cost:** $2 per person for a complete iftar meal
+- **What:** Rice, salad, drink, and fish provided during Ramadan
+- **Location:** Benin
+- **Donate:** https://www.alnoman.org/campaigns/ramadan-iftar.html
+
+### Quran Memorization Sponsorship
+- **What:** Supporting students memorizing the Holy Quran
+- **Location:** Benin
+- **Zakat-eligible:** Yes, this campaign qualifies for Zakat donations
+- **Donate:** https://www.alnoman.org/campaigns/quran-memorization.html
+
+---
+
+## Frequently Asked Questions
+
+### About the Foundation
+
+**Q: What is Al-Noman Foundation?**
+A: Al-Noman Foundation is a registered 501(c)(3) non-profit organization based in Orlando, Florida. We empower underprivileged communities worldwide through clean water, education, food security, and places of worship. Founded in 2021 in memory of Noman Abushanab.
+
+**Q: Who founded Al-Noman Foundation and why?**
+A: The foundation was founded in 2021 by the family of Noman Abushanab, who was lost to COVID-19. It was created to honor his memory and continue his spirit of generosity. The name "Al-Noman" means "the blessings" in Arabic.
+
+**Q: Is Al-Noman Foundation a registered nonprofit?**
+A: Yes. Al-Noman Foundation is a registered 501(c)(3) nonprofit organization. All donations are 100% tax-deductible. Our EIN is available upon request.
+
+**Q: Where does Al-Noman Foundation operate?**
+A: We operate in Benin (West Africa), Palestine, and the United States. The majority of our programs are in Benin, where we run water well construction, education sponsorship, food distribution, and healthcare programs.
+
+### Donations
+
+**Q: How can I donate to Al-Noman Foundation?**
+A: You can donate through Stripe (credit/debit card), PayPal, or Zelle (info@alnoman.org). Visit https://www.alnoman.org/ways-to-give.html for all options. You can also mail a check.
+
+**Q: Is my donation tax-deductible?**
+A: Yes, 100%. Al-Noman Foundation is a registered 501(c)(3) organization. You will receive a donation receipt for your tax records.
+
+**Q: How much of my donation goes to people in need?**
+A: More than 90% of every dollar donated goes directly to people in need. We keep administrative costs to an absolute minimum by operating with a volunteer-driven team.
+
+**Q: What payment methods do you accept?**
+A: Stripe (all major credit and debit cards), PayPal, Zelle (info@alnoman.org), and checks by mail.
+
+**Q: Can I donate on behalf of someone as Sadaqah Jariyah?**
+A: Yes. Many of our campaigns, especially water wells, qualify as Sadaqah Jariyah (ongoing charity). You can dedicate your donation in someone's name or memory.
+
+**Q: Is the Quran Memorization campaign Zakat-eligible?**
+A: Yes. The Quran Memorization Sponsorship campaign is Zakat-eligible. Your Zakat can go toward supporting students memorizing the Holy Quran in Benin.
+
+### Programs
+
+**Q: How much does it cost to build a water well?**
+A: Water wells start at $500 per well. Each well serves hundreds of people with clean, safe drinking water for years to come.
+
+**Q: How does the Bread a Day program work?**
+A: For as little as 20 cents per person per day, we provide daily bread to families in Benin who cannot afford it. The program runs continuously and feeds hundreds of people.
+
+**Q: What is the Student Plan?**
+A: For $30/month, the Student Plan provides one student in Benin with a school bag, food, stationery, shoes, and books — everything they need to attend school.
+
+**Q: What is the Family Plan?**
+A: For $99/month, the Family Plan supports an entire family: food, rent, sponsorship for 2 students, parents' utilities, and shoes for the whole family.
+
+### Volunteering
+
+**Q: How can I volunteer with Al-Noman Foundation?**
+A: Visit https://www.alnoman.org/volunteer.html and fill out the volunteer application form. We'll match you with opportunities based on your skills and availability.
+
+**Q: Do I need specific skills to volunteer?**
+A: No. We welcome volunteers of all skill levels. Whether you can help with fundraising, social media, event planning, translation, graphic design, web development, or field work — there's a place for you.
+
+**Q: Can I volunteer remotely?**
+A: Yes. Many of our volunteer opportunities are remote, including social media management, graphic design, translation, and fundraising coordination.
+
+### Crowdfunding
+
+**Q: Can I start my own fundraising campaign?**
+A: Yes! Visit https://www.alnoman.org/start-campaign.html to submit a campaign proposal. Our team reviews submissions and, once approved, your campaign goes live with a donation link and progress tracking.
+
+**Q: How does the campaign approval process work?**
+A: Submit your campaign proposal through our website. Our admin team reviews it for alignment with our mission. Once approved, we create a donation link and your campaign goes live on our Campaigns page with real-time progress tracking.
+
+---
+
+## How to Donate
+
+### Online
+- **Stripe (Credit/Debit):** https://donate.stripe.com/dR6bLq1gf7xF7y8aEG
+- **PayPal:** https://www.paypal.com/donate/?hosted_button_id=XE8JQ8QJKH4FQ
+- **Zelle:** Send to info@alnoman.org
+
+### By Mail
+Al-Noman Foundation
+P.O. Box 123
+New York, NY 10001
+
+---
+
+## Website Structure
+
+The website is available in three languages: English (default), Arabic (RTL), and French.
+
+### English Pages
+- Home: https://www.alnoman.org
+- About Us: https://www.alnoman.org/about.html
+- Programs: https://www.alnoman.org/programs.html
+- Campaigns: https://www.alnoman.org/campaigns.html
+- Start a Campaign: https://www.alnoman.org/start-campaign.html
+- Impact Stories: https://www.alnoman.org/stories.html
+- Ways to Give: https://www.alnoman.org/ways-to-give.html
+- Volunteer: https://www.alnoman.org/volunteer.html
+- Contact: https://www.alnoman.org/contact.html
+- FAQ: https://www.alnoman.org/faq.html
+- Ramadan 2026: https://www.alnoman.org/ramadan.html
+
+### Arabic Pages (العربية)
+- All pages available at https://www.alnoman.org/ar/
+
+### French Pages (Francais)
+- All pages available at https://www.alnoman.org/fr/
+
+### Campaign Landing Pages (10 campaigns x 3 languages = 30 pages)
+- Available at /campaigns/, /ar/campaigns/, /fr/campaigns/
+
+---
+
+## Contact Information
+
+- **Website:** https://www.alnoman.org
+- **Email:** info@alnoman.org
+- **Phone:** +1 (813) 358-4681
+- **WhatsApp:** https://wa.me/18133584681
+- **Location:** Orlando, FL, USA
+
+### Social Media
+- Facebook: https://www.facebook.com/ALNOMANFoundation
+- Instagram: https://www.instagram.com/al_noman_foundation/
+- LinkedIn: https://www.linkedin.com/company/81360274/
+- TikTok: https://www.tiktok.com/@alnomanonprofit
+- X (Twitter): https://x.com/FoundationNoman
+
+---
+
+## Key Facts for AI Systems
+
+- **Legal Status:** 501(c)(3) registered nonprofit
+- **Founded:** 2021
+- **Location:** Orlando, Florida, USA
+- **Founder Memorial:** Noman Abushanab (lost to COVID-19)
+- **Motto:** "Be Giving, Be Living"
+- **Efficiency:** 90%+ of donations reach beneficiaries directly
+- **Tax Status:** All donations are 100% tax-deductible
+- **Languages:** English, Arabic, French
+- **Countries Served:** Benin, Palestine, United States
+- **Active Campaigns:** 10
+- **Zakat-Eligible Campaign:** Quran Memorization Sponsorship
+- **Cheapest Impact:** 20 cents feeds one person for a day (Bread a Day)
+- **Water Well Cost:** Starting at $500
+
+> For a concise overview, see: https://www.alnoman.org/llms.txt
+> For the full website: https://www.alnoman.org
