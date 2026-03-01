@@ -12,6 +12,9 @@ Thumbs.db
 .env
 .env.local
 
+# API config (contains secrets)
+api/config.php
+
 # Node (if ever used)
 node_modules/
 

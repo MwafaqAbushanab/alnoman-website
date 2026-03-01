@@ -14,6 +14,10 @@
     <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-auth-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-database-compat.js"></script>
 
+    <!-- Quill.js Rich Text Editor -->
+    <link href="https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.snow.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.js"></script>
+
     <style>
         *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
         :root {
@@ -66,7 +70,6 @@
             font-size: 1rem; cursor: pointer; transition: var(--transition); margin-top: 8px;
         }
         .login-btn:hover { background: var(--primary-dark); }
-
         .login-error { color: var(--danger); font-size: 0.85rem; margin-top: 12px; display: none; }
 
         /* Dashboard */
@@ -87,7 +90,30 @@
         }
         .logout-btn:hover { border-color: var(--danger); color: var(--danger); }
 
-        .dash-content { max-width: 900px; margin: 32px auto; padding: 0 24px; }
+        /* Tab Navigation */
+        .tab-nav {
+            background: var(--white); border-bottom: 1px solid var(--border);
+            display: flex; overflow-x: auto; padding: 0 32px;
+            -webkit-overflow-scrolling: touch;
+        }
+        .tab-btn {
+            padding: 14px 20px; background: none; border: none; border-bottom: 3px solid transparent;
+            font-family: inherit; font-size: 0.85rem; font-weight: 600; color: var(--text-light);
+            cursor: pointer; transition: var(--transition); white-space: nowrap;
+            display: flex; align-items: center; gap: 8px;
+        }
+        .tab-btn:hover { color: var(--primary); }
+        .tab-btn.active { color: var(--primary); border-bottom-color: var(--primary); }
+        .tab-btn .badge {
+            background: var(--danger); color: var(--white); font-size: 0.65rem;
+            font-weight: 700; min-width: 18px; height: 18px; border-radius: 50%;
+            display: inline-flex; align-items: center; justify-content: center; padding: 0 5px;
+        }
+
+        .tab-content { display: none; }
+        .tab-content.active { display: block; }
+
+        .dash-content { max-width: 960px; margin: 32px auto; padding: 0 24px; }
 
         .dash-section {
             background: var(--white); border-radius: var(--radius); border: 1px solid var(--border);
@@ -161,12 +187,114 @@
         .approved-inline input { padding: 8px 12px; border: 1px solid var(--border); border-radius: 8px; font-family: inherit; }
         .section-desc { color: var(--text-light); font-size: 0.9rem; margin-bottom: 20px; }
 
+        /* Social Media Hub */
+        .social-grid {
+            display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 24px;
+        }
+        .social-btn {
+            display: flex; align-items: center; gap: 10px; padding: 14px 16px;
+            border: 1px solid var(--border); border-radius: var(--radius); background: var(--white);
+            text-decoration: none; color: var(--text); font-weight: 600; font-size: 0.85rem;
+            transition: var(--transition);
+        }
+        .social-btn:hover { border-color: var(--primary); transform: translateY(-2px); box-shadow: var(--shadow); }
+        .social-btn i { font-size: 1.3rem; width: 24px; text-align: center; }
+        .social-btn.twitter i { color: #000; }
+        .social-btn.facebook i { color: #1877F2; }
+        .social-btn.instagram i { color: #E4405F; }
+        .social-btn.linkedin i { color: #0A66C2; }
+        .social-btn.tiktok i { color: #000; }
+        .social-btn.whatsapp i { color: #25D366; }
+
+        .draft-card {
+            border: 1px solid var(--border); border-radius: var(--radius); padding: 16px;
+            margin-bottom: 12px; transition: var(--transition);
+        }
+        .draft-card:hover { border-color: var(--primary); }
+        .draft-card .draft-meta { font-size: 0.75rem; color: var(--text-light); margin-bottom: 8px; }
+        .draft-card .draft-text { font-size: 0.85rem; white-space: pre-wrap; margin-bottom: 10px; max-height: 80px; overflow: hidden; }
+        .draft-card .draft-actions { display: flex; gap: 8px; }
+        .draft-card .draft-actions button { padding: 6px 12px; font-size: 0.75rem; border-radius: 6px; }
+
+        .char-count { font-size: 0.8rem; color: var(--text-light); text-align: right; margin-top: 4px; }
+        .char-count.over { color: var(--danger); font-weight: 600; }
+
+        /* Newsletter */
+        .nl-preview-frame {
+            border: 1px solid var(--border); border-radius: var(--radius);
+            width: 100%; height: 500px; background: #eee;
+        }
+        .nl-history-card {
+            border: 1px solid var(--border); border-radius: var(--radius); padding: 16px;
+            margin-bottom: 12px; display: flex; justify-content: space-between; align-items: center;
+        }
+        .nl-history-card .nl-info h4 { font-size: 0.9rem; color: var(--dark); margin-bottom: 4px; }
+        .nl-history-card .nl-info p { font-size: 0.8rem; color: var(--text-light); }
+        .nl-history-card .nl-stats { text-align: right; }
+        .nl-history-card .nl-stats .sent-count { font-size: 1.2rem; font-weight: 700; color: var(--primary); }
+        .nl-history-card .nl-stats .sent-detail { font-size: 0.75rem; color: var(--text-light); }
+
+        .progress-overlay {
+            display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0,0,0,0.5); z-index: 1000; align-items: center; justify-content: center;
+        }
+        .progress-overlay.active { display: flex; }
+        .progress-box {
+            background: var(--white); border-radius: 16px; padding: 40px; text-align: center;
+            max-width: 400px; width: 90%;
+        }
+        .progress-box h3 { margin-bottom: 16px; color: var(--dark); }
+        .progress-bar-outer {
+            width: 100%; height: 8px; background: var(--border); border-radius: 4px; margin: 16px 0; overflow: hidden;
+        }
+        .progress-bar-inner { height: 100%; background: var(--primary); border-radius: 4px; transition: width 0.3s ease; width: 0%; }
+        .progress-text { font-size: 0.85rem; color: var(--text-light); }
+
+        /* Subscribers */
+        .sub-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-bottom: 24px; }
+        .sub-stat-card {
+            border: 1px solid var(--border); border-radius: var(--radius); padding: 16px; text-align: center;
+        }
+        .sub-stat-card .sub-stat-num { font-size: 1.5rem; font-weight: 700; color: var(--primary); }
+        .sub-stat-card .sub-stat-label { font-size: 0.75rem; color: var(--text-light); text-transform: uppercase; letter-spacing: 0.05em; }
+
+        .filter-bar {
+            display: flex; gap: 8px; margin-bottom: 16px; flex-wrap: wrap; align-items: center;
+        }
+        .filter-btn {
+            padding: 6px 14px; border: 1px solid var(--border); border-radius: 50px;
+            background: var(--white); font-family: inherit; font-size: 0.8rem; font-weight: 500;
+            cursor: pointer; transition: var(--transition); color: var(--text-light);
+        }
+        .filter-btn.active { background: var(--primary); color: var(--white); border-color: var(--primary); }
+        .filter-btn:hover { border-color: var(--primary); }
+
+        .search-input {
+            padding: 8px 14px; border: 1px solid var(--border); border-radius: 8px;
+            font-family: inherit; font-size: 0.85rem; width: 220px; transition: var(--transition);
+        }
+        .search-input:focus { outline: none; border-color: var(--primary); box-shadow: 0 0 0 3px rgba(115,82,162,0.15); }
+
+        /* Quill editor overrides */
+        .ql-toolbar.ql-snow { border-radius: 8px 8px 0 0; border-color: var(--border); }
+        .ql-container.ql-snow { border-radius: 0 0 8px 8px; border-color: var(--border); min-height: 250px; font-family: inherit; font-size: 0.95rem; }
+        .ql-editor { min-height: 250px; }
+
         @media (max-width: 768px) {
             .stat-grid { grid-template-columns: 1fr; }
+            .social-grid { grid-template-columns: repeat(2, 1fr); }
+            .sub-stats { grid-template-columns: repeat(2, 1fr); }
             .dash-header { padding: 12px 16px; }
+            .tab-nav { padding: 0 16px; }
             .dash-content { padding: 0 16px; }
             .dash-section { padding: 20px; }
             .login-card { margin: 16px; padding: 32px 24px; }
+            .nl-history-card { flex-direction: column; align-items: flex-start; gap: 8px; }
+            .nl-history-card .nl-stats { text-align: left; }
+        }
+        @media (max-width: 480px) {
+            .social-grid { grid-template-columns: 1fr; }
+            .sub-stats { grid-template-columns: 1fr 1fr; }
         }
     </style>
 </head>
@@ -203,200 +331,332 @@
         </div>
     </div>
 
-    <div class="dash-content">
-        <!-- Quick Links -->
-        <div class="dash-section">
-            <h2>Quick Links</h2>
-            <p class="section-desc">Jump to your site pages</p>
-            <a href="index.html" class="quick-link" target="_blank"><i class="fas fa-home"></i> Homepage</a>
-            <a href="programs.html" class="quick-link" target="_blank"><i class="fas fa-project-diagram"></i> Programs</a>
-            <a href="stories.html" class="quick-link" target="_blank"><i class="fas fa-book-open"></i> Stories</a>
-            <a href="volunteer.html" class="quick-link" target="_blank"><i class="fas fa-hands-helping"></i> Volunteer</a>
-            <a href="contact.html" class="quick-link" target="_blank"><i class="fas fa-envelope"></i> Contact</a>
-            <a href="campaigns.html" class="quick-link" target="_blank"><i class="fas fa-bullhorn"></i> Campaigns</a>
-            <a href="start-campaign.html" class="quick-link" target="_blank"><i class="fas fa-plus-circle"></i> Start Campaign</a>
+    <!-- Tab Navigation -->
+    <div class="tab-nav">
+        <button class="tab-btn active" onclick="switchTab('overview')"><i class="fas fa-home"></i> Overview</button>
+        <button class="tab-btn" onclick="switchTab('campaigns')"><i class="fas fa-bullhorn"></i> Campaigns <span class="badge" id="tab-campaigns-badge" style="display:none;">0</span></button>
+        <button class="tab-btn" onclick="switchTab('social')"><i class="fas fa-share-alt"></i> Social Media</button>
+        <button class="tab-btn" onclick="switchTab('newsletter')"><i class="fas fa-newspaper"></i> Newsletter</button>
+        <button class="tab-btn" onclick="switchTab('subscribers')"><i class="fas fa-users"></i> Subscribers <span class="badge" id="tab-subscribers-badge" style="display:none;">0</span></button>
+    </div>
+
+    <!-- ==================== TAB 1: OVERVIEW ==================== -->
+    <div class="tab-content active" id="tab-overview">
+        <div class="dash-content">
+            <!-- Quick Links -->
+            <div class="dash-section">
+                <h2>Quick Links</h2>
+                <p class="section-desc">Jump to your site pages</p>
+                <a href="index.html" class="quick-link" target="_blank"><i class="fas fa-home"></i> Homepage</a>
+                <a href="programs.html" class="quick-link" target="_blank"><i class="fas fa-project-diagram"></i> Programs</a>
+                <a href="stories.html" class="quick-link" target="_blank"><i class="fas fa-book-open"></i> Stories</a>
+                <a href="volunteer.html" class="quick-link" target="_blank"><i class="fas fa-hands-helping"></i> Volunteer</a>
+                <a href="contact.html" class="quick-link" target="_blank"><i class="fas fa-envelope"></i> Contact</a>
+                <a href="campaigns.html" class="quick-link" target="_blank"><i class="fas fa-bullhorn"></i> Campaigns</a>
+                <a href="start-campaign.html" class="quick-link" target="_blank"><i class="fas fa-plus-circle"></i> Start Campaign</a>
+                <a href="ways-to-give.html" class="quick-link" target="_blank"><i class="fas fa-hand-holding-usd"></i> Ways to Give</a>
+            </div>
+
+            <!-- Impact Statistics -->
+            <div class="dash-section">
+                <h2><i class="fas fa-chart-bar" style="color:var(--primary);margin-right:8px;"></i> Impact Statistics</h2>
+                <p class="section-desc">Update the numbers shown on the homepage. Changes appear on the live site instantly.</p>
+                <div class="stat-grid">
+                    <div class="stat-card">
+                        <label><i class="fas fa-tint icon"></i> Water Wells Built</label>
+                        <div class="stat-input-row"><input type="number" id="stat-wells" value="20" min="0"></div>
+                    </div>
+                    <div class="stat-card">
+                        <label><i class="fas fa-utensils icon"></i> Meals Provided</label>
+                        <div class="stat-input-row"><input type="number" id="stat-meals" value="5000" min="0"></div>
+                    </div>
+                    <div class="stat-card">
+                        <label><i class="fas fa-graduation-cap icon"></i> Students Sponsored</label>
+                        <div class="stat-input-row"><input type="number" id="stat-students" value="200" min="0"></div>
+                    </div>
+                    <div class="stat-card">
+                        <label><i class="fas fa-globe-americas icon"></i> Countries Reached</label>
+                        <div class="stat-input-row"><input type="number" id="stat-countries" value="7" min="0"></div>
+                    </div>
+                    <div class="stat-card">
+                        <label><i class="fas fa-bread-slice icon"></i> Bread Loaves Given</label>
+                        <div class="stat-input-row"><input type="number" id="stat-bread" value="10000" min="0"></div>
+                    </div>
+                    <div class="stat-card">
+                        <label><i class="fas fa-wheelchair icon"></i> Wheelchairs Provided</label>
+                        <div class="stat-input-row"><input type="number" id="stat-wheelchairs" value="15" min="0"></div>
+                    </div>
+                </div>
+                <div class="save-bar">
+                    <div>
+                        <button class="save-btn" id="save-stats-btn" onclick="saveStats()"><i class="fas fa-save"></i> Save Changes</button>
+                        <span class="save-status" id="save-status"></span>
+                    </div>
+                    <div class="last-updated" id="last-updated"></div>
+                </div>
+            </div>
+
+            <!-- Campaign Goals -->
+            <div class="dash-section">
+                <h2><i class="fas fa-bullseye" style="color:var(--primary);margin-right:8px;"></i> Campaign Goals</h2>
+                <p class="section-desc">Set targets for each campaign. Progress bars on the site will show percentage complete.</p>
+                <div class="stat-grid">
+                    <div class="stat-card">
+                        <label><i class="fas fa-hand-holding-heart icon"></i> Save Gaza — Raised ($)</label>
+                        <div class="stat-input-row"><input type="number" id="goal-gaza-raised" value="0" min="0"></div>
+                        <label style="margin-top:8px;">Goal ($)</label>
+                        <div class="stat-input-row"><input type="number" id="goal-gaza-target" value="50000" min="0"></div>
+                    </div>
+                    <div class="stat-card">
+                        <label><i class="fas fa-tint icon"></i> Water Wells — Raised ($)</label>
+                        <div class="stat-input-row"><input type="number" id="goal-water-raised" value="0" min="0"></div>
+                        <label style="margin-top:8px;">Goal ($)</label>
+                        <div class="stat-input-row"><input type="number" id="goal-water-target" value="25000" min="0"></div>
+                    </div>
+                    <div class="stat-card">
+                        <label><i class="fas fa-bread-slice icon"></i> Bread a Day — Raised ($)</label>
+                        <div class="stat-input-row"><input type="number" id="goal-bread-raised" value="0" min="0"></div>
+                        <label style="margin-top:8px;">Goal ($)</label>
+                        <div class="stat-input-row"><input type="number" id="goal-bread-target" value="10000" min="0"></div>
+                    </div>
+                    <div class="stat-card">
+                        <label><i class="fas fa-drumstick-bite icon"></i> Dabiha — Raised ($)</label>
+                        <div class="stat-input-row"><input type="number" id="goal-dabiha-raised" value="0" min="0"></div>
+                        <label style="margin-top:8px;">Goal ($)</label>
+                        <div class="stat-input-row"><input type="number" id="goal-dabiha-target" value="15000" min="0"></div>
+                    </div>
+                    <div class="stat-card">
+                        <label><i class="fas fa-wheelchair icon"></i> Be Mobile — Raised ($)</label>
+                        <div class="stat-input-row"><input type="number" id="goal-mobile-raised" value="0" min="0"></div>
+                        <label style="margin-top:8px;">Goal ($)</label>
+                        <div class="stat-input-row"><input type="number" id="goal-mobile-target" value="10000" min="0"></div>
+                    </div>
+                </div>
+                <div class="save-bar">
+                    <div>
+                        <button class="save-btn" id="save-goals-btn" onclick="saveGoals()"><i class="fas fa-save"></i> Save Goals</button>
+                        <span class="save-status" id="save-goals-status"></span>
+                    </div>
+                </div>
+            </div>
         </div>
+    </div>
 
-        <!-- Impact Statistics -->
-        <div class="dash-section">
-            <h2><i class="fas fa-chart-bar" style="color:var(--primary);margin-right:8px;"></i> Impact Statistics</h2>
-            <p class="section-desc">Update the numbers shown on the homepage. Changes appear on the live site instantly.</p>
+    <!-- ==================== TAB 2: CAMPAIGNS ==================== -->
+    <div class="tab-content" id="tab-campaigns">
+        <div class="dash-content">
+            <!-- Pending Campaigns -->
+            <div class="dash-section">
+                <h2><i class="fas fa-clock" style="color:var(--primary);margin-right:8px;"></i> Pending Campaigns <span class="pending-count" id="pending-campaigns-count" style="display:none;">0</span></h2>
+                <p class="section-desc">Review user-submitted campaigns. Add a Stripe link and approve to make them live.</p>
+                <div id="pending-campaigns"><p style="color:var(--text-light);font-size:0.9rem;">Loading...</p></div>
+            </div>
 
-            <div class="stat-grid">
-                <div class="stat-card">
-                    <label><i class="fas fa-tint icon"></i> Water Wells Built</label>
-                    <div class="stat-input-row">
-                        <input type="number" id="stat-wells" value="20" min="0">
-                    </div>
-                </div>
-                <div class="stat-card">
-                    <label><i class="fas fa-utensils icon"></i> Meals Provided</label>
-                    <div class="stat-input-row">
-                        <input type="number" id="stat-meals" value="5000" min="0">
-                    </div>
-                </div>
-                <div class="stat-card">
-                    <label><i class="fas fa-graduation-cap icon"></i> Students Sponsored</label>
-                    <div class="stat-input-row">
-                        <input type="number" id="stat-students" value="200" min="0">
-                    </div>
-                </div>
-                <div class="stat-card">
-                    <label><i class="fas fa-globe-americas icon"></i> Countries Reached</label>
-                    <div class="stat-input-row">
-                        <input type="number" id="stat-countries" value="7" min="0">
-                    </div>
-                </div>
-                <div class="stat-card">
-                    <label><i class="fas fa-bread-slice icon"></i> Bread Loaves Given</label>
-                    <div class="stat-input-row">
-                        <input type="number" id="stat-bread" value="10000" min="0">
-                    </div>
-                </div>
-                <div class="stat-card">
-                    <label><i class="fas fa-wheelchair icon"></i> Wheelchairs Provided</label>
-                    <div class="stat-input-row">
-                        <input type="number" id="stat-wheelchairs" value="15" min="0">
+            <!-- Pending Causes -->
+            <div class="dash-section">
+                <h2><i class="fas fa-lightbulb" style="color:var(--primary);margin-right:8px;"></i> Pending Cause Suggestions <span class="pending-count" id="pending-causes-count" style="display:none;">0</span></h2>
+                <p class="section-desc">Review cause suggestions from visitors.</p>
+                <div id="pending-causes"><p style="color:var(--text-light);font-size:0.9rem;">Loading...</p></div>
+            </div>
+
+            <!-- Seed New Campaigns -->
+            <div class="dash-section">
+                <h2><i class="fas fa-seedling" style="color:var(--primary);margin-right:8px;"></i> Seed Foundation Campaigns</h2>
+                <p class="section-desc">Add new foundation campaigns to Firebase. Only campaigns that don't already exist will be created.</p>
+                <div class="save-bar" style="border-top:none;padding-top:0;margin-top:0;">
+                    <div>
+                        <button class="save-btn" onclick="seedNewCampaigns()"><i class="fas fa-plus-circle"></i> Seed 5 New Campaigns</button>
+                        <span id="seed-status" class="save-status"></span>
                     </div>
                 </div>
             </div>
 
-            <div class="save-bar">
-                <div>
-                    <button class="save-btn" id="save-stats-btn" onclick="saveStats()">
-                        <i class="fas fa-save"></i> Save Changes
-                    </button>
-                    <span class="save-status" id="save-status"></span>
-                </div>
-                <div class="last-updated" id="last-updated"></div>
-            </div>
-        </div>
-
-        <!-- Campaign Goals -->
-        <div class="dash-section">
-            <h2><i class="fas fa-bullseye" style="color:var(--primary);margin-right:8px;"></i> Campaign Goals</h2>
-            <p class="section-desc">Set targets for each campaign. Progress bars on the site will show percentage complete.</p>
-
-            <div class="stat-grid">
-                <div class="stat-card">
-                    <label><i class="fas fa-hand-holding-heart icon"></i> Save Gaza — Raised ($)</label>
-                    <div class="stat-input-row">
-                        <input type="number" id="goal-gaza-raised" value="0" min="0">
-                    </div>
-                    <label style="margin-top:8px;">Goal ($)</label>
-                    <div class="stat-input-row">
-                        <input type="number" id="goal-gaza-target" value="50000" min="0">
-                    </div>
-                </div>
-                <div class="stat-card">
-                    <label><i class="fas fa-tint icon"></i> Water Wells — Raised ($)</label>
-                    <div class="stat-input-row">
-                        <input type="number" id="goal-water-raised" value="0" min="0">
-                    </div>
-                    <label style="margin-top:8px;">Goal ($)</label>
-                    <div class="stat-input-row">
-                        <input type="number" id="goal-water-target" value="25000" min="0">
-                    </div>
-                </div>
-                <div class="stat-card">
-                    <label><i class="fas fa-bread-slice icon"></i> Bread a Day — Raised ($)</label>
-                    <div class="stat-input-row">
-                        <input type="number" id="goal-bread-raised" value="0" min="0">
-                    </div>
-                    <label style="margin-top:8px;">Goal ($)</label>
-                    <div class="stat-input-row">
-                        <input type="number" id="goal-bread-target" value="10000" min="0">
-                    </div>
-                </div>
-                <div class="stat-card">
-                    <label><i class="fas fa-drumstick-bite icon"></i> Dabiha — Raised ($)</label>
-                    <div class="stat-input-row">
-                        <input type="number" id="goal-dabiha-raised" value="0" min="0">
-                    </div>
-                    <label style="margin-top:8px;">Goal ($)</label>
-                    <div class="stat-input-row">
-                        <input type="number" id="goal-dabiha-target" value="15000" min="0">
-                    </div>
-                </div>
-                <div class="stat-card">
-                    <label><i class="fas fa-wheelchair icon"></i> Be Mobile — Raised ($)</label>
-                    <div class="stat-input-row">
-                        <input type="number" id="goal-mobile-raised" value="0" min="0">
-                    </div>
-                    <label style="margin-top:8px;">Goal ($)</label>
-                    <div class="stat-input-row">
-                        <input type="number" id="goal-mobile-target" value="10000" min="0">
+            <!-- Manage Approved Campaigns -->
+            <div class="dash-section">
+                <h2><i class="fas fa-tasks" style="color:var(--primary);margin-right:8px;"></i> Manage Approved Campaigns</h2>
+                <p class="section-desc">Update raised amounts and manage active campaigns.</p>
+                <div id="approved-campaigns"><p style="color:var(--text-light);font-size:0.9rem;">Loading...</p></div>
+                <div class="save-bar">
+                    <div>
+                        <button class="save-btn" id="save-campaigns-btn" onclick="saveAllCampaigns()"><i class="fas fa-save"></i> Save All Changes</button>
+                        <span class="save-status" id="save-campaigns-status"></span>
                     </div>
                 </div>
             </div>
+        </div>
+    </div>
 
-            <div class="save-bar">
-                <div>
-                    <button class="save-btn" id="save-goals-btn" onclick="saveGoals()">
-                        <i class="fas fa-save"></i> Save Goals
-                    </button>
-                    <span class="save-status" id="save-goals-status"></span>
+    <!-- ==================== TAB 3: SOCIAL MEDIA ==================== -->
+    <div class="tab-content" id="tab-social">
+        <div class="dash-content">
+            <div class="dash-section">
+                <h2><i class="fas fa-share-alt" style="color:var(--primary);margin-right:8px;"></i> Social Media Accounts</h2>
+                <p class="section-desc">Quick-launch your social media accounts in a new tab.</p>
+                <div class="social-grid">
+                    <a href="https://x.com/FoundationNoman" target="_blank" class="social-btn twitter"><i class="fab fa-x-twitter"></i> X (Twitter)</a>
+                    <a href="https://www.facebook.com/alnomanfoundation" target="_blank" class="social-btn facebook"><i class="fab fa-facebook"></i> Facebook</a>
+                    <a href="https://www.instagram.com/alnomanfoundation" target="_blank" class="social-btn instagram"><i class="fab fa-instagram"></i> Instagram</a>
+                    <a href="https://www.linkedin.com/company/al-noman-foundation" target="_blank" class="social-btn linkedin"><i class="fab fa-linkedin"></i> LinkedIn</a>
+                    <a href="https://www.tiktok.com/@alnomanonprofit" target="_blank" class="social-btn tiktok"><i class="fab fa-tiktok"></i> TikTok</a>
+                    <a href="https://wa.me/22997838382" target="_blank" class="social-btn whatsapp"><i class="fab fa-whatsapp"></i> WhatsApp</a>
                 </div>
             </div>
-        </div>
 
-        <!-- Pending Campaigns -->
-        <div class="dash-section">
-            <h2><i class="fas fa-clock" style="color:var(--primary);margin-right:8px;"></i> Pending Campaigns <span class="pending-count" id="pending-campaigns-count" style="display:none;">0</span></h2>
-            <p class="section-desc">Review user-submitted campaigns. Add a Stripe link and approve to make them live.</p>
-            <div id="pending-campaigns"><p style="color:var(--text-light);font-size:0.9rem;">Loading...</p></div>
-        </div>
+            <div class="dash-section">
+                <h2><i class="fas fa-pen-fancy" style="color:var(--primary);margin-right:8px;"></i> Post Drafter</h2>
+                <p class="section-desc">Draft social media posts, save them, and copy to clipboard.</p>
 
-        <!-- Pending Causes -->
-        <div class="dash-section">
-            <h2><i class="fas fa-lightbulb" style="color:var(--primary);margin-right:8px;"></i> Pending Cause Suggestions <span class="pending-count" id="pending-causes-count" style="display:none;">0</span></h2>
-            <p class="section-desc">Review cause suggestions from visitors.</p>
-            <div id="pending-causes"><p style="color:var(--text-light);font-size:0.9rem;">Loading...</p></div>
-        </div>
-
-        <!-- Newsletter Subscribers -->
-        <div class="dash-section">
-            <h2><i class="fas fa-envelope-open-text" style="color:var(--primary);margin-right:8px;"></i> Newsletter Subscribers <span class="pending-count" id="newsletter-count" style="display:none;">0</span></h2>
-            <p class="section-desc">View and export newsletter email subscribers.</p>
-            <div style="margin-bottom:16px;display:flex;gap:12px;flex-wrap:wrap;align-items:center;">
-                <button class="save-btn" onclick="exportNewsletterCSV()" style="background:var(--success);"><i class="fas fa-file-csv"></i> Export CSV</button>
-                <span id="newsletter-total" style="font-size:0.85rem;color:var(--text-light);"></span>
-            </div>
-            <div id="newsletter-list" style="max-height:400px;overflow-y:auto;border:1px solid var(--border);border-radius:var(--radius);"><p style="color:var(--text-light);font-size:0.9rem;padding:16px;">Loading...</p></div>
-        </div>
-
-        <!-- Seed New Campaigns -->
-        <div class="dash-section">
-            <h2><i class="fas fa-seedling" style="color:var(--primary);margin-right:8px;"></i> Seed Foundation Campaigns</h2>
-            <p class="section-desc">Add new foundation campaigns to Firebase. Only campaigns that don't already exist will be created.</p>
-            <div class="save-bar" style="border-top:none;padding-top:0;margin-top:0;">
-                <div>
-                    <button class="save-btn" onclick="seedNewCampaigns()"><i class="fas fa-plus-circle"></i> Seed 5 New Campaigns</button>
-                    <span id="seed-status" class="save-status"></span>
+                <div style="margin-bottom:12px;">
+                    <label style="font-size:0.85rem;font-weight:600;display:block;margin-bottom:6px;">Platform</label>
+                    <select id="social-platform" onchange="updateCharCount()" style="padding:10px 14px;border:1px solid var(--border);border-radius:8px;font-family:inherit;font-size:0.9rem;width:200px;">
+                        <option value="twitter">X (Twitter) — 280 chars</option>
+                        <option value="facebook">Facebook</option>
+                        <option value="instagram">Instagram — 2200 chars</option>
+                        <option value="linkedin">LinkedIn — 3000 chars</option>
+                        <option value="tiktok">TikTok — 2200 chars</option>
+                    </select>
                 </div>
-            </div>
-        </div>
 
-        <!-- Manage Approved Campaigns -->
-        <div class="dash-section">
-            <h2><i class="fas fa-tasks" style="color:var(--primary);margin-right:8px;"></i> Manage Approved Campaigns</h2>
-            <p class="section-desc">Update raised amounts and manage active campaigns.</p>
-            <div id="approved-campaigns"><p style="color:var(--text-light);font-size:0.9rem;">Loading...</p></div>
-            <div class="save-bar">
-                <div>
-                    <button class="save-btn" id="save-campaigns-btn" onclick="saveAllCampaigns()"><i class="fas fa-save"></i> Save All Changes</button>
-                    <span class="save-status" id="save-campaigns-status"></span>
+                <div style="margin-bottom:4px;">
+                    <textarea id="social-draft-text" rows="5" placeholder="Write your post here..." oninput="updateCharCount()" style="width:100%;padding:14px;border:1px solid var(--border);border-radius:8px;font-family:inherit;font-size:0.9rem;resize:vertical;"></textarea>
+                    <div class="char-count" id="social-char-count">0 characters</div>
                 </div>
+
+                <div style="display:flex;gap:8px;margin-top:12px;">
+                    <button class="save-btn" onclick="saveSocialDraft()" style="font-size:0.85rem;padding:10px 20px;"><i class="fas fa-save"></i> Save Draft</button>
+                    <button class="save-btn" onclick="copySocialDraft()" style="background:var(--success);font-size:0.85rem;padding:10px 20px;"><i class="fas fa-copy"></i> Copy</button>
+                </div>
+                <span class="save-status" id="social-draft-status" style="margin-top:8px;display:none;"></span>
+            </div>
+
+            <div class="dash-section">
+                <h2><i class="fas fa-folder-open" style="color:var(--primary);margin-right:8px;"></i> Saved Drafts</h2>
+                <p class="section-desc">Your saved social media post drafts.</p>
+                <div id="social-drafts-list"><p style="color:var(--text-light);font-size:0.9rem;">Loading...</p></div>
             </div>
         </div>
+    </div>
+
+    <!-- ==================== TAB 4: NEWSLETTER ==================== -->
+    <div class="tab-content" id="tab-newsletter">
+        <div class="dash-content">
+            <div class="dash-section">
+                <h2><i class="fas fa-pen" style="color:var(--primary);margin-right:8px;"></i> Compose Newsletter</h2>
+                <p class="section-desc">Write and send newsletters to your subscribers using the rich text editor.</p>
+
+                <div style="margin-bottom:16px;">
+                    <label style="font-size:0.85rem;font-weight:600;display:block;margin-bottom:6px;">Subject Line</label>
+                    <input type="text" id="nl-subject" placeholder="e.g. March 2026 — Our Latest Impact" style="width:100%;padding:12px 16px;border:1px solid var(--border);border-radius:8px;font-family:inherit;font-size:0.95rem;">
+                </div>
+
+                <div style="margin-bottom:16px;">
+                    <label style="font-size:0.85rem;font-weight:600;display:block;margin-bottom:6px;">Email Body</label>
+                    <div id="nl-editor"></div>
+                </div>
+
+                <div style="display:flex;gap:8px;flex-wrap:wrap;">
+                    <button class="save-btn" onclick="previewNewsletter()" style="background:#2980b9;font-size:0.85rem;padding:10px 20px;"><i class="fas fa-eye"></i> Preview</button>
+                    <button class="save-btn" onclick="saveNewsletterDraft()" style="font-size:0.85rem;padding:10px 20px;"><i class="fas fa-save"></i> Save Draft</button>
+                    <button class="save-btn" onclick="sendNewsletter()" style="background:var(--success);font-size:0.85rem;padding:10px 20px;"><i class="fas fa-paper-plane"></i> Send to All Subscribers</button>
+                </div>
+                <span class="save-status" id="nl-compose-status" style="margin-top:8px;display:none;"></span>
+            </div>
+
+            <!-- Preview -->
+            <div class="dash-section" id="nl-preview-section" style="display:none;">
+                <h2><i class="fas fa-eye" style="color:var(--primary);margin-right:8px;"></i> Email Preview</h2>
+                <p class="section-desc">How your email will look to recipients.</p>
+                <iframe id="nl-preview-frame" class="nl-preview-frame" sandbox="allow-same-origin"></iframe>
+            </div>
+
+            <!-- Drafts -->
+            <div class="dash-section">
+                <h2><i class="fas fa-file-alt" style="color:var(--primary);margin-right:8px;"></i> Newsletter Drafts</h2>
+                <p class="section-desc">Load a saved draft to continue editing.</p>
+                <div id="nl-drafts-list"><p style="color:var(--text-light);font-size:0.9rem;">Loading...</p></div>
+            </div>
+
+            <!-- Sent History -->
+            <div class="dash-section">
+                <h2><i class="fas fa-history" style="color:var(--primary);margin-right:8px;"></i> Sent History</h2>
+                <p class="section-desc">Log of all newsletters sent.</p>
+                <div id="nl-history-list"><p style="color:var(--text-light);font-size:0.9rem;">Loading...</p></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== TAB 5: SUBSCRIBERS ==================== -->
+    <div class="tab-content" id="tab-subscribers">
+        <div class="dash-content">
+            <div class="dash-section">
+                <h2><i class="fas fa-users" style="color:var(--primary);margin-right:8px;"></i> Newsletter Subscribers</h2>
+                <p class="section-desc">Manage your email subscribers list.</p>
+
+                <!-- Stats Cards -->
+                <div class="sub-stats">
+                    <div class="sub-stat-card">
+                        <div class="sub-stat-num" id="sub-total">0</div>
+                        <div class="sub-stat-label">Total</div>
+                    </div>
+                    <div class="sub-stat-card">
+                        <div class="sub-stat-num" id="sub-donors">0</div>
+                        <div class="sub-stat-label">Donors</div>
+                    </div>
+                    <div class="sub-stat-card">
+                        <div class="sub-stat-num" id="sub-volunteers">0</div>
+                        <div class="sub-stat-label">Volunteers</div>
+                    </div>
+                    <div class="sub-stat-card">
+                        <div class="sub-stat-num" id="sub-month">0</div>
+                        <div class="sub-stat-label">This Month</div>
+                    </div>
+                </div>
+
+                <!-- Import -->
+                <div style="margin-bottom:20px;padding:16px;background:var(--primary-light);border-radius:var(--radius);">
+                    <label style="font-size:0.85rem;font-weight:600;display:block;margin-bottom:6px;"><i class="fas fa-file-import" style="margin-right:4px;"></i> Import Emails</label>
+                    <textarea id="import-emails" rows="3" placeholder="Paste emails, one per line. Optional format: email, name, category" style="width:100%;padding:10px;border:1px solid var(--border);border-radius:8px;font-family:inherit;font-size:0.85rem;margin-bottom:8px;resize:vertical;"></textarea>
+                    <div style="display:flex;gap:8px;align-items:center;">
+                        <button class="save-btn" onclick="importEmails()" style="font-size:0.8rem;padding:8px 16px;"><i class="fas fa-upload"></i> Import</button>
+                        <span class="save-status" id="import-status"></span>
+                    </div>
+                </div>
+
+                <!-- Filters & Search -->
+                <div class="filter-bar">
+                    <button class="filter-btn active" onclick="filterSubscribers('all', this)">All</button>
+                    <button class="filter-btn" onclick="filterSubscribers('general', this)">General</button>
+                    <button class="filter-btn" onclick="filterSubscribers('donor', this)">Donors</button>
+                    <button class="filter-btn" onclick="filterSubscribers('volunteer', this)">Volunteers</button>
+                    <button class="filter-btn" onclick="filterSubscribers('partner', this)">Partners</button>
+                    <input type="text" class="search-input" id="sub-search" placeholder="Search emails..." oninput="filterSubscribers(currentFilter)">
+                </div>
+
+                <!-- Action Buttons -->
+                <div style="margin-bottom:16px;display:flex;gap:12px;flex-wrap:wrap;">
+                    <button class="save-btn" onclick="exportNewsletterCSV()" style="background:var(--success);font-size:0.8rem;padding:8px 16px;"><i class="fas fa-file-csv"></i> Export CSV</button>
+                    <span id="newsletter-total" style="font-size:0.85rem;color:var(--text-light);display:flex;align-items:center;"></span>
+                </div>
+
+                <!-- Table -->
+                <div id="newsletter-list" style="max-height:500px;overflow-y:auto;border:1px solid var(--border);border-radius:var(--radius);"><p style="color:var(--text-light);font-size:0.9rem;padding:16px;">Loading...</p></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Send Progress Overlay -->
+<div class="progress-overlay" id="send-progress">
+    <div class="progress-box">
+        <h3 id="progress-title">Sending Newsletter...</h3>
+        <div class="progress-bar-outer"><div class="progress-bar-inner" id="progress-bar"></div></div>
+        <p class="progress-text" id="progress-text">Preparing...</p>
     </div>
 </div>
 
 <script>
     // ============================================
     // FIREBASE CONFIGURATION
-    // Replace these values with your Firebase project config
-    // Go to: Firebase Console > Project Settings > General > Your Apps > Web App
     // ============================================
     const firebaseConfig = {
         apiKey: "AIzaSyAp0xPPTcMk9C3ZsGBOyajBb-t_WKu3BFo",
@@ -408,10 +668,46 @@
         appId: "1:1022172941333:web:6a1cc19cc27da4bbb4121c"
     };
 
-    // Initialize Firebase
     firebase.initializeApp(firebaseConfig);
     const auth = firebase.auth();
     const db = firebase.database();
+
+    // ============================================
+    // QUILL EDITOR INIT
+    // ============================================
+    var quill = null;
+
+    function initQuill() {
+        if (quill) return;
+        quill = new Quill('#nl-editor', {
+            theme: 'snow',
+            placeholder: 'Write your newsletter content here...',
+            modules: {
+                toolbar: [
+                    [{ 'header': [1, 2, 3, false] }],
+                    ['bold', 'italic', 'underline'],
+                    [{ 'list': 'ordered' }, { 'list': 'bullet' }],
+                    ['link', 'image', 'blockquote'],
+                    ['clean']
+                ]
+            }
+        });
+    }
+
+    // ============================================
+    // TAB NAVIGATION
+    // ============================================
+    function switchTab(tab) {
+        document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+        document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
+        document.getElementById('tab-' + tab).classList.add('active');
+        // Find and activate the matching tab button
+        document.querySelectorAll('.tab-btn').forEach(btn => {
+            if (btn.getAttribute('onclick') === "switchTab('" + tab + "')") btn.classList.add('active');
+        });
+        // Initialize Quill when newsletter tab is first opened
+        if (tab === 'newsletter') initQuill();
+    }
 
     // ============================================
     // AUTH
@@ -427,6 +723,9 @@
             loadPendingCauses();
             loadApprovedCampaigns();
             loadNewsletter();
+            loadSocialDrafts();
+            loadNewsletterDrafts();
+            loadNewsletterHistory();
         } else {
             document.getElementById('login-screen').style.display = 'flex';
             document.getElementById('dashboard').style.display = 'none';
@@ -439,7 +738,6 @@
         const password = document.getElementById('login-password').value;
         const errorEl = document.getElementById('login-error');
         errorEl.style.display = 'none';
-
         auth.signInWithEmailAndPassword(email, password)
             .catch(err => {
                 errorEl.textContent = 'Invalid email or password.';
@@ -447,8 +745,15 @@
             });
     });
 
-    function logout() {
-        auth.signOut();
+    function logout() { auth.signOut(); }
+
+    // ============================================
+    // HTML ESCAPING UTILITY
+    // ============================================
+    function escapeHtml(str) {
+        const div = document.createElement('div');
+        div.appendChild(document.createTextNode(str || ''));
+        return div.innerHTML;
     }
 
     // ============================================
@@ -476,7 +781,6 @@
         const status = document.getElementById('save-status');
         btn.disabled = true;
         btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Saving...';
-
         const data = {
             wells: parseInt(document.getElementById('stat-wells').value) || 0,
             meals: parseInt(document.getElementById('stat-meals').value) || 0,
@@ -486,7 +790,6 @@
             wheelchairs: parseInt(document.getElementById('stat-wheelchairs').value) || 0,
             lastUpdated: firebase.database.ServerValue.TIMESTAMP
         };
-
         db.ref('stats').set(data)
             .then(() => {
                 btn.disabled = false;
@@ -532,7 +835,6 @@
         const status = document.getElementById('save-goals-status');
         btn.disabled = true;
         btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Saving...';
-
         const data = {
             gaza_raised: parseInt(document.getElementById('goal-gaza-raised').value) || 0,
             gaza_target: parseInt(document.getElementById('goal-gaza-target').value) || 50000,
@@ -546,7 +848,6 @@
             mobile_target: parseInt(document.getElementById('goal-mobile-target').value) || 10000,
             lastUpdated: firebase.database.ServerValue.TIMESTAMP
         };
-
         db.ref('goals').set(data)
             .then(() => {
                 btn.disabled = false;
@@ -566,15 +867,6 @@
     }
 
     // ============================================
-    // HTML ESCAPING UTILITY
-    // ============================================
-    function escapeHtml(str) {
-        const div = document.createElement('div');
-        div.appendChild(document.createTextNode(str || ''));
-        return div.innerHTML;
-    }
-
-    // ============================================
     // PENDING CAMPAIGNS
     // ============================================
     function loadPendingCampaigns() {
@@ -583,13 +875,15 @@
             const countEl = document.getElementById('pending-campaigns-count');
             const data = snapshot.val();
             if (!data || Object.keys(data).length === 0) {
-                container.innerHTML = '<p style="color:var(--text-muted);font-size:0.9rem;"><i class="fas fa-check-circle" style="color:#27ae60;margin-right:6px;"></i> No pending campaigns.</p>';
+                container.innerHTML = '<p style="color:var(--text-light);font-size:0.9rem;"><i class="fas fa-check-circle" style="color:#27ae60;margin-right:6px;"></i> No pending campaigns.</p>';
                 countEl.style.display = 'none';
+                updateCampaignsBadge();
                 return;
             }
             const entries = Object.entries(data).sort((a, b) => (a[1].created_at || 0) - (b[1].created_at || 0));
             countEl.textContent = entries.length;
             countEl.style.display = 'inline-flex';
+            updateCampaignsBadge();
             container.innerHTML = entries.map(([id, c]) => {
                 const date = c.created_at ? new Date(c.created_at).toLocaleDateString() : 'Unknown';
                 return '<div class="pending-card" id="pending-' + id + '">' +
@@ -609,6 +903,17 @@
                     '</div></div>';
             }).join('');
         });
+    }
+
+    function updateCampaignsBadge() {
+        var pc = document.getElementById('pending-campaigns-count');
+        var pca = document.getElementById('pending-causes-count');
+        var badge = document.getElementById('tab-campaigns-badge');
+        var total = 0;
+        if (pc && pc.style.display !== 'none') total += parseInt(pc.textContent) || 0;
+        if (pca && pca.style.display !== 'none') total += parseInt(pca.textContent) || 0;
+        if (total > 0) { badge.textContent = total; badge.style.display = 'inline-flex'; }
+        else { badge.style.display = 'none'; }
     }
 
     function approveCampaign(id) {
@@ -638,13 +943,15 @@
             const countEl = document.getElementById('pending-causes-count');
             const data = snapshot.val();
             if (!data || Object.keys(data).length === 0) {
-                container.innerHTML = '<p style="color:var(--text-muted);font-size:0.9rem;"><i class="fas fa-check-circle" style="color:#27ae60;margin-right:6px;"></i> No pending suggestions.</p>';
+                container.innerHTML = '<p style="color:var(--text-light);font-size:0.9rem;"><i class="fas fa-check-circle" style="color:#27ae60;margin-right:6px;"></i> No pending suggestions.</p>';
                 countEl.style.display = 'none';
+                updateCampaignsBadge();
                 return;
             }
             const entries = Object.entries(data).sort((a, b) => (a[1].created_at || 0) - (b[1].created_at || 0));
             countEl.textContent = entries.length;
             countEl.style.display = 'inline-flex';
+            updateCampaignsBadge();
             container.innerHTML = entries.map(([id, c]) => {
                 const date = c.created_at ? new Date(c.created_at).toLocaleDateString() : 'Unknown';
                 return '<div class="pending-card" id="cause-' + id + '">' +
@@ -701,10 +1008,10 @@
         db.ref('campaigns').orderByChild('status').equalTo('approved').on('value', snapshot => {
             const container = document.getElementById('approved-campaigns');
             const data = snapshot.val();
-            if (!data) { container.innerHTML = '<p style="color:var(--text-muted);">No approved campaigns yet.</p>'; return; }
+            if (!data) { container.innerHTML = '<p style="color:var(--text-light);">No approved campaigns yet.</p>'; return; }
             container.innerHTML = Object.entries(data).map(([id, c]) =>
                 '<div class="approved-card" id="approved-' + id + '">' +
-                '<h3>' + escapeHtml(c.title) + ' <span style="font-size:0.75rem;color:var(--text-muted);">' + (c.is_foundation ? 'Foundation' : 'Community') + '</span></h3>' +
+                '<h3>' + escapeHtml(c.title) + ' <span style="font-size:0.75rem;color:var(--text-light);">' + (c.is_foundation ? 'Foundation' : 'Community') + '</span></h3>' +
                 '<div class="approved-inline">' +
                 '<label>Raised ($)</label><input type="number" id="raised-' + id + '" value="' + (c.raised_amount || 0) + '" min="0" style="width:120px;">' +
                 '<label>Goal ($)</label><input type="number" id="target-' + id + '" value="' + (c.goal_amount || 0) + '" min="0" style="width:120px;">' +
@@ -745,22 +1052,383 @@
     }
 
     // ============================================
-    // NEWSLETTER SUBSCRIBERS
+    // SEED NEW FOUNDATION CAMPAIGNS
+    // ============================================
+    async function seedNewCampaigns() {
+        var statusEl = document.getElementById('seed-status');
+        statusEl.textContent = 'Checking existing campaigns...';
+        statusEl.className = 'save-status';
+        statusEl.style.display = 'inline';
+
+        var newCampaigns = {
+            'foundation-toys': {
+                title: 'Joy for Kids \u2014 Toy Distribution', description: 'Bring smiles to children\'s faces by distributing toys in underprivileged communities.',
+                category: 'children', location: 'Benin', goal_amount: 5000, raised_amount: 0,
+                stripe_link: 'https://donate.stripe.com/dR6bLq1gf7xF7y8aEG', is_foundation: true, status: 'approved', created_at: new Date().toISOString()
+            },
+            'foundation-treats': {
+                title: 'Weekly Treats for Kids', description: 'Every week, we distribute candy, ice cream, and chips to children in need.',
+                category: 'children', location: 'Benin', goal_amount: 3000, raised_amount: 0,
+                stripe_link: 'https://donate.stripe.com/dR6bLq1gf7xF7y8aEG', is_foundation: true, status: 'approved', created_at: new Date().toISOString()
+            },
+            'foundation-hospital': {
+                title: 'Hospital Freedom \u2014 Medical Relief', description: 'Help patients stuck in hospitals because they cannot afford medical bills.',
+                category: 'health', location: 'Benin', goal_amount: 10000, raised_amount: 0,
+                stripe_link: 'https://donate.stripe.com/dR6bLq1gf7xF7y8aEG', is_foundation: true, status: 'approved', created_at: new Date().toISOString()
+            },
+            'foundation-iftar': {
+                title: 'Ramadan Iftar Meals', description: 'Sponsor iftar meals during Ramadan for just $2 per meal.',
+                category: 'food', location: 'Benin', goal_amount: 15000, raised_amount: 0,
+                stripe_link: 'https://donate.stripe.com/dR6bLq1gf7xF7y8aEG', is_foundation: true, status: 'approved', created_at: new Date().toISOString()
+            },
+            'foundation-quran': {
+                title: 'Quran Memorization Sponsorship', description: 'Support a student on their journey to memorize the Holy Quran. Zakat-eligible.',
+                category: 'education', location: 'Benin', goal_amount: 8000, raised_amount: 0,
+                stripe_link: 'https://donate.stripe.com/dR6bLq1gf7xF7y8aEG', is_foundation: true, status: 'approved', created_at: new Date().toISOString()
+            }
+        };
+
+        var ids = Object.keys(newCampaigns);
+        var seededCount = 0, skippedCount = 0;
+        try {
+            for (var i = 0; i < ids.length; i++) {
+                var id = ids[i];
+                statusEl.textContent = 'Checking ' + (i + 1) + ' of ' + ids.length + '...';
+                var snapshot = await db.ref('campaigns/' + id).once('value');
+                if (snapshot.exists()) { skippedCount++; } else { await db.ref('campaigns/' + id).set(newCampaigns[id]); seededCount++; }
+            }
+            statusEl.textContent = seededCount > 0 ? seededCount + ' campaign(s) seeded!' + (skippedCount > 0 ? ' (' + skippedCount + ' already existed)' : '') : 'All campaigns already exist.';
+            statusEl.className = 'save-status';
+            statusEl.style.display = 'inline';
+            setTimeout(function() { statusEl.style.display = 'none'; }, 5000);
+        } catch (err) {
+            statusEl.textContent = 'Error: ' + err.message;
+            statusEl.className = 'save-status error';
+            statusEl.style.display = 'inline';
+        }
+    }
+
+    // ============================================
+    // SOCIAL MEDIA HUB
+    // ============================================
+    var charLimits = { twitter: 280, facebook: 0, instagram: 2200, linkedin: 3000, tiktok: 2200 };
+
+    function updateCharCount() {
+        var text = document.getElementById('social-draft-text').value;
+        var platform = document.getElementById('social-platform').value;
+        var limit = charLimits[platform];
+        var el = document.getElementById('social-char-count');
+        if (limit > 0) {
+            el.textContent = text.length + ' / ' + limit + ' characters';
+            el.className = text.length > limit ? 'char-count over' : 'char-count';
+        } else {
+            el.textContent = text.length + ' characters';
+            el.className = 'char-count';
+        }
+    }
+
+    function saveSocialDraft() {
+        var text = document.getElementById('social-draft-text').value.trim();
+        var platform = document.getElementById('social-platform').value;
+        if (!text) { alert('Write something first!'); return; }
+        var draft = {
+            content: text,
+            platform: platform,
+            created_at: firebase.database.ServerValue.TIMESTAMP
+        };
+        db.ref('social_drafts').push(draft)
+            .then(function() {
+                var s = document.getElementById('social-draft-status');
+                s.textContent = 'Draft saved!'; s.className = 'save-status'; s.style.display = 'inline';
+                setTimeout(function() { s.style.display = 'none'; }, 3000);
+            })
+            .catch(function(err) { alert('Error: ' + err.message); });
+    }
+
+    function copySocialDraft() {
+        var text = document.getElementById('social-draft-text').value;
+        if (!text) { alert('Nothing to copy!'); return; }
+        navigator.clipboard.writeText(text).then(function() {
+            var s = document.getElementById('social-draft-status');
+            s.textContent = 'Copied to clipboard!'; s.className = 'save-status'; s.style.display = 'inline';
+            setTimeout(function() { s.style.display = 'none'; }, 3000);
+        });
+    }
+
+    function loadSocialDrafts() {
+        db.ref('social_drafts').orderByChild('created_at').on('value', function(snapshot) {
+            var container = document.getElementById('social-drafts-list');
+            if (!snapshot.exists()) { container.innerHTML = '<p style="color:var(--text-light);font-size:0.9rem;">No saved drafts.</p>'; return; }
+            var items = [];
+            snapshot.forEach(function(child) { var d = child.val(); d._key = child.key; items.push(d); });
+            items.reverse();
+            container.innerHTML = items.map(function(d) {
+                var date = d.created_at ? new Date(d.created_at).toLocaleDateString('en-US', { month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' }) : '';
+                var platformLabel = { twitter: 'X', facebook: 'Facebook', instagram: 'Instagram', linkedin: 'LinkedIn', tiktok: 'TikTok' }[d.platform] || d.platform;
+                return '<div class="draft-card">' +
+                    '<div class="draft-meta"><span style="background:var(--primary-light);color:var(--primary);padding:2px 8px;border-radius:4px;font-weight:600;">' + escapeHtml(platformLabel) + '</span> &middot; ' + date + '</div>' +
+                    '<div class="draft-text">' + escapeHtml(d.content) + '</div>' +
+                    '<div class="draft-actions">' +
+                    '<button class="save-btn" style="background:var(--primary);font-size:0.75rem;padding:6px 12px;" onclick="loadSocialDraft(\'' + d._key + '\')"><i class="fas fa-edit"></i> Load</button>' +
+                    '<button class="save-btn" style="background:var(--success);font-size:0.75rem;padding:6px 12px;" onclick="navigator.clipboard.writeText(decodeURIComponent(\'' + encodeURIComponent(d.content) + '\'));alert(\'Copied!\')"><i class="fas fa-copy"></i> Copy</button>' +
+                    '<button class="save-btn" style="background:var(--danger);font-size:0.75rem;padding:6px 12px;" onclick="deleteSocialDraft(\'' + d._key + '\')"><i class="fas fa-trash"></i></button>' +
+                    '</div></div>';
+            }).join('');
+        });
+    }
+
+    function loadSocialDraft(key) {
+        db.ref('social_drafts/' + key).once('value', function(snapshot) {
+            var d = snapshot.val();
+            if (!d) return;
+            document.getElementById('social-draft-text').value = d.content || '';
+            document.getElementById('social-platform').value = d.platform || 'twitter';
+            updateCharCount();
+            switchTab('social');
+        });
+    }
+
+    function deleteSocialDraft(key) {
+        if (!confirm('Delete this draft?')) return;
+        db.ref('social_drafts/' + key).remove();
+    }
+
+    // ============================================
+    // NEWSLETTER COMPOSER
+    // ============================================
+    function buildEmailTemplate(subject, bodyHtml) {
+        return '<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"></head>' +
+            '<body style="margin:0;padding:0;background:#f5f5f7;font-family:Arial,Helvetica,sans-serif;">' +
+            '<table width="100%" cellpadding="0" cellspacing="0" style="background:#f5f5f7;padding:32px 0;">' +
+            '<tr><td align="center"><table width="600" cellpadding="0" cellspacing="0" style="max-width:600px;width:100%;">' +
+            // Header
+            '<tr><td style="background:linear-gradient(135deg,#7352a2,#5a3d8a);padding:32px 40px;border-radius:12px 12px 0 0;text-align:center;">' +
+            '<h1 style="color:#fff;margin:0 0 4px;font-size:24px;">Al-Noman Foundation</h1>' +
+            '<p style="color:rgba(255,255,255,0.8);margin:0;font-size:13px;">Be Giving, Be Living</p>' +
+            '</td></tr>' +
+            // Body
+            '<tr><td style="background:#fff;padding:40px;border-left:1px solid #e8e8e8;border-right:1px solid #e8e8e8;">' +
+            '<h2 style="color:#1a1a2e;margin:0 0 20px;font-size:20px;">' + escapeHtml(subject) + '</h2>' +
+            '<div style="color:#333;font-size:15px;line-height:1.7;">' + bodyHtml + '</div>' +
+            '</td></tr>' +
+            // CTA
+            '<tr><td style="background:#fff;padding:0 40px 40px;border-left:1px solid #e8e8e8;border-right:1px solid #e8e8e8;text-align:center;">' +
+            '<a href="https://www.alnoman.org/ways-to-give.html" style="display:inline-block;background:#7352a2;color:#fff;padding:14px 40px;border-radius:50px;text-decoration:none;font-weight:bold;font-size:15px;">Donate Now</a>' +
+            '</td></tr>' +
+            // Social
+            '<tr><td style="background:#f0ebf7;padding:20px 40px;text-align:center;border-left:1px solid #e8e8e8;border-right:1px solid #e8e8e8;">' +
+            '<a href="https://www.facebook.com/alnomanfoundation" style="margin:0 6px;color:#7352a2;text-decoration:none;font-size:14px;">Facebook</a> &middot; ' +
+            '<a href="https://www.instagram.com/alnomanfoundation" style="margin:0 6px;color:#7352a2;text-decoration:none;font-size:14px;">Instagram</a> &middot; ' +
+            '<a href="https://x.com/FoundationNoman" style="margin:0 6px;color:#7352a2;text-decoration:none;font-size:14px;">X</a> &middot; ' +
+            '<a href="https://www.linkedin.com/company/al-noman-foundation" style="margin:0 6px;color:#7352a2;text-decoration:none;font-size:14px;">LinkedIn</a>' +
+            '</td></tr>' +
+            // Footer
+            '<tr><td style="background:#1a1a2e;padding:24px 40px;border-radius:0 0 12px 12px;text-align:center;">' +
+            '<p style="color:rgba(255,255,255,0.6);font-size:12px;margin:0 0 8px;">Al-Noman Foundation | 501(c)(3) Nonprofit | Orlando, FL, USA</p>' +
+            '<p style="color:rgba(255,255,255,0.4);font-size:11px;margin:0;">You received this because you subscribed to our newsletter. ' +
+            '<a href="mailto:info@alnoman.org?subject=Unsubscribe" style="color:rgba(255,255,255,0.6);">Unsubscribe</a></p>' +
+            '</td></tr>' +
+            '</table></td></tr></table></body></html>';
+    }
+
+    function previewNewsletter() {
+        if (!quill) { alert('Editor not loaded. Switch to the Newsletter tab first.'); return; }
+        var subject = document.getElementById('nl-subject').value.trim();
+        var bodyHtml = quill.root.innerHTML;
+        if (!subject) { alert('Please enter a subject line.'); return; }
+        if (quill.getText().trim().length === 0) { alert('Please write some content.'); return; }
+
+        var html = buildEmailTemplate(subject, bodyHtml);
+        var frame = document.getElementById('nl-preview-frame');
+        var doc = frame.contentDocument || frame.contentWindow.document;
+        doc.open(); doc.write(html); doc.close();
+        document.getElementById('nl-preview-section').style.display = 'block';
+        document.getElementById('nl-preview-section').scrollIntoView({ behavior: 'smooth' });
+    }
+
+    function saveNewsletterDraft() {
+        if (!quill) { alert('Editor not loaded.'); return; }
+        var subject = document.getElementById('nl-subject').value.trim();
+        var bodyHtml = quill.root.innerHTML;
+        if (!subject && quill.getText().trim().length === 0) { alert('Nothing to save.'); return; }
+        var draft = {
+            subject: subject,
+            body_html: bodyHtml,
+            created_at: firebase.database.ServerValue.TIMESTAMP,
+            updated_at: firebase.database.ServerValue.TIMESTAMP
+        };
+        db.ref('newsletter_drafts').push(draft)
+            .then(function() {
+                var s = document.getElementById('nl-compose-status');
+                s.textContent = 'Draft saved!'; s.className = 'save-status'; s.style.display = 'inline';
+                setTimeout(function() { s.style.display = 'none'; }, 3000);
+            })
+            .catch(function(err) { alert('Error: ' + err.message); });
+    }
+
+    function loadNewsletterDrafts() {
+        db.ref('newsletter_drafts').orderByChild('created_at').on('value', function(snapshot) {
+            var container = document.getElementById('nl-drafts-list');
+            if (!snapshot.exists()) { container.innerHTML = '<p style="color:var(--text-light);font-size:0.9rem;">No saved drafts.</p>'; return; }
+            var items = [];
+            snapshot.forEach(function(child) { var d = child.val(); d._key = child.key; items.push(d); });
+            items.reverse();
+            container.innerHTML = items.map(function(d) {
+                var date = d.created_at ? new Date(d.created_at).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }) : '';
+                return '<div class="draft-card">' +
+                    '<div class="draft-meta">' + date + '</div>' +
+                    '<div class="draft-text" style="font-weight:600;">' + escapeHtml(d.subject || '(No subject)') + '</div>' +
+                    '<div class="draft-actions">' +
+                    '<button class="save-btn" style="background:var(--primary);font-size:0.75rem;padding:6px 12px;" onclick="loadNewsletterDraft(\'' + d._key + '\')"><i class="fas fa-edit"></i> Load</button>' +
+                    '<button class="save-btn" style="background:var(--danger);font-size:0.75rem;padding:6px 12px;" onclick="deleteNewsletterDraft(\'' + d._key + '\')"><i class="fas fa-trash"></i></button>' +
+                    '</div></div>';
+            }).join('');
+        });
+    }
+
+    function loadNewsletterDraft(key) {
+        db.ref('newsletter_drafts/' + key).once('value', function(snapshot) {
+            var d = snapshot.val();
+            if (!d) return;
+            switchTab('newsletter');
+            setTimeout(function() {
+                initQuill();
+                document.getElementById('nl-subject').value = d.subject || '';
+                quill.root.innerHTML = d.body_html || '';
+            }, 100);
+        });
+    }
+
+    function deleteNewsletterDraft(key) {
+        if (!confirm('Delete this draft?')) return;
+        db.ref('newsletter_drafts/' + key).remove();
+    }
+
+    // ============================================
+    // SEND NEWSLETTER
+    // ============================================
+    async function sendNewsletter() {
+        if (!quill) { alert('Editor not loaded.'); return; }
+        var subject = document.getElementById('nl-subject').value.trim();
+        var bodyHtml = quill.root.innerHTML;
+        if (!subject) { alert('Please enter a subject line.'); return; }
+        if (quill.getText().trim().length === 0) { alert('Please write some content.'); return; }
+        if (!newsletterData.length) { alert('No subscribers to send to.'); return; }
+
+        var count = newsletterData.length;
+        if (!confirm('Send this newsletter to ' + count + ' subscriber' + (count !== 1 ? 's' : '') + '?\n\nSubject: ' + subject)) return;
+
+        // Get Firebase ID token
+        var user = auth.currentUser;
+        if (!user) { alert('Not authenticated.'); return; }
+
+        var overlay = document.getElementById('send-progress');
+        var progressBar = document.getElementById('progress-bar');
+        var progressText = document.getElementById('progress-text');
+        var progressTitle = document.getElementById('progress-title');
+        overlay.classList.add('active');
+        progressBar.style.width = '10%';
+        progressText.textContent = 'Getting authentication token...';
+
+        try {
+            var token = await user.getIdToken(true);
+            progressBar.style.width = '20%';
+            progressText.textContent = 'Sending to ' + count + ' subscribers...';
+
+            var fullHtml = buildEmailTemplate(subject, bodyHtml);
+            var recipients = newsletterData.map(function(s) {
+                return { email: s.email, name: s.name || '' };
+            });
+
+            var response = await fetch('/api/send-newsletter.php', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    token: token,
+                    subject: subject,
+                    body_html: fullHtml,
+                    recipients: recipients
+                })
+            });
+
+            progressBar.style.width = '80%';
+            var result = await response.json();
+
+            if (!response.ok) {
+                throw new Error(result.error || 'Server error ' + response.status);
+            }
+
+            progressBar.style.width = '90%';
+            progressText.textContent = 'Logging to history...';
+
+            // Log to Firebase
+            await db.ref('newsletters_sent').push({
+                subject: subject,
+                recipient_count: result.total || count,
+                sent_count: result.sent || 0,
+                failed_count: result.failed || 0,
+                remaining_today: result.remaining_today || 0,
+                sent_at: firebase.database.ServerValue.TIMESTAMP,
+                body_html: fullHtml
+            });
+
+            progressBar.style.width = '100%';
+            progressTitle.textContent = 'Newsletter Sent!';
+            progressText.textContent = result.sent + ' delivered, ' + result.failed + ' failed. ' + (result.remaining_today || 0) + ' emails remaining today.';
+
+            setTimeout(function() { overlay.classList.remove('active'); }, 4000);
+
+        } catch (err) {
+            progressTitle.textContent = 'Error';
+            progressText.textContent = err.message;
+            progressBar.style.width = '100%';
+            progressBar.style.background = 'var(--danger)';
+            setTimeout(function() {
+                overlay.classList.remove('active');
+                progressBar.style.background = 'var(--primary)';
+            }, 5000);
+        }
+    }
+
+    // ============================================
+    // NEWSLETTER HISTORY
+    // ============================================
+    function loadNewsletterHistory() {
+        db.ref('newsletters_sent').orderByChild('sent_at').on('value', function(snapshot) {
+            var container = document.getElementById('nl-history-list');
+            if (!snapshot.exists()) { container.innerHTML = '<p style="color:var(--text-light);font-size:0.9rem;">No newsletters sent yet.</p>'; return; }
+            var items = [];
+            snapshot.forEach(function(child) { var d = child.val(); d._key = child.key; items.push(d); });
+            items.reverse();
+            container.innerHTML = items.map(function(d) {
+                var date = d.sent_at ? new Date(d.sent_at).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric', hour: '2-digit', minute: '2-digit' }) : '';
+                return '<div class="nl-history-card">' +
+                    '<div class="nl-info"><h4>' + escapeHtml(d.subject || '(No subject)') + '</h4>' +
+                    '<p>' + date + '</p></div>' +
+                    '<div class="nl-stats">' +
+                    '<div class="sent-count">' + (d.sent_count || 0) + '/' + (d.recipient_count || 0) + '</div>' +
+                    '<div class="sent-detail">' + (d.failed_count || 0) + ' failed</div>' +
+                    '</div></div>';
+            }).join('');
+        });
+    }
+
+    // ============================================
+    // NEWSLETTER SUBSCRIBERS (ENHANCED)
     // ============================================
     var newsletterData = [];
+    var currentFilter = 'all';
 
     function loadNewsletter() {
-        var db = firebase.database();
         db.ref('newsletter').orderByChild('subscribed_at').on('value', function(snapshot) {
             newsletterData = [];
             var container = document.getElementById('newsletter-list');
-            var countEl = document.getElementById('newsletter-count');
             var totalEl = document.getElementById('newsletter-total');
 
             if (!snapshot.exists()) {
                 container.innerHTML = '<p style="color:var(--text-light);font-size:0.9rem;padding:16px;">No subscribers yet.</p>';
-                countEl.style.display = 'none';
                 totalEl.textContent = '';
+                updateSubscriberStats([]);
                 return;
             }
 
@@ -773,47 +1441,104 @@
             items.reverse();
             newsletterData = items;
 
-            countEl.textContent = items.length;
-            countEl.style.display = 'inline-flex';
+            updateSubscriberStats(items);
             totalEl.textContent = items.length + ' subscriber' + (items.length !== 1 ? 's' : '') + ' total';
 
-            var html = '<table style="width:100%;border-collapse:collapse;font-size:0.85rem;">';
-            html += '<thead><tr style="background:var(--primary-light);">';
-            html += '<th style="padding:10px 12px;text-align:left;font-weight:600;">#</th>';
-            html += '<th style="padding:10px 12px;text-align:left;font-weight:600;">Email</th>';
-            html += '<th style="padding:10px 12px;text-align:left;font-weight:600;">Source</th>';
-            html += '<th style="padding:10px 12px;text-align:left;font-weight:600;">Date</th>';
-            html += '<th style="padding:10px 12px;text-align:center;font-weight:600;">Delete</th>';
-            html += '</tr></thead><tbody>';
+            // Update badge
+            var badge = document.getElementById('tab-subscribers-badge');
+            badge.textContent = items.length;
+            badge.style.display = 'inline-flex';
 
-            items.forEach(function(item, i) {
-                var date = item.subscribed_at ? new Date(item.subscribed_at).toLocaleDateString('en-US', { year:'numeric', month:'short', day:'numeric' }) : 'N/A';
-                html += '<tr style="border-bottom:1px solid var(--border);">';
-                html += '<td style="padding:8px 12px;color:var(--text-light);">' + (i + 1) + '</td>';
-                html += '<td style="padding:8px 12px;font-weight:500;">' + (item.email || 'N/A') + '</td>';
-                html += '<td style="padding:8px 12px;"><span style="background:var(--primary-light);color:var(--primary);padding:2px 8px;border-radius:4px;font-size:0.8rem;">' + (item.source || 'unknown') + '</span></td>';
-                html += '<td style="padding:8px 12px;color:var(--text-light);">' + date + '</td>';
-                html += '<td style="padding:8px 12px;text-align:center;"><button onclick="deleteSubscriber(\'' + item._key + '\')" style="background:none;border:none;color:var(--danger);cursor:pointer;font-size:0.9rem;" title="Remove"><i class="fas fa-trash-alt"></i></button></td>';
-                html += '</tr>';
-            });
-
-            html += '</tbody></table>';
-            container.innerHTML = html;
+            renderSubscriberTable(items);
         });
+    }
+
+    function updateSubscriberStats(items) {
+        var now = new Date();
+        var monthStart = new Date(now.getFullYear(), now.getMonth(), 1).getTime();
+        var donors = 0, volunteers = 0, thisMonth = 0;
+        items.forEach(function(item) {
+            var cat = (item.category || item.source || '').toLowerCase();
+            if (cat === 'donor' || cat === 'donors') donors++;
+            if (cat === 'volunteer' || cat === 'volunteers') volunteers++;
+            if (item.subscribed_at && item.subscribed_at >= monthStart) thisMonth++;
+        });
+        document.getElementById('sub-total').textContent = items.length;
+        document.getElementById('sub-donors').textContent = donors;
+        document.getElementById('sub-volunteers').textContent = volunteers;
+        document.getElementById('sub-month').textContent = thisMonth;
+    }
+
+    function filterSubscribers(category, btnEl) {
+        currentFilter = category;
+        if (btnEl) {
+            document.querySelectorAll('.filter-btn').forEach(function(b) { b.classList.remove('active'); });
+            btnEl.classList.add('active');
+        }
+        var search = (document.getElementById('sub-search').value || '').toLowerCase();
+        var filtered = newsletterData.filter(function(item) {
+            var cat = (item.category || item.source || 'general').toLowerCase();
+            var matchCat = category === 'all' || cat === category;
+            var matchSearch = !search || (item.email || '').toLowerCase().includes(search) || (item.name || '').toLowerCase().includes(search);
+            return matchCat && matchSearch;
+        });
+        renderSubscriberTable(filtered);
+    }
+
+    function renderSubscriberTable(items) {
+        var container = document.getElementById('newsletter-list');
+        if (!items.length) {
+            container.innerHTML = '<p style="color:var(--text-light);font-size:0.9rem;padding:16px;">No matching subscribers.</p>';
+            return;
+        }
+        var html = '<table style="width:100%;border-collapse:collapse;font-size:0.85rem;">';
+        html += '<thead><tr style="background:var(--primary-light);">';
+        html += '<th style="padding:10px 12px;text-align:left;font-weight:600;">#</th>';
+        html += '<th style="padding:10px 12px;text-align:left;font-weight:600;">Email</th>';
+        html += '<th style="padding:10px 12px;text-align:left;font-weight:600;">Name</th>';
+        html += '<th style="padding:10px 12px;text-align:left;font-weight:600;">Source</th>';
+        html += '<th style="padding:10px 12px;text-align:left;font-weight:600;">Category</th>';
+        html += '<th style="padding:10px 12px;text-align:left;font-weight:600;">Date</th>';
+        html += '<th style="padding:10px 12px;text-align:center;font-weight:600;">Delete</th>';
+        html += '</tr></thead><tbody>';
+
+        items.forEach(function(item, i) {
+            var date = item.subscribed_at ? new Date(item.subscribed_at).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' }) : 'N/A';
+            var cat = item.category || item.source || 'general';
+            html += '<tr style="border-bottom:1px solid var(--border);">';
+            html += '<td style="padding:8px 12px;color:var(--text-light);">' + (i + 1) + '</td>';
+            html += '<td style="padding:8px 12px;font-weight:500;">' + escapeHtml(item.email || 'N/A') + '</td>';
+            html += '<td style="padding:8px 12px;">' + escapeHtml(item.name || '-') + '</td>';
+            html += '<td style="padding:8px 12px;"><span style="background:var(--primary-light);color:var(--primary);padding:2px 8px;border-radius:4px;font-size:0.8rem;">' + escapeHtml(item.source || 'unknown') + '</span></td>';
+            html += '<td style="padding:8px 12px;">';
+            html += '<select onchange="updateSubscriberCategory(\'' + item._key + '\', this.value)" style="padding:4px 8px;border:1px solid var(--border);border-radius:6px;font-family:inherit;font-size:0.8rem;">';
+            ['general', 'donor', 'volunteer', 'partner'].forEach(function(opt) {
+                html += '<option value="' + opt + '"' + (cat.toLowerCase() === opt ? ' selected' : '') + '>' + opt.charAt(0).toUpperCase() + opt.slice(1) + '</option>';
+            });
+            html += '</select></td>';
+            html += '<td style="padding:8px 12px;color:var(--text-light);">' + date + '</td>';
+            html += '<td style="padding:8px 12px;text-align:center;"><button onclick="deleteSubscriber(\'' + item._key + '\')" style="background:none;border:none;color:var(--danger);cursor:pointer;font-size:0.9rem;" title="Remove"><i class="fas fa-trash-alt"></i></button></td>';
+            html += '</tr>';
+        });
+
+        html += '</tbody></table>';
+        container.innerHTML = html;
+    }
+
+    function updateSubscriberCategory(key, category) {
+        db.ref('newsletter/' + key).update({ category: category });
     }
 
     function deleteSubscriber(key) {
         if (!confirm('Remove this subscriber?')) return;
-        firebase.database().ref('newsletter/' + key).remove()
-            .then(function() { /* auto-refresh via on('value') */ })
-            .catch(function(err) { alert('Error: ' + err.message); });
+        db.ref('newsletter/' + key).remove();
     }
 
     function exportNewsletterCSV() {
         if (!newsletterData.length) { alert('No subscribers to export.'); return; }
-        var csv = 'Email,Source,Subscribed Date\n';
+        var csv = 'Email,Name,Source,Category,Subscribed Date\n';
         newsletterData.forEach(function(item) {
-            csv += '"' + (item.email || '') + '","' + (item.source || '') + '","' + (item.subscribed_at || '') + '"\n';
+            csv += '"' + (item.email || '') + '","' + (item.name || '') + '","' + (item.source || '') + '","' + (item.category || item.source || 'general') + '","' + (item.subscribed_at || '') + '"\n';
         });
         var blob = new Blob([csv], { type: 'text/csv' });
         var a = document.createElement('a');
@@ -823,107 +1548,47 @@
     }
 
     // ============================================
-    // SEED NEW FOUNDATION CAMPAIGNS
+    // IMPORT EMAILS
     // ============================================
-    async function seedNewCampaigns() {
-        var statusEl = document.getElementById('seed-status');
-        statusEl.textContent = 'Checking existing campaigns...';
+    async function importEmails() {
+        var text = document.getElementById('import-emails').value.trim();
+        var statusEl = document.getElementById('import-status');
+        if (!text) { alert('Paste some emails first.'); return; }
+
+        var lines = text.split('\n').map(function(l) { return l.trim(); }).filter(function(l) { return l; });
+        var imported = 0, skipped = 0, invalid = 0;
+
+        // Get existing emails for dedup
+        var existingEmails = new Set(newsletterData.map(function(s) { return (s.email || '').toLowerCase(); }));
+
+        statusEl.textContent = 'Importing...'; statusEl.className = 'save-status'; statusEl.style.display = 'inline';
+
+        for (var i = 0; i < lines.length; i++) {
+            var parts = lines[i].split(',').map(function(p) { return p.trim(); });
+            var email = parts[0];
+            var name = parts[1] || '';
+            var category = parts[2] || 'general';
+
+            // Basic email validation
+            if (!email || !email.includes('@') || !email.includes('.')) { invalid++; continue; }
+            if (existingEmails.has(email.toLowerCase())) { skipped++; continue; }
+
+            await db.ref('newsletter').push({
+                email: email,
+                name: name,
+                category: category,
+                source: 'import',
+                subscribed_at: firebase.database.ServerValue.TIMESTAMP
+            });
+            existingEmails.add(email.toLowerCase());
+            imported++;
+        }
+
+        document.getElementById('import-emails').value = '';
+        statusEl.textContent = imported + ' imported, ' + skipped + ' duplicates, ' + invalid + ' invalid.';
         statusEl.className = 'save-status';
         statusEl.style.display = 'inline';
-
-        var newCampaigns = {
-            'foundation-toys': {
-                title: 'Joy for Kids — Toy Distribution',
-                description: 'Bring smiles to children\'s faces by distributing toys in underprivileged communities. Every child deserves the simple joy of having a toy to play with. Your donation provides toys, games, and educational items to children who have never had one.',
-                category: 'children',
-                location: 'Benin',
-                goal_amount: 5000,
-                raised_amount: 0,
-                stripe_link: 'https://donate.stripe.com/dR6bLq1gf7xF7y8aEG',
-                is_foundation: true,
-                status: 'approved',
-                created_at: new Date().toISOString()
-            },
-            'foundation-treats': {
-                title: 'Weekly Treats for Kids',
-                description: 'Every week, we distribute candy, ice cream, and chips to children in need. These small treats bring enormous joy and remind children that someone cares about them. A simple gesture that creates lasting smiles and happy memories.',
-                category: 'children',
-                location: 'Benin',
-                goal_amount: 3000,
-                raised_amount: 0,
-                stripe_link: 'https://donate.stripe.com/dR6bLq1gf7xF7y8aEG',
-                is_foundation: true,
-                status: 'approved',
-                created_at: new Date().toISOString()
-            },
-            'foundation-hospital': {
-                title: 'Hospital Freedom — Medical Relief',
-                description: 'Help patients who are stuck in hospitals because they cannot afford to pay their medical bills. Your donation directly pays hospital dues so families can reunite. Many patients remain hospitalized long after recovery simply because they cannot settle their bills.',
-                category: 'health',
-                location: 'Benin',
-                goal_amount: 10000,
-                raised_amount: 0,
-                stripe_link: 'https://donate.stripe.com/dR6bLq1gf7xF7y8aEG',
-                is_foundation: true,
-                status: 'approved',
-                created_at: new Date().toISOString()
-            },
-            'foundation-iftar': {
-                title: 'Ramadan Iftar Meals',
-                description: 'Sponsor iftar meals during Ramadan for just $2 per meal. Each meal includes rice, salad, a drink, and fish — a complete nutritious meal to break the fast. Feed an entire family for the cost of a cup of coffee.',
-                category: 'food',
-                location: 'Benin',
-                goal_amount: 15000,
-                raised_amount: 0,
-                stripe_link: 'https://donate.stripe.com/dR6bLq1gf7xF7y8aEG',
-                is_foundation: true,
-                status: 'approved',
-                created_at: new Date().toISOString()
-            },
-            'foundation-quran': {
-                title: 'Quran Memorization Sponsorship',
-                description: 'Support a student on their journey to memorize the Holy Quran. Your Zakat-eligible donation covers tuition, books, meals, and living expenses for students dedicated to Hifz (Quran memorization). An investment in knowledge that lasts for eternity.',
-                category: 'education',
-                location: 'Benin',
-                goal_amount: 8000,
-                raised_amount: 0,
-                stripe_link: 'https://donate.stripe.com/dR6bLq1gf7xF7y8aEG',
-                is_foundation: true,
-                status: 'approved',
-                created_at: new Date().toISOString()
-            }
-        };
-
-        var ids = Object.keys(newCampaigns);
-        var seededCount = 0;
-        var skippedCount = 0;
-
-        try {
-            for (var i = 0; i < ids.length; i++) {
-                var id = ids[i];
-                statusEl.textContent = 'Checking ' + (i + 1) + ' of ' + ids.length + '...';
-                var snapshot = await db.ref('campaigns/' + id).once('value');
-                if (snapshot.exists()) {
-                    skippedCount++;
-                } else {
-                    await db.ref('campaigns/' + id).set(newCampaigns[id]);
-                    seededCount++;
-                }
-            }
-
-            if (seededCount > 0) {
-                statusEl.textContent = seededCount + ' campaign' + (seededCount !== 1 ? 's' : '') + ' seeded!' + (skippedCount > 0 ? ' (' + skippedCount + ' already existed)' : '');
-            } else {
-                statusEl.textContent = 'All campaigns already exist.';
-            }
-            statusEl.className = 'save-status';
-            statusEl.style.display = 'inline';
-            setTimeout(function() { statusEl.style.display = 'none'; }, 5000);
-        } catch (err) {
-            statusEl.textContent = 'Error: ' + err.message;
-            statusEl.className = 'save-status error';
-            statusEl.style.display = 'inline';
-        }
+        setTimeout(function() { statusEl.style.display = 'none'; }, 5000);
     }
 </script>
 

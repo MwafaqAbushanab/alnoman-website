@@ -17,7 +17,7 @@ Requires GitHub Secrets: `FTP_SERVER`, `FTP_USERNAME`, `FTP_PASSWORD`.
 ## Organization Info
 - **Name**: Al-Noman Foundation
 - **Type**: Registered 501(c)(3) non-profit
-- **Location**: Orlando, FL, USA
+- **Location**: Land O' Lakes, FL, USA (formerly Orlando)
 - **Founded**: 2021, in memory of Noman Abushanab (lost to COVID-19)
 - **Motto**: "Be Giving, Be Living"
 - **Phone**: +1 (813) 358-4681

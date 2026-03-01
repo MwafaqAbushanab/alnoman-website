@@ -1,0 +1,19 @@
+# Block access to rate limit file
+<Files ".rate_limit">
+    Require all denied
+</Files>
+
+# Only allow POST to PHP endpoint
+<Files "send-newsletter.php">
+    <LimitExcept POST OPTIONS>
+        Require all denied
+    </LimitExcept>
+</Files>
+
+# Disable directory listing
+Options -Indexes
+
+# Deny access to any .json or .log files
+<FilesMatch "\.(json|log)$">
+    Require all denied
+</FilesMatch>
