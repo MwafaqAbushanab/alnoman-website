@@ -1,0 +1,1020 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Zakat Calculator | Al-Noman Foundation</title>
+    <meta name="description" content="Calculate your Zakat obligation with Al-Noman Foundation's free Zakat calculator. Enter your assets and determine the 2.5% Zakat due based on current Nisab thresholds.">
+    <meta property="og:title" content="Zakat Calculator | Al-Noman Foundation">
+    <meta property="og:description" content="Free Islamic Zakat calculator — enter your assets, check against the Nisab threshold, and calculate your 2.5% Zakat obligation instantly.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.alnoman.org/zakat-calculator.html">
+    <meta property="og:site_name" content="Al-Noman Foundation">
+    <meta property="og:locale" content="en_US">
+    <meta property="og:image" content="https://www.alnoman.org/images/og-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Al-Noman Foundation - Be Giving, Be Living">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Zakat Calculator | Al-Noman Foundation">
+    <meta name="twitter:description" content="Free Zakat calculator — determine your Zakat obligation based on current Nisab values and Islamic guidelines.">
+    <meta name="twitter:image" content="https://www.alnoman.org/images/og-image.png">
+    <meta name="twitter:site" content="@FoundationNoman">
+
+    <meta name="keywords" content="Zakat calculator, calculate Zakat, Nisab threshold, 2.5 percent Zakat, Islamic charity calculator, Zakat on gold, Zakat on silver, Zakat on savings, Al-Noman Foundation, free Zakat calculator">
+    <meta name="author" content="Al-Noman Foundation">
+    <meta name="robots" content="index, follow">
+    <meta name="google-site-verification" content="gSM0jord-6fGOMj3iRUeR_YtA0o-2WivSuPn2pW7myI" />
+    <link rel="canonical" href="https://www.alnoman.org/zakat-calculator.html">
+    <link rel="alternate" hreflang="en" href="https://www.alnoman.org/zakat-calculator.html" />
+    <link rel="alternate" hreflang="ar" href="https://www.alnoman.org/ar/zakat-calculator.html" />
+    <link rel="alternate" hreflang="fr" href="https://www.alnoman.org/fr/zakat-calculator.html" />
+    <link rel="alternate" hreflang="x-default" href="https://www.alnoman.org/zakat-calculator.html" />
+
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><circle cx='16' cy='16' r='16' fill='%237352a2'/><text x='16' y='21' font-size='14' font-weight='bold' text-anchor='middle' fill='white' font-family='serif'>AN</text></svg>">
+
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-250622242-1"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'UA-250622242-1');
+    </script>
+
+    <!-- JSON-LD: BreadcrumbList -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.alnoman.org/" },
+            { "@type": "ListItem", "position": 2, "name": "Zakat Calculator", "item": "https://www.alnoman.org/zakat-calculator.html" }
+        ]
+    }
+    </script>
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
+    <link rel="dns-prefetch" href="https://www.googletagmanager.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --primary: #7352a2;
+            --primary-dark: #5a3d8a;
+            --primary-light: #f0ebf7;
+            --accent: #ffffff;
+            --dark: #1a1a2e;
+            --text: #333;
+            --text-light: #666;
+            --text-muted: #999;
+            --white: #fff;
+            --bg: #fafafa;
+            --border: #e8e8e8;
+            --shadow: 0 4px 20px rgba(0,0,0,0.08);
+            --shadow-lg: 0 10px 40px rgba(0,0,0,0.12);
+            --radius: 12px;
+            --radius-lg: 20px;
+            --transition: all 0.3s ease;
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: var(--text);
+            background: var(--white);
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        h1, h2, h3, h4 { font-family: 'Playfair Display', Georgia, serif; line-height: 1.3; }
+        a { text-decoration: none; color: inherit; }
+
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+
+        .skip-to-content { position: absolute; top: -100px; left: 16px; background: var(--primary); color: var(--white); padding: 12px 24px; border-radius: 0 0 8px 8px; z-index: 10000; font-weight: 600; transition: top 0.3s; }
+        .skip-to-content:focus { top: 0; }
+
+        /* Buttons */
+        .btn {
+            display: inline-flex; align-items: center; gap: 8px;
+            padding: 14px 32px; border-radius: 50px;
+            font-family: 'Inter', sans-serif; font-weight: 600; font-size: 0.95rem;
+            letter-spacing: 0.02em; cursor: pointer; transition: var(--transition);
+            border: none; text-transform: uppercase;
+        }
+        .btn-primary { background: var(--accent); color: var(--dark); }
+        .btn-primary:hover { background: #e8e8e8; transform: translateY(-2px); box-shadow: 0 8px 25px rgba(255,255,255,0.4); }
+        .btn-green { background: var(--primary); color: var(--white); }
+        .btn-green:hover { background: var(--primary-dark); transform: translateY(-2px); box-shadow: 0 8px 25px rgba(115,82,162,0.3); }
+        .btn-outline { background: transparent; color: var(--white); border: 2px solid var(--white); }
+        .btn-outline:hover { background: var(--white); color: var(--dark); transform: translateY(-2px); }
+
+        /* Header */
+        .header {
+            position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+            background: rgba(255,255,255,0.97); backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border); transition: var(--transition);
+        }
+        .header .container { display: flex; align-items: center; justify-content: space-between; height: 72px; }
+        .logo { display: flex; align-items: center; }
+        .logo img { height: 48px; width: auto; }
+        .navbar { display: flex; align-items: center; gap: 8px; }
+        .navbar a { padding: 8px 16px; font-size: 0.9rem; font-weight: 500; color: var(--text-light); border-radius: 8px; transition: var(--transition); }
+        .navbar a:hover { color: var(--primary); background: var(--primary-light); }
+        .nav-volunteer { background: transparent !important; color: var(--primary) !important; border: 2px solid var(--primary) !important; border-radius: 50px !important; padding: 8px 20px !important; margin-left: 4px; font-weight: 600 !important; }
+        .nav-volunteer:hover { background: var(--primary-light) !important; }
+        .nav-donate { background: var(--primary) !important; color: var(--white) !important; border-radius: 50px !important; padding: 10px 24px !important; margin-left: 4px; }
+        .nav-donate:hover { background: var(--primary-dark) !important; }
+        #menu-btn { display: none; font-size: 1.5rem; color: var(--text); cursor: pointer; }
+
+        .section-badge { display: inline-block; background: var(--primary-light); color: var(--primary); padding: 6px 16px; border-radius: 50px; font-size: 0.8rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 16px; }
+
+        /* Page Hero */
+        .page-hero {
+            padding: 140px 0 80px;
+            background: linear-gradient(135deg, var(--dark) 0%, #16213e 50%, var(--primary-dark) 100%);
+            text-align: center; position: relative; overflow: hidden;
+        }
+        .page-hero::before {
+            content: ''; position: absolute; top: -50%; right: -20%; width: 600px; height: 600px;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%); border-radius: 50%;
+        }
+        .page-hero .container { position: relative; z-index: 1; }
+        .page-hero .section-badge { background: rgba(255,255,255,0.1); color: var(--accent); border: 1px solid rgba(255,255,255,0.2); }
+        .page-hero h1 { font-size: clamp(2rem, 4vw, 3.5rem); color: var(--white); margin-bottom: 16px; }
+        .page-hero p { color: rgba(255,255,255,0.7); font-size: 1.1rem; max-width: 600px; margin: 0 auto; }
+
+        /* Section Headers */
+        .section-header { text-align: center; margin-bottom: 48px; }
+        .section-header h2 { font-size: clamp(1.8rem, 3vw, 2.5rem); color: var(--dark); margin-bottom: 12px; }
+        .section-header p { color: var(--text-light); font-size: 1.05rem; max-width: 650px; margin: 0 auto; }
+
+        /* Calculator Section */
+        .calc-section { padding: 80px 0; background: var(--bg); }
+
+        .calc-wrapper {
+            max-width: 800px;
+            margin: 0 auto;
+            display: grid;
+            gap: 32px;
+        }
+
+        .calc-card {
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            padding: 32px;
+            transition: var(--transition);
+        }
+        .calc-card:hover { box-shadow: var(--shadow); }
+
+        .calc-card-header {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin-bottom: 24px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .calc-card-icon {
+            width: 44px; height: 44px;
+            border-radius: 12px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.1rem;
+            flex-shrink: 0;
+        }
+
+        .calc-card-header h3 {
+            font-family: 'Inter', sans-serif;
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: var(--dark);
+        }
+
+        .calc-card-header p {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-top: 2px;
+        }
+
+        .input-group {
+            margin-bottom: 16px;
+        }
+
+        .input-group label {
+            display: block;
+            font-size: 0.88rem;
+            font-weight: 600;
+            color: var(--text);
+            margin-bottom: 6px;
+        }
+
+        .input-wrapper {
+            position: relative;
+        }
+
+        .input-wrapper .currency-prefix {
+            position: absolute;
+            left: 14px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            font-weight: 600;
+            pointer-events: none;
+        }
+
+        .input-wrapper input {
+            width: 100%;
+            padding: 12px 18px 12px 32px;
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            font-family: 'Inter', sans-serif;
+            font-size: 0.95rem;
+            color: var(--text);
+            background: var(--white);
+            transition: var(--transition);
+        }
+
+        .input-wrapper input:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(115,82,162,0.1);
+        }
+
+        .input-wrapper input::placeholder { color: var(--text-muted); }
+
+        .input-hint {
+            font-size: 0.78rem;
+            color: var(--text-muted);
+            margin-top: 4px;
+        }
+
+        /* Nisab Selector */
+        .nisab-section { padding: 0 0 40px; background: var(--bg); }
+
+        .nisab-card {
+            max-width: 800px;
+            margin: 0 auto;
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            padding: 32px;
+        }
+
+        .nisab-card h3 {
+            font-family: 'Inter', sans-serif;
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: var(--dark);
+            margin-bottom: 8px;
+        }
+
+        .nisab-card > p {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            margin-bottom: 20px;
+        }
+
+        .nisab-options {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+
+        .nisab-option {
+            position: relative;
+            cursor: pointer;
+        }
+
+        .nisab-option input[type="radio"] {
+            position: absolute;
+            opacity: 0;
+        }
+
+        .nisab-option-label {
+            display: block;
+            padding: 20px;
+            border: 2px solid var(--border);
+            border-radius: var(--radius);
+            transition: var(--transition);
+            text-align: center;
+        }
+
+        .nisab-option input:checked + .nisab-option-label {
+            border-color: var(--primary);
+            background: var(--primary-light);
+        }
+
+        .nisab-option-label:hover {
+            border-color: var(--primary);
+        }
+
+        .nisab-option-label .nisab-icon {
+            font-size: 1.5rem;
+            margin-bottom: 8px;
+        }
+
+        .nisab-option-label h4 {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: var(--dark);
+            margin-bottom: 4px;
+        }
+
+        .nisab-option-label .nisab-detail {
+            font-size: 0.82rem;
+            color: var(--text-light);
+        }
+
+        .nisab-option-label .nisab-value {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-top: 8px;
+        }
+
+        /* Result Section */
+        .result-section { padding: 0 0 80px; background: var(--bg); }
+
+        .result-card {
+            max-width: 800px;
+            margin: 0 auto;
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            border-radius: var(--radius-lg);
+            padding: 40px;
+            color: var(--white);
+            text-align: center;
+        }
+
+        .result-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 32px;
+            color: var(--white);
+        }
+
+        .result-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            margin-bottom: 32px;
+        }
+
+        .result-item {
+            background: rgba(255,255,255,0.12);
+            border-radius: var(--radius);
+            padding: 20px 16px;
+        }
+
+        .result-item .result-label {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            opacity: 0.8;
+            margin-bottom: 8px;
+        }
+
+        .result-item .result-value {
+            font-size: 1.4rem;
+            font-weight: 700;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .result-zakat {
+            background: rgba(255,255,255,0.2);
+            border-radius: var(--radius);
+            padding: 24px;
+            margin-bottom: 24px;
+        }
+
+        .result-zakat .zakat-label {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            opacity: 0.9;
+            margin-bottom: 8px;
+        }
+
+        .result-zakat .zakat-amount {
+            font-size: 2.5rem;
+            font-weight: 800;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .result-below-nisab {
+            display: none;
+            background: rgba(255,255,255,0.15);
+            border-radius: var(--radius);
+            padding: 20px;
+            margin-bottom: 24px;
+        }
+
+        .result-below-nisab i {
+            font-size: 1.5rem;
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        .result-below-nisab p {
+            font-size: 0.95rem;
+            opacity: 0.9;
+        }
+
+        .result-buttons {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-reset {
+            background: rgba(255,255,255,0.15);
+            color: var(--white);
+            border: 1px solid rgba(255,255,255,0.3);
+        }
+        .btn-reset:hover {
+            background: rgba(255,255,255,0.25);
+            transform: translateY(-2px);
+        }
+
+        /* Info Section */
+        .info-section { padding: 80px 0; background: var(--white); }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .info-card {
+            background: var(--bg);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 28px 24px;
+            text-align: center;
+            transition: var(--transition);
+        }
+        .info-card:hover { border-color: var(--primary); box-shadow: var(--shadow); transform: translateY(-3px); }
+
+        .info-icon {
+            width: 56px; height: 56px;
+            border-radius: 14px;
+            background: var(--primary-light);
+            color: var(--primary);
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.3rem;
+            margin: 0 auto 16px;
+        }
+
+        .info-card h4 {
+            font-family: 'Inter', sans-serif;
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--dark);
+            margin-bottom: 8px;
+        }
+
+        .info-card p {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+
+        /* CTA */
+        .cta-section {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            padding: 80px 0; text-align: center;
+        }
+        .cta-section h2 { font-size: 2.2rem; color: var(--white); margin-bottom: 16px; }
+        .cta-section p { color: rgba(255,255,255,0.8); font-size: 1.1rem; max-width: 500px; margin: 0 auto 32px; }
+        .cta-buttons { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+
+        /* Footer */
+        .footer {
+            background: var(--dark); color: rgba(255,255,255,0.7); padding: 40px 0; text-align: center;
+        }
+        .footer p { font-size: 0.85rem; }
+        .footer span { color: var(--accent); }
+        .footer-links { display: flex; justify-content: center; gap: 24px; margin-bottom: 16px; flex-wrap: wrap; }
+        .footer-links a { color: rgba(255,255,255,0.6); font-size: 0.85rem; transition: var(--transition); }
+        .footer-links a:hover { color: var(--white); }
+
+        /* WhatsApp Float */
+        .whatsapp-float { position: fixed; bottom: 80px; right: 24px; width: 56px; height: 56px; background: #25d366; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--white); font-size: 1.6rem; box-shadow: 0 4px 12px rgba(37,211,102,0.4); z-index: 999; transition: var(--transition); }
+        .whatsapp-float:hover { transform: scale(1.1); box-shadow: 0 6px 20px rgba(37,211,102,0.5); }
+
+        #back-to-top { position: fixed; bottom: 24px; right: 24px; width: 44px; height: 44px; background: var(--primary); color: var(--white); border: none; border-radius: 50%; display: none; align-items: center; justify-content: center; cursor: pointer; font-size: 1rem; box-shadow: var(--shadow); z-index: 998; transition: var(--transition); }
+        #back-to-top:hover { background: var(--primary-dark); transform: translateY(-2px); }
+
+        .cookie-consent { position: fixed; bottom: 0; left: 0; right: 0; background: var(--dark); color: rgba(255,255,255,0.9); padding: 16px 24px; display: flex; align-items: center; justify-content: center; gap: 16px; z-index: 9999; font-size: 0.9rem; flex-wrap: wrap; box-shadow: 0 -4px 20px rgba(0,0,0,0.2); }
+        .cookie-consent p { margin: 0; text-align: center; }
+        .cookie-consent button { background: var(--primary); color: var(--white); border: none; padding: 8px 24px; border-radius: 50px; cursor: pointer; font-family: 'Inter', sans-serif; font-weight: 600; font-size: 0.85rem; transition: var(--transition); white-space: nowrap; }
+        .cookie-consent button:hover { background: var(--primary-dark); }
+
+        /* Print Styles */
+        @media print {
+            .header, .page-hero, .info-section, .cta-section, .footer, .whatsapp-float, #back-to-top, .cookie-consent, .result-buttons, .btn-reset { display: none !important; }
+            .calc-section, .nisab-section, .result-section { padding: 20px 0; }
+            .result-card { background: #fff !important; color: #333 !important; border: 2px solid #7352a2; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+            .result-item { background: #f0ebf7 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+            .result-zakat { background: #f0ebf7 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+            .result-card h3, .result-item .result-label, .result-item .result-value, .result-zakat .zakat-label, .result-zakat .zakat-amount { color: #333 !important; }
+            body { font-size: 12pt; }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .navbar {
+                display: none; position: fixed; top: 72px; left: 0; right: 0;
+                background: var(--white); flex-direction: column; padding: 24px;
+                border-bottom: 1px solid var(--border); box-shadow: var(--shadow);
+            }
+            .navbar.active { display: flex; }
+            #menu-btn { display: block; }
+            .calc-card { padding: 24px 20px; }
+            .nisab-options { grid-template-columns: 1fr; }
+            .result-grid { grid-template-columns: 1fr; }
+            .result-card { padding: 28px 20px; }
+            .result-zakat .zakat-amount { font-size: 2rem; }
+            .info-grid { grid-template-columns: 1fr; }
+            .cta-section h2 { font-size: 1.6rem; }
+        }
+
+        /* Language Switcher */
+        .lang-switcher{position:relative;margin-left:12px}
+        .lang-btn{background:none;border:1px solid var(--accent,#e0d5f0);color:var(--primary,#7352a2);padding:6px 14px;border-radius:20px;cursor:pointer;font-size:.85rem;font-family:inherit;display:flex;align-items:center;gap:6px;transition:background .2s}
+        .lang-btn:hover{background:var(--primary-light,#f0ebf7)}
+        .lang-dropdown{display:none;position:absolute;top:110%;right:0;background:#fff;border-radius:8px;box-shadow:0 4px 20px rgba(0,0,0,.12);min-width:140px;z-index:1000;overflow:hidden}
+        .lang-dropdown.open{display:block}
+        .lang-option{display:block;padding:10px 16px;text-decoration:none;color:#333;font-size:.9rem;transition:background .2s}
+        .lang-option:hover{background:var(--primary-light,#f0ebf7)}
+        .lang-option.active{color:var(--primary,#7352a2);font-weight:600;background:var(--primary-light,#f0ebf7)}
+        @media(max-width:768px){.lang-switcher{margin-left:0;margin-top:10px}}
+    </style>
+</head>
+<body>
+
+<a href="#main-content" class="skip-to-content">Skip to main content</a>
+
+<!-- Header -->
+<header class="header" role="banner">
+    <div class="container">
+        <a href="index.html" class="logo" aria-label="Al-Noman Foundation Home"><img src="images/logo.png" alt="Al-Noman Foundation" loading="eager"></a>
+        <div id="menu-btn" class="fas fa-bars" role="button" aria-label="Toggle navigation menu" tabindex="0"></div>
+        <nav class="navbar" role="navigation" aria-label="Main navigation">
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="programs.html">Programs</a>
+            <a href="campaigns.html">Campaigns</a>
+            <a href="stories.html">Stories</a>
+            <a href="contact.html">Contact</a>
+            <a href="faq.html">FAQ</a>
+            <a href="volunteer.html" class="nav-volunteer">Volunteer</a>
+            <a href="https://donate.stripe.com/dR6bLq1gf7xF7y8aEG" class="nav-donate">Donate</a>
+        </nav>
+    </div>
+</header>
+
+<!-- Page Hero -->
+<section class="page-hero">
+    <div class="container" id="main-content">
+        <div class="section-badge"><i class="fas fa-calculator" aria-hidden="true"></i> Zakat Calculator</div>
+        <h1>Calculate Your Zakat</h1>
+        <p>Determine your Zakat obligation based on your assets and the current Nisab threshold. Zakat is 2.5% of your qualifying wealth held for one lunar year.</p>
+    </div>
+</section>
+
+<!-- Calculator Section -->
+<section class="calc-section" aria-label="Zakat Calculator">
+    <div class="container">
+        <div class="calc-wrapper">
+
+            <!-- Cash & Savings -->
+            <div class="calc-card">
+                <div class="calc-card-header">
+                    <div class="calc-card-icon" style="background:linear-gradient(135deg,#2d6a4f,#40916c);color:#fff;">
+                        <i class="fas fa-money-bill-wave" aria-hidden="true"></i>
+                    </div>
+                    <div>
+                        <h3>Cash & Bank Balances</h3>
+                        <p>Include all liquid cash and savings</p>
+                    </div>
+                </div>
+                <div class="input-group">
+                    <label for="cash-hand">Cash on Hand</label>
+                    <div class="input-wrapper">
+                        <span class="currency-prefix">$</span>
+                        <input type="number" id="cash-hand" placeholder="0.00" min="0" step="0.01" data-zakat-input>
+                    </div>
+                </div>
+                <div class="input-group">
+                    <label for="cash-bank">Bank Accounts (Checking & Savings)</label>
+                    <div class="input-wrapper">
+                        <span class="currency-prefix">$</span>
+                        <input type="number" id="cash-bank" placeholder="0.00" min="0" step="0.01" data-zakat-input>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Gold & Silver -->
+            <div class="calc-card">
+                <div class="calc-card-header">
+                    <div class="calc-card-icon" style="background:linear-gradient(135deg,#d4a843,#b8860b);color:#fff;">
+                        <i class="fas fa-coins" aria-hidden="true"></i>
+                    </div>
+                    <div>
+                        <h3>Gold & Silver</h3>
+                        <p>Market value of gold and silver you own</p>
+                    </div>
+                </div>
+                <div class="input-group">
+                    <label for="gold-value">Gold (total market value)</label>
+                    <div class="input-wrapper">
+                        <span class="currency-prefix">$</span>
+                        <input type="number" id="gold-value" placeholder="0.00" min="0" step="0.01" data-zakat-input>
+                    </div>
+                    <p class="input-hint">Jewelry, coins, bars — current market value</p>
+                </div>
+                <div class="input-group">
+                    <label for="silver-value">Silver (total market value)</label>
+                    <div class="input-wrapper">
+                        <span class="currency-prefix">$</span>
+                        <input type="number" id="silver-value" placeholder="0.00" min="0" step="0.01" data-zakat-input>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Investments -->
+            <div class="calc-card">
+                <div class="calc-card-header">
+                    <div class="calc-card-icon" style="background:linear-gradient(135deg,#2196f3,#1976d2);color:#fff;">
+                        <i class="fas fa-chart-line" aria-hidden="true"></i>
+                    </div>
+                    <div>
+                        <h3>Stocks & Investments</h3>
+                        <p>Current market value of investment holdings</p>
+                    </div>
+                </div>
+                <div class="input-group">
+                    <label for="stocks">Stocks, Mutual Funds & ETFs</label>
+                    <div class="input-wrapper">
+                        <span class="currency-prefix">$</span>
+                        <input type="number" id="stocks" placeholder="0.00" min="0" step="0.01" data-zakat-input>
+                    </div>
+                </div>
+                <div class="input-group">
+                    <label for="retirement">Retirement Accounts (401k, IRA)</label>
+                    <div class="input-wrapper">
+                        <span class="currency-prefix">$</span>
+                        <input type="number" id="retirement" placeholder="0.00" min="0" step="0.01" data-zakat-input>
+                    </div>
+                    <p class="input-hint">Some scholars exempt retirement funds — consult your local scholar</p>
+                </div>
+            </div>
+
+            <!-- Business & Income -->
+            <div class="calc-card">
+                <div class="calc-card-header">
+                    <div class="calc-card-icon" style="background:linear-gradient(135deg,#e07a2f,#d4a843);color:#fff;">
+                        <i class="fas fa-store" aria-hidden="true"></i>
+                    </div>
+                    <div>
+                        <h3>Business & Other Assets</h3>
+                        <p>Business inventory, rental income, and receivables</p>
+                    </div>
+                </div>
+                <div class="input-group">
+                    <label for="business">Business Inventory & Merchandise</label>
+                    <div class="input-wrapper">
+                        <span class="currency-prefix">$</span>
+                        <input type="number" id="business" placeholder="0.00" min="0" step="0.01" data-zakat-input>
+                    </div>
+                </div>
+                <div class="input-group">
+                    <label for="rental">Rental Income (net received)</label>
+                    <div class="input-wrapper">
+                        <span class="currency-prefix">$</span>
+                        <input type="number" id="rental" placeholder="0.00" min="0" step="0.01" data-zakat-input>
+                    </div>
+                </div>
+                <div class="input-group">
+                    <label for="receivables">Debts Owed to You</label>
+                    <div class="input-wrapper">
+                        <span class="currency-prefix">$</span>
+                        <input type="number" id="receivables" placeholder="0.00" min="0" step="0.01" data-zakat-input>
+                    </div>
+                    <p class="input-hint">Money you expect to be repaid</p>
+                </div>
+            </div>
+
+            <!-- Deductions -->
+            <div class="calc-card" style="border-color:#e8c4c4;">
+                <div class="calc-card-header" style="border-bottom-color:#e8c4c4;">
+                    <div class="calc-card-icon" style="background:linear-gradient(135deg,#c0392b,#e74c3c);color:#fff;">
+                        <i class="fas fa-minus-circle" aria-hidden="true"></i>
+                    </div>
+                    <div>
+                        <h3>Deductions (Debts You Owe)</h3>
+                        <p>These reduce your Zakatable total</p>
+                    </div>
+                </div>
+                <div class="input-group">
+                    <label for="debts">Outstanding Debts, Loans & Bills</label>
+                    <div class="input-wrapper">
+                        <span class="currency-prefix">$</span>
+                        <input type="number" id="debts" placeholder="0.00" min="0" step="0.01" data-zakat-deduct>
+                    </div>
+                    <p class="input-hint">Credit cards, personal loans, bills due — these are subtracted from your total</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- Nisab Threshold Selection -->
+<section class="nisab-section" aria-label="Nisab Threshold">
+    <div class="container">
+        <div class="nisab-card">
+            <h3><i class="fas fa-balance-scale" aria-hidden="true" style="color:var(--primary);margin-right:8px;"></i>Choose Nisab Standard</h3>
+            <p>The Nisab is the minimum wealth threshold for Zakat eligibility. Most scholars recommend using the silver standard as it results in a lower threshold, meaning more people can benefit from Zakat.</p>
+            <div class="nisab-options">
+                <label class="nisab-option">
+                    <input type="radio" name="nisab" value="gold">
+                    <div class="nisab-option-label">
+                        <div class="nisab-icon">&#129351;</div>
+                        <h4>Gold Standard</h4>
+                        <div class="nisab-detail">85 grams of gold</div>
+                        <div class="nisab-value" id="gold-nisab-display">$7,650</div>
+                    </div>
+                </label>
+                <label class="nisab-option">
+                    <input type="radio" name="nisab" value="silver" checked>
+                    <div class="nisab-option-label">
+                        <div class="nisab-icon">&#129352;</div>
+                        <h4>Silver Standard</h4>
+                        <div class="nisab-detail">595 grams of silver</div>
+                        <div class="nisab-value" id="silver-nisab-display">$580</div>
+                    </div>
+                </label>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Result Section -->
+<section class="result-section" aria-label="Zakat Calculation Result">
+    <div class="container">
+        <div class="result-card" id="result-card">
+            <h3><i class="fas fa-calculator" aria-hidden="true" style="margin-right:8px;"></i>Your Zakat Summary</h3>
+
+            <div class="result-grid">
+                <div class="result-item">
+                    <div class="result-label">Total Assets</div>
+                    <div class="result-value" id="result-total">$0.00</div>
+                </div>
+                <div class="result-item">
+                    <div class="result-label">Deductions</div>
+                    <div class="result-value" id="result-deductions">$0.00</div>
+                </div>
+                <div class="result-item">
+                    <div class="result-label">Nisab Threshold</div>
+                    <div class="result-value" id="result-nisab">$580</div>
+                </div>
+            </div>
+
+            <div class="result-zakat" id="result-zakat-box">
+                <div class="zakat-label">Your Zakat Due (2.5%)</div>
+                <div class="zakat-amount" id="result-zakat">$0.00</div>
+            </div>
+
+            <div class="result-below-nisab" id="result-below-nisab">
+                <i class="fas fa-info-circle" aria-hidden="true"></i>
+                <p>Your net assets are below the Nisab threshold. You are not required to pay Zakat at this time, but voluntary charity (Sadaqah) is always rewarded.</p>
+            </div>
+
+            <div class="result-buttons">
+                <a href="https://donate.stripe.com/dR6bLq1gf7xF7y8aEG" class="btn btn-primary" id="donate-btn"><i class="fas fa-heart" aria-hidden="true"></i> Donate Your Zakat</a>
+                <button class="btn btn-reset" onclick="resetCalculator()"><i class="fas fa-redo" aria-hidden="true"></i> Reset</button>
+                <button class="btn btn-reset" onclick="window.print()"><i class="fas fa-print" aria-hidden="true"></i> Print</button>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Info Section -->
+<section class="info-section" aria-label="About Zakat">
+    <div class="container">
+        <div class="section-header">
+            <div class="section-badge">Learn More</div>
+            <h2>Understanding Zakat</h2>
+            <p>Key concepts to help you fulfill your Zakat obligation with confidence.</p>
+        </div>
+
+        <div class="info-grid">
+            <div class="info-card">
+                <div class="info-icon">
+                    <i class="fas fa-book-quran" aria-hidden="true"></i>
+                </div>
+                <h4>What is Zakat?</h4>
+                <p>Zakat is the third pillar of Islam — an obligatory act of worship requiring Muslims to give 2.5% of their qualifying wealth annually to those in need.</p>
+            </div>
+
+            <div class="info-card">
+                <div class="info-icon">
+                    <i class="fas fa-scale-balanced" aria-hidden="true"></i>
+                </div>
+                <h4>What is Nisab?</h4>
+                <p>Nisab is the minimum amount of wealth a Muslim must possess before Zakat becomes obligatory. It is based on the value of 85g of gold or 595g of silver.</p>
+            </div>
+
+            <div class="info-card">
+                <div class="info-icon">
+                    <i class="fas fa-calendar-check" aria-hidden="true"></i>
+                </div>
+                <h4>When to Pay?</h4>
+                <p>Zakat is due once a full lunar year (Hawl) has passed since your wealth first reached the Nisab threshold. Many Muslims choose to pay during Ramadan.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CTA Section -->
+<section class="cta-section" aria-label="Call to action">
+    <div class="container">
+        <h2>Give Your Zakat With Confidence</h2>
+        <p>Al-Noman Foundation ensures your Zakat reaches those who need it most, in full compliance with Islamic guidelines.</p>
+        <div class="cta-buttons">
+            <a href="zakat-policy.html" class="btn btn-primary"><i class="fas fa-file-alt" aria-hidden="true"></i> Our Zakat Policy</a>
+            <a href="contact.html" class="btn btn-outline"><i class="fas fa-envelope" aria-hidden="true"></i> Contact Us</a>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer" role="contentinfo">
+    <div class="container">
+        <div class="footer-links">
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="programs.html">Programs</a>
+            <a href="campaigns.html">Campaigns</a>
+            <a href="stories.html">Stories</a>
+            <a href="ways-to-give.html">Ways to Give</a>
+            <a href="volunteer.html">Volunteer</a>
+            <a href="contact.html">Contact</a>
+            <a href="transparency.html">Transparency</a>
+            <a href="zakat-policy.html">Zakat Policy</a>
+            <a href="governance.html">Governance</a>
+            <a href="zakat-calculator.html">Zakat Calculator</a>
+        </div>
+        <div style="display:flex;justify-content:center;gap:12px;margin-bottom:16px;">
+            <a href="https://www.facebook.com/ALNOMANFoundation" aria-label="Facebook" style="color:rgba(255,255,255,0.6);font-size:1.2rem;transition:color 0.3s;"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://www.instagram.com/al_noman_foundation/" aria-label="Instagram" style="color:rgba(255,255,255,0.6);font-size:1.2rem;transition:color 0.3s;"><i class="fab fa-instagram"></i></a>
+            <a href="https://www.linkedin.com/company/81360274/" aria-label="LinkedIn" style="color:rgba(255,255,255,0.6);font-size:1.2rem;transition:color 0.3s;"><i class="fab fa-linkedin-in"></i></a>
+            <a href="https://www.tiktok.com/@alnomanonprofit" aria-label="TikTok" style="color:rgba(255,255,255,0.6);font-size:1.2rem;transition:color 0.3s;"><i class="fab fa-tiktok"></i></a>
+            <a href="https://x.com/FoundationNoman" aria-label="X (Twitter)" style="color:rgba(255,255,255,0.6);font-size:1.2rem;transition:color 0.3s;"><i class="fab fa-x-twitter"></i></a>
+        </div>
+        <p>&copy; 2025 <span>Al-Noman Foundation</span>. All rights reserved. Registered 501(c)(3) &mdash; 100% tax-deductible.</p>
+    </div>
+</footer>
+
+<!-- WhatsApp Float -->
+<a href="https://wa.me/22997838382" target="_blank" rel="noopener noreferrer" class="whatsapp-float" aria-label="Chat with us on WhatsApp">
+    <i class="fab fa-whatsapp" aria-hidden="true"></i>
+</a>
+
+<!-- Back to Top -->
+<button id="back-to-top" aria-label="Back to top"><i class="fas fa-arrow-up"></i></button>
+
+<!-- Cookie Consent -->
+<div class="cookie-consent" id="cookie-consent">
+    <p>We use cookies to improve your experience on our site. By continuing to browse, you agree to our use of cookies.</p>
+    <button onclick="acceptCookies()">Accept</button>
+</div>
+
+<script>
+    // Cookie consent
+    if (localStorage.getItem('alnoman_cookies_accepted')) { document.getElementById('cookie-consent').style.display = 'none'; }
+    function acceptCookies() { localStorage.setItem('alnoman_cookies_accepted', 'true'); document.getElementById('cookie-consent').style.display = 'none'; }
+
+    // Menu toggle
+    const menuBtn = document.getElementById('menu-btn');
+    const navbar = document.querySelector('.navbar');
+    menuBtn.addEventListener('click', () => { navbar.classList.toggle('active'); menuBtn.classList.toggle('fa-bars'); menuBtn.classList.toggle('fa-times'); });
+    document.querySelectorAll('.navbar a').forEach(link => {
+        link.addEventListener('click', () => { navbar.classList.remove('active'); menuBtn.classList.add('fa-bars'); menuBtn.classList.remove('fa-times'); });
+    });
+
+    // Scroll effects
+    window.addEventListener('scroll', () => {
+        document.querySelector('.header').style.boxShadow = window.scrollY > 50 ? '0 2px 20px rgba(0,0,0,0.1)' : 'none';
+        document.getElementById('back-to-top').style.display = window.scrollY > 300 ? 'flex' : 'none';
+    });
+    document.getElementById('back-to-top').addEventListener('click', () => { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+
+    // === ZAKAT CALCULATOR ===
+
+    // Nisab values in USD (update these periodically)
+    // Gold: 85 grams × ~$90/gram = ~$7,650
+    // Silver: 595 grams × ~$0.97/gram = ~$580
+    const NISAB = {
+        gold: 7650,
+        silver: 580
+    };
+
+    function getVal(id) {
+        const v = parseFloat(document.getElementById(id).value);
+        return isNaN(v) || v < 0 ? 0 : v;
+    }
+
+    function formatCurrency(amount) {
+        return '$' + amount.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+    }
+
+    function calculateZakat() {
+        // Sum all assets
+        const assets = getVal('cash-hand') + getVal('cash-bank')
+            + getVal('gold-value') + getVal('silver-value')
+            + getVal('stocks') + getVal('retirement')
+            + getVal('business') + getVal('rental') + getVal('receivables');
+
+        // Sum deductions
+        const deductions = getVal('debts');
+
+        // Net zakatable
+        const net = Math.max(0, assets - deductions);
+
+        // Get selected nisab
+        const nisabType = document.querySelector('input[name="nisab"]:checked').value;
+        const nisabValue = NISAB[nisabType];
+
+        // Update result display
+        document.getElementById('result-total').textContent = formatCurrency(assets);
+        document.getElementById('result-deductions').textContent = formatCurrency(deductions);
+        document.getElementById('result-nisab').textContent = formatCurrency(nisabValue);
+
+        const zakatBox = document.getElementById('result-zakat-box');
+        const belowBox = document.getElementById('result-below-nisab');
+        const donateBtn = document.getElementById('donate-btn');
+
+        if (net >= nisabValue) {
+            const zakat = net * 0.025;
+            document.getElementById('result-zakat').textContent = formatCurrency(zakat);
+            zakatBox.style.display = 'block';
+            belowBox.style.display = 'none';
+            donateBtn.style.display = 'inline-flex';
+        } else {
+            document.getElementById('result-zakat').textContent = '$0.00';
+            zakatBox.style.display = 'none';
+            belowBox.style.display = 'block';
+            donateBtn.style.display = 'none';
+        }
+    }
+
+    function resetCalculator() {
+        document.querySelectorAll('input[type="number"]').forEach(input => { input.value = ''; });
+        document.querySelector('input[name="nisab"][value="silver"]').checked = true;
+        calculateZakat();
+    }
+
+    // Attach event listeners to all inputs
+    document.querySelectorAll('[data-zakat-input], [data-zakat-deduct]').forEach(input => {
+        input.addEventListener('input', calculateZakat);
+    });
+    document.querySelectorAll('input[name="nisab"]').forEach(radio => {
+        radio.addEventListener('change', calculateZakat);
+    });
+
+    // Initial calculation
+    calculateZakat();
+
+    // Animations
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => { if (entry.isIntersecting) { entry.target.style.opacity = '1'; entry.target.style.transform = 'translateY(0)'; } });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.calc-card, .nisab-card, .info-card').forEach(el => {
+        el.style.opacity = '0'; el.style.transform = 'translateY(20px)';
+        el.style.transition = 'opacity 0.6s ease, transform 0.6s ease'; observer.observe(el);
+    });
+</script>
+<script src="js/lang-switcher.js"></script>
+
+</body>
+</html>
