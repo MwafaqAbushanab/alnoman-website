@@ -131,6 +131,7 @@ alnoman-website/
 ├── robots.txt          # Crawler directives
 ├── llms.txt            # AI discoverability (ChatGPT, Claude, Perplexity)
 ├── CLAUDE.md           # This file
+├── EXPAND-PRESENCE.md  # Online presence, credibility, grants & registration action plan
 ├── css/                # Legacy CSS (NOT used — inline styles now)
 │   ├── style.css
 │   └── styles.css
@@ -168,7 +169,7 @@ alnoman-website/
 ## Shared Elements (All Pages)
 - **Skip-to-content** accessibility link (hidden, keyboard-navigable)
 - **Cookie consent banner** — localStorage key `alnoman_cookies_accepted`
-- **WhatsApp floating button** — links to `https://wa.me/18133584681`
+- **WhatsApp floating button** — links to `https://wa.me/22997838382`
 - **Back-to-top button** — appears on scroll, smooth scroll to top
 - **Mobile hamburger menu** — JS toggle for responsive nav
 - **IntersectionObserver animations** — fade-in on scroll for content sections
@@ -220,7 +221,7 @@ created_at, admin_notes
 
 ### Fallback Defaults (index.html)
 ```javascript
-const defaultStats = { wells: 20, meals: 5000, students: 200, countries: 5 };
+const defaultStats = { wells: 20, meals: 5000, students: 200, countries: 7 };
 const defaultGoals = {
     gaza_raised: 12450, gaza_target: 50000,
     bread_raised: 3200, bread_target: 10000,
@@ -321,6 +322,11 @@ const defaultGoals = {
 - [x] Individual campaign landing pages (10 campaigns × 3 languages = 30 pages in campaigns/, ar/campaigns/, fr/campaigns/)
 - [x] Campaign pages: hero, description, donate sidebar with Firebase progress bar, impact cards, related campaigns
 - [x] Footer campaign links updated to landing pages on all 33 files (replacing Stripe direct links in AR/FR)
+
+## Completed Security Tasks
+- [x] X (Twitter) @FoundationNoman — password changed (login: info@alnoman.org, updated Mar 1, 2026)
+- [x] TikTok @alnomanonprofit — password changed (login: mwafaqnabushanab@gmail.com, updated Mar 1, 2026)
+- [x] Verified info@alnoman.org email is receiving messages (X confirmation code delivered successfully)
 
 ## Pending Security Tasks
 - [ ] Log out all Instagram devices & change password for @al_noman_foundation (blocked by 2FA on Hatem's WhatsApp)
@@ -486,12 +492,12 @@ const defaultGoals = {
 - Deploy is automated via GitHub Actions on push to master (FTP to GoDaddy public_html/)
 - GitHub Secrets required: `FTP_SERVER`, `FTP_USERNAME`, `FTP_PASSWORD`
 - The old CSS files (`css/style.css`, `css/styles.css`) and `js/script.js` are legacy — the redesigned site uses inline styles/scripts and does NOT depend on them
-- Impact numbers (20+ wells, 5000+ meals, 200+ students, 5 countries) are PLACEHOLDERS — update with real figures
+- Impact numbers (20+ wells, 5000+ meals, 200+ students, 7 countries) are PLACEHOLDERS — update with real figures
 - Team members section was completely removed from the site (per owner request, Feb 2025)
 - All pages use inline SVG favicon — no favicon.ico file needed
 - Cookie consent uses localStorage key `alnoman_cookies_accepted`
 - Language preference uses localStorage key `alnoman_lang`
-- WhatsApp number: +1 (813) 358-4681 — verify this is correct for WhatsApp Business
+- WhatsApp number: +229 97 83 83 82 (Benin) — wa.me/22997838382
 - Newsletter signup on EN/AR/FR homepages stores to Firebase `/newsletter` node with `source` tag (homepage-en/ar/fr)
 - Newsletter uses same spam protection as other forms: honeypot field + localStorage 5-min cooldown (`alnoman_nl_sent`)
 - Admin newsletter section shows all subscribers in a table with delete + CSV export
