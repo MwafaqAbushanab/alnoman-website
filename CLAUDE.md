@@ -329,8 +329,8 @@ const defaultGoals = {
 - [x] Verified info@alnoman.org email is receiving messages (X confirmation code delivered successfully)
 
 ## Pending Security Tasks
-- [ ] Log out all Instagram devices & change password for @al_noman_foundation (blocked by 2FA on Hatem's WhatsApp)
-- [ ] Remove al_noman_foundation from Hatem El Kurd's Meta Accounts Center
+- [ ] Log out all Instagram devices & change password for @al_noman_foundation (blocked by 2FA on former member's WhatsApp)
+- [ ] Remove al_noman_foundation from former member's Meta Accounts Center
 - [ ] Secure the Facebook page (ALNOMANFoundation) — verify admin access and roles
 
 ## Roadmap — Website

@@ -543,6 +543,32 @@
         <priority>0.85</priority>
     </url>
 
+    <!-- Blog -->
+    <url>
+        <loc>https://www.alnoman.org/blog.html</loc>
+        <lastmod>2026-03-01</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://www.alnoman.org/blog/annual-report-2025.html</loc>
+        <lastmod>2026-03-01</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://www.alnoman.org/blog/5-ways-help-gaza.html</loc>
+        <lastmod>2026-03-01</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://www.alnoman.org/blog/where-your-dollar-goes.html</loc>
+        <lastmod>2026-03-01</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+
     <!-- FAQ -->
     <url>
         <loc>https://www.alnoman.org/faq.html</loc>
