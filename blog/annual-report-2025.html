@@ -15,14 +15,14 @@
     <meta property="og:url" content="https://www.alnoman.org/blog/annual-report-2025.html">
     <meta property="og:site_name" content="Al-Noman Foundation">
     <meta property="og:locale" content="en_US">
-    <meta property="og:image" content="https://www.alnoman.org/images/og-image.png">
+    <meta property="og:image" content="https://www.alnoman.org/images/blog/og-annual-report-2025.png">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
     <meta property="og:image:alt" content="Al-Noman Foundation 2025 Annual Report">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Announcing Our 2025 Annual Report | Al-Noman Foundation">
     <meta name="twitter:description" content="A comprehensive look at everything Al-Noman Foundation accomplished in 2025.">
-    <meta name="twitter:image" content="https://www.alnoman.org/images/og-image.png">
+    <meta name="twitter:image" content="https://www.alnoman.org/images/blog/og-annual-report-2025.png">
     <meta name="twitter:site" content="@FoundationNoman">
 
     <meta name="keywords" content="Al-Noman Foundation, 2025 annual report, nonprofit transparency, charity impact, Benin, Gaza, water wells, food security">
@@ -39,9 +39,15 @@
         "datePublished": "2026-02-15",
         "dateModified": "2026-02-15",
         "author": {
-            "@type": "Organization",
-            "name": "Al-Noman Foundation",
-            "url": "https://www.alnoman.org"
+            "@type": "Person",
+            "name": "Mwafaq Abushanab",
+            "jobTitle": "Founder & Advisor",
+            "affiliation": {
+                "@type": "NGO",
+                "name": "Al-Noman Foundation",
+                "url": "https://www.alnoman.org"
+            },
+            "url": "https://www.alnoman.org/about.html"
         },
         "publisher": {
             "@type": "NGO",
@@ -53,7 +59,7 @@
             "@id": "https://www.alnoman.org/blog/annual-report-2025.html"
         },
         "url": "https://www.alnoman.org/blog/annual-report-2025.html",
-        "image": "https://www.alnoman.org/images/og-image.png",
+        "image": "https://www.alnoman.org/images/blog/og-annual-report-2025.png",
         "articleSection": "News",
         "wordCount": 1200
     }
@@ -67,6 +73,39 @@
             { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.alnoman.org/" },
             { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://www.alnoman.org/blog.html" },
             { "@type": "ListItem", "position": 3, "name": "Announcing Our 2025 Annual Report", "item": "https://www.alnoman.org/blog/annual-report-2025.html" }
+        ]
+    }
+    </script>
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": "Can I see Al-Noman Foundation's IRS Form 990?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Yes. Our most recent Form 990-EZ is publicly available on ProPublica's Nonprofit Explorer and on Candid (formerly GuideStar). Al-Noman Foundation earned the 2026 Candid Silver Seal of Transparency."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "How is Al-Noman Foundation governed?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "A volunteer Board of Directors oversees the organization. There are no paid staff and no executive salaries; board members serve without compensation. Monthly internal financial reviews monitor income, expenditures, and fund allocation. See our governance page for full details."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Where does Al-Noman Foundation operate?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Programs run primarily in Benin (water wells, education sponsorships, food security, places of worship, and the Be Mobile wheelchair program) and Palestine (Save Gaza humanitarian relief). Al-Noman Foundation is headquartered in Land O' Lakes, Florida, USA, as a registered 501(c)(3) non-profit (EIN 87-1274971)."
+                }
+            }
         ]
     }
     </script>
@@ -242,6 +281,22 @@
             .footer-bottom { flex-direction: column; text-align: center; }
             .lang-switcher{margin-left:0;margin-top:10px}
         }
+        /* Nav Dropdowns */
+        .nav-dropdown { position: relative; }
+        .nav-dropdown-btn { background: none; border: none; cursor: pointer; padding: 8px 16px; font-size: 0.9rem; font-weight: 500; color: var(--text-light, #666); border-radius: 8px; transition: var(--transition, all 0.3s ease); font-family: inherit; display: flex; align-items: center; gap: 6px; text-transform: capitalize; }
+        .nav-dropdown-btn:hover { color: var(--primary, #7352a2); background: var(--primary-light, #f0ebf7); }
+        .nav-dropdown-btn .fa-chevron-down { font-size: 0.65rem; transition: transform 0.2s; }
+        .nav-dropdown.open .nav-dropdown-btn .fa-chevron-down { transform: rotate(180deg); }
+        .nav-dropdown.open .nav-dropdown-btn { color: var(--primary, #7352a2); background: var(--primary-light, #f0ebf7); }
+        .nav-dropdown-menu { display: none; position: absolute; top: 100%; left: 0; background: var(--white, #fff); border-radius: 8px; box-shadow: 0 4px 20px rgba(0,0,0,0.12); min-width: 200px; z-index: 1001; overflow: hidden; border: 1px solid var(--border, #eee); }
+        .nav-dropdown.open .nav-dropdown-menu { display: block; }
+        .nav-dropdown-menu a { display: block !important; padding: 10px 16px !important; font-size: 0.88rem; color: var(--text, #333) !important; transition: background 0.2s; white-space: nowrap; background: none !important; }
+        .nav-dropdown-menu a:hover { background: var(--primary-light, #f0ebf7) !important; color: var(--primary, #7352a2) !important; }
+        @media (max-width: 768px) {
+            .nav-dropdown { width: 100%; }
+            .nav-dropdown-btn { width: 100%; justify-content: space-between; padding: 10px 16px; }
+            .nav-dropdown-menu { position: static; box-shadow: none; border: none; border-radius: 0; padding-left: 16px; background: var(--bg, #fafafa); }
+        }
     </style>
 </head>
 <body>
@@ -255,13 +310,26 @@
         <i class="fas fa-bars" id="menu-btn" role="button" aria-label="Toggle navigation menu" tabindex="0"></i>
         <nav class="navbar" role="navigation" aria-label="Main navigation">
             <a href="../index.html">Home</a>
-            <a href="../about.html">About</a>
+            <div class="nav-dropdown">
+                <button class="nav-dropdown-btn" aria-expanded="false">About <i class="fas fa-chevron-down"></i></button>
+                <div class="nav-dropdown-menu">
+                    <a href="../about.html">Our Story</a>
+                    <a href="../transparency.html">Transparency</a>
+                    <a href="../governance.html">Governance</a>
+                    <a href="../zakat-policy.html">Zakat Policy</a>
+                </div>
+            </div>
             <a href="../programs.html">Programs</a>
             <a href="../campaigns.html">Campaigns</a>
-            <a href="../stories.html">Stories</a>
-            <a href="../blog.html">Blog</a>
-            <a href="../contact.html">Contact</a>
-            <a href="../faq.html">FAQ</a>
+            <div class="nav-dropdown">
+                <button class="nav-dropdown-btn" aria-expanded="false">Discover <i class="fas fa-chevron-down"></i></button>
+                <div class="nav-dropdown-menu">
+                    <a href="../stories.html">Stories</a>
+                    <a href="../blog.html">Blog</a>
+                    <a href="../faq.html">FAQ</a>
+                    <a href="../zakat-calculator.html">Zakat Calculator</a>
+                </div>
+            </div>
             <a href="../volunteer.html" class="nav-volunteer">Volunteer</a>
             <a href="https://donate.stripe.com/dR6bLq1gf7xF7y8aEG" class="nav-donate">Donate</a>
         </nav>
@@ -274,6 +342,7 @@
         <span class="blog-category news">News</span>
         <h1>Announcing Our 2025 Annual Report</h1>
         <div class="article-meta">
+            <span><i class="fas fa-user" aria-hidden="true"></i> By Mwafaq Abushanab, Founder &amp; Advisor</span>
             <span><i class="fas fa-calendar-alt" aria-hidden="true"></i> February 15, 2026</span>
             <span><i class="fas fa-clock" aria-hidden="true"></i> 5 min read</span>
         </div>
@@ -292,6 +361,19 @@
 
         <!-- Back to Blog -->
         <a href="../blog.html" class="back-link"><i class="fas fa-arrow-left" aria-hidden="true"></i> Back to Blog</a>
+
+        <!-- TL;DR Callout -->
+        <div style="background:var(--primary-light);border-left:4px solid var(--primary);padding:20px 24px;border-radius:0 var(--radius) var(--radius) 0;margin:0 0 32px;">
+            <strong style="color:var(--primary);text-transform:uppercase;font-size:0.8rem;letter-spacing:0.08em;display:block;margin-bottom:12px;">Key Takeaways</strong>
+            <ul style="margin:0;padding-left:20px;color:var(--text);font-size:1rem;line-height:1.8;">
+                <li><strong>6 core programs</strong> across Benin and Palestine: clean water, education, food security, places of worship, mobility, and humanitarian aid.</li>
+                <li><strong>10 active campaigns</strong> in 2025 — Save Gaza, Bread a Day, Dabiha, Water Wells, Be Mobile, Joy for Kids, Weekly Treats, Hospital Freedom, Ramadan Iftar, and Quran Memorization.</li>
+                <li><strong>90%+ of every dollar reached programs</strong>; 100% volunteer team, no paid staff or executive salaries.</li>
+                <li><strong>Public financial transparency:</strong> Form 990-EZ filed with the IRS and listed on <a href="https://projects.propublica.org/nonprofits/" style="color:var(--primary);font-weight:600;">ProPublica's Nonprofit Explorer</a>; 2026 Candid Silver Seal earned.</li>
+                <li><strong>Looking ahead to 2026:</strong> continued Gaza relief, additional water wells in Benin, expanded education sponsorships and Ramadan campaigns.</li>
+            </ul>
+            <p style="margin:16px 0 0;font-size:0.95rem;color:var(--text-light);">For the supporting detail: see our <a href="../transparency.html" style="color:var(--primary);font-weight:600;">Transparency page</a>, <a href="../governance.html" style="color:var(--primary);font-weight:600;">Governance page</a>, and <a href="where-your-dollar-goes.html" style="color:var(--primary);font-weight:600;">Where Does Your Dollar Go?</a></p>
+        </div>
 
         <!-- Article Body -->
         <p>At Al-Noman Foundation, we believe that transparency is not just a policy &mdash; it is a promise. Every donor who entrusts us with their generosity deserves to know exactly where their money goes, who it reaches, and what change it creates. That is why we are proud to present our 2025 Annual Report, a comprehensive look at the work we accomplished together over the past year.</p>
@@ -346,12 +428,21 @@
 
         <p>We invite you to continue this journey with us. Read the full report, share it with your network, and consider making a gift today to help us reach even more people in 2026.</p>
 
+        <!-- FAQ Section -->
+        <h2>Frequently Asked Questions</h2>
+        <h3 style="font-size:1.15rem;margin-top:24px;">Can I see Al-Noman Foundation's IRS Form 990?</h3>
+        <p>Yes. Our most recent Form 990-EZ is publicly available on <a href="https://projects.propublica.org/nonprofits/" style="color:var(--primary);font-weight:600;">ProPublica's Nonprofit Explorer</a> and on <a href="https://www.candid.org/" style="color:var(--primary);font-weight:600;">Candid</a> (formerly GuideStar). Al-Noman Foundation earned the 2026 Candid Silver Seal of Transparency.</p>
+        <h3 style="font-size:1.15rem;margin-top:24px;">How is Al-Noman Foundation governed?</h3>
+        <p>A volunteer Board of Directors oversees the organization. There are no paid staff and no executive salaries; board members serve without compensation. Monthly internal financial reviews monitor income, expenditures, and fund allocation. <a href="../governance.html" style="color:var(--primary);font-weight:600;">See our governance page for full details &rarr;</a></p>
+        <h3 style="font-size:1.15rem;margin-top:24px;">Where does Al-Noman Foundation operate?</h3>
+        <p>Programs run primarily in Benin (water wells, education sponsorships, food security, places of worship, and the Be Mobile wheelchair program) and Palestine (Save Gaza humanitarian relief). Al-Noman Foundation is headquartered in Land O' Lakes, Florida, USA, as a registered 501(c)(3) non-profit (EIN 87-1274971).</p>
+
         <!-- Author Box -->
         <div class="author-box">
-            <div class="author-avatar"><i class="fas fa-hands-holding-heart" aria-hidden="true"></i></div>
+            <div class="author-avatar"><i class="fas fa-user" aria-hidden="true"></i></div>
             <div class="author-info">
-                <strong>Al-Noman Foundation</strong>
-                <span>Registered 501(c)(3) Non-Profit &mdash; Be Giving, Be Living</span>
+                <strong>Mwafaq Abushanab</strong>
+                <span>Founder &amp; Advisor &mdash; Al-Noman Foundation, a registered 501(c)(3) non-profit</span>
             </div>
         </div>
 
@@ -457,7 +548,7 @@
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2025 <span>Al-Noman Foundation</span>. All rights reserved.</p>
+            <p>&copy; 2026 <span>Al-Noman Foundation</span>. All rights reserved.</p>
             <div class="tax-notice">
                 <i class="fas fa-check-circle" aria-hidden="true"></i>
                 Registered 501(c)(3) Non-Profit &mdash; 100% of your donation is tax-deductible
@@ -481,6 +572,22 @@
     const navbar = document.querySelector('.navbar');
     menuBtn.addEventListener('click', () => { navbar.classList.toggle('active'); menuBtn.classList.toggle('fa-bars'); menuBtn.classList.toggle('fa-times'); });
     document.querySelectorAll('.navbar a').forEach(link => { link.addEventListener('click', () => { navbar.classList.remove('active'); menuBtn.classList.add('fa-bars'); menuBtn.classList.remove('fa-times'); }); });
+
+    // Nav dropdown toggle
+    document.querySelectorAll('.nav-dropdown-btn').forEach(function(btn) {
+        btn.addEventListener('click', function(e) {
+            e.stopPropagation();
+            var dropdown = this.parentElement;
+            var isOpen = dropdown.classList.contains('open');
+            document.querySelectorAll('.nav-dropdown').forEach(function(d) { d.classList.remove('open'); });
+            document.querySelectorAll('.nav-dropdown-btn').forEach(function(b) { b.setAttribute('aria-expanded', 'false'); });
+            if (!isOpen) { dropdown.classList.add('open'); this.setAttribute('aria-expanded', 'true'); }
+        });
+    });
+    document.addEventListener('click', function() {
+        document.querySelectorAll('.nav-dropdown').forEach(function(d) { d.classList.remove('open'); });
+        document.querySelectorAll('.nav-dropdown-btn').forEach(function(b) { b.setAttribute('aria-expanded', 'false'); });
+    });
 
     window.addEventListener('scroll', () => {
         const header = document.querySelector('.header');

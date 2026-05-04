@@ -377,6 +377,22 @@
 .lang-option:hover{background:var(--primary-light,#f0ebf7)}
 .lang-option.active{color:var(--primary,#7352a2);font-weight:600;background:var(--primary-light,#f0ebf7)}
 @media(max-width:768px){.lang-switcher{margin-left:0;margin-top:10px}}
+/* Nav Dropdowns */
+.nav-dropdown { position: relative; }
+.nav-dropdown-btn { background: none; border: none; cursor: pointer; padding: 8px 16px; font-size: 0.9rem; font-weight: 500; color: var(--text-light, #666); border-radius: 8px; transition: var(--transition, all 0.3s ease); font-family: inherit; display: flex; align-items: center; gap: 6px; text-transform: capitalize; }
+.nav-dropdown-btn:hover { color: var(--primary, #7352a2); background: var(--primary-light, #f0ebf7); }
+.nav-dropdown-btn .fa-chevron-down { font-size: 0.65rem; transition: transform 0.2s; }
+.nav-dropdown.open .nav-dropdown-btn .fa-chevron-down { transform: rotate(180deg); }
+.nav-dropdown.open .nav-dropdown-btn { color: var(--primary, #7352a2); background: var(--primary-light, #f0ebf7); }
+.nav-dropdown-menu { display: none; position: absolute; top: 100%; left: 0; background: var(--white, #fff); border-radius: 8px; box-shadow: 0 4px 20px rgba(0,0,0,0.12); min-width: 200px; z-index: 1001; overflow: hidden; border: 1px solid var(--border, #eee); }
+.nav-dropdown.open .nav-dropdown-menu { display: block; }
+.nav-dropdown-menu a { display: block !important; padding: 10px 16px !important; font-size: 0.88rem; color: var(--text, #333) !important; transition: background 0.2s; white-space: nowrap; background: none !important; }
+.nav-dropdown-menu a:hover { background: var(--primary-light, #f0ebf7) !important; color: var(--primary, #7352a2) !important; }
+@media (max-width: 768px) {
+    .nav-dropdown { width: 100%; }
+    .nav-dropdown-btn { width: 100%; justify-content: space-between; padding: 10px 16px; }
+    .nav-dropdown-menu { position: static; box-shadow: none; border: none; border-radius: 0; padding-left: 16px; background: var(--bg, #fafafa); }
+}
     </style>
 </head>
 <body>
@@ -390,13 +406,26 @@
         <div id="menu-btn" class="fas fa-bars" role="button" aria-label="Toggle navigation menu" tabindex="0"></div>
         <nav class="navbar" role="navigation" aria-label="Main navigation">
             <a href="index.html">Home</a>
-            <a href="about.html">About</a>
-            <a href="programs.html" style="color:var(--primary);font-weight:700;">Programs</a>
+            <div class="nav-dropdown">
+                <button class="nav-dropdown-btn" aria-expanded="false">About <i class="fas fa-chevron-down"></i></button>
+                <div class="nav-dropdown-menu">
+                    <a href="about.html">Our Story</a>
+                    <a href="transparency.html">Transparency</a>
+                    <a href="governance.html">Governance</a>
+                    <a href="zakat-policy.html">Zakat Policy</a>
+                </div>
+            </div>
+            <a href="programs.html">Programs</a>
             <a href="campaigns.html">Campaigns</a>
-            <a href="stories.html">Stories</a>
-            <a href="blog.html">Blog</a>
-            <a href="contact.html">Contact</a>
-            <a href="faq.html">FAQ</a>
+            <div class="nav-dropdown">
+                <button class="nav-dropdown-btn" aria-expanded="false">Discover <i class="fas fa-chevron-down"></i></button>
+                <div class="nav-dropdown-menu">
+                    <a href="stories.html">Stories</a>
+                    <a href="blog.html">Blog</a>
+                    <a href="faq.html">FAQ</a>
+                    <a href="zakat-calculator.html">Zakat Calculator</a>
+                </div>
+            </div>
             <a href="volunteer.html" class="nav-volunteer">Volunteer</a>
             <a href="https://donate.stripe.com/dR6bLq1gf7xF7y8aEG" class="nav-donate">Donate</a>
         </nav>
@@ -581,7 +610,7 @@
                 <h2>Humanitarian Aid: Save Gaza</h2>
                 <p>When crisis strikes, Al-Noman Foundation responds. Our Save Gaza campaign provides essential means of life to people in Gaza, Palestine, who face unimaginable hardship every day. Families have been displaced from their homes, children have lost access to schools and medical care, and entire communities struggle to secure food, clean water, and basic supplies.</p>
                 <p>Through our trusted local partners on the ground, every dollar donated to Save Gaza goes directly toward food packages, clean water, medical supplies, hygiene kits, and shelter materials for families in desperate need. We believe that no political border should determine whether a child eats, whether a mother receives medical care, or whether a family has a roof over their head.</p>
-                <p>Your donation provides immediate, tangible relief to families who have lost everything. Stand with us in providing hope and the basic means of survival to the people of Gaza.</p>
+                <p>Your donation provides immediate, tangible relief to families who have lost everything. Stand with us in providing hope and the basic means of survival to the people of Gaza. <a href="blog/5-ways-help-gaza.html" style="color:var(--primary);font-weight:600;">Read 5 ways you can help Gaza today &rarr;</a></p>
                 <div class="program-actions" style="margin-top:24px;">
                     <a href="https://buy.stripe.com/28o9DiaQPf07dWw9AM" class="btn btn-primary"><i class="fas fa-hand-holding-heart" aria-hidden="true"></i> Donate to Save Gaza</a>
                 </div>
@@ -629,7 +658,7 @@
             <a href="https://x.com/FoundationNoman" aria-label="X (Twitter)" style="color:rgba(255,255,255,0.6);font-size:1.2rem;transition:color 0.3s;"><i class="fab fa-x-twitter"></i></a>
             <a href="https://www.youtube.com/@al-nomanfoundationinc" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
         </div>
-        <p>&copy; 2025 <span>Al-Noman Foundation</span>. All rights reserved. Registered 501(c)(3) &mdash; 100% tax-deductible.</p>
+        <p>&copy; 2026 <span>Al-Noman Foundation</span>. All rights reserved. Registered 501(c)(3) &mdash; 100% tax-deductible.</p>
     </div>
 </footer>
 
@@ -655,6 +684,23 @@
     document.querySelectorAll('.navbar a').forEach(link => {
         link.addEventListener('click', () => { navbar.classList.remove('active'); menuBtn.classList.add('fa-bars'); menuBtn.classList.remove('fa-times'); });
     });
+
+    // Nav dropdown toggle
+    document.querySelectorAll('.nav-dropdown-btn').forEach(function(btn) {
+        btn.addEventListener('click', function(e) {
+            e.stopPropagation();
+            var dropdown = this.parentElement;
+            var isOpen = dropdown.classList.contains('open');
+            document.querySelectorAll('.nav-dropdown').forEach(function(d) { d.classList.remove('open'); });
+            document.querySelectorAll('.nav-dropdown-btn').forEach(function(b) { b.setAttribute('aria-expanded', 'false'); });
+            if (!isOpen) { dropdown.classList.add('open'); this.setAttribute('aria-expanded', 'true'); }
+        });
+    });
+    document.addEventListener('click', function() {
+        document.querySelectorAll('.nav-dropdown').forEach(function(d) { d.classList.remove('open'); });
+        document.querySelectorAll('.nav-dropdown-btn').forEach(function(b) { b.setAttribute('aria-expanded', 'false'); });
+    });
+
     window.addEventListener('scroll', () => {
         document.querySelector('.header').style.boxShadow = window.scrollY > 50 ? '0 2px 20px rgba(0,0,0,0.1)' : 'none';
         document.getElementById('back-to-top').style.display = window.scrollY > 300 ? 'flex' : 'none';

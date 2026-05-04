@@ -15,14 +15,14 @@
     <meta property="og:url" content="https://www.alnoman.org/blog/5-ways-help-gaza.html">
     <meta property="og:site_name" content="Al-Noman Foundation">
     <meta property="og:locale" content="en_US">
-    <meta property="og:image" content="https://www.alnoman.org/images/og-image.png">
+    <meta property="og:image" content="https://www.alnoman.org/images/blog/og-5-ways-help-gaza.png">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
     <meta property="og:image:alt" content="5 Ways You Can Help Gaza Today - Al-Noman Foundation">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="5 Ways You Can Help Gaza Today | Al-Noman Foundation">
     <meta name="twitter:description" content="Practical steps you can take right now to support families in Gaza.">
-    <meta name="twitter:image" content="https://www.alnoman.org/images/og-image.png">
+    <meta name="twitter:image" content="https://www.alnoman.org/images/blog/og-5-ways-help-gaza.png">
     <meta name="twitter:site" content="@FoundationNoman">
 
     <meta name="keywords" content="help Gaza, Palestine support, humanitarian aid, donate Gaza, volunteer, Al-Noman Foundation, 501c3, charity">
@@ -39,9 +39,15 @@
         "datePublished": "2026-01-20",
         "dateModified": "2026-01-20",
         "author": {
-            "@type": "Organization",
-            "name": "Al-Noman Foundation",
-            "url": "https://www.alnoman.org"
+            "@type": "Person",
+            "name": "Mwafaq Abushanab",
+            "jobTitle": "Founder & Advisor",
+            "affiliation": {
+                "@type": "NGO",
+                "name": "Al-Noman Foundation",
+                "url": "https://www.alnoman.org"
+            },
+            "url": "https://www.alnoman.org/about.html"
         },
         "publisher": {
             "@type": "NGO",
@@ -53,7 +59,7 @@
             "@id": "https://www.alnoman.org/blog/5-ways-help-gaza.html"
         },
         "url": "https://www.alnoman.org/blog/5-ways-help-gaza.html",
-        "image": "https://www.alnoman.org/images/og-image.png",
+        "image": "https://www.alnoman.org/images/blog/og-5-ways-help-gaza.png",
         "articleSection": "Action",
         "wordCount": 900
     }
@@ -67,6 +73,39 @@
             { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.alnoman.org/" },
             { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://www.alnoman.org/blog.html" },
             { "@type": "ListItem", "position": 3, "name": "5 Ways You Can Help Gaza Today", "item": "https://www.alnoman.org/blog/5-ways-help-gaza.html" }
+        ]
+    }
+    </script>
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": "How much of my donation goes to Gaza relief?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "More than 90% of every dollar donated to Al-Noman Foundation goes directly to programs. Save Gaza campaign funds are channeled through trusted local partners on the ground in Gaza for emergency food, water, medical supplies, and shelter."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Can I help if I cannot donate financially?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Yes. You can share the campaign on social media, organize a community fundraiser, educate others about the crisis, or volunteer your time with Al-Noman Foundation. Non-financial actions multiply impact when many people participate."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Is my donation tax-deductible?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Yes. Al-Noman Foundation is a registered 501(c)(3) non-profit organization (EIN 87-1274971). You will receive a tax-deductible donation receipt for every contribution, regardless of size."
+                }
+            }
         ]
     }
     </script>
@@ -242,6 +281,22 @@
             .footer-bottom { flex-direction: column; text-align: center; }
             .lang-switcher{margin-left:0;margin-top:10px}
         }
+        /* Nav Dropdowns */
+        .nav-dropdown { position: relative; }
+        .nav-dropdown-btn { background: none; border: none; cursor: pointer; padding: 8px 16px; font-size: 0.9rem; font-weight: 500; color: var(--text-light, #666); border-radius: 8px; transition: var(--transition, all 0.3s ease); font-family: inherit; display: flex; align-items: center; gap: 6px; text-transform: capitalize; }
+        .nav-dropdown-btn:hover { color: var(--primary, #7352a2); background: var(--primary-light, #f0ebf7); }
+        .nav-dropdown-btn .fa-chevron-down { font-size: 0.65rem; transition: transform 0.2s; }
+        .nav-dropdown.open .nav-dropdown-btn .fa-chevron-down { transform: rotate(180deg); }
+        .nav-dropdown.open .nav-dropdown-btn { color: var(--primary, #7352a2); background: var(--primary-light, #f0ebf7); }
+        .nav-dropdown-menu { display: none; position: absolute; top: 100%; left: 0; background: var(--white, #fff); border-radius: 8px; box-shadow: 0 4px 20px rgba(0,0,0,0.12); min-width: 200px; z-index: 1001; overflow: hidden; border: 1px solid var(--border, #eee); }
+        .nav-dropdown.open .nav-dropdown-menu { display: block; }
+        .nav-dropdown-menu a { display: block !important; padding: 10px 16px !important; font-size: 0.88rem; color: var(--text, #333) !important; transition: background 0.2s; white-space: nowrap; background: none !important; }
+        .nav-dropdown-menu a:hover { background: var(--primary-light, #f0ebf7) !important; color: var(--primary, #7352a2) !important; }
+        @media (max-width: 768px) {
+            .nav-dropdown { width: 100%; }
+            .nav-dropdown-btn { width: 100%; justify-content: space-between; padding: 10px 16px; }
+            .nav-dropdown-menu { position: static; box-shadow: none; border: none; border-radius: 0; padding-left: 16px; background: var(--bg, #fafafa); }
+        }
     </style>
 </head>
 <body>
@@ -255,13 +310,26 @@
         <i class="fas fa-bars" id="menu-btn" role="button" aria-label="Toggle navigation menu" tabindex="0"></i>
         <nav class="navbar" role="navigation" aria-label="Main navigation">
             <a href="../index.html">Home</a>
-            <a href="../about.html">About</a>
+            <div class="nav-dropdown">
+                <button class="nav-dropdown-btn" aria-expanded="false">About <i class="fas fa-chevron-down"></i></button>
+                <div class="nav-dropdown-menu">
+                    <a href="../about.html">Our Story</a>
+                    <a href="../transparency.html">Transparency</a>
+                    <a href="../governance.html">Governance</a>
+                    <a href="../zakat-policy.html">Zakat Policy</a>
+                </div>
+            </div>
             <a href="../programs.html">Programs</a>
             <a href="../campaigns.html">Campaigns</a>
-            <a href="../stories.html">Stories</a>
-            <a href="../blog.html">Blog</a>
-            <a href="../contact.html">Contact</a>
-            <a href="../faq.html">FAQ</a>
+            <div class="nav-dropdown">
+                <button class="nav-dropdown-btn" aria-expanded="false">Discover <i class="fas fa-chevron-down"></i></button>
+                <div class="nav-dropdown-menu">
+                    <a href="../stories.html">Stories</a>
+                    <a href="../blog.html">Blog</a>
+                    <a href="../faq.html">FAQ</a>
+                    <a href="../zakat-calculator.html">Zakat Calculator</a>
+                </div>
+            </div>
             <a href="../volunteer.html" class="nav-volunteer">Volunteer</a>
             <a href="https://donate.stripe.com/dR6bLq1gf7xF7y8aEG" class="nav-donate">Donate</a>
         </nav>
@@ -274,6 +342,7 @@
         <span class="blog-category action">Action</span>
         <h1>5 Ways You Can Help Gaza Today</h1>
         <div class="article-meta">
+            <span><i class="fas fa-user" aria-hidden="true"></i> By Mwafaq Abushanab, Founder &amp; Advisor</span>
             <span><i class="fas fa-calendar-alt" aria-hidden="true"></i> January 20, 2026</span>
             <span><i class="fas fa-clock" aria-hidden="true"></i> 4 min read</span>
         </div>
@@ -292,6 +361,18 @@
 
         <!-- Back to Blog -->
         <a href="../blog.html" class="back-link"><i class="fas fa-arrow-left" aria-hidden="true"></i> Back to Blog</a>
+
+        <!-- TL;DR Callout -->
+        <div style="background:var(--primary-light);border-left:4px solid var(--primary);padding:20px 24px;border-radius:0 var(--radius) var(--radius) 0;margin:0 0 32px;">
+            <strong style="color:var(--primary);text-transform:uppercase;font-size:0.8rem;letter-spacing:0.08em;display:block;margin-bottom:12px;">Key Takeaways</strong>
+            <ul style="margin:0;padding-left:20px;color:var(--text);font-size:1rem;line-height:1.8;">
+                <li><strong>5 concrete actions:</strong> donate, share, organize a fundraiser, educate, and volunteer.</li>
+                <li><strong>Donation impact:</strong> $25 = one week of food for a family; $50 = water and hygiene for five families; $100 = critical medical supplies.</li>
+                <li><strong>90%+ of every dollar</strong> reaches families directly through trusted local partners on the ground.</li>
+                <li><strong>Non-financial help matters:</strong> sharing, organizing, and volunteering multiply impact when many people participate.</li>
+                <li>Al-Noman Foundation is a registered <strong>501(c)(3)</strong>, so all donations are tax-deductible.</li>
+            </ul>
+        </div>
 
         <!-- Article Body -->
         <p>The humanitarian crisis in Gaza is one of the most pressing challenges of our time. Families have been displaced from their homes, children have lost access to education, and basic necessities like food, clean water, and medical care remain critically scarce. The scale of suffering is staggering, but the power of collective action is even greater.</p>
@@ -349,12 +430,21 @@
 
         <p>Choose one of the five actions above and do it today. Then share this article with someone else and ask them to do the same. That is how movements are built. That is how lives are saved.</p>
 
+        <!-- FAQ Section -->
+        <h2>Frequently Asked Questions</h2>
+        <h3 style="font-size:1.15rem;margin-top:24px;">How much of my donation goes to Gaza relief?</h3>
+        <p>More than 90% of every dollar donated to Al-Noman Foundation goes directly to programs. Save Gaza campaign funds are channeled through trusted local partners on the ground in Gaza for emergency food, water, medical supplies, and shelter. <a href="../transparency.html" style="color:var(--primary);font-weight:600;">See our full transparency breakdown &rarr;</a></p>
+        <h3 style="font-size:1.15rem;margin-top:24px;">Can I help if I cannot donate financially?</h3>
+        <p>Yes. You can share the campaign on social media, organize a community fundraiser, educate others about the crisis, or volunteer your time with Al-Noman Foundation. Non-financial actions multiply impact when many people participate.</p>
+        <h3 style="font-size:1.15rem;margin-top:24px;">Is my donation tax-deductible?</h3>
+        <p>Yes. Al-Noman Foundation is a registered 501(c)(3) non-profit organization (EIN 87-1274971). You will receive a tax-deductible donation receipt for every contribution, regardless of size.</p>
+
         <!-- Author Box -->
         <div class="author-box">
-            <div class="author-avatar"><i class="fas fa-hands-holding-heart" aria-hidden="true"></i></div>
+            <div class="author-avatar"><i class="fas fa-user" aria-hidden="true"></i></div>
             <div class="author-info">
-                <strong>Al-Noman Foundation</strong>
-                <span>Registered 501(c)(3) Non-Profit &mdash; Be Giving, Be Living</span>
+                <strong>Mwafaq Abushanab</strong>
+                <span>Founder &amp; Advisor &mdash; Al-Noman Foundation, a registered 501(c)(3) non-profit</span>
             </div>
         </div>
 
@@ -460,7 +550,7 @@
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2025 <span>Al-Noman Foundation</span>. All rights reserved.</p>
+            <p>&copy; 2026 <span>Al-Noman Foundation</span>. All rights reserved.</p>
             <div class="tax-notice">
                 <i class="fas fa-check-circle" aria-hidden="true"></i>
                 Registered 501(c)(3) Non-Profit &mdash; 100% of your donation is tax-deductible
@@ -484,6 +574,22 @@
     const navbar = document.querySelector('.navbar');
     menuBtn.addEventListener('click', () => { navbar.classList.toggle('active'); menuBtn.classList.toggle('fa-bars'); menuBtn.classList.toggle('fa-times'); });
     document.querySelectorAll('.navbar a').forEach(link => { link.addEventListener('click', () => { navbar.classList.remove('active'); menuBtn.classList.add('fa-bars'); menuBtn.classList.remove('fa-times'); }); });
+
+    // Nav dropdown toggle
+    document.querySelectorAll('.nav-dropdown-btn').forEach(function(btn) {
+        btn.addEventListener('click', function(e) {
+            e.stopPropagation();
+            var dropdown = this.parentElement;
+            var isOpen = dropdown.classList.contains('open');
+            document.querySelectorAll('.nav-dropdown').forEach(function(d) { d.classList.remove('open'); });
+            document.querySelectorAll('.nav-dropdown-btn').forEach(function(b) { b.setAttribute('aria-expanded', 'false'); });
+            if (!isOpen) { dropdown.classList.add('open'); this.setAttribute('aria-expanded', 'true'); }
+        });
+    });
+    document.addEventListener('click', function() {
+        document.querySelectorAll('.nav-dropdown').forEach(function(d) { d.classList.remove('open'); });
+        document.querySelectorAll('.nav-dropdown-btn').forEach(function(b) { b.setAttribute('aria-expanded', 'false'); });
+    });
 
     window.addEventListener('scroll', () => {
         const header = document.querySelector('.header');
